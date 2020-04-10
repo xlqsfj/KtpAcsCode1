@@ -28,22 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraEditors.RadioGroup RadioGroup1;
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lab = new DevExpress.XtraEditors.LabelControl();
             this.labName1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.txt_deviceId = new DevExpress.XtraEditors.TextEdit();
+            this.txtDeviceIp = new DevExpress.XtraEditors.TextEdit();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
+            this.txt_description = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
+            RadioGroup1 = new DevExpress.XtraEditors.RadioGroup();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_deviceId.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDeviceIp.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_description.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(RadioGroup1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -78,66 +79,50 @@
             this.labelControl4.TabIndex = 0;
             this.labelControl4.Text = "描述";
             // 
-            // textEdit1
+            // txt_deviceId
             // 
-            this.textEdit1.Location = new System.Drawing.Point(199, 50);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(289, 20);
-            this.textEdit1.TabIndex = 1;
+            this.txt_deviceId.Location = new System.Drawing.Point(199, 50);
+            this.txt_deviceId.Name = "txt_deviceId";
+            this.txt_deviceId.Size = new System.Drawing.Size(289, 20);
+            this.txt_deviceId.TabIndex = 1;
             // 
-            // textEdit2
+            // txtDeviceIp
             // 
-            this.textEdit2.Location = new System.Drawing.Point(199, 91);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(289, 20);
-            this.textEdit2.TabIndex = 1;
+            this.txtDeviceIp.Location = new System.Drawing.Point(199, 91);
+            this.txtDeviceIp.Name = "txtDeviceIp";
+            this.txtDeviceIp.Size = new System.Drawing.Size(289, 20);
+            this.txtDeviceIp.TabIndex = 1;
             // 
             // btnSave
             // 
+            this.btnSave.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
+            this.btnSave.Appearance.Options.UseBackColor = true;
             this.btnSave.Location = new System.Drawing.Point(210, 246);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(75, 35);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "保存";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(356, 246);
+            this.btnClose.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
+            this.btnClose.Appearance.Options.UseBackColor = true;
+            this.btnClose.Location = new System.Drawing.Point(355, 246);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.Size = new System.Drawing.Size(80, 35);
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "取消";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // radioButton1
+            // txt_description
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(267, 198);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(37, 18);
-            this.radioButton1.TabIndex = 3;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "是";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(369, 199);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(37, 18);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "否";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // textEdit3
-            // 
-            this.textEdit3.EditValue = "";
-            this.textEdit3.Location = new System.Drawing.Point(199, 117);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Properties.AutoHeight = false;
-            this.textEdit3.Size = new System.Drawing.Size(289, 67);
-            this.textEdit3.TabIndex = 1;
+            this.txt_description.EditValue = "";
+            this.txt_description.Location = new System.Drawing.Point(199, 117);
+            this.txt_description.Name = "txt_description";
+            this.txt_description.Properties.AutoHeight = false;
+            this.txt_description.Size = new System.Drawing.Size(289, 67);
+            this.txt_description.TabIndex = 1;
             // 
             // labelControl2
             // 
@@ -159,29 +144,49 @@
             this.labelControl3.TabIndex = 4;
             this.labelControl3.Text = "*";
             // 
+            // RadioGroup1
+            // 
+            RadioGroup1.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.True;
+            RadioGroup1.EditValue = false;
+            RadioGroup1.Location = new System.Drawing.Point(234, 190);
+            RadioGroup1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            RadioGroup1.Name = "RadioGroup1";
+            RadioGroup1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            RadioGroup1.Properties.Columns = 2;
+            RadioGroup1.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far;
+            RadioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "否", true, null, "rad_gateType"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "是", true, null, "rad_gateType")});
+            RadioGroup1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            RadioGroup1.Size = new System.Drawing.Size(163, 33);
+            RadioGroup1.TabIndex = 9;
+            // 
             // AddDevice
             // 
+            this.ActiveGlowColor = System.Drawing.Color.White;
+            this.Appearance.BackColor = System.Drawing.Color.White;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(557, 293);
+            this.Controls.Add(RadioGroup1);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.labelControl2);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.textEdit2);
-            this.Controls.Add(this.textEdit1);
+            this.Controls.Add(this.txtDeviceIp);
+            this.Controls.Add(this.txt_deviceId);
             this.Controls.Add(this.labName1);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.lab);
             this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.textEdit3);
+            this.Controls.Add(this.txt_description);
             this.Name = "AddDevice";
             this.Text = "AddDevice";
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_deviceId.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDeviceIp.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_description.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(RadioGroup1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,13 +198,11 @@
         private DevExpress.XtraEditors.LabelControl lab;
         private DevExpress.XtraEditors.LabelControl labName1;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
+        private DevExpress.XtraEditors.TextEdit txt_deviceId;
+        private DevExpress.XtraEditors.TextEdit txtDeviceIp;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraEditors.SimpleButton btnClose;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
+        private DevExpress.XtraEditors.TextEdit txt_description;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
     }

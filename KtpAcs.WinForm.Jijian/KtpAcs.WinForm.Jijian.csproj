@@ -189,6 +189,7 @@
     <None Include="image\jx.png" />
     <None Include="image\jx2.png" />
     <None Include="image\img_login2.png" />
+    <Content Include="image\img_login3.png" />
     <Content Include="image\ktp_logo.jpg" />
     <Content Include="image\loading3.gif" />
     <Content Include="image\off.png" />

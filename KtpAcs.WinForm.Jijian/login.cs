@@ -18,6 +18,8 @@ namespace KtpAcs.WinForm.Jijian
         public Login()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+           
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

@@ -26,6 +26,7 @@ namespace KtpAcs.WinForm.Jijian
             InitializeComponent();
             GetProjectList();
             GetProjectCount();
+            flowDevice_Click(null, null);
         }
 
 
@@ -83,7 +84,7 @@ namespace KtpAcs.WinForm.Jijian
             Application.Exit();
         }
 
-
+       
 
         private void flowDevice_Click(object sender, EventArgs e)
         {
@@ -130,6 +131,12 @@ namespace KtpAcs.WinForm.Jijian
             this.panelContent.Controls.Clear();
             this.panelContent.Controls.Add(addStep);
             addStep.Show();
+        }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            AddDevice addDevice = new AddDevice();
+            addDevice.ShowDialog();
         }
     }
 }

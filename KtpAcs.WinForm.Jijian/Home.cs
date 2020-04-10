@@ -1,0 +1,135 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using KtpAcs.WinForm.Jijian.Device;
+using DevExpress.Utils.Extensions;
+using System.IO;
+using KtpAcs.KtpApiService;
+using KtpAcs.KtpApiService.Result;
+using KtpAcs.KtpApiService.Project;
+using static KtpAcs.KtpApiService.Result.ProjectListResult;
+using KtpAcs.Infrastructure.Utilities;
+
+namespace KtpAcs.WinForm.Jijian
+{
+    public partial class Home : DevExpress.XtraEditors.XtraForm
+    {
+        public Home()
+        {
+            InitializeComponent();
+            GetProjectList();
+            GetProjectCount();
+        }
+
+
+        /// <summary>
+        ///查询项目列表
+        /// </summary>
+        private void GetProjectList()
+        {
+
+
+            IMulePusher pusherLogin = new GetProjectListApi() { RequestParam = new { pageNum = 0, pageSize = 0, type = 0 } };
+            PushSummary pushLogin = pusherLogin.Push();
+            if (pushLogin.Success)
+            {
+                List<ProjectList> pList = pushLogin.ResponseData;
+                this.comProjectList.Properties.DisplayMember = "projectName";
+                this.comProjectList.Properties.ValueMember = "projectUuid";
+                this.comProjectList.Properties.DataSource = pList;
+                this.comProjectList.EditValue = pList[0].projectUuid;
+                ConfigHelper._KtpLoginProjectId = pList[0].projectUuid;
+
+            }
+        }
+        /// <summary>
+        /// 查询项目人数
+        /// </summary>
+        private void GetProjectCount()
+        {
+            IMulePusher pusherLogin = new GetProjectCountApi() { RequestParam = new { projectUuid = ConfigHelper.KtpLoginProjectId } };
+            PushSummary pushLogin = pusherLogin.Push();
+            if (pushLogin.Success)
+            {
+                ProjectCountResult.Data projectCountResult = pushLogin.ResponseData;
+
+                this.labProjectCode.Text = projectCountResult.projectCode;
+                this.labProjectManageNum.Text = projectCountResult.projectManageNum.ToString();
+                this.labVerificationNum.Text = projectCountResult.workerVerificationNum.ToString();
+
+
+            }
+        }
+
+
+        private void pictureEdit1_MouseEnter(object sender, EventArgs e)
+        {
+            this.flowAdmin.Visible = true;
+            this.label1.ForeColor = Color.White;
+            this.flowAdmin.BackColor = Color.GhostWhite;
+        }
+
+
+
+        private void picExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+
+
+        private void flowDevice_Click(object sender, EventArgs e)
+        {
+
+            this.label1.ForeColor = Color.White;
+            this.flowDevice.BackColor = Color.Transparent;
+            this.flowDevice.BackgroundImage = Image.FromFile(fPath("blue_03.png"));
+            DeviceListForm addStep = new DeviceListForm();
+            addStep.FormBorderStyle = FormBorderStyle.None;
+            addStep.TopLevel = false;
+            this.panelContent.Controls.Clear();
+            this.panelContent.Controls.Add(addStep);
+            addStep.Show();
+        }
+        /// <summary>
+        /// 文件路径方法
+        /// </summary>
+        /// <param name="fileName">文件名称</param>
+        /// <returns>返回文件的在整个项目中得位置</returns>
+        private string fPath(string fileName)
+        {
+            string SysPath = Application.StartupPath + @"../../../";
+            Directory.SetCurrentDirectory(SysPath);
+            string filePath = Directory.GetCurrentDirectory() + @"/image/" + fileName;
+            return filePath;
+        }
+
+        /// <summary>
+        /// 点击劳务管理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void flowWorerk_Click(object sender, EventArgs e)
+        {
+
+            this.flowWorerk.BackColor = Color.Transparent;
+
+
+            this.flowDevice.BackgroundImage = null;
+            this.flowWorerk.BackgroundImage = Image.FromFile(fPath("blue_03.png"));
+            AddWorker addStep = new AddWorker();
+            addStep.FormBorderStyle = FormBorderStyle.None;
+            addStep.TopLevel = false;
+            this.panelContent.Controls.Clear();
+            this.panelContent.Controls.Add(addStep);
+            addStep.Show();
+        }
+    }
+}

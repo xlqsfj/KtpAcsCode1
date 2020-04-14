@@ -44,10 +44,33 @@ namespace KtpAcs.KtpApiService.Result
             public string idCard { get; set; }
             public string name { get; set; }
             public string phone { get; set; }
-            public string sex { get; set; }
+
+            private string _sex;
+            /// <summary>
+            /// 性别 1男2 女
+            /// </summary>
+            public string sex
+            {
+                get { return _sex; }
+                set
+                {
+
+                    _sex = value == "1" ? "男" : "女";
+                }
+            }
+
             public string takeOfficeTime { get; set; }
             public string uuid { get; set; }
-            public int workerStatus { get; set; }
+
+            public string _workerStatus;
+            public string workerStatus {
+                get { return _workerStatus; }
+                set
+                { 
+                    _workerStatus=value=="1"?"启用" : "停用";
+                  
+                }
+            }
         }
 
     }

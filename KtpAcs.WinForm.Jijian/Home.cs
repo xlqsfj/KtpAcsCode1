@@ -42,11 +42,12 @@ namespace KtpAcs.WinForm.Jijian
             if (pushLogin.Success)
             {
                 List<ProjectList> pList = pushLogin.ResponseData;
-                if (pList.Count < 1) {
+                if (pList.Count < 1)
+                {
 
                     MessageHelper.Show("该账号未添加项目,请在后台添加在继续操作");
                     return;
-                  
+
                 }
                 this.comProjectList.Properties.DisplayMember = "projectName";
                 this.comProjectList.Properties.ValueMember = "projectUuid";
@@ -90,7 +91,7 @@ namespace KtpAcs.WinForm.Jijian
             Application.Exit();
         }
 
-       
+
 
         private void flowDevice_Click(object sender, EventArgs e)
         {
@@ -100,8 +101,11 @@ namespace KtpAcs.WinForm.Jijian
             this.flowDevice.BackgroundImage = Image.FromFile(fPath("blue_03.png"));
             DeviceListForm addStep = new DeviceListForm();
             addStep.FormBorderStyle = FormBorderStyle.None;
+
             addStep.TopLevel = false;
             this.panelContent.Controls.Clear();
+            this.panelWorker.Visible = false;
+            this.panelDevice.Visible = true;
             this.panelContent.Controls.Add(addStep);
             addStep.Show();
         }
@@ -135,6 +139,8 @@ namespace KtpAcs.WinForm.Jijian
             addStep.FormBorderStyle = FormBorderStyle.None;
             addStep.TopLevel = false;
             this.panelContent.Controls.Clear();
+            this.panelWorker.Visible = true;
+            this.panelDevice.Visible = false;
             this.panelContent.Controls.Add(addStep);
             addStep.Show();
         }
@@ -145,6 +151,36 @@ namespace KtpAcs.WinForm.Jijian
             addDevice.ShowDialog();
         }
 
-     
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            AddDevice addDevice = new AddDevice();
+            addDevice.ShowDialog();
+        }
+
+        private void toggleSwitch1_Toggled(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radHMC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AddWorker addStep;
+            if (radHMC.SelectedIndex == 0)
+            {//花名册
+                addStep = new AddWorker(0);
+
+            }
+            else
+            {
+                //甲子分包
+                addStep = new AddWorker(1);
+            }
+            addStep.FormBorderStyle = FormBorderStyle.None;
+            addStep.TopLevel = false;
+            this.panelContent.Controls.Clear();
+            addStep.Show();
+            this.panelContent.Controls.Add(addStep);
+
+        }
     }
 }

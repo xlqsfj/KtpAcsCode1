@@ -36,9 +36,15 @@ namespace KtpAcs.WinForm.Jijian
         private string _send;
         private bool _isSys = false;
 
-        public AddWorker()
+        private int _isHmc = 0;
+        public AddWorker(int hmc = 0)
         {
+            _isHmc = hmc;
             InitializeComponent();
+            if (hmc == 1)
+                panelProjectInfo.Visible = false;
+            else
+                panelProjectInfo.Visible = true;
             CameraConn();
             BindNationsCb();
             BindEducationLeveCb();
@@ -71,12 +77,11 @@ namespace KtpAcs.WinForm.Jijian
 
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            
+
             if (e.Page.Name == "tabPageWorkerList")
             {
                 WorkerListForm workerform = new WorkerListForm();
                 workerform.TopLevel = false;
-            
                 this.tabPageWorkerList.Controls.Add(workerform);
                 workerform.Show();
 
@@ -230,11 +235,10 @@ namespace KtpAcs.WinForm.Jijian
             add.name = this.txtName.Text;
             add.nation = this.ComNation.Text;
             add.nativePlace = this.txtNativePlace.Text;
-            add.organizationUuid = this.ComOrganizationUuid.EditValue.ToString();
+         
             add.phone = this.txtPhone.Text;
             add.projectUuid = ConfigHelper.KtpLoginProjectId;
-            add.workType = this.comWorkType.EditValue.ToString();
-            add.workerTeamUuid = this.comWorkerTeamUuid.EditValue.ToString();
+     
 
             if (!string.IsNullOrEmpty(_facePicId))
             {
@@ -271,19 +275,14 @@ namespace KtpAcs.WinForm.Jijian
                 add.icon = _url_upic;
             }
 
-            IMulePusher addworkers = new WorkerSet() { RequestParam = add };
-            PushSummary pushAddworkers = addworkers.Push();
-            if (pushAddworkers.Success)
-            {
-
-                MessageHelper.Show("添加成功");
-            }
+            if (_isHmc == 0)
+                addUser(add);
             else
-            {
-                MessageHelper.Show("添加失败:" + pushAddworkers.Message);
-            }
+                addJiaZiUser(add);
 
         }
+
+    
 
         private void ComOrganizationUuid_EditValueChanged(object sender, EventArgs e)
         {

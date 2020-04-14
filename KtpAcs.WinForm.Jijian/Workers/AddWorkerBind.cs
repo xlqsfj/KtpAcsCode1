@@ -2,6 +2,7 @@
 using KtpAcs.Infrastructure.Utilities;
 using KtpAcs.KtpApiService;
 using KtpAcs.KtpApiService.Base;
+using KtpAcs.KtpApiService.Send;
 using KtpAcs.KtpApiService.Worker;
 using KtpAcs.WinForm.Jijian.Base;
 using KtpAcsMiddleware.KtpApiService.Base;
@@ -16,6 +17,8 @@ namespace KtpAcs.WinForm.Jijian
 {
     public partial class AddWorker
     {
+        #region 下拉列表数据
+
         /// <summary>
         /// 民族列表
         /// </summary>
@@ -134,7 +137,7 @@ namespace KtpAcs.WinForm.Jijian
         }
 
 
-        private string GetPic(DevExpress.XtraEditors.PictureEdit  pictureBox)
+        private string GetPic(DevExpress.XtraEditors.PictureEdit pictureBox)
         {
             try
             {
@@ -152,6 +155,51 @@ namespace KtpAcs.WinForm.Jijian
                 LogHelper.ExceptionLog(ex);
                 MessageHelper.Show(ex);
                 return string.Empty;
+            }
+        }
+
+
+        #endregion
+
+        /// <summary>
+        /// 添加花名册
+        /// </summary>
+        /// <param name="add"></param>
+        private  void addUser(AddWorerkSend add)
+        {
+            add.organizationUuid = this.ComOrganizationUuid.EditValue.ToString();
+            add.workType = this.comWorkType.EditValue.ToString();
+            add.workerTeamUuid = this.comWorkerTeamUuid.EditValue.ToString();
+
+            IMulePusher addworkers = new WorkerSet() { RequestParam = add };
+            PushSummary pushAddworkers = addworkers.Push();
+            if (pushAddworkers.Success)
+            {
+
+                MessageHelper.Show("添加成功");
+            }
+            else
+            {
+                MessageHelper.Show("添加失败:" + pushAddworkers.Message);
+            }
+        }
+
+        /// <summary>
+        /// 甲子分包
+        /// </summary>
+        /// <param name="add"></param>
+        private  void addJiaZiUser(AddWorerkSend add)
+        {
+            IMulePusher addworkers = new WorkerSet() { RequestParam = add, API= "/userPanel/addJiaZiUser" };
+            PushSummary pushAddworkers = addworkers.Push();
+            if (pushAddworkers.Success)
+            {
+
+                MessageHelper.Show("添加成功");
+            }
+            else
+            {
+                MessageHelper.Show("添加失败:" + pushAddworkers.Message);
             }
         }
 

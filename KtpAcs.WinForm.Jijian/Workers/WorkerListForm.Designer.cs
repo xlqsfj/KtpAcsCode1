@@ -56,10 +56,10 @@
             this.gridControl1.EmbeddedNavigator.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
             this.gridControl1.EmbeddedNavigator.Cursor = System.Windows.Forms.Cursors.Default;
             this.gridControl1.EmbeddedNavigator.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
-            this.gridControl1.Location = new System.Drawing.Point(34, 59);
+            this.gridControl1.Location = new System.Drawing.Point(12, 53);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1236, 557);
+            this.gridControl1.Size = new System.Drawing.Size(1184, 505);
             this.gridControl1.TabIndex = 2;
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -79,6 +79,7 @@
             this.gridColumn10});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
             // 
@@ -207,7 +208,7 @@
             // 
             this.btnClear.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
             this.btnClear.Appearance.Options.UseBackColor = true;
-            this.btnClear.Location = new System.Drawing.Point(1152, 5);
+            this.btnClear.Location = new System.Drawing.Point(1090, 13);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(106, 34);
             this.btnClear.TabIndex = 225;
@@ -217,7 +218,7 @@
             // 
             this.btnQuery.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
             this.btnQuery.Appearance.Options.UseBackColor = true;
-            this.btnQuery.Location = new System.Drawing.Point(1030, 4);
+            this.btnQuery.Location = new System.Drawing.Point(968, 12);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(107, 35);
             this.btnQuery.TabIndex = 231;
@@ -228,7 +229,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1309, 648);
+            this.ClientSize = new System.Drawing.Size(1206, 562);
             this.Controls.Add(this.btnQuery);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.txtQuery);

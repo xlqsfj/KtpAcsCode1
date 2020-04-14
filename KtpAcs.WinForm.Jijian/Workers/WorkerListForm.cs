@@ -11,13 +11,15 @@ namespace KtpAcs.WinForm.Jijian.Workers
 {
     public partial class WorkerListForm : DevExpress.XtraEditors.XtraForm
     {
-        public WorkerListForm()
+        private int _isHmc = 0;
+        public WorkerListForm(int isHmc = 0)
         {
+            _isHmc = isHmc;
             InitializeComponent();
-            GetWorkerList();
+            GetWorkerList("");
         }
 
-        public void GetWorkerList(string  Query="")
+        public void GetWorkerList(string Query = "")
         {
 
             try
@@ -29,8 +31,9 @@ namespace KtpAcs.WinForm.Jijian.Workers
                     projectUuid = ConfigHelper.KtpLoginProjectId,
                     pageNum = 1,
                     status = 2,
-                    keyWord=Query
-                    
+                    keyWord = Query,
+                    designatedFlag = _isHmc == 0 ? false : true
+
                 };
 
                 IMulePusher pusherDevice = new GetWorkersApi() { RequestParam = workerSend };

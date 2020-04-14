@@ -36,6 +36,7 @@
             DevExpress.Utils.ContextButton contextButton6 = new DevExpress.Utils.ContextButton();
             this.spl = new DevExpress.XtraEditors.SplitContainerControl();
             this.pictureEdit6 = new DevExpress.XtraEditors.PictureEdit();
+            this.labPhone = new System.Windows.Forms.Label();
             this.picExit = new DevExpress.XtraEditors.PictureEdit();
             this.flowDevice = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureEdit4 = new DevExpress.XtraEditors.PictureEdit();
@@ -55,11 +56,14 @@
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit5 = new DevExpress.XtraEditors.PictureEdit();
             this.panelHead = new DevExpress.XtraEditors.PanelControl();
+            this.panelWorker = new DevExpress.XtraEditors.PanelControl();
+            this.radHMC = new DevExpress.XtraEditors.RadioGroup();
+            this.panelDevice = new DevExpress.XtraEditors.PanelControl();
+            this.btnSubmit = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.comProjectList = new DevExpress.XtraEditors.LookUpEdit();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.labVerificationNum = new System.Windows.Forms.Label();
@@ -88,6 +92,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelHead)).BeginInit();
             this.panelHead.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelWorker)).BeginInit();
+            this.panelWorker.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radHMC.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelDevice)).BeginInit();
+            this.panelDevice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comProjectList.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,6 +110,7 @@
             this.spl.Panel1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
             this.spl.Panel1.Appearance.Options.UseBackColor = true;
             this.spl.Panel1.Controls.Add(this.pictureEdit6);
+            this.spl.Panel1.Controls.Add(this.labPhone);
             this.spl.Panel1.Controls.Add(this.picExit);
             this.spl.Panel1.Controls.Add(this.flowDevice);
             this.spl.Panel1.Controls.Add(this.flowWorerk);
@@ -113,7 +123,7 @@
             this.spl.Panel2.Controls.Add(this.panelContent);
             this.spl.Panel2.Controls.Add(this.panelHead);
             this.spl.Panel2.Text = "Panel2";
-            this.spl.Size = new System.Drawing.Size(1405, 608);
+            this.spl.Size = new System.Drawing.Size(1410, 608);
             this.spl.SplitterPosition = 88;
             this.spl.TabIndex = 0;
             // 
@@ -122,7 +132,7 @@
             this.pictureEdit6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureEdit6.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.ktp_logo1;
             this.pictureEdit6.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.pictureEdit6.Location = new System.Drawing.Point(12, 3);
+            this.pictureEdit6.Location = new System.Drawing.Point(15, 14);
             this.pictureEdit6.Name = "pictureEdit6";
             this.pictureEdit6.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEdit6.Properties.Appearance.Options.UseBackColor = true;
@@ -136,9 +146,19 @@
             this.pictureEdit6.Properties.ContextButtons.Add(contextButton1);
             this.pictureEdit6.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit6.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.pictureEdit6.Size = new System.Drawing.Size(67, 48);
+            this.pictureEdit6.Size = new System.Drawing.Size(58, 47);
             this.pictureEdit6.TabIndex = 3;
             this.pictureEdit6.MouseEnter += new System.EventHandler(this.pictureEdit1_MouseEnter);
+            // 
+            // labPhone
+            // 
+            this.labPhone.AutoSize = true;
+            this.labPhone.ForeColor = System.Drawing.Color.White;
+            this.labPhone.Location = new System.Drawing.Point(18, 68);
+            this.labPhone.Name = "labPhone";
+            this.labPhone.Size = new System.Drawing.Size(55, 14);
+            this.labPhone.TabIndex = 4;
+            this.labPhone.Text = "面板管理";
             // 
             // picExit
             // 
@@ -170,7 +190,7 @@
             this.flowDevice.Controls.Add(this.label4);
             this.flowDevice.Cursor = System.Windows.Forms.Cursors.Hand;
             this.flowDevice.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.flowDevice.Location = new System.Drawing.Point(12, 68);
+            this.flowDevice.Location = new System.Drawing.Point(12, 104);
             this.flowDevice.Name = "flowDevice";
             this.flowDevice.Size = new System.Drawing.Size(70, 67);
             this.flowDevice.TabIndex = 5;
@@ -209,7 +229,6 @@
             this.label4.Size = new System.Drawing.Size(55, 14);
             this.label4.TabIndex = 4;
             this.label4.Text = "面板管理";
-   
             // 
             // flowWorerk
             // 
@@ -218,7 +237,7 @@
             this.flowWorerk.Controls.Add(this.label3);
             this.flowWorerk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.flowWorerk.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.flowWorerk.Location = new System.Drawing.Point(12, 156);
+            this.flowWorerk.Location = new System.Drawing.Point(12, 192);
             this.flowWorerk.Name = "flowWorerk";
             this.flowWorerk.Size = new System.Drawing.Size(70, 67);
             this.flowWorerk.TabIndex = 5;
@@ -265,7 +284,7 @@
             this.flowAuth.Controls.Add(this.label2);
             this.flowAuth.Cursor = System.Windows.Forms.Cursors.Hand;
             this.flowAuth.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.flowAuth.Location = new System.Drawing.Point(12, 250);
+            this.flowAuth.Location = new System.Drawing.Point(12, 286);
             this.flowAuth.Name = "flowAuth";
             this.flowAuth.Size = new System.Drawing.Size(70, 67);
             this.flowAuth.TabIndex = 5;
@@ -311,7 +330,7 @@
             this.flowAdmin.Controls.Add(this.label1);
             this.flowAdmin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.flowAdmin.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.flowAdmin.Location = new System.Drawing.Point(12, 341);
+            this.flowAdmin.Location = new System.Drawing.Point(12, 377);
             this.flowAdmin.Name = "flowAdmin";
             this.flowAdmin.Size = new System.Drawing.Size(70, 67);
             this.flowAdmin.TabIndex = 5;
@@ -352,7 +371,6 @@
             // 
             // panelContent
             // 
-            this.panelContent.AllowTouchScroll = true;
             this.panelContent.Appearance.BackColor = System.Drawing.Color.White;
             this.panelContent.Appearance.Options.UseBackColor = true;
             this.panelContent.AutoSize = true;
@@ -363,9 +381,9 @@
             this.panelContent.Controls.Add(this.pictureEdit5);
             this.panelContent.FireScrollEventOnMouseWheel = true;
             this.panelContent.InvertTouchScroll = true;
-            this.panelContent.Location = new System.Drawing.Point(1, 120);
+            this.panelContent.Location = new System.Drawing.Point(0, 131);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1306, 488);
+            this.panelContent.Size = new System.Drawing.Size(1309, 477);
             this.panelContent.TabIndex = 5;
             // 
             // label7
@@ -405,7 +423,7 @@
             // pictureEdit5
             // 
             this.pictureEdit5.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.home_addP;
-            this.pictureEdit5.Location = new System.Drawing.Point(338, 27);
+            this.pictureEdit5.Location = new System.Drawing.Point(390, 17);
             this.pictureEdit5.Name = "pictureEdit5";
             this.pictureEdit5.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit5.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -418,11 +436,10 @@
             this.panelHead.Appearance.BackColor = System.Drawing.Color.White;
             this.panelHead.Appearance.Options.UseBackColor = true;
             this.panelHead.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelHead.Controls.Add(this.panelWorker);
+            this.panelHead.Controls.Add(this.panelDevice);
             this.panelHead.Controls.Add(this.comProjectList);
             this.panelHead.Controls.Add(this.simpleButton3);
-            this.panelHead.Controls.Add(this.simpleButton2);
-            this.panelHead.Controls.Add(this.simpleButton1);
-            this.panelHead.Controls.Add(this.simpleButton5);
             this.panelHead.Controls.Add(this.label13);
             this.panelHead.Controls.Add(this.label12);
             this.panelHead.Controls.Add(this.labVerificationNum);
@@ -436,8 +453,83 @@
             this.panelHead.Controls.Add(this.label5);
             this.panelHead.Location = new System.Drawing.Point(1, 3);
             this.panelHead.Name = "panelHead";
-            this.panelHead.Size = new System.Drawing.Size(1306, 116);
+            this.panelHead.Size = new System.Drawing.Size(1306, 122);
             this.panelHead.TabIndex = 0;
+            // 
+            // panelWorker
+            // 
+            this.panelWorker.Appearance.BackColor = System.Drawing.Color.White;
+            this.panelWorker.Appearance.Options.UseBackColor = true;
+            this.panelWorker.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelWorker.Controls.Add(this.radHMC);
+            this.panelWorker.Location = new System.Drawing.Point(1016, 42);
+            this.panelWorker.Name = "panelWorker";
+            this.panelWorker.Size = new System.Drawing.Size(283, 77);
+            this.panelWorker.TabIndex = 231;
+            // 
+            // radHMC
+            // 
+            this.radHMC.Location = new System.Drawing.Point(24, 25);
+            this.radHMC.Name = "radHMC";
+            this.radHMC.Properties.Columns = 2;
+            this.radHMC.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "花名册"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "甲指分包人员")});
+            this.radHMC.Size = new System.Drawing.Size(232, 47);
+            this.radHMC.TabIndex = 229;
+            this.radHMC.SelectedIndexChanged += new System.EventHandler(this.radHMC_SelectedIndexChanged);
+            // 
+            // panelDevice
+            // 
+            this.panelDevice.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelDevice.Controls.Add(this.btnSubmit);
+            this.panelDevice.Controls.Add(this.simpleButton5);
+            this.panelDevice.Controls.Add(this.simpleButton1);
+            this.panelDevice.Location = new System.Drawing.Point(1016, 42);
+            this.panelDevice.Name = "panelDevice";
+            this.panelDevice.Size = new System.Drawing.Size(283, 77);
+            this.panelDevice.TabIndex = 230;
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
+            this.btnSubmit.Appearance.Options.UseBackColor = true;
+            this.btnSubmit.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.False;
+            this.btnSubmit.ImageOptions.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.tj1;
+            this.btnSubmit.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None;
+            this.btnSubmit.Location = new System.Drawing.Point(179, 23);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(92, 35);
+            this.btnSubmit.TabIndex = 228;
+            this.btnSubmit.Text = "提交";
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
+            this.simpleButton5.Appearance.Options.UseBackColor = true;
+            this.simpleButton5.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.False;
+            this.simpleButton5.ImageOptions.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.sx2;
+            this.simpleButton5.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None;
+            this.simpleButton5.Location = new System.Drawing.Point(24, 23);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(41, 35);
+            this.simpleButton5.TabIndex = 228;
+            this.simpleButton5.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
+            this.simpleButton1.Appearance.Options.UseBackColor = true;
+            this.simpleButton1.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.False;
+            this.simpleButton1.ImageOptions.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.tb1;
+            this.simpleButton1.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None;
+            this.simpleButton1.Location = new System.Drawing.Point(81, 22);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(92, 35);
+            this.simpleButton1.TabIndex = 228;
+            this.simpleButton1.Text = "同步";
+            this.simpleButton1.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // comProjectList
             // 
@@ -460,41 +552,6 @@
             this.simpleButton3.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
             this.simpleButton3.Size = new System.Drawing.Size(6, 27);
             this.simpleButton3.TabIndex = 8;
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.BackgroundImage = global::KtpAcs.WinForm.Jijian.Properties.Resources.btn_sx;
-            this.simpleButton2.Location = new System.Drawing.Point(1061, 65);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            this.simpleButton2.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
-            this.simpleButton2.Size = new System.Drawing.Size(36, 36);
-            this.simpleButton2.TabIndex = 8;
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.BackgroundImage = global::KtpAcs.WinForm.Jijian.Properties.Resources.btn_syn1;
-            this.simpleButton1.Location = new System.Drawing.Point(1113, 64);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            this.simpleButton1.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
-            this.simpleButton1.Size = new System.Drawing.Size(67, 36);
-            this.simpleButton1.TabIndex = 8;
-            // 
-            // simpleButton5
-            // 
-            this.simpleButton5.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
-            this.simpleButton5.Appearance.Options.UseBackColor = true;
-            this.simpleButton5.AppearanceHovered.BackColor = System.Drawing.Color.Gray;
-            this.simpleButton5.AppearanceHovered.Options.UseBackColor = true;
-            this.simpleButton5.BackgroundImage = global::KtpAcs.WinForm.Jijian.Properties.Resources.btn_addDeive1;
-            this.simpleButton5.Location = new System.Drawing.Point(1197, 64);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            this.simpleButton5.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
-            this.simpleButton5.Size = new System.Drawing.Size(97, 36);
-            this.simpleButton5.TabIndex = 8;
-            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
             // 
             // label13
             // 
@@ -621,7 +678,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1405, 610);
+            this.ClientSize = new System.Drawing.Size(1410, 610);
             this.Controls.Add(this.spl);
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -649,6 +706,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelHead)).EndInit();
             this.panelHead.ResumeLayout(false);
             this.panelHead.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelWorker)).EndInit();
+            this.panelWorker.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radHMC.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelDevice)).EndInit();
+            this.panelDevice.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.comProjectList.Properties)).EndInit();
             this.ResumeLayout(false);
 
@@ -671,8 +733,18 @@
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraEditors.PictureEdit picExit;
         private DevExpress.XtraEditors.PictureEdit pictureEdit6;
+        private DevExpress.XtraEditors.PanelControl panelContent;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit5;
+        private System.Windows.Forms.Label labPhone;
         private DevExpress.XtraEditors.PanelControl panelHead;
-        private System.Windows.Forms.Label label5;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnSubmit;
+        private DevExpress.XtraEditors.LookUpEdit comProjectList;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label labVerificationNum;
@@ -683,15 +755,9 @@
         private System.Windows.Forms.Label labProjectManageNum;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label labProjectCode;
-        private DevExpress.XtraEditors.SimpleButton simpleButton5;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.LookUpEdit comProjectList;
-        private DevExpress.XtraEditors.PanelControl panelContent;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
-        private DevExpress.XtraEditors.PictureEdit pictureEdit5;
+        private System.Windows.Forms.Label label5;
+        private DevExpress.XtraEditors.PanelControl panelWorker;
+        private DevExpress.XtraEditors.RadioGroup radHMC;
+        private DevExpress.XtraEditors.PanelControl panelDevice;
     }
 }

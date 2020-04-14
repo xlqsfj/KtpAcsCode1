@@ -17,7 +17,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
             GetWorkerList();
         }
 
-        public void GetWorkerList()
+        public void GetWorkerList(string  Query="")
         {
 
             try
@@ -28,7 +28,9 @@ namespace KtpAcs.WinForm.Jijian.Workers
                     pageSize = 10,
                     projectUuid = ConfigHelper.KtpLoginProjectId,
                     pageNum = 1,
-                    status = 2
+                    status = 2,
+                    keyWord=Query
+                    
                 };
 
                 IMulePusher pusherDevice = new GetWorkersApi() { RequestParam = workerSend };
@@ -50,6 +52,11 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
 
 
+        }
+
+        private void btnQuery_Click(object sender, EventArgs e)
+        {
+            GetWorkerList(txtQuery.Text);
         }
     }
 }

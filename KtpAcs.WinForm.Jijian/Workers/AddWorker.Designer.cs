@@ -50,7 +50,11 @@
             this.label12 = new System.Windows.Forms.Label();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
+            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.txtExpireTime = new DevExpress.XtraEditors.TextEdit();
+            this.txtStartTime = new DevExpress.XtraEditors.TextEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.txtAddress = new DevExpress.XtraEditors.TextEdit();
             this.btnFacePic = new DevExpress.XtraEditors.SimpleButton();
@@ -82,6 +86,7 @@
             this.educationLevel = new DevExpress.XtraEditors.LabelControl();
             this.AVidePlayer = new AForge.Controls.VideoSourcePlayer();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -102,11 +107,6 @@
             this.txtEmergencyContactName = new DevExpress.XtraEditors.TextEdit();
             this.txtEmergencyContactPhone = new DevExpress.XtraEditors.TextEdit();
             this.tabPageWorkerList = new DevExpress.XtraTab.XtraTabPage();
-            this.txtStartTime = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.label8 = new System.Windows.Forms.Label();
-            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.txtExpireTime = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -118,6 +118,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.comWorkType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit7.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBankNo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtExpireTime.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStartTime.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdCard.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).BeginInit();
@@ -136,8 +138,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtGender.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmergencyContactName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmergencyContactPhone.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStartTime.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtExpireTime.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -245,6 +245,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ComOrganizationUuid.Size = new System.Drawing.Size(164, 20);
             this.ComOrganizationUuid.TabIndex = 253;
+            this.ComOrganizationUuid.EditValueChanged += new System.EventHandler(this.ComOrganizationUuid_EditValueChanged);
             // 
             // comWorkerTeamUuid
             // 
@@ -452,6 +453,16 @@
             this.labelControl15.TabIndex = 235;
             this.labelControl15.Text = "银行卡开户行";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(136, 658);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(14, 14);
+            this.label8.TabIndex = 233;
+            this.label8.Text = "*";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -461,6 +472,38 @@
             this.label7.Size = new System.Drawing.Size(14, 14);
             this.label7.TabIndex = 233;
             this.label7.Text = "*";
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.labelControl11.Appearance.Options.UseFont = true;
+            this.labelControl11.Appearance.Options.UseForeColor = true;
+            this.labelControl11.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
+            this.labelControl11.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
+            this.labelControl11.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
+            this.labelControl11.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.labelControl11.Location = new System.Drawing.Point(58, 652);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(72, 17);
+            this.labelControl11.TabIndex = 232;
+            this.labelControl11.Text = "身份证有效期";
+            // 
+            // txtExpireTime
+            // 
+            this.txtExpireTime.Location = new System.Drawing.Point(282, 675);
+            this.txtExpireTime.Name = "txtExpireTime";
+            this.txtExpireTime.Properties.AutoHeight = false;
+            this.txtExpireTime.Size = new System.Drawing.Size(174, 20);
+            this.txtExpireTime.TabIndex = 239;
+            // 
+            // txtStartTime
+            // 
+            this.txtStartTime.Location = new System.Drawing.Point(62, 675);
+            this.txtStartTime.Name = "txtStartTime";
+            this.txtStartTime.Properties.AutoHeight = false;
+            this.txtStartTime.Size = new System.Drawing.Size(160, 20);
+            this.txtStartTime.TabIndex = 239;
             // 
             // labelControl10
             // 
@@ -799,6 +842,22 @@
             this.labelControl8.TabIndex = 192;
             this.labelControl8.Text = "籍贯";
             // 
+            // labelControl13
+            // 
+            this.labelControl13.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.labelControl13.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.labelControl13.Appearance.Options.UseFont = true;
+            this.labelControl13.Appearance.Options.UseForeColor = true;
+            this.labelControl13.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
+            this.labelControl13.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
+            this.labelControl13.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
+            this.labelControl13.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.labelControl13.Location = new System.Drawing.Point(246, 679);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(12, 17);
+            this.labelControl13.TabIndex = 190;
+            this.labelControl13.Text = "至";
+            // 
             // labelControl12
             // 
             this.labelControl12.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F);
@@ -1057,64 +1116,6 @@
             this.tabPageWorkerList.Size = new System.Drawing.Size(1214, 808);
             this.tabPageWorkerList.Text = "已入职";
             // 
-            // txtStartTime
-            // 
-            this.txtStartTime.Location = new System.Drawing.Point(62, 675);
-            this.txtStartTime.Name = "txtStartTime";
-            this.txtStartTime.Properties.AutoHeight = false;
-            this.txtStartTime.Size = new System.Drawing.Size(160, 20);
-            this.txtStartTime.TabIndex = 239;
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.labelControl11.Appearance.Options.UseFont = true;
-            this.labelControl11.Appearance.Options.UseForeColor = true;
-            this.labelControl11.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
-            this.labelControl11.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
-            this.labelControl11.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
-            this.labelControl11.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl11.Location = new System.Drawing.Point(58, 652);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(72, 17);
-            this.labelControl11.TabIndex = 232;
-            this.labelControl11.Text = "身份证有效期";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(136, 658);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(14, 14);
-            this.label8.TabIndex = 233;
-            this.label8.Text = "*";
-            // 
-            // labelControl13
-            // 
-            this.labelControl13.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.labelControl13.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.labelControl13.Appearance.Options.UseFont = true;
-            this.labelControl13.Appearance.Options.UseForeColor = true;
-            this.labelControl13.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
-            this.labelControl13.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
-            this.labelControl13.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
-            this.labelControl13.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl13.Location = new System.Drawing.Point(246, 679);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(12, 17);
-            this.labelControl13.TabIndex = 190;
-            this.labelControl13.Text = "至";
-            // 
-            // txtExpireTime
-            // 
-            this.txtExpireTime.Location = new System.Drawing.Point(282, 675);
-            this.txtExpireTime.Name = "txtExpireTime";
-            this.txtExpireTime.Properties.AutoHeight = false;
-            this.txtExpireTime.Size = new System.Drawing.Size(174, 20);
-            this.txtExpireTime.TabIndex = 239;
-            // 
             // AddWorker
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -1138,6 +1139,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.comWorkType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit7.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBankNo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtExpireTime.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStartTime.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdCard.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).EndInit();
@@ -1156,8 +1159,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtGender.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmergencyContactName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmergencyContactPhone.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStartTime.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtExpireTime.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -144,5 +144,7 @@ namespace KtpAcs.WinForm.Jijian
             AddDevice addDevice = new AddDevice();
             addDevice.ShowDialog();
         }
+
+     
     }
 }

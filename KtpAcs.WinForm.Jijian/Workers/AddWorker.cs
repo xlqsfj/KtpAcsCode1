@@ -4,11 +4,14 @@ using KtpAcs.KtpApiService;
 using KtpAcs.KtpApiService.Send;
 using KtpAcs.KtpApiService.Worker;
 using KtpAcs.WinForm.Jijian.Base;
+using KtpAcs.WinForm.Jijian.Workers;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using static KtpAcs.KtpApiService.Result.TeamListResult;
 
 namespace KtpAcs.WinForm.Jijian
 {
@@ -68,13 +71,24 @@ namespace KtpAcs.WinForm.Jijian
 
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
+            
             if (e.Page.Name == "tabPageWorkerList")
             {
+                WorkerListForm workerform = new WorkerListForm();
+                workerform.TopLevel = false;
+            
+                this.tabPageWorkerList.Controls.Add(workerform);
+                workerform.Show();
 
             }
 
         }
 
+        /// <summary>
+        /// 身份证识别
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnReadIC_Click(object sender, EventArgs e)
         {
 
@@ -143,7 +157,7 @@ namespace KtpAcs.WinForm.Jijian
                             txtIdCard.Text = cardMsg.IDCardNo.Trim();
                             txtAddress.Text = cardMsg.Address.Trim();
                             txtNativePlace.Text = cardMsg.Address.Trim();
-                            ComNation.EditValue = (int.Parse(cardMsg.Nation) - 1);
+                            ComNation.ItemIndex = (int.Parse(cardMsg.Nation) - 1);
                             txtStartTime.Text = cardMsg.UserLifeBegin.Trim();
                             txtExpireTime.Text = cardMsg.UserLifeEnd.Trim();
                             if (!string.IsNullOrEmpty(cardMsg.PhotoFileName))
@@ -195,6 +209,11 @@ namespace KtpAcs.WinForm.Jijian
             _identityBackPicId = GetPic(pic_pictureReverse);
         }
 
+        /// <summary>
+        /// 提交
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             AddWorerkSend add = new AddWorerkSend();
@@ -206,7 +225,7 @@ namespace KtpAcs.WinForm.Jijian
             add.educationLevel = (int)this.ComEducationLevel.EditValue;
             add.emergencyContactName = this.txtEmergencyContactName.Text;
             add.emergencyContactPhone = this.txtEmergencyContactPhone.Text;
-            add.gender=this.txtGender.SelectedIndex==0?1 : 2;
+            add.gender = this.txtGender.SelectedIndex == 0 ? 1 : 2;
             add.idCard = this.txtIdCard.Text;
             add.name = this.txtName.Text;
             add.nation = this.ComNation.Text;
@@ -259,10 +278,28 @@ namespace KtpAcs.WinForm.Jijian
 
                 MessageHelper.Show("添加成功");
             }
-            else {
-                MessageHelper.Show("添加失败:"+pushAddworkers.Message);
+            else
+            {
+                MessageHelper.Show("添加失败:" + pushAddworkers.Message);
             }
 
+        }
+
+        private void ComOrganizationUuid_EditValueChanged(object sender, EventArgs e)
+        {
+
+            var uuid = ComOrganizationUuid.EditValue;
+            IMulePusher pusherLogin = new GeTeamsApi() { RequestParam = new { organizationUuid = uuid } };
+            PushSummary pushLogin = pusherLogin.Push();
+            if (pushLogin.Success)
+            {
+                List<TeamList> pList = pushLogin.ResponseData;
+                this.comWorkerTeamUuid.Properties.DisplayMember = "teamName";
+                this.comWorkerTeamUuid.Properties.ValueMember = "uuid";
+                this.comWorkerTeamUuid.Properties.DataSource = pList;
+                //this.ComOrganizationUuid.EditValue = "uuid";
+
+            }
         }
     }
 }

@@ -42,6 +42,12 @@ namespace KtpAcs.WinForm.Jijian
             if (pushLogin.Success)
             {
                 List<ProjectList> pList = pushLogin.ResponseData;
+                if (pList.Count < 1) {
+
+                    MessageHelper.Show("该账号未添加项目,请在后台添加在继续操作");
+                    return;
+                  
+                }
                 this.comProjectList.Properties.DisplayMember = "projectName";
                 this.comProjectList.Properties.ValueMember = "projectUuid";
                 this.comProjectList.Properties.DataSource = pList;

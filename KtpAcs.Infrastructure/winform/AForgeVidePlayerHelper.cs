@@ -4,15 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KtpAcs.KtpApiService.Send
+namespace KtpAcs.Infrastructure.winform
 {
-    public class BaseSend
+    class AForgeVidePlayerHelper
     {
 
-        public string uuid;
- 
     }
- 
-
-
 }

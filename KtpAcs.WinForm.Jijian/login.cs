@@ -22,9 +22,15 @@ namespace KtpAcs.WinForm.Jijian
            
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
+   
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void LoginBtn_Click(object sender, EventArgs e)
+        {
 
 
             var loginBtnText = LoginBtn.Text;
@@ -60,8 +66,8 @@ namespace KtpAcs.WinForm.Jijian
                     return;
                 }
 
-                
-             
+
+
 
                 Hide();
                 new Home().Show();
@@ -80,12 +86,6 @@ namespace KtpAcs.WinForm.Jijian
                 LoginBtn.Text = loginBtnText;
                 LoginBtn.Enabled = true;
             }
-
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
     }
 }

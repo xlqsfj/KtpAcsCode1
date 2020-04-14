@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.ContextButton contextButton4 = new DevExpress.Utils.ContextButton();
-            DevExpress.Utils.ContextButton contextButton5 = new DevExpress.Utils.ContextButton();
             DevExpress.Utils.ContextButton contextButton6 = new DevExpress.Utils.ContextButton();
             DevExpress.Utils.ContextButton contextButton7 = new DevExpress.Utils.ContextButton();
             DevExpress.Utils.ContextButton contextButton1 = new DevExpress.Utils.ContextButton();
             DevExpress.Utils.ContextButton contextButton2 = new DevExpress.Utils.ContextButton();
+            DevExpress.Utils.ContextButton contextButton3 = new DevExpress.Utils.ContextButton();
+            DevExpress.Utils.ContextButton contextButton4 = new DevExpress.Utils.ContextButton();
             this.spl = new DevExpress.XtraEditors.SplitContainerControl();
             this.pictureEdit6 = new DevExpress.XtraEditors.PictureEdit();
             this.picExit = new DevExpress.XtraEditors.PictureEdit();
@@ -50,7 +50,10 @@
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.panelContent = new DevExpress.XtraEditors.PanelControl();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.pictureEdit5 = new DevExpress.XtraEditors.PictureEdit();
             this.panelHead = new DevExpress.XtraEditors.PanelControl();
             this.comProjectList = new DevExpress.XtraEditors.LookUpEdit();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
@@ -82,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelContent)).BeginInit();
             this.panelContent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelHead)).BeginInit();
             this.panelHead.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comProjectList.Properties)).BeginInit();
@@ -123,13 +127,13 @@
             this.pictureEdit6.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEdit6.Properties.Appearance.Options.UseBackColor = true;
             this.pictureEdit6.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            contextButton4.Caption = "1111";
-            contextButton4.Id = new System.Guid("3304b299-e507-426a-ba8e-f38864acf415");
-            contextButton4.ImageOptionsCollection.ItemHovered.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.off;
-            contextButton4.ImageOptionsCollection.ItemNormal.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.shuaxin;
-            contextButton4.ImageOptionsCollection.ItemPressed.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading3;
-            contextButton4.Name = "contextButton1";
-            this.pictureEdit6.Properties.ContextButtons.Add(contextButton4);
+            contextButton6.Caption = "1111";
+            contextButton6.Id = new System.Guid("3304b299-e507-426a-ba8e-f38864acf415");
+            contextButton6.ImageOptionsCollection.ItemHovered.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.off;
+            contextButton6.ImageOptionsCollection.ItemNormal.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.shuaxin;
+            contextButton6.ImageOptionsCollection.ItemPressed.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading3;
+            contextButton6.Name = "contextButton1";
+            this.pictureEdit6.Properties.ContextButtons.Add(contextButton6);
             this.pictureEdit6.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit6.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             this.pictureEdit6.Size = new System.Drawing.Size(67, 48);
@@ -146,13 +150,13 @@
             this.picExit.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.picExit.Properties.Appearance.Options.UseBackColor = true;
             this.picExit.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            contextButton5.Caption = "1111";
-            contextButton5.Id = new System.Guid("3304b299-e507-426a-ba8e-f38864acf415");
-            contextButton5.ImageOptionsCollection.ItemHovered.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.off;
-            contextButton5.ImageOptionsCollection.ItemNormal.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.shuaxin;
-            contextButton5.ImageOptionsCollection.ItemPressed.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading3;
-            contextButton5.Name = "contextButton1";
-            this.picExit.Properties.ContextButtons.Add(contextButton5);
+            contextButton7.Caption = "1111";
+            contextButton7.Id = new System.Guid("3304b299-e507-426a-ba8e-f38864acf415");
+            contextButton7.ImageOptionsCollection.ItemHovered.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.off;
+            contextButton7.ImageOptionsCollection.ItemNormal.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.shuaxin;
+            contextButton7.ImageOptionsCollection.ItemPressed.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading3;
+            contextButton7.Name = "contextButton1";
+            this.picExit.Properties.ContextButtons.Add(contextButton7);
             this.picExit.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.picExit.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             this.picExit.Size = new System.Drawing.Size(61, 39);
@@ -183,13 +187,13 @@
             this.pictureEdit4.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEdit4.Properties.Appearance.Options.UseBackColor = true;
             this.pictureEdit4.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            contextButton6.Caption = "1111";
-            contextButton6.Id = new System.Guid("3304b299-e507-426a-ba8e-f38864acf415");
-            contextButton6.ImageOptionsCollection.ItemHovered.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.off;
-            contextButton6.ImageOptionsCollection.ItemNormal.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.shuaxin;
-            contextButton6.ImageOptionsCollection.ItemPressed.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading3;
-            contextButton6.Name = "contextButton1";
-            this.pictureEdit4.Properties.ContextButtons.Add(contextButton6);
+            contextButton1.Caption = "1111";
+            contextButton1.Id = new System.Guid("3304b299-e507-426a-ba8e-f38864acf415");
+            contextButton1.ImageOptionsCollection.ItemHovered.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.off;
+            contextButton1.ImageOptionsCollection.ItemNormal.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.shuaxin;
+            contextButton1.ImageOptionsCollection.ItemPressed.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading3;
+            contextButton1.Name = "contextButton1";
+            this.pictureEdit4.Properties.ContextButtons.Add(contextButton1);
             this.pictureEdit4.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit4.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             this.pictureEdit4.Size = new System.Drawing.Size(55, 29);
@@ -230,13 +234,13 @@
             this.pictureEdit3.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEdit3.Properties.Appearance.Options.UseBackColor = true;
             this.pictureEdit3.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            contextButton7.Caption = "1111";
-            contextButton7.Id = new System.Guid("3304b299-e507-426a-ba8e-f38864acf415");
-            contextButton7.ImageOptionsCollection.ItemHovered.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.off;
-            contextButton7.ImageOptionsCollection.ItemNormal.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.shuaxin;
-            contextButton7.ImageOptionsCollection.ItemPressed.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading3;
-            contextButton7.Name = "contextButton1";
-            this.pictureEdit3.Properties.ContextButtons.Add(contextButton7);
+            contextButton2.Caption = "1111";
+            contextButton2.Id = new System.Guid("3304b299-e507-426a-ba8e-f38864acf415");
+            contextButton2.ImageOptionsCollection.ItemHovered.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.off;
+            contextButton2.ImageOptionsCollection.ItemNormal.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.shuaxin;
+            contextButton2.ImageOptionsCollection.ItemPressed.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading3;
+            contextButton2.Name = "contextButton1";
+            this.pictureEdit3.Properties.ContextButtons.Add(contextButton2);
             this.pictureEdit3.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit3.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             this.pictureEdit3.Size = new System.Drawing.Size(55, 29);
@@ -276,13 +280,13 @@
             this.pictureEdit2.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEdit2.Properties.Appearance.Options.UseBackColor = true;
             this.pictureEdit2.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            contextButton1.Caption = "1111";
-            contextButton1.Id = new System.Guid("3304b299-e507-426a-ba8e-f38864acf415");
-            contextButton1.ImageOptionsCollection.ItemHovered.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.off;
-            contextButton1.ImageOptionsCollection.ItemNormal.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.shuaxin;
-            contextButton1.ImageOptionsCollection.ItemPressed.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading3;
-            contextButton1.Name = "contextButton1";
-            this.pictureEdit2.Properties.ContextButtons.Add(contextButton1);
+            contextButton3.Caption = "1111";
+            contextButton3.Id = new System.Guid("3304b299-e507-426a-ba8e-f38864acf415");
+            contextButton3.ImageOptionsCollection.ItemHovered.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.off;
+            contextButton3.ImageOptionsCollection.ItemNormal.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.shuaxin;
+            contextButton3.ImageOptionsCollection.ItemPressed.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading3;
+            contextButton3.Name = "contextButton1";
+            this.pictureEdit2.Properties.ContextButtons.Add(contextButton3);
             this.pictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit2.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             this.pictureEdit2.Size = new System.Drawing.Size(55, 29);
@@ -322,13 +326,13 @@
             this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
             this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            contextButton2.Caption = "1111";
-            contextButton2.Id = new System.Guid("3304b299-e507-426a-ba8e-f38864acf415");
-            contextButton2.ImageOptionsCollection.ItemHovered.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.off;
-            contextButton2.ImageOptionsCollection.ItemNormal.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.shuaxin;
-            contextButton2.ImageOptionsCollection.ItemPressed.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading3;
-            contextButton2.Name = "contextButton1";
-            this.pictureEdit1.Properties.ContextButtons.Add(contextButton2);
+            contextButton4.Caption = "1111";
+            contextButton4.Id = new System.Guid("3304b299-e507-426a-ba8e-f38864acf415");
+            contextButton4.ImageOptionsCollection.ItemHovered.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.off;
+            contextButton4.ImageOptionsCollection.ItemNormal.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.shuaxin;
+            contextButton4.ImageOptionsCollection.ItemPressed.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading3;
+            contextButton4.Name = "contextButton1";
+            this.pictureEdit1.Properties.ContextButtons.Add(contextButton4);
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             this.pictureEdit1.Size = new System.Drawing.Size(55, 29);
@@ -350,8 +354,12 @@
             this.panelContent.AllowTouchScroll = true;
             this.panelContent.Appearance.BackColor = System.Drawing.Color.White;
             this.panelContent.Appearance.Options.UseBackColor = true;
+            this.panelContent.AutoSize = true;
             this.panelContent.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelContent.Controls.Add(this.label7);
             this.panelContent.Controls.Add(this.label6);
+            this.panelContent.Controls.Add(this.simpleButton4);
+            this.panelContent.Controls.Add(this.pictureEdit5);
             this.panelContent.FireScrollEventOnMouseWheel = true;
             this.panelContent.InvertTouchScroll = true;
             this.panelContent.Location = new System.Drawing.Point(1, 120);
@@ -359,15 +367,50 @@
             this.panelContent.Size = new System.Drawing.Size(1306, 488);
             this.panelContent.TabIndex = 5;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.label7.ForeColor = System.Drawing.Color.Gray;
+            this.label7.Location = new System.Drawing.Point(508, 325);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(233, 18);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "请点击下方添加按纽添加闸机面板";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(15, 16);
+            this.label6.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label6.Location = new System.Drawing.Point(524, 291);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 14);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "考勤管理";
+            this.label6.Size = new System.Drawing.Size(181, 22);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "当前未添加闸机面板";
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
+            this.simpleButton4.Appearance.Font = new System.Drawing.Font("微軟正黑體", 12F);
+            this.simpleButton4.Appearance.Options.UseBackColor = true;
+            this.simpleButton4.Appearance.Options.UseFont = true;
+            this.simpleButton4.Location = new System.Drawing.Point(501, 370);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(251, 45);
+            this.simpleButton4.TabIndex = 1;
+            this.simpleButton4.Text = "添加面板";
+            // 
+            // pictureEdit5
+            // 
+            this.pictureEdit5.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.home_addP;
+            this.pictureEdit5.Location = new System.Drawing.Point(338, 27);
+            this.pictureEdit5.Name = "pictureEdit5";
+            this.pictureEdit5.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit5.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit5.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.pictureEdit5.Size = new System.Drawing.Size(553, 261);
+            this.pictureEdit5.TabIndex = 0;
             // 
             // panelHead
             // 
@@ -601,6 +644,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelContent)).EndInit();
             this.panelContent.ResumeLayout(false);
             this.panelContent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelHead)).EndInit();
             this.panelHead.ResumeLayout(false);
             this.panelHead.PerformLayout();
@@ -628,8 +672,6 @@
         private DevExpress.XtraEditors.PictureEdit pictureEdit6;
         private DevExpress.XtraEditors.PanelControl panelHead;
         private System.Windows.Forms.Label label5;
-        private DevExpress.XtraEditors.PanelControl panelContent;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label labVerificationNum;
@@ -645,5 +687,10 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.LookUpEdit comProjectList;
+        private DevExpress.XtraEditors.PanelControl panelContent;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit5;
     }
 }

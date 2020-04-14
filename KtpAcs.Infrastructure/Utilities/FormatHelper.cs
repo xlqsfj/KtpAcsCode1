@@ -216,6 +216,25 @@ namespace KtpAcs.Infrastructure.Utilities
             }
             return DateTime.Parse("1900-1-1");
         }
+        /// <summary>
+        /// 转换为时间类型
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static DateTime StringToDateTime(string str,string DateFormat)
+        {
+            if (ValidateHelper.IsDateTime(str))
+            {
+                DateTime date=DateTime.Parse(str);
+                //if (!string.IsNullOrEmpty(DateFormat))
+                //{
+                //   date = date.ToString("yyyy-MM-dd");
+                //}
+                return DateTime.Parse(str);
+            }
+         
+            return DateTime.Parse("1900-1-1");
+        }
         public static string GetLongString(long? value)
         {
             if (value == null)
@@ -400,5 +419,20 @@ namespace KtpAcs.Infrastructure.Utilities
                 return null;
             }
         }
+        /// <summary>
+        /// 根据生日获取年龄
+        /// </summary>
+        /// <param name="birthdate"></param>
+        /// <returns></returns>
+        public static int GetAgeByBirthdate(DateTime birthdate)
+        {
+
+            DateTime now = DateTime.Now; 
+            int age = now.Year - birthdate.Year;
+            if (now.Month < birthdate.Month || (now.Month == birthdate.Month && now.Day < birthdate.Day)) 
+            { age--; }
+            return age < 0 ? 0 : age;
+        }
+
     }
 }

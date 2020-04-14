@@ -53,6 +53,10 @@
   <ItemGroup>
     <Compile Include="ApiBase.cs" />
     <Compile Include="ApiType.cs" />
+    <Compile Include="Base\BankCardType.cs" />
+    <Compile Include="Base\EnumBankCardType.cs" />
+    <Compile Include="Base\EnumDiploma.cs" />
+    <Compile Include="Base\IdentityNation.cs" />
     <Compile Include="Device\DelDeviceApi.cs" />
     <Compile Include="Device\GetDeviceApi.cs" />
     <Compile Include="Device\SetDeviceApi.cs" />
@@ -64,11 +68,25 @@
     <Compile Include="PushSummary.cs" />
     <Compile Include="Result\DeviceListResult.cs" />
     <Compile Include="Result\LoginResult.cs" />
+    <Compile Include="Result\OrganizationListResult.cs" />
     <Compile Include="Result\ProjectCountResult.cs" />
     <Compile Include="Result\ProjectListResult.cs" />
     <Compile Include="Result\BaseResult.cs" />
+    <Compile Include="Result\TeamListResult.cs" />
+    <Compile Include="Result\WorkerListResult.cs" />
+    <Compile Include="Result\WorkerResult.cs" />
+    <Compile Include="Result\WorkerTypeListResult.cs" />
+    <Compile Include="Send\AddJiaZiWorkerSend.cs" />
+    <Compile Include="Send\AddWorerkSend.cs" />
     <Compile Include="Send\BaseSend.cs" />
     <Compile Include="Send\DeviceSend.cs" />
+    <Compile Include="Send\WorkersSend.cs" />
+    <Compile Include="Worker\GeTeamsApi.cs" />
+    <Compile Include="Worker\GetOrganizationApi.cs" />
+    <Compile Include="Worker\GetWorkerApi.cs" />
+    <Compile Include="Worker\GetWorkersApi.cs" />
+    <Compile Include="Worker\GetWorkerTypesApi.cs" />
+    <Compile Include="Worker\SetWorkerApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KtpAcs.Infrastructure\KtpAcs.Infrastructure.csproj">

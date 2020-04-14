@@ -17,6 +17,13 @@ namespace KtpAcs.WinForm.Jijian
             XtraMessageBox.Show(msg);
         }
 
+        public static void Show(string msg,string  headTitle)
+        {
+
+            //MessageHelper.Show(msg);
+            // new MessagePrompt(msg).ShowDialog();
+            XtraMessageBox.Show(msg);
+        }
         public static void Show(Exception ex)
         {
             //new MessagePrompt(ex.Message).ShowDialog();

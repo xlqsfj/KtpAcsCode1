@@ -41,11 +41,28 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             RadioGroup1 = new DevExpress.XtraEditors.RadioGroup();
+            ((System.ComponentModel.ISupportInitialize)(RadioGroup1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_deviceId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDeviceIp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_description.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(RadioGroup1.Properties)).BeginInit();
             this.SuspendLayout();
+            // 
+            // RadioGroup1
+            // 
+            RadioGroup1.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.True;
+            RadioGroup1.EditValue = false;
+            RadioGroup1.Location = new System.Drawing.Point(234, 190);
+            RadioGroup1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            RadioGroup1.Name = "RadioGroup1";
+            RadioGroup1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            RadioGroup1.Properties.Columns = 2;
+            RadioGroup1.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far;
+            RadioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "否", true, null, "rad_gateType"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "是", true, null, "rad_gateType")});
+            RadioGroup1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            RadioGroup1.Size = new System.Drawing.Size(163, 33);
+            RadioGroup1.TabIndex = 9;
             // 
             // labelControl1
             // 
@@ -144,23 +161,6 @@
             this.labelControl3.TabIndex = 4;
             this.labelControl3.Text = "*";
             // 
-            // RadioGroup1
-            // 
-            RadioGroup1.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.True;
-            RadioGroup1.EditValue = false;
-            RadioGroup1.Location = new System.Drawing.Point(234, 190);
-            RadioGroup1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            RadioGroup1.Name = "RadioGroup1";
-            RadioGroup1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            RadioGroup1.Properties.Columns = 2;
-            RadioGroup1.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far;
-            RadioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "否", true, null, "rad_gateType"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "是", true, null, "rad_gateType")});
-            RadioGroup1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            RadioGroup1.Size = new System.Drawing.Size(163, 33);
-            RadioGroup1.TabIndex = 9;
-            // 
             // AddDevice
             // 
             this.ActiveGlowColor = System.Drawing.Color.White;
@@ -182,11 +182,12 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.txt_description);
             this.Name = "AddDevice";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddDevice";
+            ((System.ComponentModel.ISupportInitialize)(RadioGroup1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_deviceId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDeviceIp.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_description.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(RadioGroup1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

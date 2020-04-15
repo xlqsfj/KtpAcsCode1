@@ -457,6 +457,7 @@
             this.btnFacePic.Size = new System.Drawing.Size(143, 35);
             this.btnFacePic.TabIndex = 368;
             this.btnFacePic.Text = "采 集";
+            this.btnFacePic.Click += new System.EventHandler(this.btnFacePic_Click);
             // 
             // btnPicturePositive
             // 
@@ -467,6 +468,7 @@
             this.btnPicturePositive.Size = new System.Drawing.Size(143, 35);
             this.btnPicturePositive.TabIndex = 367;
             this.btnPicturePositive.Text = "采 集";
+            this.btnPicturePositive.Click += new System.EventHandler(this.btnPicturePositive_Click);
             // 
             // btnReadIC
             // 
@@ -477,6 +479,7 @@
             this.btnReadIC.Size = new System.Drawing.Size(131, 35);
             this.btnReadIC.TabIndex = 366;
             this.btnReadIC.Text = "读取身份证";
+            this.btnReadIC.Click += new System.EventHandler(this.btnReadIC_Click);
             // 
             // btnPictureReverse
             // 
@@ -487,6 +490,7 @@
             this.btnPictureReverse.Size = new System.Drawing.Size(143, 35);
             this.btnPictureReverse.TabIndex = 365;
             this.btnPictureReverse.Text = "采 集";
+            this.btnPictureReverse.Click += new System.EventHandler(this.btnPictureReverse_Click);
             // 
             // btnSubmit
             // 
@@ -498,6 +502,7 @@
             this.btnSubmit.Size = new System.Drawing.Size(94, 35);
             this.btnSubmit.TabIndex = 364;
             this.btnSubmit.Text = "提交";
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // txtIdCard
             // 

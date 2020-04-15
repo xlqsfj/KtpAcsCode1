@@ -132,6 +132,8 @@
             // gridColumn8
             // 
             this.gridColumn8.Caption = "入职日期";
+            this.gridColumn8.DisplayFormat.FormatString = "yyyy-MM-dd";
+            this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn8.FieldName = " takeOfficeTime";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;

@@ -89,6 +89,7 @@
     <Compile Include="Worker\GetWorkersApi.cs" />
     <Compile Include="Worker\GetWorkerTypesApi.cs" />
     <Compile Include="Worker\SetWorkerApi.cs" />
+    <Compile Include="Worker\SetWorkerProjectApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KtpAcs.Infrastructure\KtpAcs.Infrastructure.csproj">

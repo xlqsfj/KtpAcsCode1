@@ -144,6 +144,9 @@
     <Compile Include="Workers\AddWorkerProject.Designer.cs">
       <DependentUpon>AddWorkerProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Workers\AddWorkerProjectBind.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Workers\WorkerAdminForm.cs">
       <SubType>Form</SubType>
     </Compile>

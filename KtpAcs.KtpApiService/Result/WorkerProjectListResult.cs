@@ -46,7 +46,43 @@ namespace KtpAcs.KtpApiService.Result
             public string projectUuid { get; set; }
             public string roleNames { get; set; }
             public string roleUuid { get; set; }
-            public string status { get; set; }
+
+
+            private string _status;
+            /// <summary>
+            /// 性别 1男2 女
+            /// </summary>
+            public string status
+            {
+                get { return _status; }
+                set
+                {
+
+                    _status = value == "1" ? "未进场" : "已离场";
+                    if (value == "1")
+                    {
+                        _status = "未进场";
+                        statusShow = "办理入场";
+                    }
+                    else if (value == "2")
+                    {
+                        _status = "已进场";
+                        statusShow = "办理离场";
+                    }
+                    else
+                    {
+                        _status = "已离场";
+                        statusShow = "办理入场";
+                    }
+
+                }
+            }
+            // private string _statusShow;
+            /// <summary>
+            /// 性别 1男2 女
+            /// </summary>
+            public string statusShow { get; set; }
+
             public string uuid { get; set; }
         }
 

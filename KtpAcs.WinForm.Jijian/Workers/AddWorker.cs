@@ -56,6 +56,7 @@ namespace KtpAcs.WinForm.Jijian
             BindBankCardCb();
         }
 
+
         private void CameraConn()
         {
 
@@ -75,7 +76,7 @@ namespace KtpAcs.WinForm.Jijian
 
         }
 
-  
+
 
         /// <summary>
         /// 身份证识别
@@ -223,10 +224,10 @@ namespace KtpAcs.WinForm.Jijian
             add.name = this.txtName.Text;
             add.nation = this.ComNation.Text;
             add.nativePlace = this.txtNativePlace.Text;
-         
+
             add.phone = this.txtPhone.Text;
             add.projectUuid = ConfigHelper.KtpLoginProjectId;
-     
+
 
             if (!string.IsNullOrEmpty(_facePicId))
             {
@@ -265,12 +266,14 @@ namespace KtpAcs.WinForm.Jijian
 
             if (_isHmc == 0)
                 addUser(add);
-            else
+            else if (_isHmc == 1)
                 addJiaZiUser(add);
+            else
+                addProject(add);
 
         }
 
-    
+
 
         private void ComOrganizationUuid_EditValueChanged(object sender, EventArgs e)
         {
@@ -288,5 +291,7 @@ namespace KtpAcs.WinForm.Jijian
 
             }
         }
+
+
     }
 }

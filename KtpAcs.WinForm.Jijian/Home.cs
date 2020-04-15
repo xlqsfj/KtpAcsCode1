@@ -16,6 +16,7 @@ using KtpAcs.KtpApiService.Result;
 using KtpAcs.KtpApiService.Project;
 using static KtpAcs.KtpApiService.Result.ProjectListResult;
 using KtpAcs.Infrastructure.Utilities;
+using KtpAcs.WinForm.Jijian.Workers;
 
 namespace KtpAcs.WinForm.Jijian
 {
@@ -131,11 +132,9 @@ namespace KtpAcs.WinForm.Jijian
         {
 
             this.flowWorerk.BackColor = Color.Transparent;
-
-
             this.flowDevice.BackgroundImage = null;
             this.flowWorerk.BackgroundImage = Image.FromFile(fPath("blue_03.png"));
-            AddWorker addStep = new AddWorker();
+            WorkerAdminForm addStep = new WorkerAdminForm();
             addStep.FormBorderStyle = FormBorderStyle.None;
             addStep.TopLevel = false;
             this.panelContent.Controls.Clear();
@@ -181,6 +180,23 @@ namespace KtpAcs.WinForm.Jijian
             addStep.Show();
             this.panelContent.Controls.Add(addStep);
 
+        }
+
+        private void flowAdmin_Click(object sender, EventArgs e)
+        {
+            this.flowAdmin.BackColor = Color.Transparent;
+
+
+            this.flowDevice.BackgroundImage = null;
+            this.flowAdmin.BackgroundImage = Image.FromFile(fPath("blue_03.png"));
+            WorkerProjectForm addStep = new WorkerProjectForm();
+            addStep.FormBorderStyle = FormBorderStyle.None;
+            addStep.TopLevel = false;
+            this.panelContent.Controls.Clear();
+            this.panelWorker.Visible = false;
+            this.panelDevice.Visible = false;
+            this.panelContent.Controls.Add(addStep);
+            addStep.Show();
         }
     }
 }

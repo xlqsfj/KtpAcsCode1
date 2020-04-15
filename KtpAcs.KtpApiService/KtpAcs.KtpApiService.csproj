@@ -74,6 +74,7 @@
     <Compile Include="Result\BaseResult.cs" />
     <Compile Include="Result\TeamListResult.cs" />
     <Compile Include="Result\WorkerListResult.cs" />
+    <Compile Include="Result\WorkerProjectListResult.cs" />
     <Compile Include="Result\WorkerResult.cs" />
     <Compile Include="Result\WorkerTypeListResult.cs" />
     <Compile Include="Send\AddJiaZiWorkerSend.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Worker\GeTeamsApi.cs" />
     <Compile Include="Worker\GetOrganizationApi.cs" />
     <Compile Include="Worker\GetWorkerApi.cs" />
+    <Compile Include="Worker\GetWorkersProjectApi.cs" />
     <Compile Include="Worker\GetWorkersApi.cs" />
     <Compile Include="Worker\GetWorkerTypesApi.cs" />
     <Compile Include="Worker\SetWorkerApi.cs" />

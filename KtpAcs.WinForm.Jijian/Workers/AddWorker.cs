@@ -75,19 +75,7 @@ namespace KtpAcs.WinForm.Jijian
 
         }
 
-        private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
-        {
-
-            if (e.Page.Name == "tabPageWorkerList")
-            {
-                WorkerListForm workerform = new WorkerListForm();
-                workerform.TopLevel = false;
-                this.tabPageWorkerList.Controls.Add(workerform);
-                workerform.Show();
-
-            }
-
-        }
+  
 
         /// <summary>
         /// 身份证识别

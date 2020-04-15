@@ -1,6 +1,6 @@
-﻿namespace KtpAcs.WinForm.Jijian
+﻿namespace KtpAcs.WinForm.Jijian.Workers
 {
-    partial class AddWorker
+    partial class AddWorkerProject
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddWorker));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddWorkerProject));
             this.panelProjectInfo = new DevExpress.XtraEditors.PanelControl();
             this.ComOrganizationUuid = new DevExpress.XtraEditors.LookUpEdit();
             this.comWorkerTeamUuid = new DevExpress.XtraEditors.LookUpEdit();
@@ -151,10 +151,10 @@
             this.panelProjectInfo.Controls.Add(this.labelControl21);
             this.panelProjectInfo.Controls.Add(this.labelControl20);
             this.panelProjectInfo.Controls.Add(this.labelControl19);
-            this.panelProjectInfo.Location = new System.Drawing.Point(19, 325);
+            this.panelProjectInfo.Location = new System.Drawing.Point(18, 320);
             this.panelProjectInfo.Name = "panelProjectInfo";
             this.panelProjectInfo.Size = new System.Drawing.Size(904, 89);
-            this.panelProjectInfo.TabIndex = 384;
+            this.panelProjectInfo.TabIndex = 319;
             this.panelProjectInfo.Visible = false;
             // 
             // ComOrganizationUuid
@@ -287,57 +287,57 @@
             // 
             // ComEducationLevel
             // 
-            this.ComEducationLevel.Location = new System.Drawing.Point(522, 551);
+            this.ComEducationLevel.Location = new System.Drawing.Point(521, 546);
             this.ComEducationLevel.Name = "ComEducationLevel";
             this.ComEducationLevel.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ComEducationLevel.Size = new System.Drawing.Size(164, 20);
-            this.ComEducationLevel.TabIndex = 383;
+            this.ComEducationLevel.TabIndex = 318;
             // 
             // ComNation
             // 
-            this.ComNation.Location = new System.Drawing.Point(276, 551);
+            this.ComNation.Location = new System.Drawing.Point(275, 546);
             this.ComNation.Name = "ComNation";
             this.ComNation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ComNation.Size = new System.Drawing.Size(164, 20);
-            this.ComNation.TabIndex = 382;
+            this.ComNation.TabIndex = 317;
             // 
             // comBankName
             // 
-            this.comBankName.Location = new System.Drawing.Point(520, 619);
+            this.comBankName.Location = new System.Drawing.Point(519, 614);
             this.comBankName.Name = "comBankName";
             this.comBankName.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comBankName.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.OnlyInPopup;
             this.comBankName.Size = new System.Drawing.Size(164, 20);
-            this.comBankName.TabIndex = 381;
+            this.comBankName.TabIndex = 316;
             // 
             // txtBankNo
             // 
-            this.txtBankNo.Location = new System.Drawing.Point(759, 623);
+            this.txtBankNo.Location = new System.Drawing.Point(758, 618);
             this.txtBankNo.Name = "txtBankNo";
             this.txtBankNo.Size = new System.Drawing.Size(164, 20);
-            this.txtBankNo.TabIndex = 377;
+            this.txtBankNo.TabIndex = 312;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(815, 595);
+            this.label11.Location = new System.Drawing.Point(814, 590);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(14, 14);
-            this.label11.TabIndex = 375;
+            this.label11.TabIndex = 310;
             this.label11.Text = "*";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(600, 595);
+            this.label12.Location = new System.Drawing.Point(599, 590);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(14, 14);
-            this.label12.TabIndex = 376;
+            this.label12.TabIndex = 311;
             this.label12.Text = "*";
             // 
             // labelControl14
@@ -350,10 +350,10 @@
             this.labelControl14.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl14.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl14.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl14.Location = new System.Drawing.Point(763, 589);
+            this.labelControl14.Location = new System.Drawing.Point(762, 584);
             this.labelControl14.Name = "labelControl14";
             this.labelControl14.Size = new System.Drawing.Size(48, 17);
-            this.labelControl14.TabIndex = 373;
+            this.labelControl14.TabIndex = 308;
             this.labelControl14.Text = "银行卡号";
             // 
             // labelControl15
@@ -366,30 +366,30 @@
             this.labelControl15.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl15.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl15.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl15.Location = new System.Drawing.Point(524, 589);
+            this.labelControl15.Location = new System.Drawing.Point(523, 584);
             this.labelControl15.Name = "labelControl15";
             this.labelControl15.Size = new System.Drawing.Size(72, 17);
-            this.labelControl15.TabIndex = 374;
+            this.labelControl15.TabIndex = 309;
             this.labelControl15.Text = "银行卡开户行";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(122, 648);
+            this.label8.Location = new System.Drawing.Point(121, 643);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(14, 14);
-            this.label8.TabIndex = 372;
+            this.label8.TabIndex = 307;
             this.label8.Text = "*";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(108, 592);
+            this.label7.Location = new System.Drawing.Point(107, 587);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(14, 14);
-            this.label7.TabIndex = 371;
+            this.label7.TabIndex = 306;
             this.label7.Text = "*";
             // 
             // labelControl11
@@ -402,27 +402,27 @@
             this.labelControl11.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl11.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl11.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl11.Location = new System.Drawing.Point(44, 642);
+            this.labelControl11.Location = new System.Drawing.Point(43, 637);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(72, 17);
-            this.labelControl11.TabIndex = 370;
+            this.labelControl11.TabIndex = 305;
             this.labelControl11.Text = "身份证有效期";
             // 
             // txtExpireTime
             // 
-            this.txtExpireTime.Location = new System.Drawing.Point(268, 665);
+            this.txtExpireTime.Location = new System.Drawing.Point(267, 660);
             this.txtExpireTime.Name = "txtExpireTime";
             this.txtExpireTime.Properties.AutoHeight = false;
             this.txtExpireTime.Size = new System.Drawing.Size(174, 20);
-            this.txtExpireTime.TabIndex = 378;
+            this.txtExpireTime.TabIndex = 313;
             // 
             // txtStartTime
             // 
-            this.txtStartTime.Location = new System.Drawing.Point(48, 665);
+            this.txtStartTime.Location = new System.Drawing.Point(47, 660);
             this.txtStartTime.Name = "txtStartTime";
             this.txtStartTime.Properties.AutoHeight = false;
             this.txtStartTime.Size = new System.Drawing.Size(160, 20);
-            this.txtStartTime.TabIndex = 380;
+            this.txtStartTime.TabIndex = 315;
             // 
             // labelControl10
             // 
@@ -434,58 +434,58 @@
             this.labelControl10.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl10.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl10.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl10.Location = new System.Drawing.Point(44, 586);
+            this.labelControl10.Location = new System.Drawing.Point(43, 581);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(60, 17);
-            this.labelControl10.TabIndex = 369;
+            this.labelControl10.TabIndex = 304;
             this.labelControl10.Text = "身份证地址";
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(44, 616);
+            this.txtAddress.Location = new System.Drawing.Point(43, 611);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Properties.AutoHeight = false;
             this.txtAddress.Size = new System.Drawing.Size(396, 20);
-            this.txtAddress.TabIndex = 379;
+            this.txtAddress.TabIndex = 314;
             // 
             // btnFacePic
             // 
             this.btnFacePic.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
             this.btnFacePic.Appearance.Options.UseBackColor = true;
-            this.btnFacePic.Location = new System.Drawing.Point(404, 279);
+            this.btnFacePic.Location = new System.Drawing.Point(403, 274);
             this.btnFacePic.Name = "btnFacePic";
             this.btnFacePic.Size = new System.Drawing.Size(143, 35);
-            this.btnFacePic.TabIndex = 368;
+            this.btnFacePic.TabIndex = 303;
             this.btnFacePic.Text = "采 集";
             // 
             // btnPicturePositive
             // 
             this.btnPicturePositive.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
             this.btnPicturePositive.Appearance.Options.UseBackColor = true;
-            this.btnPicturePositive.Location = new System.Drawing.Point(686, 279);
+            this.btnPicturePositive.Location = new System.Drawing.Point(685, 274);
             this.btnPicturePositive.Name = "btnPicturePositive";
             this.btnPicturePositive.Size = new System.Drawing.Size(143, 35);
-            this.btnPicturePositive.TabIndex = 367;
+            this.btnPicturePositive.TabIndex = 302;
             this.btnPicturePositive.Text = "采 集";
             // 
             // btnReadIC
             // 
             this.btnReadIC.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
             this.btnReadIC.Appearance.Options.UseBackColor = true;
-            this.btnReadIC.Location = new System.Drawing.Point(983, 554);
+            this.btnReadIC.Location = new System.Drawing.Point(982, 549);
             this.btnReadIC.Name = "btnReadIC";
             this.btnReadIC.Size = new System.Drawing.Size(131, 35);
-            this.btnReadIC.TabIndex = 366;
+            this.btnReadIC.TabIndex = 301;
             this.btnReadIC.Text = "读取身份证";
             // 
             // btnPictureReverse
             // 
             this.btnPictureReverse.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
             this.btnPictureReverse.Appearance.Options.UseBackColor = true;
-            this.btnPictureReverse.Location = new System.Drawing.Point(971, 285);
+            this.btnPictureReverse.Location = new System.Drawing.Point(970, 280);
             this.btnPictureReverse.Name = "btnPictureReverse";
             this.btnPictureReverse.Size = new System.Drawing.Size(143, 35);
-            this.btnPictureReverse.TabIndex = 365;
+            this.btnPictureReverse.TabIndex = 300;
             this.btnPictureReverse.Text = "采 集";
             // 
             // btnSubmit
@@ -493,95 +493,95 @@
             this.btnSubmit.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
             this.btnSubmit.Appearance.Options.UseBackColor = true;
             this.btnSubmit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSubmit.ImageOptions.Image")));
-            this.btnSubmit.Location = new System.Drawing.Point(1000, 5);
+            this.btnSubmit.Location = new System.Drawing.Point(999, 0);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(94, 35);
-            this.btnSubmit.TabIndex = 364;
+            this.btnSubmit.TabIndex = 299;
             this.btnSubmit.Text = "提交";
             // 
             // txtIdCard
             // 
-            this.txtIdCard.Location = new System.Drawing.Point(44, 551);
+            this.txtIdCard.Location = new System.Drawing.Point(43, 546);
             this.txtIdCard.Name = "txtIdCard";
             this.txtIdCard.Size = new System.Drawing.Size(164, 20);
-            this.txtIdCard.TabIndex = 363;
+            this.txtIdCard.TabIndex = 298;
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(46, 762);
+            this.txtPhone.Location = new System.Drawing.Point(45, 757);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(164, 20);
-            this.txtPhone.TabIndex = 362;
+            this.txtPhone.TabIndex = 297;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(44, 491);
+            this.txtName.Location = new System.Drawing.Point(43, 486);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(164, 20);
-            this.txtName.TabIndex = 361;
+            this.txtName.TabIndex = 296;
             // 
             // txtNativePlace
             // 
-            this.txtNativePlace.Location = new System.Drawing.Point(758, 551);
+            this.txtNativePlace.Location = new System.Drawing.Point(757, 546);
             this.txtNativePlace.Name = "txtNativePlace";
             this.txtNativePlace.Size = new System.Drawing.Size(164, 20);
-            this.txtNativePlace.TabIndex = 359;
+            this.txtNativePlace.TabIndex = 294;
             // 
             // txtAvg
             // 
-            this.txtAvg.Location = new System.Drawing.Point(758, 493);
+            this.txtAvg.Location = new System.Drawing.Point(757, 488);
             this.txtAvg.Name = "txtAvg";
             this.txtAvg.Size = new System.Drawing.Size(164, 20);
-            this.txtAvg.TabIndex = 358;
+            this.txtAvg.TabIndex = 293;
             // 
             // pictureEdit6
             // 
             this.pictureEdit6.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.jx5;
-            this.pictureEdit6.Location = new System.Drawing.Point(19, 420);
+            this.pictureEdit6.Location = new System.Drawing.Point(18, 415);
             this.pictureEdit6.Name = "pictureEdit6";
             this.pictureEdit6.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit6.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit6.Size = new System.Drawing.Size(16, 35);
-            this.pictureEdit6.TabIndex = 353;
+            this.pictureEdit6.TabIndex = 288;
             // 
             // pictureEdit5
             // 
             this.pictureEdit5.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.jx5;
-            this.pictureEdit5.Location = new System.Drawing.Point(24, 696);
+            this.pictureEdit5.Location = new System.Drawing.Point(23, 691);
             this.pictureEdit5.Name = "pictureEdit5";
             this.pictureEdit5.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit5.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit5.Size = new System.Drawing.Size(16, 35);
-            this.pictureEdit5.TabIndex = 354;
+            this.pictureEdit5.TabIndex = 289;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(614, 737);
+            this.label13.Location = new System.Drawing.Point(613, 732);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(14, 14);
-            this.label13.TabIndex = 350;
+            this.label13.TabIndex = 285;
             this.label13.Text = "*";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(341, 737);
+            this.label14.Location = new System.Drawing.Point(340, 732);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(14, 14);
-            this.label14.TabIndex = 351;
+            this.label14.TabIndex = 286;
             this.label14.Text = "*";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(87, 737);
+            this.label15.Location = new System.Drawing.Point(86, 732);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(14, 14);
-            this.label15.TabIndex = 352;
+            this.label15.TabIndex = 287;
             this.label15.Text = "*";
             // 
             // labelControl16
@@ -594,10 +594,10 @@
             this.labelControl16.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl16.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl16.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl16.Location = new System.Drawing.Point(524, 731);
+            this.labelControl16.Location = new System.Drawing.Point(523, 726);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(84, 17);
-            this.labelControl16.TabIndex = 347;
+            this.labelControl16.TabIndex = 282;
             this.labelControl16.Text = "紧急联系人电话";
             // 
             // labelControl17
@@ -610,10 +610,10 @@
             this.labelControl17.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl17.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl17.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl17.Location = new System.Drawing.Point(278, 731);
+            this.labelControl17.Location = new System.Drawing.Point(277, 726);
             this.labelControl17.Name = "labelControl17";
             this.labelControl17.Size = new System.Drawing.Size(60, 17);
-            this.labelControl17.TabIndex = 348;
+            this.labelControl17.TabIndex = 283;
             this.labelControl17.Text = "紧急联系人";
             // 
             // labelControl18
@@ -626,90 +626,90 @@
             this.labelControl18.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl18.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl18.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl18.Location = new System.Drawing.Point(46, 731);
+            this.labelControl18.Location = new System.Drawing.Point(45, 726);
             this.labelControl18.Name = "labelControl18";
             this.labelControl18.Size = new System.Drawing.Size(36, 17);
-            this.labelControl18.TabIndex = 349;
+            this.labelControl18.TabIndex = 284;
             this.labelControl18.Text = "手机号";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(575, 527);
+            this.label10.Location = new System.Drawing.Point(574, 522);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(14, 14);
-            this.label10.TabIndex = 346;
+            this.label10.TabIndex = 281;
             this.label10.Text = "*";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(784, 525);
+            this.label5.Location = new System.Drawing.Point(783, 520);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(14, 14);
-            this.label5.TabIndex = 339;
+            this.label5.TabIndex = 274;
             this.label5.Text = "*";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(309, 527);
+            this.label9.Location = new System.Drawing.Point(308, 522);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(14, 14);
-            this.label9.TabIndex = 345;
+            this.label9.TabIndex = 280;
             this.label9.Text = "*";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(784, 467);
+            this.label4.Location = new System.Drawing.Point(783, 462);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(14, 14);
-            this.label4.TabIndex = 344;
+            this.label4.TabIndex = 279;
             this.label4.Text = "*";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(576, 467);
+            this.label3.Location = new System.Drawing.Point(575, 462);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(14, 14);
-            this.label3.TabIndex = 343;
+            this.label3.TabIndex = 278;
             this.label3.Text = "*";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(302, 467);
+            this.label2.Location = new System.Drawing.Point(301, 462);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(14, 14);
-            this.label2.TabIndex = 342;
+            this.label2.TabIndex = 277;
             this.label2.Text = "*";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(97, 529);
+            this.label6.Location = new System.Drawing.Point(96, 524);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(14, 14);
-            this.label6.TabIndex = 341;
+            this.label6.TabIndex = 276;
             this.label6.Text = "*";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(70, 467);
+            this.label1.Location = new System.Drawing.Point(69, 462);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(14, 14);
-            this.label1.TabIndex = 340;
+            this.label1.TabIndex = 275;
             this.label1.Text = "*";
             // 
             // educationLevel
@@ -722,10 +722,10 @@
             this.educationLevel.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.educationLevel.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.educationLevel.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.educationLevel.Location = new System.Drawing.Point(522, 521);
+            this.educationLevel.Location = new System.Drawing.Point(521, 516);
             this.educationLevel.Name = "educationLevel";
             this.educationLevel.Size = new System.Drawing.Size(48, 17);
-            this.educationLevel.TabIndex = 328;
+            this.educationLevel.TabIndex = 263;
             this.educationLevel.Text = "文化程度";
             // 
             // AVidePlayer
@@ -733,10 +733,10 @@
             this.AVidePlayer.BackgroundImage = global::KtpAcs.WinForm.Jijian.Properties.Resources.sfzp;
             this.AVidePlayer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.AVidePlayer.BorderColor = System.Drawing.Color.White;
-            this.AVidePlayer.Location = new System.Drawing.Point(48, 46);
+            this.AVidePlayer.Location = new System.Drawing.Point(47, 41);
             this.AVidePlayer.Name = "AVidePlayer";
             this.AVidePlayer.Size = new System.Drawing.Size(252, 208);
-            this.AVidePlayer.TabIndex = 338;
+            this.AVidePlayer.TabIndex = 273;
             this.AVidePlayer.Text = "videoSourcePlayer1";
             this.AVidePlayer.VideoSource = null;
             // 
@@ -750,10 +750,10 @@
             this.labelControl8.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl8.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl8.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl8.Location = new System.Drawing.Point(758, 519);
+            this.labelControl8.Location = new System.Drawing.Point(757, 514);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(24, 17);
-            this.labelControl8.TabIndex = 329;
+            this.labelControl8.TabIndex = 264;
             this.labelControl8.Text = "籍贯";
             // 
             // labelControl13
@@ -766,10 +766,10 @@
             this.labelControl13.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl13.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl13.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl13.Location = new System.Drawing.Point(232, 669);
+            this.labelControl13.Location = new System.Drawing.Point(231, 664);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(12, 17);
-            this.labelControl13.TabIndex = 326;
+            this.labelControl13.TabIndex = 261;
             this.labelControl13.Text = "至";
             // 
             // labelControl12
@@ -782,20 +782,20 @@
             this.labelControl12.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl12.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl12.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl12.Location = new System.Drawing.Point(283, 521);
+            this.labelControl12.Location = new System.Drawing.Point(282, 516);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(24, 17);
-            this.labelControl12.TabIndex = 327;
+            this.labelControl12.TabIndex = 262;
             this.labelControl12.Text = "民族";
             // 
             // btnClose
             // 
             this.btnClose.BackgroundImage = global::KtpAcs.WinForm.Jijian.Properties.Resources.btn_qx1;
-            this.btnClose.Location = new System.Drawing.Point(1100, 10);
+            this.btnClose.Location = new System.Drawing.Point(1099, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.btnClose.Size = new System.Drawing.Size(67, 30);
-            this.btnClose.TabIndex = 325;
+            this.btnClose.TabIndex = 260;
             // 
             // labelControl7
             // 
@@ -807,10 +807,10 @@
             this.labelControl7.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl7.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl7.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl7.Location = new System.Drawing.Point(758, 461);
+            this.labelControl7.Location = new System.Drawing.Point(757, 456);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(24, 17);
-            this.labelControl7.TabIndex = 330;
+            this.labelControl7.TabIndex = 265;
             this.labelControl7.Text = "年龄";
             // 
             // labelControl6
@@ -823,10 +823,10 @@
             this.labelControl6.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl6.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl6.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl6.Location = new System.Drawing.Point(522, 461);
+            this.labelControl6.Location = new System.Drawing.Point(521, 456);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(48, 17);
-            this.labelControl6.TabIndex = 333;
+            this.labelControl6.TabIndex = 268;
             this.labelControl6.Text = "出生日期";
             // 
             // labelControl5
@@ -839,10 +839,10 @@
             this.labelControl5.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl5.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl5.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl5.Location = new System.Drawing.Point(276, 461);
+            this.labelControl5.Location = new System.Drawing.Point(275, 456);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(24, 17);
-            this.labelControl5.TabIndex = 331;
+            this.labelControl5.TabIndex = 266;
             this.labelControl5.Text = "性别";
             // 
             // labelControl9
@@ -855,10 +855,10 @@
             this.labelControl9.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl9.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl9.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl9.Location = new System.Drawing.Point(44, 523);
+            this.labelControl9.Location = new System.Drawing.Point(43, 518);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(48, 17);
-            this.labelControl9.TabIndex = 332;
+            this.labelControl9.TabIndex = 267;
             this.labelControl9.Text = "证件号码";
             // 
             // labelControl4
@@ -871,10 +871,10 @@
             this.labelControl4.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl4.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl4.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl4.Location = new System.Drawing.Point(44, 461);
+            this.labelControl4.Location = new System.Drawing.Point(43, 456);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(24, 17);
-            this.labelControl4.TabIndex = 337;
+            this.labelControl4.TabIndex = 272;
             this.labelControl4.Text = "姓名";
             // 
             // labelControl3
@@ -883,10 +883,10 @@
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(46, 704);
+            this.labelControl3.Location = new System.Drawing.Point(45, 699);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(96, 21);
-            this.labelControl3.TabIndex = 334;
+            this.labelControl3.TabIndex = 269;
             this.labelControl3.Text = "人员联系信息";
             // 
             // labelControl2
@@ -895,23 +895,23 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(36, 425);
+            this.labelControl2.Location = new System.Drawing.Point(35, 420);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(96, 21);
-            this.labelControl2.TabIndex = 335;
+            this.labelControl2.TabIndex = 270;
             this.labelControl2.Text = "人员基本信息";
             // 
             // pic_pictureReverse
             // 
             this.pic_pictureReverse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pic_pictureReverse.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.sfz_f;
-            this.pic_pictureReverse.Location = new System.Drawing.Point(908, 46);
+            this.pic_pictureReverse.Location = new System.Drawing.Point(907, 41);
             this.pic_pictureReverse.Name = "pic_pictureReverse";
             this.pic_pictureReverse.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pic_pictureReverse.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pic_pictureReverse.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.pic_pictureReverse.Size = new System.Drawing.Size(270, 208);
-            this.pic_pictureReverse.TabIndex = 324;
+            this.pic_pictureReverse.TabIndex = 259;
             // 
             // labelControl1
             // 
@@ -919,62 +919,62 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(75)))), ((int)(((byte)(32)))));
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(125, 284);
+            this.labelControl1.Location = new System.Drawing.Point(124, 279);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(112, 21);
-            this.labelControl1.TabIndex = 336;
+            this.labelControl1.TabIndex = 271;
             this.labelControl1.Text = "请检查你的设备";
             // 
             // pic_picturePositive
             // 
             this.pic_picturePositive.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pic_picturePositive.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.sfz_z2;
-            this.pic_picturePositive.Location = new System.Drawing.Point(618, 46);
+            this.pic_picturePositive.Location = new System.Drawing.Point(617, 41);
             this.pic_picturePositive.Name = "pic_picturePositive";
             this.pic_picturePositive.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pic_picturePositive.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pic_picturePositive.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.pic_picturePositive.Size = new System.Drawing.Size(270, 208);
-            this.pic_picturePositive.TabIndex = 323;
+            this.pic_picturePositive.TabIndex = 258;
             // 
             // IdentityHeadPic
             // 
             this.IdentityHeadPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.IdentityHeadPic.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.sfz_r;
-            this.IdentityHeadPic.Location = new System.Drawing.Point(961, 382);
+            this.IdentityHeadPic.Location = new System.Drawing.Point(960, 377);
             this.IdentityHeadPic.Name = "IdentityHeadPic";
             this.IdentityHeadPic.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.IdentityHeadPic.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.IdentityHeadPic.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.IdentityHeadPic.Size = new System.Drawing.Size(190, 148);
-            this.IdentityHeadPic.TabIndex = 322;
+            this.IdentityHeadPic.TabIndex = 257;
             // 
             // pic_facePic
             // 
             this.pic_facePic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pic_facePic.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.sfz_r;
-            this.pic_facePic.Location = new System.Drawing.Point(332, 46);
+            this.pic_facePic.Location = new System.Drawing.Point(331, 41);
             this.pic_facePic.Name = "pic_facePic";
             this.pic_facePic.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pic_facePic.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pic_facePic.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.pic_facePic.Size = new System.Drawing.Size(270, 208);
-            this.pic_facePic.TabIndex = 321;
+            this.pic_facePic.TabIndex = 256;
             // 
             // pictureEdit4
             // 
             this.pictureEdit4.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.frown;
-            this.pictureEdit4.Location = new System.Drawing.Point(83, 281);
+            this.pictureEdit4.Location = new System.Drawing.Point(82, 276);
             this.pictureEdit4.Name = "pictureEdit4";
             this.pictureEdit4.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit4.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit4.Size = new System.Drawing.Size(36, 30);
-            this.pictureEdit4.TabIndex = 320;
+            this.pictureEdit4.TabIndex = 255;
             // 
             // txtBirthday
             // 
             this.txtBirthday.EditValue = null;
-            this.txtBirthday.Location = new System.Drawing.Point(522, 491);
+            this.txtBirthday.Location = new System.Drawing.Point(521, 486);
             this.txtBirthday.Name = "txtBirthday";
             this.txtBirthday.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -987,43 +987,41 @@
             this.txtBirthday.Properties.Mask.EditMask = "";
             this.txtBirthday.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.txtBirthday.Size = new System.Drawing.Size(164, 20);
-            this.txtBirthday.TabIndex = 355;
+            this.txtBirthday.TabIndex = 290;
             // 
             // txtGender
             // 
-            this.txtGender.Location = new System.Drawing.Point(276, 493);
+            this.txtGender.Location = new System.Drawing.Point(275, 488);
             this.txtGender.Name = "txtGender";
             this.txtGender.Properties.Columns = 2;
             this.txtGender.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "男"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "女")});
             this.txtGender.Size = new System.Drawing.Size(164, 20);
-            this.txtGender.TabIndex = 356;
+            this.txtGender.TabIndex = 291;
             // 
             // txtEmergencyContactName
             // 
-            this.txtEmergencyContactName.Location = new System.Drawing.Point(278, 764);
+            this.txtEmergencyContactName.Location = new System.Drawing.Point(277, 759);
             this.txtEmergencyContactName.Name = "txtEmergencyContactName";
             this.txtEmergencyContactName.Properties.AutoHeight = false;
             this.txtEmergencyContactName.Size = new System.Drawing.Size(164, 20);
-            this.txtEmergencyContactName.TabIndex = 360;
+            this.txtEmergencyContactName.TabIndex = 295;
             // 
             // txtEmergencyContactPhone
             // 
-            this.txtEmergencyContactPhone.Location = new System.Drawing.Point(524, 762);
+            this.txtEmergencyContactPhone.Location = new System.Drawing.Point(523, 757);
             this.txtEmergencyContactPhone.Name = "txtEmergencyContactPhone";
             this.txtEmergencyContactPhone.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtEmergencyContactPhone.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtEmergencyContactPhone.Size = new System.Drawing.Size(164, 20);
-            this.txtEmergencyContactPhone.TabIndex = 357;
+            this.txtEmergencyContactPhone.TabIndex = 292;
             // 
-            // AddWorker
+            // AddWorkerProject
             // 
-            this.Appearance.BackColor = System.Drawing.Color.White;
-            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1193, 794);
+            this.ClientSize = new System.Drawing.Size(1200, 793);
             this.Controls.Add(this.panelProjectInfo);
             this.Controls.Add(this.ComEducationLevel);
             this.Controls.Add(this.ComNation);
@@ -1089,9 +1087,8 @@
             this.Controls.Add(this.txtGender);
             this.Controls.Add(this.txtEmergencyContactName);
             this.Controls.Add(this.txtEmergencyContactPhone);
-            this.Name = "AddWorker";
-            this.Text = "AddWorker";
-            this.Load += new System.EventHandler(this.AddWorker_Load);
+            this.Name = "AddWorkerProject";
+            this.Text = "AddWorkerProject";
             ((System.ComponentModel.ISupportInitialize)(this.panelProjectInfo)).EndInit();
             this.panelProjectInfo.ResumeLayout(false);
             this.panelProjectInfo.PerformLayout();

@@ -138,11 +138,29 @@
     <Compile Include="Workers\AddWorkerBind.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Workers\AddWorkerProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Workers\AddWorkerProject.Designer.cs">
+      <DependentUpon>AddWorkerProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workers\WorkerAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Workers\WorkerAdminForm.Designer.cs">
+      <DependentUpon>WorkerAdminForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Workers\WorkerListForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Workers\WorkerListForm.Designer.cs">
       <DependentUpon>WorkerListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workers\WorkerProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Workers\WorkerProjectForm.Designer.cs">
+      <DependentUpon>WorkerProjectForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Device\AddDevice.resx">
       <DependentUpon>AddDevice.cs</DependentUpon>
@@ -162,8 +180,17 @@
     <EmbeddedResource Include="Workers\AddWorker.resx">
       <DependentUpon>AddWorker.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Workers\AddWorkerProject.resx">
+      <DependentUpon>AddWorkerProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workers\WorkerAdminForm.resx">
+      <DependentUpon>WorkerAdminForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Workers\WorkerListForm.resx">
       <DependentUpon>WorkerListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workers\WorkerProjectForm.resx">
+      <DependentUpon>WorkerProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\licenses.licx" />

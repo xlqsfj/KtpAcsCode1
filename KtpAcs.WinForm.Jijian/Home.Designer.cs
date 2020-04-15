@@ -334,6 +334,7 @@
             this.flowAdmin.Name = "flowAdmin";
             this.flowAdmin.Size = new System.Drawing.Size(70, 67);
             this.flowAdmin.TabIndex = 5;
+            this.flowAdmin.Click += new System.EventHandler(this.flowAdmin_Click);
             // 
             // pictureEdit1
             // 

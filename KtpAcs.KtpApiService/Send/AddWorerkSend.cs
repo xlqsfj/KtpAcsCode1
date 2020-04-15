@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KtpAcs.Infrastructure.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KtpAcs.KtpApiService.Send
 {
-  
+
     public class AddWorerkSend
     {
         public string icon { get; set; }
@@ -15,7 +16,24 @@ namespace KtpAcs.KtpApiService.Send
         public int age { get; set; }
         public string bankName { get; set; }
         public string bankNo { get; set; }
-        public string birthday { get; set; }
+
+        private string _birthday;
+        /// <summary>
+        /// 性别 1男2 女
+        /// </summary>
+        public string birthday
+        {
+            get { return _birthday; }
+            set
+            {
+
+
+                if (string.IsNullOrEmpty(value))
+                {
+                    _birthday = FormatHelper.GetIsoDateString(Convert.ToDateTime(value));
+                }
+            }
+        }
         //文化程度:1.小学，2.初中，3.高中，4.大专，5.本科，6.硕士，7.博士 8中专 9无
         public int educationLevel { get; set; }
         public string emergencyContactName { get; set; }

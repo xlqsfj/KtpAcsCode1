@@ -498,6 +498,7 @@
             this.btnSubmit.Size = new System.Drawing.Size(94, 35);
             this.btnSubmit.TabIndex = 299;
             this.btnSubmit.Text = "提交";
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // txtIdCard
             // 

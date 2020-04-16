@@ -101,6 +101,10 @@
             // 
             // grid_WorkerProject
             // 
+            this.grid_WorkerProject.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.grid_WorkerProject.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.grid_WorkerProject.Appearance.Row.Options.UseTextOptions = true;
+            this.grid_WorkerProject.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.grid_WorkerProject.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn4,
@@ -112,6 +116,7 @@
             this.SalesMoney});
             this.grid_WorkerProject.GridControl = this.gridControl1;
             this.grid_WorkerProject.Name = "grid_WorkerProject";
+            this.grid_WorkerProject.OptionsBehavior.Editable = false;
             this.grid_WorkerProject.OptionsView.ShowGroupPanel = false;
             this.grid_WorkerProject.CustomFilterDisplayText += new DevExpress.XtraEditors.Controls.ConvertEditValueEventHandler(this.grid_WorkerProject_CustomFilterDisplayText);
             // 

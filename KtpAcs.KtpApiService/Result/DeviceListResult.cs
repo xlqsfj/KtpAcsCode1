@@ -46,10 +46,40 @@ namespace KtpAcs.KtpApiService.Result
             public string description { get; set; }
             public string deviceId { get; set; }
             public string deviceIp { get; set; }
-            public int gateType { get; set; }
+        
+
+            /// <summary>
+            ///是否进场方向 0否 1是
+            /// </summary>
+            private String _gateType;
+
+            public String gateType
+
+            {
+
+                get { return _gateType; }
+
+                set
+
+                {
+
+
+                    _gateType = value == "1" ? "进口" : "出口";
+
+                }
+
+            }
             public string modifier { get; set; }
             public DateTime modifyTime { get; set; }
             public int presentState { get; set; }
+            /// <summary>
+            /// 在线状态
+            /// </summary>
+            public string deviceStatus { get; set; }
+            /// <summary>
+            /// 在场人数
+            /// </summary>
+            public int deviceCount { get; set; }
             public string projectUuid { get; set; }
             public string uuid { get; set; }
         }

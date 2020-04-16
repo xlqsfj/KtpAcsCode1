@@ -44,9 +44,9 @@ namespace KtpAcs.PanelApi.Yushi.Api
         /// <param name="request">请求的参数</param>
         /// <param name="receiveData">返回的参数</param>
         /// <returns></returns>
-        protected override PushSummary OnPushSuccess(RichRestRequest request, PanelResult receiveData)
+        protected override PushSummarYs OnPushSuccess(RichRestRequest request, PanelResult receiveData)
         {
-             PushSummary mag = new PushSummary(receiveData.Response.StatusCode==0?true:false, receiveData.Response.StatusString, ApiType.Panel, request, "面板人员列表接口");
+             PushSummarYs mag = new PushSummarYs(receiveData.Response.StatusCode==0?true:false, receiveData.Response.StatusString, ApiType.Panel, request, "面板人员列表接口");
 
             if (receiveData.Response.Data != null)
             {

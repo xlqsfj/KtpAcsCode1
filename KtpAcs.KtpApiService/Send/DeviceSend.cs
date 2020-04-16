@@ -16,7 +16,7 @@ namespace KtpAcs.KtpApiService.Send
         public int presentState { get; set; }
         public string projectUuid { get; set; }
 
-        public string uuid { get; set; }
+        public string deviceUuid { get; set; }
 
 
     }

@@ -9,18 +9,18 @@ namespace KtpAcs.PanelApi.Yushi
     /// <summary>
     /// mule数据推送器接口
     /// </summary>
-    public interface IMulePusher
+    public interface IMulePusherYs
     {
         /// <summary>
         /// 发起数据推送
         /// </summary>
         /// <returns></returns>
-        PushSummary Push();
+        PushSummarYs Push();
         /// <summary>
         /// 发起数据表单推送
         /// </summary>
         /// <returns></returns>
-        PushSummary PushForm();
+        PushSummarYs PushForm();
 
         ///// <summary>
         ///// 推送某一张单据

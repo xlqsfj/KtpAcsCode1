@@ -27,9 +27,9 @@ namespace KtpAcs.PanelApi.Yushi.Api
             {
 
                 //返回设备的数量
-                IMulePusher PanelLibraryGet = new PanelLibraryApi() { PanelIp = ip };
+                IMulePusherYs PanelLibraryGet = new PanelLibraryApi() { PanelIp = ip };
 
-                PushSummary pushSummary = PanelLibraryGet.Push();
+                PushSummarYs pushSummary = PanelLibraryGet.Push();
                 PanelResult pr = pushSummary.ResponseData;
                 if (pr.Response.Data.Num > 0)
                 {
@@ -46,9 +46,9 @@ namespace KtpAcs.PanelApi.Yushi.Api
                         LibList = libListItems
 
                     };
-                    IMulePusher PanelLibrarySet = new PanelLibraryApi() { RequestParam = geteLibraryRequest, MethodType = Method.POST, PanelIp = ip };
+                    IMulePusherYs PanelLibrarySet = new PanelLibraryApi() { RequestParam = geteLibraryRequest, MethodType = Method.POST, PanelIp = ip };
 
-                    PushSummary pushSummarySet = PanelLibrarySet.Push();
+                    PushSummarYs pushSummarySet = PanelLibrarySet.Push();
                     if (!pushSummarySet.Success)
                     {
                         return null;

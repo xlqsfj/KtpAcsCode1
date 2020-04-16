@@ -13,14 +13,14 @@ namespace KtpAcs.PanelApi.Yushi
     /// <summary>
     /// 表示一次推送的推送结果（并非数据接收方的返回结果）
     /// </summary>
-    public class PushSummary
+    public class PushSummarYs
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="success"></param>
         /// <param name="message"></param>
-        public PushSummary(bool success, string message)
+        public PushSummarYs(bool success, string message)
         {
             this.Message = "";
             this.Success = success;
@@ -31,7 +31,7 @@ namespace KtpAcs.PanelApi.Yushi
         /// </summary>
         /// <param name="success"></param>
         /// <param name="message"></param>
-        public PushSummary(bool success, string message, ApiType appType, RichRestRequest request, string apiName)
+        public PushSummarYs(bool success, string message, ApiType appType, RichRestRequest request, string apiName)
         {
             this.Message = "";
             this.Success = success;
@@ -67,9 +67,9 @@ namespace KtpAcs.PanelApi.Yushi
         /// <summary>
         /// 无数据传输的推送结果
         /// </summary>
-        public static PushSummary NoDataResult
+        public static PushSummarYs NoDataResult
         {
-            get { return new PushSummary(true, "没有数据要传输。"); }
+            get { return new PushSummarYs(true, "没有数据要传输。"); }
         }
 
         public dynamic ResponseData { get; set; }

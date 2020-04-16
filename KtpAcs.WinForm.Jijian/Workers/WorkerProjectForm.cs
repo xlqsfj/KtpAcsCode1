@@ -76,6 +76,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
             string id = row.organizationUserUuid;
             string phone = row.phone;
             string state = row.status;
+            string name = row.name;
 
             if (state == "未进场" || state == "已离场")
             {
@@ -101,7 +102,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                 //    }
                 //}
                 XtraTabPage page = new XtraTabPage();
-                AddWorker addWorker = new AddWorker(phone, id)
+                AddWorker addWorker = new AddWorker(phone, name, id)
                 {
                     Visible = true,
                     Dock = DockStyle.Fill,

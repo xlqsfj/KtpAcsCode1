@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.RadioGroup RadioGroup1;
+            this.components = new System.ComponentModel.Container();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lab = new DevExpress.XtraEditors.LabelControl();
             this.labName1 = new DevExpress.XtraEditors.LabelControl();
@@ -40,29 +40,14 @@
             this.txt_description = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            RadioGroup1 = new DevExpress.XtraEditors.RadioGroup();
-            ((System.ComponentModel.ISupportInitialize)(RadioGroup1.Properties)).BeginInit();
+            this.FormErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.radIsEnter = new DevExpress.XtraEditors.RadioGroup();
             ((System.ComponentModel.ISupportInitialize)(this.txt_deviceId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDeviceIp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_description.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FormErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radIsEnter.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // RadioGroup1
-            // 
-            RadioGroup1.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.True;
-            RadioGroup1.EditValue = false;
-            RadioGroup1.Location = new System.Drawing.Point(234, 190);
-            RadioGroup1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            RadioGroup1.Name = "RadioGroup1";
-            RadioGroup1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            RadioGroup1.Properties.Columns = 2;
-            RadioGroup1.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far;
-            RadioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "否", true, null, "rad_gateType"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "是", true, null, "rad_gateType")});
-            RadioGroup1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            RadioGroup1.Size = new System.Drawing.Size(163, 33);
-            RadioGroup1.TabIndex = 9;
             // 
             // labelControl1
             // 
@@ -82,7 +67,7 @@
             // 
             // labName1
             // 
-            this.labName1.Location = new System.Drawing.Point(115, 199);
+            this.labName1.Location = new System.Drawing.Point(112, 202);
             this.labName1.Name = "labName1";
             this.labName1.Size = new System.Drawing.Size(72, 14);
             this.labName1.TabIndex = 0;
@@ -161,6 +146,22 @@
             this.labelControl3.TabIndex = 4;
             this.labelControl3.Text = "*";
             // 
+            // FormErrorProvider
+            // 
+            this.FormErrorProvider.ContainerControl = this;
+            // 
+            // radIsEnter
+            // 
+            this.radIsEnter.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
+            this.radIsEnter.Location = new System.Drawing.Point(199, 190);
+            this.radIsEnter.Name = "radIsEnter";
+            this.radIsEnter.Properties.Columns = 2;
+            this.radIsEnter.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "进口"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "出口")});
+            this.radIsEnter.Size = new System.Drawing.Size(164, 41);
+            this.radIsEnter.TabIndex = 357;
+            // 
             // AddDevice
             // 
             this.ActiveGlowColor = System.Drawing.Color.White;
@@ -169,7 +170,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(557, 293);
-            this.Controls.Add(RadioGroup1);
+            this.Controls.Add(this.radIsEnter);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.btnClose);
@@ -184,10 +185,11 @@
             this.Name = "AddDevice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddDevice";
-            ((System.ComponentModel.ISupportInitialize)(RadioGroup1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_deviceId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDeviceIp.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_description.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FormErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radIsEnter.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,5 +208,7 @@
         private DevExpress.XtraEditors.TextEdit txt_description;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider FormErrorProvider;
+        private DevExpress.XtraEditors.RadioGroup radIsEnter;
     }
 }

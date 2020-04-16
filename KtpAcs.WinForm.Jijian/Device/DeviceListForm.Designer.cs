@@ -47,6 +47,7 @@
             this.btnUpdate = new DevExpress.XtraBars.BarButtonItem();
             this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid_Device)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -69,16 +70,23 @@
             // 
             // grid_Device
             // 
+            this.grid_Device.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.grid_Device.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.grid_Device.Appearance.Row.Options.UseTextOptions = true;
+            this.grid_Device.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.grid_Device.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn8,
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
+            this.gridColumn6,
             this.gridColumn5,
             this.gridId});
             this.grid_Device.GridControl = this.gridControl1;
             this.grid_Device.Name = "grid_Device";
+            this.grid_Device.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.grid_Device.OptionsSelection.EnableAppearanceHideSelection = false;
             this.grid_Device.OptionsView.ShowGroupPanel = false;
             this.grid_Device.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grid_Device_MouseDown);
             // 
@@ -90,7 +98,7 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 5;
+            this.gridColumn8.VisibleIndex = 6;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -117,7 +125,7 @@
             // 
             // gridColumn3
             // 
-            this.gridColumn3.Caption = "是否进场方向";
+            this.gridColumn3.Caption = "进/出闸";
             this.gridColumn3.FieldName = "gateType";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
@@ -125,8 +133,8 @@
             // 
             // gridColumn4
             // 
-            this.gridColumn4.Caption = "在线状态";
-            this.gridColumn4.FieldName = "presentState";
+            this.gridColumn4.Caption = "是否连接人脸识别设备";
+            this.gridColumn4.FieldName = "deviceStatus";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
@@ -211,6 +219,14 @@
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "在场人数";
+            this.gridColumn6.FieldName = "deviceCount";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 5;
+            // 
             // DeviceListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -252,5 +268,6 @@
         private DevExpress.XtraBars.BarButtonItem btnUpdate;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
         private DevExpress.XtraBars.BarButtonItem btnDelete;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
     }
 }

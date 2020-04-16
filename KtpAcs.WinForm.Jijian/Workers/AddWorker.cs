@@ -36,15 +36,11 @@ namespace KtpAcs.WinForm.Jijian
         private string _send;
         private bool _isSys = false;
 
-        private int _isHmc = 0;
+        private int _state = 0;
         public AddWorker(int hmc = 0)
         {
-            _isHmc = hmc;
+            _state = hmc;
             InitializeComponent();
-            if (hmc == 1)
-                panelProjectInfo.Visible = false;
-            else
-                panelProjectInfo.Visible = true;
             CameraConn();
             BindNationsCb();
             BindEducationLeveCb();
@@ -53,13 +49,14 @@ namespace KtpAcs.WinForm.Jijian
             //劳务公司
             GetOrganizationUuidList();
             //银行
-            BindBankCardCb();
+            //  BindBankCardCb();
         }
 
 
         private void CameraConn()
         {
 
+           
 
             try
             {
@@ -149,8 +146,9 @@ namespace KtpAcs.WinForm.Jijian
                             txtBirthday.EditValue = DateTime.Parse(cardMsg.Born);
                             txtAvg.Text = FormatHelper.GetAgeByBirthdate(DateTime.Parse(cardMsg.Born)).ToString();
                             txtIdCard.Text = cardMsg.IDCardNo.Trim();
+
+                            txtNativePlace.Text = WorkerInfoHelper.GetProvinceDicList(cardMsg.IDCardNo.Trim());
                             txtAddress.Text = cardMsg.Address.Trim();
-                            txtNativePlace.Text = cardMsg.Address.Trim();
                             ComNation.ItemIndex = (int.Parse(cardMsg.Nation) - 1);
                             txtStartTime.Text = cardMsg.UserLifeBegin.Trim();
                             txtExpireTime.Text = cardMsg.UserLifeEnd.Trim();
@@ -210,74 +208,104 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            AddWorerkSend add = new AddWorerkSend();
-            add.address = this.txtAddress.Text;
-            add.age = Convert.ToInt32(this.txtAvg.Text);
-            add.bankName = this.comBankName.Text;
-            add.bankNo = this.txtBankNo.Text;
-            add.birthday = this.txtBirthday.Text;
-            add.educationLevel = (int)this.ComEducationLevel.EditValue;
-            add.emergencyContactName = this.txtEmergencyContactName.Text;
-            add.emergencyContactPhone = this.txtEmergencyContactPhone.Text;
-            add.gender = this.txtGender.SelectedIndex == 0 ? 1 : 2;
-            add.idCard = this.txtIdCard.Text;
-            add.name = this.txtName.Text;
-            add.nation = this.ComNation.Text;
-            add.nativePlace = this.txtNativePlace.Text;
-
-            add.phone = this.txtPhone.Text;
-            add.projectUuid = ConfigHelper.KtpLoginProjectId;
-
-
-            if (!string.IsNullOrEmpty(_facePicId))
+            string submit = btnSubmit.Text;
+            try
             {
-                add.localImgFileName = _facePicId;
-            }
-            else if (!string.IsNullOrEmpty(_url_facePicId))
-            {
-                add.facePic = _url_facePicId;
-            }
-            if (!string.IsNullOrEmpty(_identityPicId))
-            {
-                add.localImgFileName1 = _identityPicId;
-            }
-            if (!string.IsNullOrEmpty(_upic))
-            {//本地头像
-                add.localImgUpic = _upic;
-            }
-            if (!string.IsNullOrEmpty(_identityBackPicId))
-            {//头像背面
-                add.localImgFileName2 = _identityBackPicId;
-            }
-            else if (!string.IsNullOrEmpty(_url_identityPicId))
-            {
-                add.pictureReverse = _url_identityPicId;
-            }
 
-            else if (!string.IsNullOrEmpty(_url_identityBackPicId))
-            {
-                add.picturePositive = _url_identityBackPicId;
+                if (!SubmitBtnPreValidation())
+                {
+                    throw new PreValidationException(PreValidationHelper.ErroMsg);
+                }
+                //  ShowAddInfoForm();
+                btnSubmit.Text = @"正在提交";
+                btnSubmit.Enabled = false;
+                ShowAddInfoForm();
+                AddWorerkSend add = new AddWorerkSend();
+                add.address = this.txtAddress.Text;
+                add.age = Convert.ToInt32(this.txtAvg.Text);
+                add.bankName = this.txtBankName.Text;
+                add.bankNo = this.txtBankNo.Text;
+                add.birthday = this.txtBirthday.Text;
+                add.educationLevel = (int)this.ComEducationLevel.EditValue;
+                add.emergencyContactName = this.txtEmergencyContactName.Text;
+                add.emergencyContactPhone = this.txtEmergencyContactPhone.Text;
+                add.gender = this.txtGender.SelectedIndex == 0 ? 1 : 2;
+                add.idCard = this.txtIdCard.Text;
+                add.name = this.txtName.Text;
+                add.nation = this.ComNation.Text;
+                add.nativePlace = this.txtNativePlace.Text;
+
+                add.phone = this.txtPhone.Text;
+                add.projectUuid = ConfigHelper.KtpLoginProjectId;
+
+
+                if (!string.IsNullOrEmpty(_facePicId))
+                {
+                    add.localImgFileName = _facePicId;
+                }
+                else if (!string.IsNullOrEmpty(_url_facePicId))
+                {
+                    add.facePic = _url_facePicId;
+                }
+                if (!string.IsNullOrEmpty(_identityPicId))
+                {
+                    add.localImgFileName1 = _identityPicId;
+                }
+                if (!string.IsNullOrEmpty(_upic))
+                {//本地头像
+                    add.localImgUpic = _upic;
+                }
+                if (!string.IsNullOrEmpty(_identityBackPicId))
+                {//头像背面
+                    add.localImgFileName2 = _identityBackPicId;
+                }
+                else if (!string.IsNullOrEmpty(_url_identityPicId))
+                {
+                    add.pictureReverse = _url_identityPicId;
+                }
+
+                else if (!string.IsNullOrEmpty(_url_identityBackPicId))
+                {
+                    add.picturePositive = _url_identityBackPicId;
+                }
+
+                else if (!string.IsNullOrEmpty(_url_upic))
+                {
+                    add.icon = _url_upic;
+                }
+
+                if (_state == 0)
+                    addUser(add);
+                else if (_state == 1)
+                    addJiaZiUser(add);
+                else
+                    addProject(add);
+
             }
-
-            else if (!string.IsNullOrEmpty(_url_upic))
+            catch (PreValidationException ex)
             {
-                add.icon = _url_upic;
+
+                MessageHelper.Show(ex.Message);
+                _send = "";
+
+                btnSubmit.Text = submit;
+                btnSubmit.Enabled = true;
             }
+            catch (Exception ex)
+            {
 
-            if (_isHmc == 0)
-                addUser(add);
-            else if (_isHmc == 1)
-                addJiaZiUser(add);
-            else
-                addProject(add);
+                MessageHelper.Show(ex);
+                _send = "";
 
+                btnSubmit.Text = submit;
+                btnSubmit.Enabled = true;
+            }
         }
 
 
 
         private void ComOrganizationUuid_EditValueChanged(object sender, EventArgs e)
         {
-
             var uuid = ComOrganizationUuid.EditValue;
             IMulePusher pusherLogin = new GeTeamsApi() { RequestParam = new { organizationUuid = uuid } };
             PushSummary pushLogin = pusherLogin.Push();
@@ -292,6 +320,22 @@ namespace KtpAcs.WinForm.Jijian
             }
         }
 
+      
 
+        private void AddWorker_VisibleChanged(object sender, EventArgs e)
+        {
+        
+        }
+
+        private void AddWorker_Deactivate(object sender, EventArgs e)
+        {
+
+          
+            if (AVidePlayer.IsRunning && !this.Visible)
+            {
+                AVidePlayer.SignalToStop();
+                AVidePlayer.Stop();
+            }
+        }
     }
 }

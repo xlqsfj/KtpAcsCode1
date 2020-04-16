@@ -93,6 +93,8 @@
     <Compile Include="Utilities\QiniuHelper.cs" />
     <Compile Include="Utilities\SqlHelper.cs" />
     <Compile Include="Utilities\ValidateHelper.cs" />
+    <Compile Include="Utilities\ValidationHelper.cs" />
+    <Compile Include="Utilities\WorkerInfoHelper.cs" />
     <Compile Include="winform\AForgeVidePlayerHelper.cs" />
   </ItemGroup>
   <ItemGroup>

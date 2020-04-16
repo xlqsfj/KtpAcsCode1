@@ -62,6 +62,7 @@
     <Compile Include="Device\SetDeviceApi.cs" />
     <Compile Include="IMulePusher.cs" />
     <Compile Include="LoginApi.cs" />
+    <Compile Include="Model\WorkSysFail.cs" />
     <Compile Include="Project\GetProjectCountApi.cs" />
     <Compile Include="Project\GetProjectListApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

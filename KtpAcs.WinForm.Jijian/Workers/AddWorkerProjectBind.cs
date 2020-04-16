@@ -27,22 +27,63 @@ namespace KtpAcs.WinForm.Jijian
 
         private string _status;
         private string _organizationUserUuid;
-        public AddWorker(string phone, string organizationUserUuid, int status = 2)
+        public AddWorker(string phone, string name, string organizationUserUuid, int status = 2)
         {
             phone = "";
-            _isHmc = 2;
+            _state = 2;
             _organizationUserUuid = organizationUserUuid;
             _status = status.ToString();
+            this.txtPhone.Text = phone;
+            this.txtName.Text = name;
             InitializeComponent();
-            if (_isHmc == 2)
+            if (_state == 2)
                 panelProjectInfo.Visible = false;
             else
                 panelProjectInfo.Visible = true;
             CameraConn();
             BindNationsCb();
             BindEducationLeveCb();
+            ContentState(2);
         }
 
+        /// <summary>
+        /// 设置控件的隐藏或只读
+        /// </summary>
+        /// <param name="state">0、工人1、分包2、项目人员</param>
+        public void ContentState(int state)
+        {
+
+            this.txtAddress.ReadOnly = true;
+            this.txtAvg.ReadOnly = true;
+            this.txtBankName.ReadOnly = true;
+            this.txtBankNo.ReadOnly = true;
+            this.txtBirthday.ReadOnly = true;
+            this.txtEmergencyContactName.ReadOnly = true;
+            this.txtEmergencyContactPhone.ReadOnly = true;
+            this.txtGender.ReadOnly = true;
+            this.txtIdCard.ReadOnly = true;
+            this.txtName.ReadOnly = true;
+            this.ComNation.ReadOnly = true;
+            this.txtNativePlace.ReadOnly = true;
+           
+
+            if (state == 1)
+            {
+                panelProjectInfo.Visible = false;
+                panelBankInfo.Visible = false;
+            }
+            else if (state == 2)
+            {
+                panelProjectInfo.Visible = false;
+                panelBankInfo.Visible = false;
+            }
+            else
+            {
+                panelProjectInfo.Visible = true;
+                this.txtPhone.ReadOnly = true;
+            }
+
+        }
         /// <summary>
         /// 添加项目人员
         /// </summary>

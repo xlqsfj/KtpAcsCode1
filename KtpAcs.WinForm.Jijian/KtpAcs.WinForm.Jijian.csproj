@@ -94,6 +94,7 @@
   <ItemGroup>
     <Compile Include="Base\AForgeVidePlayerHelper.cs" />
     <Compile Include="Base\AForgeWorkerPicHelper.cs" />
+    <Compile Include="Base\PreValidationHelper.cs" />
     <Compile Include="Base\SynIdCardApi.cs" />
     <Compile Include="Base\SynIdCardDto.cs" />
     <Compile Include="Base\MessageHelper.cs" />
@@ -147,6 +148,12 @@
     <Compile Include="Workers\AddWorkerProjectBind.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Workers\WorkerAddStateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Workers\WorkerAddStateForm.Designer.cs">
+      <DependentUpon>WorkerAddStateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Workers\WorkerAdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Workers\AddWorkerProject.resx">
       <DependentUpon>AddWorkerProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workers\WorkerAddStateForm.resx">
+      <DependentUpon>WorkerAddStateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Workers\WorkerAdminForm.resx">
       <DependentUpon>WorkerAdminForm.cs</DependentUpon>
@@ -269,6 +279,10 @@
     <ProjectReference Include="..\KtpAcs.KtpApiService\KtpAcs.KtpApiService.csproj">
       <Project>{AABB35B6-2A05-4178-9B95-FC6608A0F9E9}</Project>
       <Name>KtpAcs.KtpApiService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KtpAcs.PanelApi.Yushi\KtpAcs.PanelApi.Yushi.csproj">
+      <Project>{E22816B6-3E02-4D0A-A2F8-36F15AF8E383}</Project>
+      <Name>KtpAcs.PanelApi.Yushi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

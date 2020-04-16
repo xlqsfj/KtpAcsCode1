@@ -14,6 +14,11 @@ using KtpAcs.Infrastructure.Utilities;
 using KtpAcs.KtpApiService.Result;
 using KtpAcs.KtpApiService.Send;
 using KtpAcs.WinForm.Jijian.Device;
+using static KtpAcs.KtpApiService.Result.DeviceListResult;
+using KtpAcs.KtpApiService.Model;
+
+using KtpAcs.PanelApi.Yushi.Model;
+using KtpAcs.PanelApi.Yushi.Api;
 
 namespace KtpAcs.WinForm.Jijian
 {
@@ -39,7 +44,63 @@ namespace KtpAcs.WinForm.Jijian
 
 
                     DeviceListResult.Data data = push.ResponseData;
+
+                    foreach (DeviceList list in data.list)
+                    {
+                        bool isConn = true;
+                        var workAdd = WorkSysFail.workAdd.FirstOrDefault(a => a.deviceIp == list.deviceIp);
+                        if (workAdd != null)
+                        {
+                            isConn = workAdd.isConn;
+
+                        }
+                        else
+                        {
+
+                            //设备是否连接
+                            isConn = ConfigHelper.MyPing(list.deviceIp);
+
+                            if (isConn)
+                            {
+                                var okConnPanelInfo = new WorkAddInfo
+                                {
+                                    deviceIp = list.deviceIp,
+                                    isConn = true,
+                                    deviceIn = list.gateType,
+                                    deviceNo = list.deviceId,
+                                    magAdd = "添加中.."
+                                };
+                                WorkSysFail.workAdd.Add(okConnPanelInfo);
+
+                                //返回设备的数量
+
+                                Liblist liblist = PanelBase.GetPanelDeviceInfo(list.deviceIp);
+                                if (liblist != null)
+                                {
+
+                                    //设备数量
+
+                                    list.deviceCount = liblist.MemberNum;
+                                }
+                                else
+                                {
+                                    list.deviceStatus = "否";
+                                    WorkSysFail.DeleteDeviceInfo(list.deviceIp);
+                                }
+
+                            }
+                            list.deviceStatus = isConn ? "是" : "否";
+
+                        }
+
+
+                    }
                     this.gridControl1.DataSource = data.list;
+
+                    for (int i = 0; i < gridControl1.Views[0].RowCount; i++)
+                    {
+                        object row = this.gridControl1.Views[0].GetRow(i);
+                    }
                 }
 
             }
@@ -99,7 +160,7 @@ namespace KtpAcs.WinForm.Jijian
 
         private void btnUpdate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-          
+
             try
             {
                 //获取焦点数据行
@@ -124,12 +185,12 @@ namespace KtpAcs.WinForm.Jijian
             DialogResult result = XtraMessageBox.Show("确定要删除?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
             {
-         
+
 
                 try
                 {
                     //获取焦点数据行
-                    dynamic row =this.grid_Device.GetFocusedRow();
+                    dynamic row = this.grid_Device.GetFocusedRow();
                     string id = row.uuid;
                     IMulePusher pusherDevice = new DelDeviceApi() { RequestParam = new BaseSend() { uuid = id } };
                     PushSummary push = pusherDevice.Push();
@@ -149,7 +210,7 @@ namespace KtpAcs.WinForm.Jijian
 
 
 
-            
+
             }
         }
     }

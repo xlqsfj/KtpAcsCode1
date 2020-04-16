@@ -5,6 +5,7 @@ using KtpAcs.KtpApiService.Base;
 using KtpAcs.KtpApiService.Send;
 using KtpAcs.KtpApiService.Worker;
 using KtpAcs.WinForm.Jijian.Base;
+using KtpAcs.WinForm.Jijian.Workers;
 using KtpAcsMiddleware.KtpApiService.Base;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Data;
 using System.Linq;
 using static KtpAcs.KtpApiService.Result.OrganizationListResult;
 using static KtpAcs.KtpApiService.Result.WorkerTypeListResult;
+using static KtpAcs.WinForm.Jijian.Workers.WorkerAddStateForm;
 
 namespace KtpAcs.WinForm.Jijian
 {
@@ -41,28 +43,28 @@ namespace KtpAcs.WinForm.Jijian
                 this.ComNation.ItemIndex = 1;
             }
         }
-        /// <summary>
-        /// 银行列表
-        /// </summary>
-        /// <param name="selectedValue"></param>
-        private void BindBankCardCb(string selectedValue = null)
-        {
-            IList<DicKeyValueDto> nations = EnumBankCardType.Bohai.GetDescriptions().Where(i => i.Key != 0).ToList();
-            this.comBankName.Properties.DisplayMember = "Value";
-            this.comBankName.Properties.ValueMember = "Key";
-            this.comBankName.EditValue = "Value";
-            this.comBankName.Properties.NullText = "==请选择==";
-            this.comBankName.Properties.DataSource = nations;
+        ///// <summary>
+        ///// 银行列表
+        ///// </summary>
+        ///// <param name="selectedValue"></param>
+        //private void BindBankCardCb(string selectedValue = null)
+        //{
+        //    IList<DicKeyValueDto> nations = EnumBankCardType.Bohai.GetDescriptions().Where(i => i.Key != 0).ToList();
+        //    this.comBankName.Properties.DisplayMember = "Value";
+        //    this.comBankName.Properties.ValueMember = "Key";
+        //    this.comBankName.EditValue = "Value";
+        //    this.comBankName.Properties.NullText = "==请选择==";
+        //    this.comBankName.Properties.DataSource = nations;
 
-            if (selectedValue != null)
-            {
-                this.comBankName.SelectedText = selectedValue;
-            }
-            else
-            {
-                this.comBankName.ItemIndex = 1;
-            }
-        }
+        //    if (selectedValue != null)
+        //    {
+        //        this.comBankName.SelectedText = selectedValue;
+        //    }
+        //    else
+        //    {
+        //        this.comBankName.ItemIndex = 1;
+        //    }
+        //}
         /// <summary>
         /// 文凭
         /// </summary>
@@ -165,7 +167,7 @@ namespace KtpAcs.WinForm.Jijian
         /// 添加花名册
         /// </summary>
         /// <param name="add"></param>
-        private  void addUser(AddWorerkSend add)
+        private void addUser(AddWorerkSend add)
         {
             add.organizationUuid = this.ComOrganizationUuid.EditValue.ToString();
             add.workType = this.comWorkType.EditValue.ToString();
@@ -184,15 +186,15 @@ namespace KtpAcs.WinForm.Jijian
             }
         }
 
-       
+
 
         /// <summary>
         /// 甲子分包
         /// </summary>
         /// <param name="add"></param>
-        private  void addJiaZiUser(AddWorerkSend add)
+        private void addJiaZiUser(AddWorerkSend add)
         {
-            IMulePusher addworkers = new WorkerSet() { RequestParam = add, API= "/userPanel/addJiaZiUser" };
+            IMulePusher addworkers = new WorkerSet() { RequestParam = add, API = "/userPanel/addJiaZiUser" };
             PushSummary pushAddworkers = addworkers.Push();
             if (pushAddworkers.Success)
             {
@@ -205,7 +207,84 @@ namespace KtpAcs.WinForm.Jijian
             }
         }
 
+        private bool SubmitBtnPreValidation()
+        {
+            var isPrePass = true;
+            PreValidationHelper.InitPreValidation(FormErrorProvider);
+            PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, txtName, "姓名不允许为空", ref isPrePass);
+            PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, txtIdCard, "身份证号不允许为空", ref isPrePass);
+            PreValidationHelper.IsIdCard(FormErrorProvider, txtIdCard, "身份证号格式错误", ref isPrePass);
+            PreValidationHelper.MustNotBeNull(FormErrorProvider, ComNation, "民族必须选择", ref isPrePass);
+            PreValidationHelper.MustNotBeNull(FormErrorProvider, ComEducationLevel, "文化程度不能为空", ref isPrePass);
+            PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, txtAddress, "身份证地址不允许为空", ref isPrePass);
+            PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, txtPhone, "手机号码不允许为空", ref isPrePass);
+            PreValidationHelper.IsMobile(FormErrorProvider, txtPhone, "手机号码格式错误", ref isPrePass);
+            PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, txtStartTime, "身份证有效开始时间不允许为空", ref isPrePass);
+            PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, txtExpireTime, "身份证有效结束时间不允许为空", ref isPrePass);
+            PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, txtEmergencyContactPhone, "紧急联系人手机号码不允许为空", ref isPrePass);
+            PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, txtEmergencyContactPhone, "紧急联系人手机号码格式错误", ref isPrePass);
+            PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, txtEmergencyContactName, "紧急联系人不允许为空", ref isPrePass);
+
+            if (txtBirthday.DateTime > DateTime.Now.Date.AddYears(-18))
+            {
+                FormErrorProvider.SetError(txtBirthday, "出生日期不得小于成年人年龄");
+                isPrePass = false;
+            }
+
+            if (txtGender.SelectedIndex == -1)
+            {
+                FormErrorProvider.SetError(txtGender, "性别必须选择");
+                isPrePass = false;
+            }
+            if (pic_facePic.Image == null)
+            {
+
+                FormErrorProvider.SetError(pic_facePic, "人脸信息采集照片不能为空");
+                isPrePass = false;
+            }
+            if (pic_picturePositive.Image == null)
+            {
+
+                FormErrorProvider.SetError(pic_picturePositive, "身份证正面照片不能为空");
+                isPrePass = false;
+            }
+            if (pic_pictureReverse.Image == null)
+            {
+
+                FormErrorProvider.SetError(pic_pictureReverse, "身份证反面照片不能为空");
+                isPrePass = false;
+            }
+            if (_state == 0)
+            {
+                PreValidationHelper.MustNotBeNull(FormErrorProvider, ComOrganizationUuid, "劳务公司不能为空", ref isPrePass);
+                PreValidationHelper.MustNotBeNull(FormErrorProvider, comWorkerTeamUuid, "班组不能为空", ref isPrePass);
+                PreValidationHelper.MustNotBeNull(FormErrorProvider, comWorkType, "工种不能为空", ref isPrePass);
+                PreValidationHelper.MustNotBeNull(FormErrorProvider, txtBankNo, "银行卡不能为空", ref isPrePass);
+                PreValidationHelper.MustNotBeNull(FormErrorProvider, txtBankName, "银行卡开户行不能为空", ref isPrePass);
+
+            }
+            return isPrePass;
+        }
+        public void ShowAddInfoForm()
+        {
+
+            this.BeginInvoke((EventHandler)delegate
+            {
+                WorkerAddStateForm _workerAddState = new WorkerAddStateForm(txtName.Text.Trim(), txtIdCard.Text.Trim());
+                _workerAddState.ShowSubmit += new AgainSubmit(AddSubWorkInfo);
+
+                _workerAddState.ShowDialog();
+            });
+
+        }
+        /// <summary>
+        //提交接口信息
+        /// </summary>
+        public void AddSubWorkInfo(string close)
+        { 
+        
+        }
 
 
-    }
+        }
 }

@@ -8,12 +8,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using KtpAcs.KtpApiService;
 using KtpAcs.KtpApiService.Device;
 using KtpAcs.KtpApiService.Send;
 using KtpAcs.Infrastructure.Utilities;
 using KtpAcs.KtpApiService.Result;
 using static KtpAcs.KtpApiService.Result.DeviceListResult;
+using KtpAcs.WinForm.Jijian.Base;
+using KtpAcs.Infrastructure.Exceptions;
+using KtpAcs.PanelApi.Yushi.Api;
+using KtpAcs.PanelApi.Yushi.Model;
+using KtpAcs.PanelApi.Yushi;
+using KtpAcs.KtpApiService;
 
 namespace KtpAcs.WinForm.Jijian.Device
 {
@@ -65,31 +70,76 @@ namespace KtpAcs.WinForm.Jijian.Device
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-            DeviceSend deviceSend = new DeviceSend
+        
+            try
             {
+                CheckVerification();
 
-                description = this.txt_description.Text,
-                deviceId = this.txt_deviceId.Text,
-                gateType = 1,
-                deviceIp = txtDeviceIp.Text,
-                projectUuid = ConfigHelper.KtpLoginProjectId,
-                uuid= this._Id
-            };
+                //查询设备序列号
+                IMulePusherYs PanelDevice = new PanelGetDeviceApi() { PanelIp = txtDeviceIp.Text };
+                PushSummarYs PanelMag = PanelDevice.Push();
+                PanelResult result = PanelMag.ResponseData;
+                string deviceNo = result.Response.Data.SerialNumber;
+                this.txt_deviceId.Text = deviceNo;
+                DeviceSend deviceSend = new DeviceSend
+                {
 
-            IMulePusher pusherLogin = new SetDeviceApi() { RequestParam = deviceSend };
-            PushSummary pushLogin = pusherLogin.Push();
-            if (pushLogin.Success)
-            {
+                    description = this.txt_description.Text,
+                    deviceId = this.txt_deviceId.Text,
+                    gateType = this.radIsEnter.SelectedIndex == 0 ? 1 : 2,
+                    deviceIp = txtDeviceIp.Text,
+                    projectUuid = ConfigHelper.KtpLoginProjectId,
+                    deviceUuid = this._Id
+                };
+
+                IMulePusher pusherLogin = new SetDeviceApi() { RequestParam = deviceSend };
+                PushSummary pushLogin = pusherLogin.Push();
+                if (pushLogin.Success)
+                {
 
 
-                XtraMessageBox.Show($"添加成功");
+                    XtraMessageBox.Show($"添加成功");
+                }
+                else
+                {
+
+                    XtraMessageBox.Show($"添加失败:" + pushLogin.Message);
+                }
             }
-            else
+            catch (Exception  ex)
             {
 
-                XtraMessageBox.Show($"添加失败:" + pushLogin.Message);
+                XtraMessageBox.Show($"添加失败:" + ex.Message);
             }
+        }
+
+        private void CheckVerification()
+        {
+            var isPrePass = true;
+            PreValidationHelper.InitPreValidation(FormErrorProvider);
+            //PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, CodeTxt, "编号(设备号)不能为空", ref isPrePass);
+            PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, txtDeviceIp, "IP地址不能为空", ref isPrePass);
+            PreValidationHelper.IsIpAddress(FormErrorProvider, txtDeviceIp, "IP地址格式错误", ref isPrePass);
+
+
+            if (this.radIsEnter.SelectedIndex == -1)
+            {
+                FormErrorProvider.SetError(this.radIsEnter, "必须选择是否是进场方向");
+                isPrePass = false;
+            }
+            if (!isPrePass)
+            {
+                throw new PreValidationException(PreValidationHelper.ErroMsg);
+
+            }
+            if (!ConfigHelper.MyPing(txtDeviceIp.Text))
+            {
+                FormErrorProvider.SetError(txtDeviceIp, "IP地址不通，请确定同一个网段");
+                throw new PreValidationException("IP地址不通，请确定同一个网段");
+
+            }
+            btnSave.Text = "正在添加。。";
+            btnSave.Enabled = false;
         }
 
         private void btnClose_Click(object sender, EventArgs e)

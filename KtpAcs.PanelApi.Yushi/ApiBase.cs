@@ -1,5 +1,6 @@
 ﻿using KS.Resting;
 using KtpAcs.Infrastructure.Utilities;
+using KtpAcs.KtpApiService;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace KtpAcs.PanelApi.Yushi
 {
-    public abstract class ApiBase<Ts, Tr> : IMulePusher where Ts : class where Tr : new()
+    public abstract class ApiBase<Ts, Tr> : IMulePusherYs where Ts : class where Tr : new()
     {
         public ApiBase()
         {
@@ -112,18 +113,18 @@ namespace KtpAcs.PanelApi.Yushi
             RichRestClient client = new RichRestClient(RootUrl);
             return client;
         }
-        public PushSummary Push()
+        public PushSummarYs Push()
         {
             return this.InternalPush();
         }
 
-        private PushSummary InternalPush()
+        private PushSummarYs InternalPush()
         {
 
             Ts senddata = FetchDataToPush();
             if (senddata == null && (MethodType != Method.GET && MethodType != Method.POST && MethodType != Method.DELETE))
             {
-                return PushSummary.NoDataResult;
+                return PushSummarYs.NoDataResult;
             }
 
             RichRestRequest request = CreateRestRequest(senddata);
@@ -133,7 +134,7 @@ namespace KtpAcs.PanelApi.Yushi
             dynamic contentPost = response.Content;
 
             bool isDataNull = true;
-            PushSummary pushSummary = null;
+            PushSummarYs pushSummary = null;
 
             if (isDataNull)
             {
@@ -167,7 +168,7 @@ namespace KtpAcs.PanelApi.Yushi
             return request;
         }
 
-        public PushSummary PushForm()
+        public PushSummarYs PushForm()
         {
             throw new NotImplementedException();
         }
@@ -184,7 +185,7 @@ namespace KtpAcs.PanelApi.Yushi
         /// <param name="request"></param>
         /// <param name="receiveData"></param>
         /// <returns></returns>
-        protected abstract PushSummary OnPushSuccess(RichRestRequest request, Tr receiveData);
+        protected abstract PushSummarYs OnPushSuccess(RichRestRequest request, Tr receiveData);
 
     }
 }

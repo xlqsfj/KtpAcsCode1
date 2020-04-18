@@ -1,4 +1,5 @@
 ﻿using KS.Resting;
+using KtpAcs.Infrastructure.Utilities;
 using KtpAcs.KtpApiService.Result;
 using RestSharp;
 using System;
@@ -21,6 +22,7 @@ namespace KtpAcs.KtpApiService.Worker
             base.API = "/projectInfoPanel/queryOrganization";
             base.ServiceName = ApiType.KTP;
             base.MethodType = Method.POST;
+            base.Token = ConfigHelper.KtpLoginToken;
         }
         protected override dynamic FetchDataToPush()
         {

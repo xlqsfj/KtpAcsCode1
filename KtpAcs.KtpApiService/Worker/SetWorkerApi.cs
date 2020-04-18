@@ -1,5 +1,6 @@
 ﻿using KS.Resting;
 using KtpAcs.Infrastructure.Utilities;
+using KtpAcs.KtpApiService.Model;
 using KtpAcs.KtpApiService.Result;
 using KtpAcs.KtpApiService.Send;
 using RestSharp;
@@ -61,7 +62,7 @@ namespace KtpAcs.KtpApiService.Worker
             if (!mag.Success)
             {
 
-                return mag;
+                WorkSysFail.dicWorkadd.Add(false, mag.Message);
             }
 
             return mag;

@@ -39,6 +39,7 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.txtQuery = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -47,6 +48,7 @@
             this.btnQuery = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuery.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComUsable.Properties)).BeginInit();
             this.SuspendLayout();
@@ -59,6 +61,8 @@
             this.gridControl1.Location = new System.Drawing.Point(12, 53);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit1});
             this.gridControl1.Size = new System.Drawing.Size(1184, 505);
             this.gridControl1.TabIndex = 2;
             this.gridControl1.UseEmbeddedNavigator = true;
@@ -88,6 +92,7 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
@@ -143,7 +148,7 @@
             this.gridColumn8.Caption = "入职日期";
             this.gridColumn8.DisplayFormat.FormatString = "yyyy-MM-dd";
             this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gridColumn8.FieldName = " takeOfficeTime";
+            this.gridColumn8.FieldName = "takeOfficeTime";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 6;
@@ -161,6 +166,11 @@
             this.gridColumn10.Caption = "uuid";
             this.gridColumn10.FieldName = "uuid";
             this.gridColumn10.Name = "gridColumn10";
+            // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             // 
             // txtQuery
             // 
@@ -253,6 +263,7 @@
             this.Text = "WorkerListForm";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuery.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComUsable.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -279,5 +290,6 @@
         private DevExpress.XtraEditors.ComboBoxEdit ComUsable;
         private DevExpress.XtraEditors.SimpleButton btnClear;
         private DevExpress.XtraEditors.SimpleButton btnQuery;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
     }
 }

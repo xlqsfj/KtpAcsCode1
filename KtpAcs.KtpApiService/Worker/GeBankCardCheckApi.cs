@@ -12,14 +12,15 @@ namespace KtpAcs.KtpApiService.Worker
 {
 
 
-    public class GeTeamsApi : ApiBase<dynamic, TeamListResult>
+
+    public class GeBankCardCheckApi : ApiBase<dynamic, BankCardCheckResult>
     {
 
-        public GeTeamsApi()
+        public GeBankCardCheckApi()
         : base()
         {
 
-            base.API = "/projectInfoPanel/queryTeamByOrganization";
+            base.API = "/userPanel/threeVerification";
             base.ServiceName = ApiType.KTP;
             base.MethodType = Method.POST;
             base.Token = ConfigHelper.KtpLoginToken;
@@ -30,9 +31,9 @@ namespace KtpAcs.KtpApiService.Worker
             return base.RequestParam;
         }
 
-        protected override PushSummary OnPushSuccess(RichRestRequest request, TeamListResult receiveData)
+        protected override PushSummary OnPushSuccess(RichRestRequest request, BankCardCheckResult receiveData)
         {
-            PushSummary mag = new PushSummary(receiveData.result == 1 ? true : false, receiveData.msg, ApiType.KTP, request, "班组列表接口");
+            PushSummary mag = new PushSummary(receiveData.result == 1 ? true : false, receiveData.msg, ApiType.KTP, request, "银行卡验证接口");
             if (mag.Success)
             {
 
@@ -43,7 +44,6 @@ namespace KtpAcs.KtpApiService.Worker
 
             return mag;
         }
+
     }
-
 }
-

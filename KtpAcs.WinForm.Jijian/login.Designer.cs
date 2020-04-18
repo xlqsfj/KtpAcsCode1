@@ -31,13 +31,14 @@
             this.components = new System.ComponentModel.Container();
             this.FormErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_send = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.LoginBtn = new DevExpress.XtraEditors.SimpleButton();
             this.PasswordTxt = new DevExpress.XtraEditors.TextEdit();
             this.UserNameTxt = new DevExpress.XtraEditors.TextEdit();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.FormErrorProvider)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
@@ -52,7 +53,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.simpleButton1);
+            this.panel1.Controls.Add(this.btn_send);
             this.panel1.Controls.Add(this.labelControl2);
             this.panel1.Controls.Add(this.labelControl1);
             this.panel1.Controls.Add(this.pictureEdit1);
@@ -64,13 +65,14 @@
             this.panel1.Size = new System.Drawing.Size(554, 411);
             this.panel1.TabIndex = 6;
             // 
-            // simpleButton1
+            // btn_send
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(475, 184);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(73, 23);
-            this.simpleButton1.TabIndex = 12;
-            this.simpleButton1.Text = "验证码";
+            this.btn_send.Location = new System.Drawing.Point(475, 184);
+            this.btn_send.Name = "btn_send";
+            this.btn_send.Size = new System.Drawing.Size(73, 23);
+            this.btn_send.TabIndex = 12;
+            this.btn_send.Text = "验证码";
+            this.btn_send.Click += new System.EventHandler(this.btnVerification_Click);
             // 
             // labelControl2
             // 
@@ -127,11 +129,15 @@
             // 
             // UserNameTxt
             // 
-            this.UserNameTxt.EditValue = "13752991610";
+            this.UserNameTxt.EditValue = "";
             this.UserNameTxt.Location = new System.Drawing.Point(298, 113);
             this.UserNameTxt.Name = "UserNameTxt";
             this.UserNameTxt.Size = new System.Drawing.Size(246, 20);
             this.UserNameTxt.TabIndex = 6;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Login
             // 
@@ -158,13 +164,14 @@
         #endregion
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider FormErrorProvider;
         private System.Windows.Forms.Panel panel1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btn_send;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
         private DevExpress.XtraEditors.SimpleButton LoginBtn;
         private DevExpress.XtraEditors.TextEdit PasswordTxt;
         private DevExpress.XtraEditors.TextEdit UserNameTxt;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

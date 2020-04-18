@@ -22,6 +22,8 @@ namespace KtpAcs.WinForm.Jijian
 {
     public partial class Home : DevExpress.XtraEditors.XtraForm
     {
+        
+        DeviceListForm _DeivceForm = null; //闸机页面
         public Home()
         {
             InitializeComponent();
@@ -70,7 +72,7 @@ namespace KtpAcs.WinForm.Jijian
                 ProjectCountResult.Data projectCountResult = pushLogin.ResponseData;
 
                 this.labProjectCode.Text = projectCountResult.projectCode;
-                this.labProjectManageNum.Text = projectCountResult.projectManageNum.ToString();
+                this.labProjectManageNum.Text = projectCountResult.projectWorkerNum + "_" + projectCountResult.jiaziNum + "_" + "_" + projectCountResult.projectManageNum.ToString();
                 this.labVerificationNum.Text = projectCountResult.workerVerificationNum.ToString();
 
 
@@ -100,15 +102,15 @@ namespace KtpAcs.WinForm.Jijian
             this.label1.ForeColor = Color.White;
             this.flowDevice.BackColor = Color.Transparent;
             this.flowDevice.BackgroundImage = Image.FromFile(fPath("blue_03.png"));
-            DeviceListForm addStep = new DeviceListForm();
-            addStep.FormBorderStyle = FormBorderStyle.None;
+            _DeivceForm = new DeviceListForm();
+            _DeivceForm.FormBorderStyle = FormBorderStyle.None;
 
-            addStep.TopLevel = false;
+            _DeivceForm.TopLevel = false;
             this.panelContent.Controls.Clear();
             this.panelWorker.Visible = false;
             this.panelDevice.Visible = true;
-            this.panelContent.Controls.Add(addStep);
-            addStep.Show();
+            this.panelContent.Controls.Add(_DeivceForm);
+            _DeivceForm.Show();
         }
         /// <summary>
         /// 文件路径方法
@@ -130,6 +132,7 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="e"></param>
         private void flowWorerk_Click(object sender, EventArgs e)
         {
+            _DeivceForm = null;
 
             this.flowWorerk.BackColor = Color.Transparent;
             this.flowDevice.BackgroundImage = null;
@@ -163,16 +166,16 @@ namespace KtpAcs.WinForm.Jijian
 
         private void radHMC_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AddWorker addStep;
+            WorkerAdminForm addStep;
             if (radHMC.SelectedIndex == 0)
             {//花名册
-                addStep = new AddWorker(0);
+                addStep = new WorkerAdminForm(0);
 
             }
             else
             {
                 //甲子分包
-                addStep = new AddWorker(1);
+                addStep = new WorkerAdminForm(1);
             }
             addStep.FormBorderStyle = FormBorderStyle.None;
             addStep.TopLevel = false;
@@ -197,6 +200,58 @@ namespace KtpAcs.WinForm.Jijian
             this.panelDevice.Visible = false;
             this.panelContent.Controls.Add(addStep);
             addStep.Show();
+        }
+
+        /// <summary>
+        /// 刷新
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            GetProjectCount();
+
+            if (_DeivceForm != null)
+            {
+                _DeivceForm.GetDevice();
+            }
+        }
+
+        /// <summary>
+        /// 同步
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSyn_Click(object sender, EventArgs e)
+        {
+
+            _DeivceForm.SysWorkerToPanel();
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowDevice_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 点击项目下拉框
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comProjectList_EditValueChanged(object sender, EventArgs e)
+        {
+            ConfigHelper.KtpLoginProjectId = this.comProjectList.EditValue.ToString();
+            GetProjectCount();
+
+            if (_DeivceForm != null)
+            {
+                _DeivceForm.GetDevice();
+            }
         }
     }
 }

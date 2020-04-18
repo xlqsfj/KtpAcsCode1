@@ -16,13 +16,13 @@ namespace KtpAcs.KtpApiService.Result
 
         public class TeamList
         {
-            public string createTime { get; set; }
-            public string creators { get; set; }
-            public string descreption { get; set; }
-            public string modifier { get; set; }
-            public string modifyTime { get; set; }
-            public string organization { get; set; }
-            public string teamLeaderUuid { get; set; }
+            //public string createTime { get; set; }
+            //public string creators { get; set; }
+            //public string descreption { get; set; }
+            //public string modifier { get; set; }
+            //public string modifyTime { get; set; }
+            //public string organization { get; set; }
+            //public string teamLeaderUuid { get; set; }
             public string teamName { get; set; }
             public string uuid { get; set; }
         }

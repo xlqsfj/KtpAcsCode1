@@ -10,40 +10,29 @@ using System.Threading.Tasks;
 
 namespace KtpAcs.KtpApiService.Worker
 {
-
-
-    public class GeTeamsApi : ApiBase<dynamic, TeamListResult>
+    public class GetWorkerIsExistApi : ApiBase<dynamic, BaseResult>
     {
 
-        public GeTeamsApi()
-        : base()
+        public GetWorkerIsExistApi()
+    : base()
         {
 
-            base.API = "/projectInfoPanel/queryTeamByOrganization";
+
+            base.API = "/userPanel/userFlag";
             base.ServiceName = ApiType.KTP;
             base.MethodType = Method.POST;
             base.Token = ConfigHelper.KtpLoginToken;
         }
         protected override dynamic FetchDataToPush()
         {
-
             return base.RequestParam;
         }
 
-        protected override PushSummary OnPushSuccess(RichRestRequest request, TeamListResult receiveData)
+        protected override PushSummary OnPushSuccess(RichRestRequest request, BaseResult receiveData)
         {
-            PushSummary mag = new PushSummary(receiveData.result == 1 ? true : false, receiveData.msg, ApiType.KTP, request, "班组列表接口");
-            if (mag.Success)
-            {
-
-                mag.ResponseData = receiveData.data;
-
-
-            }
-
+            PushSummary mag = new PushSummary(receiveData.result == 1 ? true : false, receiveData.msg, ApiType.KTP, request, "判断是否存在人员接口");
+            mag.ResponseData = receiveData;
             return mag;
         }
     }
-
 }
-

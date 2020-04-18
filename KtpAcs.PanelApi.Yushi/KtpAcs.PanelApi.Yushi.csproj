@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddFaceToPanel.cs" />
     <Compile Include="ApiBase.cs" />
     <Compile Include="ApiType.cs" />
     <Compile Include="Api\PanelBase.cs" />

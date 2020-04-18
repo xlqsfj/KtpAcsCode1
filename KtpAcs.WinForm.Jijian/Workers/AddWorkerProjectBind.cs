@@ -17,6 +17,7 @@ using System.Data;
 using System.Linq;
 using static KtpAcs.KtpApiService.Result.OrganizationListResult;
 using static KtpAcs.KtpApiService.Result.WorkerTypeListResult;
+using KtpAcs.KtpApiService.Result;
 
 namespace KtpAcs.WinForm.Jijian
 {
@@ -46,51 +47,14 @@ namespace KtpAcs.WinForm.Jijian
             ContentState(2);
         }
 
-        /// <summary>
-        /// 设置控件的隐藏或只读
-        /// </summary>
-        /// <param name="state">0、工人1、分包2、项目人员</param>
-        public void ContentState(int state)
-        {
 
-            this.txtAddress.ReadOnly = true;
-            this.txtAvg.ReadOnly = true;
-            this.txtBankName.ReadOnly = true;
-            this.txtBankNo.ReadOnly = true;
-            this.txtBirthday.ReadOnly = true;
-            this.txtEmergencyContactName.ReadOnly = true;
-            this.txtEmergencyContactPhone.ReadOnly = true;
-            this.txtGender.ReadOnly = true;
-            this.txtIdCard.ReadOnly = true;
-            this.txtName.ReadOnly = true;
-            this.ComNation.ReadOnly = true;
-            this.txtNativePlace.ReadOnly = true;
-           
-
-            if (state == 1)
-            {
-                panelProjectInfo.Visible = false;
-                panelBankInfo.Visible = false;
-            }
-            else if (state == 2)
-            {
-                panelProjectInfo.Visible = false;
-                panelBankInfo.Visible = false;
-            }
-            else
-            {
-                panelProjectInfo.Visible = true;
-                this.txtPhone.ReadOnly = true;
-            }
-
-        }
         /// <summary>
         /// 添加项目人员
         /// </summary>
         /// <param name="add"></param>
-        private void addProject(AddWorerkSend add)
+        private int  addProject(AddWorerkSend add)
         {
-
+            int userId = 0;
             BaseSend baseSend = new BaseSend
             {
                 status = _status,
@@ -103,13 +67,10 @@ namespace KtpAcs.WinForm.Jijian
             PushSummary pushAddworkers = addworkers.Push();
             if (pushAddworkers.Success)
             {
-
-                MessageHelper.Show("添加成功");
+                BaseResult.Data data = pushAddworkers.ResponseData;
+                userId = data.userId;
             }
-            else
-            {
-                MessageHelper.Show("添加失败:" + pushAddworkers.Message);
-            }
+            return userId;
         }
 
     }

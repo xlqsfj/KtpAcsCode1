@@ -8,18 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KtpAcs.KtpApiService.Worker
+namespace KtpAcs.KtpApiService
 {
-
-
-    public class GeTeamsApi : ApiBase<dynamic, TeamListResult>
+    public class LoginVerificationApi : ApiBase<dynamic, BaseStringResult>
     {
 
-        public GeTeamsApi()
+        public LoginVerificationApi()
         : base()
         {
 
-            base.API = "/projectInfoPanel/queryTeamByOrganization";
+            base.API = "/loginPanel/getVerification";
             base.ServiceName = ApiType.KTP;
             base.MethodType = Method.POST;
             base.Token = ConfigHelper.KtpLoginToken;
@@ -30,20 +28,18 @@ namespace KtpAcs.KtpApiService.Worker
             return base.RequestParam;
         }
 
-        protected override PushSummary OnPushSuccess(RichRestRequest request, TeamListResult receiveData)
+        protected override PushSummary OnPushSuccess(RichRestRequest request, BaseStringResult receiveData)
         {
-            PushSummary mag = new PushSummary(receiveData.result == 1 ? true : false, receiveData.msg, ApiType.KTP, request, "班组列表接口");
+            PushSummary mag = new PushSummary(receiveData.result == 1 ? true : false, receiveData.msg, ApiType.KTP, request, "登录接口");
             if (mag.Success)
             {
 
-                mag.ResponseData = receiveData.data;
+
 
 
             }
-
+            mag.ResponseData = receiveData;
             return mag;
         }
     }
-
 }
-

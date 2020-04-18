@@ -9,6 +9,7 @@ namespace KtpAcs.KtpApiService.Model
 {
     public static class WorkSysFail
     {
+        public static int Count = 0;
         /// <summary>
         /// 查询所有人员信息
         /// </summary>

@@ -13,11 +13,12 @@ namespace KtpAcs.WinForm.Jijian.Workers
 {
     public partial class WorkerAdminForm : DevExpress.XtraEditors.XtraForm
     {
-        public WorkerAdminForm()
+        int _state = 0;
+        public WorkerAdminForm(int i=0)
         {
             InitializeComponent();
-
-            AddWorker workerform = new AddWorker()
+            _state = i;
+            AddWorker workerform = new AddWorker(i)
             {
                 Visible = true,
                 Dock = DockStyle.Fill,
@@ -31,7 +32,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
         {
             if (e.Page.Name == "tabPageWorkerList")
             {
-                WorkerListForm workerform = new WorkerListForm() {
+                WorkerListForm workerform = new WorkerListForm(_state) {
 
                     Visible = true,
                     Dock = DockStyle.Fill,

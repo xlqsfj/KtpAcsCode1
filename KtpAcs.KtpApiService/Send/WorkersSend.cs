@@ -7,7 +7,7 @@ namespace KtpAcs.KtpApiService.Send
     {
 
         //是否甲指分包：false否，true是
-        public bool designatedFlag { get; set; }
+        public bool? designatedFlag { get; set; }
         //关键字
         public string keyWord { get; set; }
         public int pageNum { get; set; }

@@ -2,6 +2,7 @@
 using KtpAcs.Infrastructure.Utilities;
 using KtpAcs.KtpApiService;
 using KtpAcs.KtpApiService.Base;
+using KtpAcs.KtpApiService.Result;
 using KtpAcs.KtpApiService.Send;
 using KtpAcs.KtpApiService.Worker;
 using KtpAcs.WinForm.Jijian.Base;
@@ -43,28 +44,7 @@ namespace KtpAcs.WinForm.Jijian
                 this.ComNation.ItemIndex = 1;
             }
         }
-        ///// <summary>
-        ///// 银行列表
-        ///// </summary>
-        ///// <param name="selectedValue"></param>
-        //private void BindBankCardCb(string selectedValue = null)
-        //{
-        //    IList<DicKeyValueDto> nations = EnumBankCardType.Bohai.GetDescriptions().Where(i => i.Key != 0).ToList();
-        //    this.comBankName.Properties.DisplayMember = "Value";
-        //    this.comBankName.Properties.ValueMember = "Key";
-        //    this.comBankName.EditValue = "Value";
-        //    this.comBankName.Properties.NullText = "==请选择==";
-        //    this.comBankName.Properties.DataSource = nations;
 
-        //    if (selectedValue != null)
-        //    {
-        //        this.comBankName.SelectedText = selectedValue;
-        //    }
-        //    else
-        //    {
-        //        this.comBankName.ItemIndex = 1;
-        //    }
-        //}
         /// <summary>
         /// 文凭
         /// </summary>
@@ -125,7 +105,7 @@ namespace KtpAcs.WinForm.Jijian
         {
 
 
-            IMulePusher pusherLogin = new GetOrganizationApi() { RequestParam = new { uuid = 1 } };
+            IMulePusher pusherLogin = new GetOrganizationApi() { RequestParam = new { uuid = 1, projectUuid = ConfigHelper.KtpLoginProjectId } };
             PushSummary pushLogin = pusherLogin.Push();
             if (pushLogin.Success)
             {
@@ -167,23 +147,31 @@ namespace KtpAcs.WinForm.Jijian
         /// 添加花名册
         /// </summary>
         /// <param name="add"></param>
-        private void addUser(AddWorerkSend add)
+        private int addUser(AddWorerkSend add)
         {
+
+            int userId = 0;
             add.organizationUuid = this.ComOrganizationUuid.EditValue.ToString();
             add.workType = this.comWorkType.EditValue.ToString();
             add.workerTeamUuid = this.comWorkerTeamUuid.EditValue.ToString();
+
+            IMulePusher imIsexits = new GetWorkerIsExistApi() { RequestParam = new { phone= add.phone } };
+            PushSummary PuIsexits = imIsexits.Push();
+            if (PuIsexits.Success) {
+
+                BaseResult data = PuIsexits.ResponseData;
+                add.userUuid = data.data.userUuid;
+            }
 
             IMulePusher addworkers = new WorkerSet() { RequestParam = add };
             PushSummary pushAddworkers = addworkers.Push();
             if (pushAddworkers.Success)
             {
+                BaseResult data = pushAddworkers.ResponseData;
+                userId = data.data.userId;
+            }
+            return userId;
 
-                MessageHelper.Show("添加成功");
-            }
-            else
-            {
-                MessageHelper.Show("添加失败:" + pushAddworkers.Message);
-            }
         }
 
 
@@ -192,19 +180,17 @@ namespace KtpAcs.WinForm.Jijian
         /// 甲子分包
         /// </summary>
         /// <param name="add"></param>
-        private void addJiaZiUser(AddWorerkSend add)
+        private int addJiaZiUser(AddWorerkSend add)
         {
+            int userId = 0;
             IMulePusher addworkers = new WorkerSet() { RequestParam = add, API = "/userPanel/addJiaZiUser" };
             PushSummary pushAddworkers = addworkers.Push();
             if (pushAddworkers.Success)
             {
-
-                MessageHelper.Show("添加成功");
+                BaseResult.Data data = pushAddworkers.ResponseData;
+                userId = data.userId;
             }
-            else
-            {
-                MessageHelper.Show("添加失败:" + pushAddworkers.Message);
-            }
+            return userId;
         }
 
         private bool SubmitBtnPreValidation()
@@ -265,6 +251,46 @@ namespace KtpAcs.WinForm.Jijian
             }
             return isPrePass;
         }
+        /// <summary>
+        /// 设置控件的隐藏或只读
+        /// </summary>
+        /// <param name="state">0、工人1、分包2、项目人员</param>
+        public void ContentState(int state)
+        {
+
+            this.txtAddress.ReadOnly = true;
+            this.txtAvg.ReadOnly = true;
+            this.txtBankName.ReadOnly = false;
+
+            this.txtBirthday.ReadOnly = true;
+            //this.txtEmergencyContactName.ReadOnly = true;
+            //this.txtEmergencyContactPhone.ReadOnly = true;
+            this.txtGender.ReadOnly = true;
+            this.txtIdCard.ReadOnly = true;
+            this.txtName.ReadOnly = true;
+            //this.ComNation.ReadOnly = true;
+            this.txtNativePlace.ReadOnly = true;
+
+
+            if (state == 1)
+            {
+                panelProjectInfo.Visible = false;
+                panelBankInfo.Visible = false;
+            }
+            else if (state == 2)
+            {
+                panelProjectInfo.Visible = false;
+                panelBankInfo.Visible = false;
+                this.txtPhone.ReadOnly = true;
+            }
+            else
+            {
+                panelProjectInfo.Visible = true;
+                panelBankInfo.Visible = true;
+
+            }
+
+        }
         public void ShowAddInfoForm()
         {
 
@@ -281,10 +307,10 @@ namespace KtpAcs.WinForm.Jijian
         //提交接口信息
         /// </summary>
         public void AddSubWorkInfo(string close)
-        { 
-        
+        {
+
         }
 
 
-        }
+    }
 }

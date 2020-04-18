@@ -39,11 +39,14 @@ namespace KtpAcs.KtpApiService.Result
 
         public class WorkerList
         {
+            public string imgBase64 { get; set; }
+            public string panelIp { get; set; }
             public int age { get; set; }
             public string birthday { get; set; }
             public string idCard { get; set; }
             public string name { get; set; }
             public string phone { get; set; }
+            public string reason { get; set; }
 
             private string _sex;
             /// <summary>
@@ -61,6 +64,19 @@ namespace KtpAcs.KtpApiService.Result
 
             public string takeOfficeTime { get; set; }
             public string uuid { get; set; }
+            /// <summary>
+            /// 用户id
+            /// </summary>
+           public string userUuid { get; set; }
+            /// <summary>
+            /// 用户主键id
+            /// </summary>
+            public int  userId { get; set; }
+            /// <summary>
+            /// 用户人脸图片
+            /// </summary>
+            public string facePic { get; set; }
+
 
             public string _workerStatus;
             public string workerStatus {

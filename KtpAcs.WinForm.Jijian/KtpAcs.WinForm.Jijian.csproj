@@ -98,6 +98,12 @@
     <Compile Include="Base\SynIdCardApi.cs" />
     <Compile Include="Base\SynIdCardDto.cs" />
     <Compile Include="Base\MessageHelper.cs" />
+    <Compile Include="Device\WorkerSynForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Device\WorkerSynForm.Designer.cs">
+      <DependentUpon>WorkerSynForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Workers\AddWorker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,12 +145,6 @@
     <Compile Include="Workers\AddWorkerBind.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Workers\AddWorkerProject.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Workers\AddWorkerProject.Designer.cs">
-      <DependentUpon>AddWorkerProject.cs</DependentUpon>
-    </Compile>
     <Compile Include="Workers\AddWorkerProjectBind.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +181,9 @@
     <EmbeddedResource Include="DeviceUserCon.resx">
       <DependentUpon>DeviceUserCon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Device\WorkerSynForm.resx">
+      <DependentUpon>WorkerSynForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,9 +192,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Workers\AddWorker.resx">
       <DependentUpon>AddWorker.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Workers\AddWorkerProject.resx">
-      <DependentUpon>AddWorkerProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Workers\WorkerAddStateForm.resx">
       <DependentUpon>WorkerAddStateForm.cs</DependentUpon>

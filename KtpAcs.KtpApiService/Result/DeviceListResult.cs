@@ -82,6 +82,8 @@ namespace KtpAcs.KtpApiService.Result
             public int deviceCount { get; set; }
             public string projectUuid { get; set; }
             public string uuid { get; set; }
+
+            public bool isSeleced { get; set; }
         }
 
     }

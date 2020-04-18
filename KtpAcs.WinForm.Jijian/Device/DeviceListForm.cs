@@ -19,21 +19,62 @@ using KtpAcs.KtpApiService.Model;
 
 using KtpAcs.PanelApi.Yushi.Model;
 using KtpAcs.PanelApi.Yushi.Api;
+using KtpAcs.PanelApi.Yushi;
 
 namespace KtpAcs.WinForm.Jijian
 {
     public partial class DeviceListForm : DevExpress.XtraEditors.XtraForm
     {
+
         public DeviceListForm()
         {
             InitializeComponent();
-            GetDevice();
+
         }
 
 
+        public void SysWorkerToPanel()
+        {
+
+            List<string> list = new List<string>();
+
+            for (int i = 0; i < this.grid_Device.RowCount; i++)
+            {
+                dynamic row = this.grid_Device.GetRow(i);
+                if (row.isSeleced && row.deviceStatus == "是")
+                {
+
+                    list.Add(row.deviceIp);
+                }
+            }
+            if (list.Count > 0)
+            {
+                //清空上次同步失败的人员
+                WorkSysFail.list.Clear();
+                WorkerSynForm frm = new WorkerSynForm(list);
+                //注册事件
+                frm.ShowSubmit += ShowExptForm;
+                frm.ShowDialog();
+            }
+            else
+            {
+
+            }
+
+        }
+        public void ShowExptForm()
+        {
+            if (WorkSysFail.list.Count() > 0)
+            {
+
+                new WorkerSynForm().ShowDialog();
+            }
+
+        }
 
         public void GetDevice()
         {
+
 
             try
             {
@@ -45,62 +86,72 @@ namespace KtpAcs.WinForm.Jijian
 
                     DeviceListResult.Data data = push.ResponseData;
 
-                    foreach (DeviceList list in data.list)
+                    if (data.list.Count > 0)
                     {
-                        bool isConn = true;
-                        var workAdd = WorkSysFail.workAdd.FirstOrDefault(a => a.deviceIp == list.deviceIp);
-                        if (workAdd != null)
-                        {
-                            isConn = workAdd.isConn;
-
-                        }
-                        else
+                        WorkSysFail.workAdd.Clear();
+                        Parallel.ForEach(data.list, (list, DeviceList) =>
                         {
 
-                            //设备是否连接
-                            isConn = ConfigHelper.MyPing(list.deviceIp);
-
-                            if (isConn)
+                            bool isConn = true;
+                            var workAdd = WorkSysFail.workAdd.FirstOrDefault(a => a.deviceIp == list.deviceIp);
+                            if (workAdd != null)
                             {
-                                var okConnPanelInfo = new WorkAddInfo
-                                {
-                                    deviceIp = list.deviceIp,
-                                    isConn = true,
-                                    deviceIn = list.gateType,
-                                    deviceNo = list.deviceId,
-                                    magAdd = "添加中.."
-                                };
-                                WorkSysFail.workAdd.Add(okConnPanelInfo);
-
-                                //返回设备的数量
-
-                                Liblist liblist = PanelBase.GetPanelDeviceInfo(list.deviceIp);
-                                if (liblist != null)
-                                {
-
-                                    //设备数量
-
-                                    list.deviceCount = liblist.MemberNum;
-                                }
-                                else
-                                {
-                                    list.deviceStatus = "否";
-                                    WorkSysFail.DeleteDeviceInfo(list.deviceIp);
-                                }
+                                isConn = workAdd.isConn;
 
                             }
-                            list.deviceStatus = isConn ? "是" : "否";
+                            else
+                            {
 
-                        }
+                                //设备是否连接
+                                isConn = ConfigHelper.MyPing(list.deviceIp);
+
+                                if (isConn)
+                                {
+                                    var okConnPanelInfo = new WorkAddInfo
+                                    {
+                                        deviceIp = list.deviceIp,
+                                        isConn = true,
+                                        deviceIn = list.gateType,
+                                        deviceNo = list.deviceId,
+                                        magAdd = "添加中.."
+                                    };
+                                    WorkSysFail.workAdd.Add(okConnPanelInfo);
+
+                                    //返回设备的数量
+
+                                    Liblist liblist = PanelBase.GetPanelDeviceInfo(list.deviceIp);
+                                    if (liblist != null)
+                                    {
+
+                                        //设备数量
+
+                                        list.deviceCount = liblist.MemberNum;
+                                    }
+                                    else
+                                    {
+                                        list.deviceStatus = "否";
+                                        WorkSysFail.DeleteDeviceInfo(list.deviceIp);
+                                    }
+
+                                }
+                                list.deviceStatus = isConn ? "是" : "否";
+
+                            }
 
 
+
+                        });
+
+                        this.gridControl.DataSource = data.list;
+                        panelContent.Visible = false;
+                        gridControl.Visible = true;
                     }
-                    this.gridControl1.DataSource = data.list;
-
-                    for (int i = 0; i < gridControl1.Views[0].RowCount; i++)
+                    else
                     {
-                        object row = this.gridControl1.Views[0].GetRow(i);
+                        panelContent.Visible = true;
+                        gridControl.Visible = false;
                     }
+
                 }
 
             }
@@ -114,37 +165,6 @@ namespace KtpAcs.WinForm.Jijian
 
         }
 
-        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-            DialogResult result = XtraMessageBox.Show("确定要删除?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (result == DialogResult.OK)
-            {
-                ////访问数据库删除
-                //int num = DBHelper.ExecuteNonQuery("delete Users where qq=" + qq);
-                //if (num > 0)
-                //{
-                //    //InitData();//刷新
-                //    this.gvDatas.DeleteRow(this.gvDatas.FocusedRowHandle);//删除行
-                //    XtraMessageBox.Show($"QQ：{qq}删除成功！");
-                //}
-                XtraMessageBox.Show($"QQ：删除成功！");
-            }
-        }
-
-
-
-
-
-        private void gridControl1_MouseDown(object sender, MouseEventArgs e)
-        {
-
-            //if (e.Button == MouseButtons.Right)
-            //{
-            //    //  this.popupMenu1.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
-            //    this.popupMenu1.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
-            //}
-        }
 
         private void grid_Device_MouseDown(object sender, MouseEventArgs e)
         {
@@ -192,10 +212,16 @@ namespace KtpAcs.WinForm.Jijian
                     //获取焦点数据行
                     dynamic row = this.grid_Device.GetFocusedRow();
                     string id = row.uuid;
+                    string ip = row.deviceIp;
                     IMulePusher pusherDevice = new DelDeviceApi() { RequestParam = new BaseSend() { uuid = id } };
                     PushSummary push = pusherDevice.Push();
                     if (push.Success)
                     {
+
+                        //宇视产品
+                        IMulePusherYs panelDeleteApi = new PanelLibraryDeleteApi() { PanelIp = ip };
+
+                        PushSummarYs pushSummarySet = panelDeleteApi.Push();
                         XtraMessageBox.Show($"QQ：删除成功！");
                         this.grid_Device.DeleteRow(this.grid_Device.FocusedRowHandle);//删除行
 
@@ -212,6 +238,27 @@ namespace KtpAcs.WinForm.Jijian
 
 
             }
+        }
+
+        private void DeviceListForm_Load(object sender, EventArgs e)
+        {
+            GetDevice();
+        }
+
+        private void grid_Device_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            int index = this.grid_Device.FocusedRowHandle;
+            dynamic d = this.grid_Device.GetRow(index);
+            if (e.Column.Caption == "checkbox")
+            {
+                int i = 0;
+            }
+            //DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)grid_Device.Cells[0];
+            //for (int i = 0; i < grid_Device.GetChildRowCount(index); i++)
+            //{
+            //    int row = _view.GetChildRowHandle(rowHandle, i);
+
+            //}
         }
     }
 }

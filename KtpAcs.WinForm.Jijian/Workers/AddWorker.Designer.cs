@@ -174,6 +174,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ComOrganizationUuid.Size = new System.Drawing.Size(164, 20);
             this.ComOrganizationUuid.TabIndex = 264;
+            this.ComOrganizationUuid.EditValueChanged += new System.EventHandler(this.ComOrganizationUuid_EditValueChanged);
             // 
             // comWorkerTeamUuid
             // 
@@ -318,6 +319,9 @@
             this.txtBankNo.Name = "txtBankNo";
             this.txtBankNo.Size = new System.Drawing.Size(164, 20);
             this.txtBankNo.TabIndex = 377;
+            this.txtBankNo.EditValueChanged += new System.EventHandler(this.txtBankNo_EditValueChanged);
+            this.txtBankNo.Leave += new System.EventHandler(this.txtBankNo_Leave);
+            this.txtBankNo.MouseLeave += new System.EventHandler(this.txtBankNo_MouseLeave);
             // 
             // label11
             // 
@@ -1067,7 +1071,6 @@
             this.panelBankInfo.Name = "panelBankInfo";
             this.panelBankInfo.Size = new System.Drawing.Size(904, 90);
             this.panelBankInfo.TabIndex = 385;
-            this.panelBankInfo.Visible = false;
             // 
             // FormErrorProvider
             // 

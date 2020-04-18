@@ -42,7 +42,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(3, 12);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xTabPage;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1272, 818);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1272, 901);
             this.xtraTabControl1.TabIndex = 2;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xTabPage,
@@ -54,7 +54,7 @@
             this.xTabPage.Appearance.PageClient.BackColor = System.Drawing.Color.White;
             this.xTabPage.Appearance.PageClient.Options.UseBackColor = true;
             this.xTabPage.Name = "xTabPage";
-            this.xTabPage.Size = new System.Drawing.Size(1270, 796);
+            this.xTabPage.Size = new System.Drawing.Size(1270, 879);
             this.xTabPage.Text = "人工采集";
             // 
             // tabPageWorkerList
@@ -67,14 +67,14 @@
             this.tabPageWorkerList.Appearance.PageClient.BackColor = System.Drawing.Color.White;
             this.tabPageWorkerList.Appearance.PageClient.Options.UseBackColor = true;
             this.tabPageWorkerList.Name = "tabPageWorkerList";
-            this.tabPageWorkerList.Size = new System.Drawing.Size(1256, 796);
+            this.tabPageWorkerList.Size = new System.Drawing.Size(1270, 796);
             this.tabPageWorkerList.Text = "已入职";
             // 
             // WorkerAdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1298, 834);
+            this.ClientSize = new System.Drawing.Size(1298, 916);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "WorkerAdminForm";
             this.Text = "WorkerAdminForm";

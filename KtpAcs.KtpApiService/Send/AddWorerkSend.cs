@@ -28,7 +28,7 @@ namespace KtpAcs.KtpApiService.Send
             {
 
 
-                if (string.IsNullOrEmpty(value))
+                if (!string.IsNullOrEmpty(value))
                 {
                     _birthday = FormatHelper.GetIsoDateString(Convert.ToDateTime(value));
                 }
@@ -73,6 +73,8 @@ namespace KtpAcs.KtpApiService.Send
         /// 保存本地的文件名的头像
         /// </summary>
         public string localImgUpic { get; set; }
+
+        public string userUuid { get; set; }
     }
 
 }

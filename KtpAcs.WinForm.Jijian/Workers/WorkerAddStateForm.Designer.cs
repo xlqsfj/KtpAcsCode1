@@ -30,16 +30,16 @@
         {
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.grid_Device = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.btnRetry = new DevExpress.XtraEditors.SimpleButton();
             this.panelKtpState = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid_Device)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -74,13 +74,6 @@
             this.grid_Device.Name = "grid_Device";
             this.grid_Device.OptionsView.ShowGroupPanel = false;
             // 
-            // repositoryItemCheckEdit1
-            // 
-            this.repositoryItemCheckEdit1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
-            this.repositoryItemCheckEdit1.AllowGrayed = true;
-            this.repositoryItemCheckEdit1.AutoHeight = false;
-            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
-            // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "设备ip号";
@@ -112,6 +105,13 @@
             this.gridId.Visible = true;
             this.gridId.VisibleIndex = 3;
             // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
+            this.repositoryItemCheckEdit1.AllowGrayed = true;
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            // 
             // btnClose
             // 
             this.btnClose.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
@@ -142,14 +142,6 @@
             this.panelKtpState.Size = new System.Drawing.Size(640, 46);
             this.panelKtpState.TabIndex = 4;
             // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(295, 16);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(44, 14);
-            this.labelControl1.TabIndex = 4;
-            this.labelControl1.Text = "添加中..";
-            // 
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(33, 16);
@@ -157,6 +149,14 @@
             this.labelControl2.Size = new System.Drawing.Size(60, 14);
             this.labelControl2.TabIndex = 4;
             this.labelControl2.Text = "向云端添加";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(295, 16);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(44, 14);
+            this.labelControl1.TabIndex = 4;
+            this.labelControl1.Text = "添加中..";
             // 
             // WorkerAddStateForm
             // 
@@ -168,6 +168,7 @@
             this.Controls.Add(this.gridControl1);
             this.Name = "WorkerAddStateForm";
             this.Text = "WorkerAddStateForm";
+            this.Load += new System.EventHandler(this.WorkerAddStateForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid_Device)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();

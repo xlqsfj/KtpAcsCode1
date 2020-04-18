@@ -3,6 +3,7 @@ using KtpAcs.Infrastructure.Utilities;
 using KtpAcs.KtpApiService;
 using KtpAcs.KtpApiService.Send;
 using KtpAcs.KtpApiService.Worker;
+using KtpAcs.PanelApi.Yushi;
 using KtpAcs.WinForm.Jijian.Base;
 using KtpAcs.WinForm.Jijian.Workers;
 using System;
@@ -11,6 +12,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using static KtpAcs.KtpApiService.Result.BankCardCheckResult;
 using static KtpAcs.KtpApiService.Result.TeamListResult;
 
 namespace KtpAcs.WinForm.Jijian
@@ -50,13 +52,14 @@ namespace KtpAcs.WinForm.Jijian
             GetOrganizationUuidList();
             //银行
             //  BindBankCardCb();
+            ContentState(_state);
         }
 
 
         private void CameraConn()
         {
 
-           
+
 
             try
             {
@@ -149,7 +152,7 @@ namespace KtpAcs.WinForm.Jijian
 
                             txtNativePlace.Text = WorkerInfoHelper.GetProvinceDicList(cardMsg.IDCardNo.Trim());
                             txtAddress.Text = cardMsg.Address.Trim();
-                            ComNation.ItemIndex = (int.Parse(cardMsg.Nation) - 1);
+                            ComNation.EditValue = (int.Parse(cardMsg.Nation));
                             txtStartTime.Text = cardMsg.UserLifeBegin.Trim();
                             txtExpireTime.Text = cardMsg.UserLifeEnd.Trim();
                             if (!string.IsNullOrEmpty(cardMsg.PhotoFileName))
@@ -234,7 +237,8 @@ namespace KtpAcs.WinForm.Jijian
                 add.name = this.txtName.Text;
                 add.nation = this.ComNation.Text;
                 add.nativePlace = this.txtNativePlace.Text;
-
+                add.startTime = this.txtStartTime.Text;
+                add.expireTime = this.txtExpireTime.Text;
                 add.phone = this.txtPhone.Text;
                 add.projectUuid = ConfigHelper.KtpLoginProjectId;
 
@@ -273,13 +277,20 @@ namespace KtpAcs.WinForm.Jijian
                 {
                     add.icon = _url_upic;
                 }
+                int uid = 0;
 
                 if (_state == 0)
-                    addUser(add);
+                    uid= addUser(add);
                 else if (_state == 1)
-                    addJiaZiUser(add);
+                    uid= addJiaZiUser(add);
                 else
-                    addProject(add);
+                    uid= addProject(add);
+                if (uid > 0)
+                {
+                    AddFaceToPanel addFaceToPanel = new AddFaceToPanel();
+                    addFaceToPanel.AddFaceInfo(add, uid);
+                }
+                btnSubmit.Enabled = true;
 
             }
             catch (PreValidationException ex)
@@ -320,22 +331,59 @@ namespace KtpAcs.WinForm.Jijian
             }
         }
 
-      
+
 
         private void AddWorker_VisibleChanged(object sender, EventArgs e)
         {
-        
+
         }
 
         private void AddWorker_Deactivate(object sender, EventArgs e)
         {
 
-          
-            if (AVidePlayer.IsRunning && !this.Visible)
+
+            if (AVidePlayer.IsRunning)
             {
-                AVidePlayer.SignalToStop();
-                AVidePlayer.Stop();
+                //AVidePlayer.SignalToStop();
+                //AVidePlayer.Stop();
             }
+
+        }
+        private void txtBankNo_EditValueChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtBankNo_MouseLeave(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void txtBankNo_Leave(object sender, EventArgs e)
+        {
+            string name = this.txtName.Text;
+            string idCard = this.txtIdCard.Text;
+            string Bankno = this.txtBankNo.Text;
+
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(idCard))
+            {
+
+                MessageHelper.Show("姓名跟身份证不能为空");
+                return;
+            }
+            IMulePusher pusherLogin = new GeBankCardCheckApi() { RequestParam = new { bankNo = Bankno, name = name, idCard = idCard } };
+            PushSummary pushLogin = pusherLogin.Push();
+            if (pushLogin.Success)
+            {
+                BankInfo bankInfo = pushLogin.ResponseData;
+                this.txtBankName.Text = bankInfo.bank;
+
+            }
+            else
+            {
+                MessageHelper.Show(pushLogin.Message);
+            }
+
         }
     }
 }

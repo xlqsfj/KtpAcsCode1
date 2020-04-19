@@ -338,17 +338,7 @@ namespace KtpAcs.WinForm.Jijian
 
         }
 
-        private void AddWorker_Deactivate(object sender, EventArgs e)
-        {
-
-
-            if (AVidePlayer.IsRunning)
-            {
-                //AVidePlayer.SignalToStop();
-                //AVidePlayer.Stop();
-            }
-
-        }
+      
         private void txtBankNo_EditValueChanged(object sender, EventArgs e)
         {
         }
@@ -358,7 +348,15 @@ namespace KtpAcs.WinForm.Jijian
 
 
         }
+        public void GetIsAVide() {
+            if (AVidePlayer.IsRunning)
+            {
+                AVidePlayer.SignalToStop();
+                AVidePlayer.Stop();
+            }
 
+
+        }
         private void txtBankNo_Leave(object sender, EventArgs e)
         {
             string name = this.txtName.Text;

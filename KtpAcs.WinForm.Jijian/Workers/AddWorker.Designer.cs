@@ -1145,7 +1145,7 @@
             this.Controls.Add(this.txtEmergencyContactPhone);
             this.Name = "AddWorker";
             this.Text = "AddWorker";
-            this.Deactivate += new System.EventHandler(this.AddWorker_Deactivate);
+    
             this.Load += new System.EventHandler(this.AddWorker_Load);
             this.VisibleChanged += new System.EventHandler(this.AddWorker_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.panelProjectInfo)).EndInit();

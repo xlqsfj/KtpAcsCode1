@@ -98,7 +98,7 @@ namespace KtpAcs.WinForm.Jijian
 
         private void flowDevice_Click(object sender, EventArgs e)
         {
-
+          
             this.label1.ForeColor = Color.White;
             this.flowDevice.BackColor = Color.Transparent;
             this.flowDevice.BackgroundImage = Image.FromFile(fPath("blue_03.png"));
@@ -111,6 +111,7 @@ namespace KtpAcs.WinForm.Jijian
             this.panelDevice.Visible = true;
             this.panelContent.Controls.Add(_DeivceForm);
             _DeivceForm.Show();
+
         }
         /// <summary>
         /// 文件路径方法
@@ -133,7 +134,7 @@ namespace KtpAcs.WinForm.Jijian
         private void flowWorerk_Click(object sender, EventArgs e)
         {
             _DeivceForm = null;
-
+            panelWorker.Visible =true ;
             this.flowWorerk.BackColor = Color.Transparent;
             this.flowDevice.BackgroundImage = null;
             this.flowWorerk.BackgroundImage = Image.FromFile(fPath("blue_03.png"));

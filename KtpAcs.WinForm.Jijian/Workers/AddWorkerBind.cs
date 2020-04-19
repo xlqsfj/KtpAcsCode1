@@ -183,6 +183,15 @@ namespace KtpAcs.WinForm.Jijian
         private int addJiaZiUser(AddWorerkSend add)
         {
             int userId = 0;
+
+            IMulePusher imIsexits = new GetWorkerIsExistApi() { RequestParam = new { phone = add.phone } };
+            PushSummary PuIsexits = imIsexits.Push();
+            if (PuIsexits.Success)
+            {
+
+                BaseResult data = PuIsexits.ResponseData;
+                add.userUuid = data.data.userUuid;
+            }
             IMulePusher addworkers = new WorkerSet() { RequestParam = add, API = "/userPanel/addJiaZiUser" };
             PushSummary pushAddworkers = addworkers.Push();
             if (pushAddworkers.Success)

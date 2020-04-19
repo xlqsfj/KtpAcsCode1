@@ -14,11 +14,14 @@ namespace KtpAcs.WinForm.Jijian.Workers
     public partial class WorkerAdminForm : DevExpress.XtraEditors.XtraForm
     {
         int _state = 0;
+        AddWorker workerform = null;
         public WorkerAdminForm(int i=0)
         {
             InitializeComponent();
             _state = i;
-            AddWorker workerform = new AddWorker(i)
+            if (workerform != null)
+                workerform.GetIsAVide();
+            workerform = new AddWorker(i)
             {
                 Visible = true,
                 Dock = DockStyle.Fill,
@@ -26,6 +29,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                 TopLevel = false//在这里一定要注意  不然加载不出来
             };
             xTabPage.Controls.Add(workerform);
+            
         }
 
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)

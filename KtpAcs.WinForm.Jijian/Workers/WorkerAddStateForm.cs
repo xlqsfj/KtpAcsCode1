@@ -51,9 +51,9 @@ namespace KtpAcs.WinForm.Jijian.Workers
         {
             addCount = 0;
             //
-            myThread = new Thread(startFillDv);//实例化线程
-            myThread.IsBackground = true;
-            myThread.Start();
+            //myThread = new Thread(startFillDv);//实例化线程
+            //myThread.IsBackground = true;
+            //myThread.Start();
 
         }
         private void startFillDv()

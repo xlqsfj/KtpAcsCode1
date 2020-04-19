@@ -24,6 +24,8 @@ namespace KtpAcs.WinForm.Jijian
     {
         
         DeviceListForm _DeivceForm = null; //闸机页面
+        WorkerAdminForm _workerAdminForm = null;//工人管理 
+        WorkerProjectForm _workerProjectForm = null;//项目管理
         public Home()
         {
             InitializeComponent();
@@ -72,7 +74,7 @@ namespace KtpAcs.WinForm.Jijian
                 ProjectCountResult.Data projectCountResult = pushLogin.ResponseData;
 
                 this.labProjectCode.Text = projectCountResult.projectCode;
-                this.labProjectManageNum.Text = projectCountResult.projectWorkerNum + "_" + projectCountResult.jiaziNum + "_" + "_" + projectCountResult.projectManageNum.ToString();
+                this.labProjectManageNum.Text = projectCountResult.projectWorkerNum + "_" + projectCountResult.jiaziNum + "_"  + projectCountResult.projectManageNum.ToString();
                 this.labVerificationNum.Text = projectCountResult.workerVerificationNum.ToString();
 
 
@@ -98,33 +100,52 @@ namespace KtpAcs.WinForm.Jijian
 
         private void flowDevice_Click(object sender, EventArgs e)
         {
-          
-            this.label1.ForeColor = Color.White;
-            this.flowDevice.BackColor = Color.Transparent;
-            this.flowDevice.BackgroundImage = Image.FromFile(fPath("blue_03.png"));
-            _DeivceForm = new DeviceListForm();
-            _DeivceForm.FormBorderStyle = FormBorderStyle.None;
-
-            _DeivceForm.TopLevel = false;
-            this.panelContent.Controls.Clear();
             this.panelWorker.Visible = false;
             this.panelDevice.Visible = true;
-            this.panelContent.Controls.Add(_DeivceForm);
-            _DeivceForm.Show();
+            _DeivceForm = new DeviceListForm();
+            TabForm(_DeivceForm, flowDevice.Name);
 
         }
-        /// <summary>
-        /// 文件路径方法
-        /// </summary>
-        /// <param name="fileName">文件名称</param>
-        /// <returns>返回文件的在整个项目中得位置</returns>
-        private string fPath(string fileName)
-        {
-            string SysPath = Application.StartupPath + @"../../../";
-            Directory.SetCurrentDirectory(SysPath);
-            string filePath = Directory.GetCurrentDirectory() + @"/image/" + fileName;
-            return filePath;
+
+        public void TabForm(DevExpress.XtraEditors.XtraForm form, string  cName) {
+
+
+            
+            foreach (Control c in spl.Panel1.Controls ) {
+                if (c is FlowLayoutPanel && c.Name.Contains(cName))
+                {
+                    c.BackColor = Color.Transparent;
+                    c.BackgroundImage = Jijian.Properties.Resources.blue_03;
+                }
+                else if (c is FlowLayoutPanel) {
+
+                    c.BackgroundImage = null;
+                }
+
+            }
+            if (_workerProjectForm != null)
+            {
+                if (_workerProjectForm.isOpen)
+                {
+
+                    _workerProjectForm.GetIsOpen();
+                }
+
+            }
+            if (form.Name != "WorkerAdminForm")
+            {
+                if (_workerAdminForm != null)
+                    _workerAdminForm.isExiet();
+            }
+          
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.TopLevel = false;
+            this.panelContent.Controls.Clear();
+            this.panelContent.Controls.Add(form);
+            form.Show();
         }
+
+
 
         /// <summary>
         /// 点击劳务管理
@@ -134,18 +155,12 @@ namespace KtpAcs.WinForm.Jijian
         private void flowWorerk_Click(object sender, EventArgs e)
         {
             _DeivceForm = null;
-            panelWorker.Visible =true ;
-            this.flowWorerk.BackColor = Color.Transparent;
-            this.flowDevice.BackgroundImage = null;
-            this.flowWorerk.BackgroundImage = Image.FromFile(fPath("blue_03.png"));
-            WorkerAdminForm addStep = new WorkerAdminForm();
-            addStep.FormBorderStyle = FormBorderStyle.None;
-            addStep.TopLevel = false;
-            this.panelContent.Controls.Clear();
             this.panelWorker.Visible = true;
             this.panelDevice.Visible = false;
-            this.panelContent.Controls.Add(addStep);
-            addStep.Show();
+            _workerAdminForm = new WorkerAdminForm();
+            TabForm(_workerAdminForm, flowWorerk.Name);
+         
+         
         }
 
         private void simpleButton5_Click(object sender, EventArgs e)
@@ -160,47 +175,40 @@ namespace KtpAcs.WinForm.Jijian
             addDevice.ShowDialog();
         }
 
-        private void toggleSwitch1_Toggled(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void radHMC_SelectedIndexChanged(object sender, EventArgs e)
         {
-            WorkerAdminForm addStep;
+          
+            if (_workerAdminForm != null)
+                _workerAdminForm.isExiet();
+        
             if (radHMC.SelectedIndex == 0)
             {//花名册
-                addStep = new WorkerAdminForm(0);
+                _workerAdminForm = new WorkerAdminForm(0);
 
             }
             else
             {
                 //甲子分包
-                addStep = new WorkerAdminForm(1);
+                _workerAdminForm = new WorkerAdminForm(1);
             }
-            addStep.FormBorderStyle = FormBorderStyle.None;
-            addStep.TopLevel = false;
             this.panelContent.Controls.Clear();
-            addStep.Show();
-            this.panelContent.Controls.Add(addStep);
+            _workerAdminForm.FormBorderStyle = FormBorderStyle.None;
+            _workerAdminForm.TopLevel = false;
+            _workerAdminForm.Show();
+            this.panelContent.Controls.Add(_workerAdminForm);
 
         }
 
         private void flowAdmin_Click(object sender, EventArgs e)
         {
-            this.flowAdmin.BackColor = Color.Transparent;
-
-
-            this.flowDevice.BackgroundImage = null;
-            this.flowAdmin.BackgroundImage = Image.FromFile(fPath("blue_03.png"));
-            WorkerProjectForm addStep = new WorkerProjectForm();
-            addStep.FormBorderStyle = FormBorderStyle.None;
-            addStep.TopLevel = false;
-            this.panelContent.Controls.Clear();
+         
+            _workerProjectForm = new WorkerProjectForm();
             this.panelWorker.Visible = false;
             this.panelDevice.Visible = false;
-            this.panelContent.Controls.Add(addStep);
-            addStep.Show();
+            TabForm(_workerProjectForm,flowAdmin.Name);
+
         }
 
         /// <summary>

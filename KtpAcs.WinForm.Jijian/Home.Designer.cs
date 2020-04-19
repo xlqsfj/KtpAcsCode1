@@ -56,25 +56,26 @@
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit5 = new DevExpress.XtraEditors.PictureEdit();
             this.panelHead = new DevExpress.XtraEditors.PanelControl();
-            this.panelDevice = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.label5 = new System.Windows.Forms.Label();
+            this.labProjectCode = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.labProjectManageNum = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.labVerificationNum = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.panelWorker = new DevExpress.XtraEditors.PanelControl();
             this.radHMC = new DevExpress.XtraEditors.RadioGroup();
+            this.panelDevice = new DevExpress.XtraEditors.PanelControl();
             this.btnSubmit = new DevExpress.XtraEditors.SimpleButton();
             this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             this.btnSyn = new DevExpress.XtraEditors.SimpleButton();
             this.comProjectList = new DevExpress.XtraEditors.LookUpEdit();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.labVerificationNum = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.labProjectManageNum = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.labProjectCode = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.spl)).BeginInit();
             this.spl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit6.Properties)).BeginInit();
@@ -92,11 +93,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelHead)).BeginInit();
             this.panelHead.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelDevice)).BeginInit();
-            this.panelDevice.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelWorker)).BeginInit();
             this.panelWorker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radHMC.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelDevice)).BeginInit();
+            this.panelDevice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comProjectList.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -123,8 +126,8 @@
             this.spl.Panel2.Controls.Add(this.panelContent);
             this.spl.Panel2.Controls.Add(this.panelHead);
             this.spl.Panel2.Text = "Panel2";
-            this.spl.Size = new System.Drawing.Size(1410, 608);
-            this.spl.SplitterPosition = 88;
+            this.spl.Size = new System.Drawing.Size(1436, 608);
+            this.spl.SplitterPosition = 114;
             this.spl.TabIndex = 0;
             // 
             // pictureEdit6
@@ -132,7 +135,7 @@
             this.pictureEdit6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureEdit6.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.ktp_logo1;
             this.pictureEdit6.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.pictureEdit6.Location = new System.Drawing.Point(15, 14);
+            this.pictureEdit6.Location = new System.Drawing.Point(16, 14);
             this.pictureEdit6.Name = "pictureEdit6";
             this.pictureEdit6.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEdit6.Properties.Appearance.Options.UseBackColor = true;
@@ -165,7 +168,7 @@
             this.picExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.picExit.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.img_exit;
             this.picExit.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.picExit.Location = new System.Drawing.Point(12, 549);
+            this.picExit.Location = new System.Drawing.Point(13, 549);
             this.picExit.Name = "picExit";
             this.picExit.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.picExit.Properties.Appearance.Options.UseBackColor = true;
@@ -285,7 +288,7 @@
             this.flowAuth.Controls.Add(this.label2);
             this.flowAuth.Cursor = System.Windows.Forms.Cursors.Hand;
             this.flowAuth.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.flowAuth.Location = new System.Drawing.Point(12, 286);
+            this.flowAuth.Location = new System.Drawing.Point(12, 387);
             this.flowAuth.Name = "flowAuth";
             this.flowAuth.Size = new System.Drawing.Size(70, 67);
             this.flowAuth.TabIndex = 5;
@@ -331,7 +334,7 @@
             this.flowAdmin.Controls.Add(this.label1);
             this.flowAdmin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.flowAdmin.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.flowAdmin.Location = new System.Drawing.Point(12, 377);
+            this.flowAdmin.Location = new System.Drawing.Point(12, 283);
             this.flowAdmin.Name = "flowAdmin";
             this.flowAdmin.Size = new System.Drawing.Size(70, 67);
             this.flowAdmin.TabIndex = 5;
@@ -425,7 +428,7 @@
             // pictureEdit5
             // 
             this.pictureEdit5.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.home_addP;
-            this.pictureEdit5.Location = new System.Drawing.Point(390, 17);
+            this.pictureEdit5.Location = new System.Drawing.Point(327, 8);
             this.pictureEdit5.Name = "pictureEdit5";
             this.pictureEdit5.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit5.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -438,36 +441,164 @@
             this.panelHead.Appearance.BackColor = System.Drawing.Color.White;
             this.panelHead.Appearance.Options.UseBackColor = true;
             this.panelHead.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelHead.Controls.Add(this.panelControl1);
             this.panelHead.Controls.Add(this.panelWorker);
             this.panelHead.Controls.Add(this.panelDevice);
             this.panelHead.Controls.Add(this.comProjectList);
             this.panelHead.Controls.Add(this.simpleButton3);
-            this.panelHead.Controls.Add(this.label13);
-            this.panelHead.Controls.Add(this.label12);
-            this.panelHead.Controls.Add(this.labVerificationNum);
-            this.panelHead.Controls.Add(this.label10);
-            this.panelHead.Controls.Add(this.label16);
-            this.panelHead.Controls.Add(this.label15);
-            this.panelHead.Controls.Add(this.label14);
-            this.panelHead.Controls.Add(this.labProjectManageNum);
-            this.panelHead.Controls.Add(this.label8);
-            this.panelHead.Controls.Add(this.labProjectCode);
-            this.panelHead.Controls.Add(this.label5);
             this.panelHead.Location = new System.Drawing.Point(1, 3);
             this.panelHead.Name = "panelHead";
             this.panelHead.Size = new System.Drawing.Size(1306, 122);
             this.panelHead.TabIndex = 0;
             // 
-            // panelDevice
+            // panelControl1
             // 
-            this.panelDevice.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelDevice.Controls.Add(this.btnSubmit);
-            this.panelDevice.Controls.Add(this.btnRefresh);
-            this.panelDevice.Controls.Add(this.btnSyn);
-            this.panelDevice.Location = new System.Drawing.Point(1016, 42);
-            this.panelDevice.Name = "panelDevice";
-            this.panelDevice.Size = new System.Drawing.Size(283, 77);
-            this.panelDevice.TabIndex = 230;
+            this.panelControl1.Controls.Add(this.label5);
+            this.panelControl1.Controls.Add(this.labProjectCode);
+            this.panelControl1.Controls.Add(this.label8);
+            this.panelControl1.Controls.Add(this.labProjectManageNum);
+            this.panelControl1.Controls.Add(this.label13);
+            this.panelControl1.Controls.Add(this.label14);
+            this.panelControl1.Controls.Add(this.label12);
+            this.panelControl1.Controls.Add(this.label15);
+            this.panelControl1.Controls.Add(this.labVerificationNum);
+            this.panelControl1.Controls.Add(this.label16);
+            this.panelControl1.Controls.Add(this.label10);
+            this.panelControl1.Location = new System.Drawing.Point(33, 64);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(939, 52);
+            this.panelControl1.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.label5.Location = new System.Drawing.Point(14, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(105, 23);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "项目编号：";
+            // 
+            // labProjectCode
+            // 
+            this.labProjectCode.AutoSize = true;
+            this.labProjectCode.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.labProjectCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.labProjectCode.Location = new System.Drawing.Point(117, 18);
+            this.labProjectCode.Name = "labProjectCode";
+            this.labProjectCode.Size = new System.Drawing.Size(60, 23);
+            this.labProjectCode.TabIndex = 4;
+            this.labProjectCode.Text = "12780";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.label8.Location = new System.Drawing.Point(221, 18);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(124, 23);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "项目总人数：";
+            // 
+            // labProjectManageNum
+            // 
+            this.labProjectManageNum.AllowDrop = true;
+            this.labProjectManageNum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labProjectManageNum.AutoEllipsis = true;
+            this.labProjectManageNum.AutoSize = true;
+            this.labProjectManageNum.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.labProjectManageNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.labProjectManageNum.Location = new System.Drawing.Point(343, 18);
+            this.labProjectManageNum.Name = "labProjectManageNum";
+            this.labProjectManageNum.Size = new System.Drawing.Size(70, 23);
+            this.labProjectManageNum.TabIndex = 4;
+            this.labProjectManageNum.Text = "200000";
+            this.labProjectManageNum.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.label13.Location = new System.Drawing.Point(778, 15);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(20, 23);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "0";
+            // 
+            // label14
+            // 
+            this.label14.AllowDrop = true;
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoEllipsis = true;
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.label14.Location = new System.Drawing.Point(417, 18);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(29, 23);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "人";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.label12.Location = new System.Drawing.Point(653, 15);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(124, 23);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "项目未认证：";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.label15.Location = new System.Drawing.Point(618, 15);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(29, 23);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "人";
+            // 
+            // labVerificationNum
+            // 
+            this.labVerificationNum.AutoSize = true;
+            this.labVerificationNum.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.labVerificationNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.labVerificationNum.Location = new System.Drawing.Point(597, 17);
+            this.labVerificationNum.Name = "labVerificationNum";
+            this.labVerificationNum.Size = new System.Drawing.Size(20, 23);
+            this.labVerificationNum.TabIndex = 4;
+            this.labVerificationNum.Text = "6";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.label16.Location = new System.Drawing.Point(804, 15);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(29, 23);
+            this.label16.TabIndex = 4;
+            this.label16.Text = "人";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.label10.Location = new System.Drawing.Point(463, 18);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(124, 23);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "项目已认证：";
             // 
             // panelWorker
             // 
@@ -475,7 +606,7 @@
             this.panelWorker.Appearance.Options.UseBackColor = true;
             this.panelWorker.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelWorker.Controls.Add(this.radHMC);
-            this.panelWorker.Location = new System.Drawing.Point(751, 39);
+            this.panelWorker.Location = new System.Drawing.Point(1001, 39);
             this.panelWorker.Name = "panelWorker";
             this.panelWorker.Size = new System.Drawing.Size(283, 77);
             this.panelWorker.TabIndex = 231;
@@ -491,6 +622,17 @@
             this.radHMC.Size = new System.Drawing.Size(232, 47);
             this.radHMC.TabIndex = 229;
             this.radHMC.SelectedIndexChanged += new System.EventHandler(this.radHMC_SelectedIndexChanged);
+            // 
+            // panelDevice
+            // 
+            this.panelDevice.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelDevice.Controls.Add(this.btnSubmit);
+            this.panelDevice.Controls.Add(this.btnRefresh);
+            this.panelDevice.Controls.Add(this.btnSyn);
+            this.panelDevice.Location = new System.Drawing.Point(1013, 42);
+            this.panelDevice.Name = "panelDevice";
+            this.panelDevice.Size = new System.Drawing.Size(283, 77);
+            this.panelDevice.TabIndex = 230;
             // 
             // btnSubmit
             // 
@@ -556,132 +698,11 @@
             this.simpleButton3.Size = new System.Drawing.Size(6, 27);
             this.simpleButton3.TabIndex = 8;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.label13.Location = new System.Drawing.Point(768, 74);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(20, 23);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "0";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.label12.Location = new System.Drawing.Point(643, 74);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(124, 23);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "项目未认证：";
-            // 
-            // labVerificationNum
-            // 
-            this.labVerificationNum.AutoSize = true;
-            this.labVerificationNum.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.labVerificationNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.labVerificationNum.Location = new System.Drawing.Point(542, 76);
-            this.labVerificationNum.Name = "labVerificationNum";
-            this.labVerificationNum.Size = new System.Drawing.Size(20, 23);
-            this.labVerificationNum.TabIndex = 4;
-            this.labVerificationNum.Text = "6";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.label10.Location = new System.Drawing.Point(420, 74);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(124, 23);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "项目已认证：";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.label16.Location = new System.Drawing.Point(794, 74);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(29, 23);
-            this.label16.TabIndex = 4;
-            this.label16.Text = "人";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.label15.Location = new System.Drawing.Point(563, 74);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(29, 23);
-            this.label15.TabIndex = 4;
-            this.label15.Text = "人";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.label14.Location = new System.Drawing.Point(385, 74);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(29, 23);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "人";
-            // 
-            // labProjectManageNum
-            // 
-            this.labProjectManageNum.AutoSize = true;
-            this.labProjectManageNum.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.labProjectManageNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.labProjectManageNum.Location = new System.Drawing.Point(349, 74);
-            this.labProjectManageNum.Name = "labProjectManageNum";
-            this.labProjectManageNum.Size = new System.Drawing.Size(30, 23);
-            this.labProjectManageNum.TabIndex = 4;
-            this.labProjectManageNum.Text = "20";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.label8.Location = new System.Drawing.Point(241, 74);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(124, 23);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "项目总人数：";
-            // 
-            // labProjectCode
-            // 
-            this.labProjectCode.AutoSize = true;
-            this.labProjectCode.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.labProjectCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.labProjectCode.Location = new System.Drawing.Point(126, 74);
-            this.labProjectCode.Name = "labProjectCode";
-            this.labProjectCode.Size = new System.Drawing.Size(60, 23);
-            this.labProjectCode.TabIndex = 4;
-            this.labProjectCode.Text = "12780";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.label5.Location = new System.Drawing.Point(34, 74);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(105, 23);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "项目编号：";
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1410, 610);
+            this.ClientSize = new System.Drawing.Size(1436, 610);
             this.Controls.Add(this.spl);
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -709,12 +730,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelHead)).EndInit();
             this.panelHead.ResumeLayout(false);
-            this.panelHead.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelDevice)).EndInit();
-            this.panelDevice.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelWorker)).EndInit();
             this.panelWorker.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radHMC.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelDevice)).EndInit();
+            this.panelDevice.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.comProjectList.Properties)).EndInit();
             this.ResumeLayout(false);
 
@@ -759,9 +782,10 @@
         private System.Windows.Forms.Label labProjectManageNum;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label labProjectCode;
-        private System.Windows.Forms.Label label5;
         private DevExpress.XtraEditors.PanelControl panelWorker;
         private DevExpress.XtraEditors.RadioGroup radHMC;
         private DevExpress.XtraEditors.PanelControl panelDevice;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private System.Windows.Forms.Label label5;
     }
 }

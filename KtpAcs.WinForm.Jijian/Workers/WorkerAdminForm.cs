@@ -19,8 +19,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
         {
             InitializeComponent();
             _state = i;
-            if (workerform != null)
-                workerform.GetIsAVide();
+        
             workerform = new AddWorker(i)
             {
                 Visible = true,
@@ -31,7 +30,11 @@ namespace KtpAcs.WinForm.Jijian.Workers
             xTabPage.Controls.Add(workerform);
             
         }
+        public void isExiet() {
 
+            if (workerform != null)
+                workerform.GetIsAVide();
+        }
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
             if (e.Page.Name == "tabPageWorkerList")

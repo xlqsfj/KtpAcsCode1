@@ -253,6 +253,7 @@
     <None Include="image\btn_cxcj.png" />
     <None Include="image\frown.png" />
     <None Include="image\home_addP.png" />
+    <None Include="image\blue_03.png" />
     <Content Include="image\img_404.png" />
     <None Include="image\img_admin.png" />
     <None Include="image\img_exit.png" />

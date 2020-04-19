@@ -21,6 +21,8 @@ namespace KtpAcs.WinForm.Jijian.Workers
 {
     public partial class WorkerProjectForm : DevExpress.XtraEditors.XtraForm
     {
+        public bool isOpen = false; //是否打开摄像头
+        AddWorker addWorker = null;
         public WorkerProjectForm()
         {
             InitializeComponent();
@@ -102,7 +104,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                 //    }
                 //}
                 XtraTabPage page = new XtraTabPage();
-                AddWorker addWorker = new AddWorker(phone, name, id)
+                 addWorker = new AddWorker(phone, name, id)
                 {
                     Visible = true,
                     Dock = DockStyle.Fill,
@@ -112,7 +114,10 @@ namespace KtpAcs.WinForm.Jijian.Workers
                 page.Controls.Add(addWorker);
                 page.Text = "项目人员办理入场";
                 xtraTabControl1.SelectedTabPage = page;
+                isOpen = true;
+               
                 xtraTabControl1.TabPages.Add(page);
+               
             }
             else
             {
@@ -150,7 +155,10 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
 
         }
-
+        public void GetIsOpen() {
+            if(addWorker !=null)
+            addWorker.GetIsAVide();
+        }
         private void grid_WorkerProject_CustomFilterDisplayText(object sender, DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs e)
         {
 

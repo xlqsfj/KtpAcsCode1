@@ -34,9 +34,10 @@ namespace KtpAcs.WinForm.Jijian
             _state = 2;
             _organizationUserUuid = organizationUserUuid;
             _status = status.ToString();
+            InitializeComponent();
             this.txtPhone.Text = phone;
             this.txtName.Text = name;
-            InitializeComponent();
+       
             if (_state == 2)
                 panelProjectInfo.Visible = false;
             else

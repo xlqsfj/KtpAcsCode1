@@ -17,7 +17,7 @@ namespace KtpAcs.PanelApi.Yushi
     public class AddFaceToPanel
     {
         string panelMag = "";
-        public void AddFaceInfo(AddWorerkSend workers, int uid)
+        public void AddFaceInfo(AddWorerkSend workers, int? uid)
         {
 
             {

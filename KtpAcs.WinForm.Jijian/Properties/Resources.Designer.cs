@@ -183,6 +183,16 @@ namespace KtpAcs.WinForm.Jijian.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap btn_close {
+            get {
+                object obj = ResourceManager.GetObject("btn_close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap btn_cxcj {
             get {
                 object obj = ResourceManager.GetObject("btn_cxcj", resourceCulture);
@@ -356,6 +366,16 @@ namespace KtpAcs.WinForm.Jijian.Properties {
         internal static System.Drawing.Bitmap img_exit {
             get {
                 object obj = ResourceManager.GetObject("img_exit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap img_gi {
+            get {
+                object obj = ResourceManager.GetObject("img_gi", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

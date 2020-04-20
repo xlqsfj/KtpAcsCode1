@@ -30,14 +30,14 @@ namespace KtpAcs.WinForm.Jijian
         private string _organizationUserUuid;
         public AddWorker(string phone, string name, string organizationUserUuid, int status = 2)
         {
-            phone = "";
+
             _state = 2;
             _organizationUserUuid = organizationUserUuid;
             _status = status.ToString();
             InitializeComponent();
             this.txtPhone.Text = phone;
             this.txtName.Text = name;
-       
+
             if (_state == 2)
                 panelProjectInfo.Visible = false;
             else
@@ -53,23 +53,29 @@ namespace KtpAcs.WinForm.Jijian
         /// 添加项目人员
         /// </summary>
         /// <param name="add"></param>
-        private int  addProject(AddWorerkSend add)
+        private int addProject(AddWorerkSend add)
         {
             int userId = 0;
             BaseSend baseSend = new BaseSend
             {
                 status = _status,
                 projectUuid = ConfigHelper.KtpLoginProjectId,
-                organizationUserUuid = _organizationUserUuid
+                organizationUserUuid = _organizationUserUuid,
+                facePic = add.facePic,
+                localImgFileName = add.localImgFileName
 
             };
 
             IMulePusher addworkers = new SetWorkerProjectApi() { RequestParam = baseSend };
             PushSummary pushAddworkers = addworkers.Push();
+            string i = "0";
+            string k = "";
             if (pushAddworkers.Success)
             {
-                BaseResult.Data data = pushAddworkers.ResponseData;
-                userId = data.userId;
+                BaseResult data = pushAddworkers.ResponseData;
+                k = data.data.organizationUserId.ToString();
+                userId = Convert.ToInt32(i + k);
+
             }
             return userId;
         }

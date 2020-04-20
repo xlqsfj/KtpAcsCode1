@@ -83,6 +83,7 @@
             // 
             // txt_deviceId
             // 
+            this.txt_deviceId.Enabled = false;
             this.txt_deviceId.Location = new System.Drawing.Point(199, 50);
             this.txt_deviceId.Name = "txt_deviceId";
             this.txt_deviceId.Size = new System.Drawing.Size(289, 20);

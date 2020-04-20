@@ -89,7 +89,7 @@ namespace KtpAcs.WinForm.Jijian.Device
                     gateType = this.radIsEnter.SelectedIndex == 0 ? 1 : 2,
                     deviceIp = txtDeviceIp.Text,
                     projectUuid = ConfigHelper.KtpLoginProjectId,
-                    deviceUuid = this._Id
+                    uuid = this._Id
                 };
 
                 IMulePusher pusherLogin = new SetDeviceApi() { RequestParam = deviceSend };
@@ -97,11 +97,15 @@ namespace KtpAcs.WinForm.Jijian.Device
                 if (pushLogin.Success)
                 {
 
-
+                    btnSave.Enabled = true;
+                    btnSave.Text = "保存";
                     XtraMessageBox.Show($"添加成功");
+                    this.Close();
                 }
                 else
                 {
+                    btnSave.Enabled = true;
+                    btnSave.Text = "保存";
 
                     XtraMessageBox.Show($"添加失败:" + pushLogin.Message);
                 }

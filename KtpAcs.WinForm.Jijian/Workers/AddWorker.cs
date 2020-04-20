@@ -1,6 +1,7 @@
 ﻿using KtpAcs.Infrastructure.Exceptions;
 using KtpAcs.Infrastructure.Utilities;
 using KtpAcs.KtpApiService;
+using KtpAcs.KtpApiService.Model;
 using KtpAcs.KtpApiService.Send;
 using KtpAcs.KtpApiService.Worker;
 using KtpAcs.PanelApi.Yushi;
@@ -14,6 +15,7 @@ using System.Linq;
 using System.Text;
 using static KtpAcs.KtpApiService.Result.BankCardCheckResult;
 using static KtpAcs.KtpApiService.Result.TeamListResult;
+using static KtpAcs.WinForm.Jijian.Workers.WorkerAddStateForm;
 
 namespace KtpAcs.WinForm.Jijian
 {
@@ -37,8 +39,10 @@ namespace KtpAcs.WinForm.Jijian
         private string _url_identityPicId;
         private string _send;
         private bool _isSys = false;
+        private AddWorerkSend add;
 
         private int _state = 0;
+       
         public AddWorker(int hmc = 0)
         {
             _state = hmc;
@@ -211,6 +215,7 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            add = null;
             string submit = btnSubmit.Text;
             try
             {
@@ -219,11 +224,10 @@ namespace KtpAcs.WinForm.Jijian
                 {
                     throw new PreValidationException(PreValidationHelper.ErroMsg);
                 }
-                //  ShowAddInfoForm();
+                ShowAddInfoForm();
                 btnSubmit.Text = @"正在提交";
                 btnSubmit.Enabled = false;
-                ShowAddInfoForm();
-                AddWorerkSend add = new AddWorerkSend();
+                add = new AddWorerkSend();
                 add.address = this.txtAddress.Text;
                 add.age = Convert.ToInt32(this.txtAvg.Text);
                 add.bankName = this.txtBankName.Text;
@@ -277,21 +281,31 @@ namespace KtpAcs.WinForm.Jijian
                 {
                     add.icon = _url_upic;
                 }
-                int uid = 0;
-
-                if (_state == 0)
-                    uid= addUser(add);
-                else if (_state == 1)
-                    uid= addJiaZiUser(add);
-                else
-                    uid= addProject(add);
-                if (uid > 0)
+                WorkSysFail.dicAddMag.Clear();
+                WorkSysFail.dicWorkadd.Clear();
+                if (WorkSysFail.workAdd.Count() > 0)
                 {
-                    AddFaceToPanel addFaceToPanel = new AddFaceToPanel();
-                    addFaceToPanel.AddFaceInfo(add, uid);
-                }
-                btnSubmit.Enabled = true;
+                    int? uid = 0;
 
+                    if (_state == 0)
+                        uid = addUser(add);
+                    else if (_state == 1)
+                        uid = addJiaZiUser(add);
+                    else
+                        uid = addProject(add);
+                    if (uid > 0)
+                    {
+                        WorkSysFail.dicWorkadd.Add(true, "添加成功");
+                        AddFaceToPanel addFaceToPanel = new AddFaceToPanel();
+                        addFaceToPanel.AddFaceInfo(add, uid);
+                    }
+                    btnSubmit.Enabled = true;
+                }
+                else
+                {
+
+                    WorkSysFail.dicWorkadd.Add(false, "添加失败，未连接人脸识别面板!");
+                }
             }
             catch (PreValidationException ex)
             {
@@ -313,7 +327,41 @@ namespace KtpAcs.WinForm.Jijian
             }
         }
 
+        public void ShowAddInfoForm()
+        {
 
+            this.BeginInvoke((EventHandler)delegate
+            {
+                WorkerAddStateForm _workerAddState = new WorkerAddStateForm(txtName.Text.Trim(), txtIdCard.Text.Trim());
+                _workerAddState.ShowSubmit += new AgainSubmit(AddSubWorkInfo);
+
+                _workerAddState.ShowDialog();
+            });
+
+        }
+        /// <summary>
+        //提交接口信息
+        /// </summary>
+        public void AddSubWorkInfo(string close)
+        {
+            btnSubmit.Text = @"提交";
+            btnSubmit.Enabled = true;
+            _send = "";
+            if (_isColse && close == "close")
+            { //编辑
+                Hide();
+                return;
+            }
+            else if (close == "close")
+            {//新增
+
+                // Reset();
+                return;
+            }
+         
+
+
+        }
 
         private void ComOrganizationUuid_EditValueChanged(object sender, EventArgs e)
         {
@@ -326,7 +374,7 @@ namespace KtpAcs.WinForm.Jijian
                 this.comWorkerTeamUuid.Properties.DisplayMember = "teamName";
                 this.comWorkerTeamUuid.Properties.ValueMember = "uuid";
                 this.comWorkerTeamUuid.Properties.DataSource = pList;
-                //this.ComOrganizationUuid.EditValue = "uuid";
+                this.comWorkerTeamUuid.Properties.NullText = "==请选择==";
 
             }
         }

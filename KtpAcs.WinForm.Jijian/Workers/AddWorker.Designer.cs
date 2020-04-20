@@ -178,6 +178,7 @@
             // 
             // comWorkerTeamUuid
             // 
+            this.comWorkerTeamUuid.EditValue = "请选择";
             this.comWorkerTeamUuid.Location = new System.Drawing.Point(257, 73);
             this.comWorkerTeamUuid.Name = "comWorkerTeamUuid";
             this.comWorkerTeamUuid.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1145,7 +1146,6 @@
             this.Controls.Add(this.txtEmergencyContactPhone);
             this.Name = "AddWorker";
             this.Text = "AddWorker";
-    
             this.Load += new System.EventHandler(this.AddWorker_Load);
             this.VisibleChanged += new System.EventHandler(this.AddWorker_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.panelProjectInfo)).EndInit();

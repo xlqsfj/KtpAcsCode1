@@ -50,6 +50,10 @@
     <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
       <HintPath>..\packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
     </Reference>
+    <Reference Include="CSkin, Version=16.1.14.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CSkin.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.BonusSkins.v19.2" />
     <Reference Include="DevExpress.Dashboard.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v19.2" />
@@ -172,6 +176,12 @@
     <Compile Include="Workers\WorkerProjectForm.Designer.cs">
       <DependentUpon>WorkerProjectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Workers\XtraForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Workers\XtraForm1.Designer.cs">
+      <DependentUpon>XtraForm1.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Device\AddDevice.resx">
       <DependentUpon>AddDevice.cs</DependentUpon>
     </EmbeddedResource>
@@ -204,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Workers\WorkerProjectForm.resx">
       <DependentUpon>WorkerProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workers\XtraForm1.resx">
+      <DependentUpon>XtraForm1.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\licenses.licx" />
@@ -255,12 +268,14 @@
     <None Include="image\frown.png" />
     <None Include="image\home_addP.png" />
     <None Include="image\blue_03.png" />
+    <None Include="image\btn_close.png" />
     <Content Include="image\img_404.png" />
     <None Include="image\img_admin.png" />
     <None Include="image\img_exit.png" />
     <None Include="image\jx.png" />
     <None Include="image\jx2.png" />
     <None Include="image\img_login2.png" />
+    <None Include="image\img_gi.png" />
     <Content Include="image\img_login3.png" />
     <Content Include="image\ktp_logo.jpg" />
     <Content Include="image\loading3.gif" />

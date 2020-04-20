@@ -19,6 +19,12 @@ namespace KtpAcs.WinForm.Jijian.Base
         {
             //创建视频驱动对象
             FilterInfoCollection videoDevices = null;
+            if (aVidePlayer.VideoSource != null)
+            {
+                aVidePlayer.SignalToStop();
+                aVidePlayer.WaitForStop();
+                aVidePlayer.VideoSource = null;
+            }
             try
             {
                 // 枚举所有视频输入设备

@@ -22,7 +22,7 @@ namespace KtpAcs.WinForm.Jijian
 {
     public partial class Home : DevExpress.XtraEditors.XtraForm
     {
-        
+
         DeviceListForm _DeivceForm = null; //闸机页面
         WorkerAdminForm _workerAdminForm = null;//工人管理 
         WorkerProjectForm _workerProjectForm = null;//项目管理
@@ -74,7 +74,8 @@ namespace KtpAcs.WinForm.Jijian
                 ProjectCountResult.Data projectCountResult = pushLogin.ResponseData;
 
                 this.labProjectCode.Text = projectCountResult.projectCode;
-                this.labProjectManageNum.Text = projectCountResult.projectWorkerNum + "_" + projectCountResult.jiaziNum + "_"  + projectCountResult.projectManageNum.ToString();
+                this.labProjectManageNum.Text = (projectCountResult.projectWorkerNum + projectCountResult.jiaziNum + projectCountResult.projectManageNum).ToString();
+                this.labProjectManageNum.ToolTip = $"花名册:{ projectCountResult.projectWorkerNum} 甲指分包人员:{ projectCountResult.jiaziNum} 项目人员:{projectCountResult.projectManageNum}";
                 this.labVerificationNum.Text = projectCountResult.workerVerificationNum.ToString();
 
 
@@ -107,17 +108,20 @@ namespace KtpAcs.WinForm.Jijian
 
         }
 
-        public void TabForm(DevExpress.XtraEditors.XtraForm form, string  cName) {
+        public void TabForm(DevExpress.XtraEditors.XtraForm form, string cName)
+        {
 
 
-            
-            foreach (Control c in spl.Panel1.Controls ) {
+
+            foreach (Control c in spl.Panel1.Controls)
+            {
                 if (c is FlowLayoutPanel && c.Name.Contains(cName))
                 {
                     c.BackColor = Color.Transparent;
                     c.BackgroundImage = Jijian.Properties.Resources.blue_03;
                 }
-                else if (c is FlowLayoutPanel) {
+                else if (c is FlowLayoutPanel)
+                {
 
                     c.BackgroundImage = null;
                 }
@@ -137,7 +141,7 @@ namespace KtpAcs.WinForm.Jijian
                 if (_workerAdminForm != null)
                     _workerAdminForm.isExiet();
             }
-          
+
             form.FormBorderStyle = FormBorderStyle.None;
             form.TopLevel = false;
             this.panelContent.Controls.Clear();
@@ -159,8 +163,8 @@ namespace KtpAcs.WinForm.Jijian
             this.panelDevice.Visible = false;
             _workerAdminForm = new WorkerAdminForm();
             TabForm(_workerAdminForm, flowWorerk.Name);
-         
-         
+
+
         }
 
         private void simpleButton5_Click(object sender, EventArgs e)
@@ -175,14 +179,14 @@ namespace KtpAcs.WinForm.Jijian
             addDevice.ShowDialog();
         }
 
-      
+
 
         private void radHMC_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+
             if (_workerAdminForm != null)
                 _workerAdminForm.isExiet();
-        
+
             if (radHMC.SelectedIndex == 0)
             {//花名册
                 _workerAdminForm = new WorkerAdminForm(0);
@@ -203,11 +207,11 @@ namespace KtpAcs.WinForm.Jijian
 
         private void flowAdmin_Click(object sender, EventArgs e)
         {
-         
+
             _workerProjectForm = new WorkerProjectForm();
             this.panelWorker.Visible = false;
             this.panelDevice.Visible = false;
-            TabForm(_workerProjectForm,flowAdmin.Name);
+            TabForm(_workerProjectForm, flowAdmin.Name);
 
         }
 
@@ -261,6 +265,12 @@ namespace KtpAcs.WinForm.Jijian
             {
                 _DeivceForm.GetDevice();
             }
+            flowDevice_Click(null, null);
+        }
+
+        private void picExit_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

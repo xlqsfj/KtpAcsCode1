@@ -34,7 +34,6 @@ namespace KtpAcs.KtpApiService.Worker
             AddWorerkSend workers = base.RequestParam;
 
             if (!string.IsNullOrEmpty(workers.localImgFileName))
-
                 workers.facePic = GetImgUrl(workers.localImgFileName);
             if (!string.IsNullOrEmpty(workers.localImgFileName1))
                 workers.picturePositive = GetImgUrl(workers.localImgFileName1);

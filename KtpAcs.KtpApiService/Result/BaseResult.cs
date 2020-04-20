@@ -22,14 +22,14 @@ namespace KtpAcs.KtpApiService.Result
             /// <summary>
             /// 用户公司id用于闸机
             /// </summary>
-            public int organizationUserId { get; set; }
+            public int? organizationUserId { get; set; }
             //用户公司uuid
             public string organizationUserUuid { get; set; }
 
             /// <summary>
             /// 用户主键id,用于工人id
             /// </summary>
-            public int userId { get; set; }
+            public int? userId { get; set; }
             /// <summary>
             /// 用户uuid
             /// </summary>

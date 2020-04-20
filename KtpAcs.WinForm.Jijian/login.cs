@@ -173,5 +173,15 @@ namespace KtpAcs.WinForm.Jijian
             }
 
         }
+
+        private void picClose_EditValueChanged(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void picClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

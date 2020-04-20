@@ -23,8 +23,13 @@ namespace KtpAcs.KtpApiService.Send
         /// </summary>
         public string status { get; set; }
 
+        public string facePic { get; set; }
 
-    
+        public string localImgFileName { get; set; }
+
+
+
+
 
     }
 

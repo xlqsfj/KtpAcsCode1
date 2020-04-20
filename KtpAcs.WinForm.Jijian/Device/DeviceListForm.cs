@@ -188,6 +188,7 @@ namespace KtpAcs.WinForm.Jijian
                 string id = row.uuid;
                 AddDevice addDevice = new AddDevice(id);
                 addDevice.Show();
+                GetDevice();
 
             }
             catch (Exception ex)
@@ -259,6 +260,12 @@ namespace KtpAcs.WinForm.Jijian
             //    int row = _view.GetChildRowHandle(rowHandle, i);
 
             //}
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            AddDevice addDevice = new AddDevice();
+            addDevice.ShowDialog();
         }
     }
 }

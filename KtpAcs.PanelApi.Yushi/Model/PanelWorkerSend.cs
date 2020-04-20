@@ -105,10 +105,7 @@ namespace KtpAcs.PanelApi.Yushi.Api
             /// </summary>
             public int? PersonID { get; set; }
 
-            /// <summary>
-            /// 人员信息最后修改时间 (Unix 时间戳)
-            /// </summary>
-            public long LastChange { get; set; }
+          
 
             /// <summary>
             /// 人员名字
@@ -122,10 +119,7 @@ namespace KtpAcs.PanelApi.Yushi.Api
             /// </summary>
             public int Gender { get; set; }
 
-            /// <summary>
-            /// 时间模板相关信息，
-            /// </summary>
-            public TimeTemplate TimeTemplate { get; set; }
+        
 
             /// <summary>
             /// 证件信息个数范围:[0, 2]

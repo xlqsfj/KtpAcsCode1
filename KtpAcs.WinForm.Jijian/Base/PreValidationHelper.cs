@@ -35,7 +35,7 @@ namespace KtpAcs.WinForm.Jijian.Base
         public static void MustNotBeNull(
             DXErrorProvider errorProvider, TextEdit comboBox, string msg, ref bool result)
         {
-            if (comboBox.EditValue == null || comboBox.EditValue.ToString() == string.Empty)
+            if (comboBox.EditValue == null || comboBox.EditValue=="Value" || comboBox.EditValue.ToString() == string.Empty)
             {
                 errorProvider.SetError(comboBox, msg);
                 result = false;

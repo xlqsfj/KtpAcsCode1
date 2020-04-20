@@ -1,5 +1,6 @@
 ﻿using KS.Resting;
 using KtpAcs.Infrastructure.Utilities;
+using KtpAcs.KtpApiService.Model;
 using KtpAcs.KtpApiService.Result;
 using KtpAcs.KtpApiService.Send;
 using RestSharp;
@@ -31,11 +32,10 @@ namespace KtpAcs.KtpApiService.Worker
         protected override BaseSend FetchDataToPush()
         {
 
-            //AddWorerkSend workers = base.RequestParam;
+            BaseSend workers = base.RequestParam;
 
-            //if (!string.IsNullOrEmpty(workers.localImgFileName))
-
-            //    workers.facePic = GetImgUrl(workers.localImgFileName);
+            if (!string.IsNullOrEmpty(workers.localImgFileName))
+                workers.facePic = GetImgUrl(workers.localImgFileName);
             //if (!string.IsNullOrEmpty(workers.localImgFileName1))
             //    workers.picturePositive = GetImgUrl(workers.localImgFileName1);
             //if (!string.IsNullOrEmpty(workers.localImgFileName2))
@@ -61,7 +61,7 @@ namespace KtpAcs.KtpApiService.Worker
 
             if (!mag.Success)
             {
-
+                       WorkSysFail.dicWorkadd.Add(false, mag.Message);
                 return mag;
             }
 

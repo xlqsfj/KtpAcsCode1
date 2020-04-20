@@ -28,170 +28,227 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.grid_Device = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.btnClose = new DevExpress.XtraEditors.SimpleButton();
-            this.btnRetry = new DevExpress.XtraEditors.SimpleButton();
-            this.panelKtpState = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grid_Device)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelKtpState)).BeginInit();
-            this.panelKtpState.SuspendLayout();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.skin_close = new CCWin.SkinControl.SkinButton();
+            this.skingrid_sysPanel = new CCWin.SkinControl.SkinDataGridView();
+            this.deviceIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deviceIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.magAdd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnReason = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.skinlable_addworkImg = new System.Windows.Forms.Label();
+            this.skin_retry = new CCWin.SkinControl.SkinButton();
+            ((System.ComponentModel.ISupportInitialize)(this.skingrid_sysPanel)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // gridControl1
+            // skin_close
             // 
-            this.gridControl1.Location = new System.Drawing.Point(53, 54);
-            this.gridControl1.MainView = this.grid_Device;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(640, 248);
-            this.gridControl1.TabIndex = 2;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.grid_Device});
+            this.skin_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.skin_close.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
+            this.skin_close.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skin_close.DownBack = null;
+            this.skin_close.Enabled = false;
+            this.skin_close.ForeColor = System.Drawing.Color.Transparent;
+            this.skin_close.Location = new System.Drawing.Point(221, 243);
+            this.skin_close.MouseBack = null;
+            this.skin_close.Name = "skin_close";
+            this.skin_close.NormlBack = null;
+            this.skin_close.Size = new System.Drawing.Size(202, 27);
+            this.skin_close.TabIndex = 8;
+            this.skin_close.Text = "返 回 编 辑";
+            this.skin_close.UseVisualStyleBackColor = false;
+            this.skin_close.Click += new System.EventHandler(this.skin_close_Click);
             // 
-            // grid_Device
+            // skingrid_sysPanel
             // 
-            this.grid_Device.Appearance.HeaderPanel.Options.UseTextOptions = true;
-            this.grid_Device.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.grid_Device.Appearance.Row.Options.UseTextOptions = true;
-            this.grid_Device.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.grid_Device.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn4,
-            this.gridId});
-            this.grid_Device.GridControl = this.gridControl1;
-            this.grid_Device.Name = "grid_Device";
-            this.grid_Device.OptionsView.ShowGroupPanel = false;
+            this.skingrid_sysPanel.AllowUserToAddRows = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
+            this.skingrid_sysPanel.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.skingrid_sysPanel.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.skingrid_sysPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.skingrid_sysPanel.ColumnFont = null;
+            this.skingrid_sysPanel.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(246)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 9F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.skingrid_sysPanel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.skingrid_sysPanel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.skingrid_sysPanel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.deviceIP,
+            this.deviceIn,
+            this.magAdd,
+            this.btnReason});
+            this.skingrid_sysPanel.ColumnSelectForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 9F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(188)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.skingrid_sysPanel.DefaultCellStyle = dataGridViewCellStyle7;
+            this.skingrid_sysPanel.EnableHeadersVisualStyles = false;
+            this.skingrid_sysPanel.GridColor = System.Drawing.SystemColors.ScrollBar;
+            this.skingrid_sysPanel.HeadFont = new System.Drawing.Font("Tahoma", 9F);
+            this.skingrid_sysPanel.HeadSelectForeColor = System.Drawing.SystemColors.HighlightText;
+            this.skingrid_sysPanel.Location = new System.Drawing.Point(0, 38);
+            this.skingrid_sysPanel.Name = "skingrid_sysPanel";
+            this.skingrid_sysPanel.ReadOnly = true;
+            this.skingrid_sysPanel.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.skingrid_sysPanel.RowHeadersVisible = false;
+            this.skingrid_sysPanel.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.skingrid_sysPanel.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.skingrid_sysPanel.RowTemplate.Height = 23;
+            this.skingrid_sysPanel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.skingrid_sysPanel.Size = new System.Drawing.Size(618, 141);
+            this.skingrid_sysPanel.SkinGridColor = System.Drawing.SystemColors.ScrollBar;
+            this.skingrid_sysPanel.TabIndex = 1;
+            this.skingrid_sysPanel.TitleBack = null;
+            this.skingrid_sysPanel.TitleBackColorBegin = System.Drawing.Color.White;
+            this.skingrid_sysPanel.TitleBackColorEnd = System.Drawing.SystemColors.ActiveBorder;
             // 
-            // gridColumn1
+            // deviceIP
             // 
-            this.gridColumn1.Caption = "设备ip号";
-            this.gridColumn1.FieldName = "deviceIp";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.deviceIP.DataPropertyName = "deviceIP";
+            this.deviceIP.HeaderText = "设备Ip号";
+            this.deviceIP.Name = "deviceIP";
+            this.deviceIP.ReadOnly = true;
             // 
-            // gridColumn2
+            // deviceIn
             // 
-            this.gridColumn2.Caption = "是否进出方向";
-            this.gridColumn2.FieldName = "magAdd";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.deviceIn.DataPropertyName = "deviceIn";
+            this.deviceIn.HeaderText = "是否进出方向";
+            this.deviceIn.Name = "deviceIn";
+            this.deviceIn.ReadOnly = true;
+            this.deviceIn.Width = 102;
             // 
-            // gridColumn4
+            // magAdd
             // 
-            this.gridColumn4.Caption = "消息";
-            this.gridColumn4.FieldName = "magAdd";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 2;
+            this.magAdd.DataPropertyName = "magAdd";
+            this.magAdd.HeaderText = "添加消息";
+            this.magAdd.Name = "magAdd";
+            this.magAdd.ReadOnly = true;
+            this.magAdd.Width = 320;
             // 
-            // gridId
+            // btnReason
             // 
-            this.gridId.Caption = "操作";
-            this.gridId.Name = "gridId";
-            this.gridId.Visible = true;
-            this.gridId.VisibleIndex = 3;
+            this.btnReason.DataPropertyName = "reason";
+            this.btnReason.HeaderText = "操作";
+            this.btnReason.Name = "btnReason";
+            this.btnReason.ReadOnly = true;
+            this.btnReason.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnReason.Text = "重试";
+            this.btnReason.ToolTipText = "失败重试";
+            this.btnReason.UseColumnTextForButtonValue = true;
+            this.btnReason.Width = 90;
             // 
-            // repositoryItemCheckEdit1
+            // panel2
             // 
-            this.repositoryItemCheckEdit1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
-            this.repositoryItemCheckEdit1.AllowGrayed = true;
-            this.repositoryItemCheckEdit1.AutoHeight = false;
-            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Controls.Add(this.skingrid_sysPanel);
+            this.panel2.Location = new System.Drawing.Point(36, 49);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(626, 188);
+            this.panel2.TabIndex = 9;
             // 
-            // btnClose
+            // panel1
             // 
-            this.btnClose.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
-            this.btnClose.Appearance.Options.UseBackColor = true;
-            this.btnClose.Location = new System.Drawing.Point(291, 326);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(146, 36);
-            this.btnClose.TabIndex = 3;
-            this.btnClose.Text = "返回编辑";
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.skinlable_addworkImg);
+            this.panel1.Controls.Add(this.skin_retry);
+            this.panel1.Location = new System.Drawing.Point(11, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(607, 33);
+            this.panel1.TabIndex = 6;
             // 
-            // btnRetry
+            // label1
             // 
-            this.btnRetry.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
-            this.btnRetry.Appearance.Options.UseBackColor = true;
-            this.btnRetry.Location = new System.Drawing.Point(507, 5);
-            this.btnRetry.Name = "btnRetry";
-            this.btnRetry.Size = new System.Drawing.Size(128, 36);
-            this.btnRetry.TabIndex = 3;
-            this.btnRetry.Text = "重 试";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(21, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "向云端添加";
             // 
-            // panelKtpState
+            // skinlable_addworkImg
             // 
-            this.panelKtpState.Controls.Add(this.labelControl2);
-            this.panelKtpState.Controls.Add(this.labelControl1);
-            this.panelKtpState.Controls.Add(this.btnRetry);
-            this.panelKtpState.Location = new System.Drawing.Point(53, 2);
-            this.panelKtpState.Name = "panelKtpState";
-            this.panelKtpState.Size = new System.Drawing.Size(640, 46);
-            this.panelKtpState.TabIndex = 4;
+            this.skinlable_addworkImg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.skinlable_addworkImg.AutoSize = true;
+            this.skinlable_addworkImg.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinlable_addworkImg.Location = new System.Drawing.Point(104, 10);
+            this.skinlable_addworkImg.Name = "skinlable_addworkImg";
+            this.skinlable_addworkImg.Size = new System.Drawing.Size(72, 16);
+            this.skinlable_addworkImg.TabIndex = 6;
+            this.skinlable_addworkImg.Text = "添加中..\r\n";
+            this.skinlable_addworkImg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelControl2
+            // skin_retry
             // 
-            this.labelControl2.Location = new System.Drawing.Point(33, 16);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(60, 14);
-            this.labelControl2.TabIndex = 4;
-            this.labelControl2.Text = "向云端添加";
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(295, 16);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(44, 14);
-            this.labelControl1.TabIndex = 4;
-            this.labelControl1.Text = "添加中..";
+            this.skin_retry.BackColor = System.Drawing.Color.Transparent;
+            this.skin_retry.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
+            this.skin_retry.BorderColor = System.Drawing.Color.Silver;
+            this.skin_retry.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skin_retry.DownBack = null;
+            this.skin_retry.ForeColor = System.Drawing.Color.White;
+            this.skin_retry.Location = new System.Drawing.Point(511, 2);
+            this.skin_retry.MouseBack = null;
+            this.skin_retry.Name = "skin_retry";
+            this.skin_retry.NormlBack = null;
+            this.skin_retry.Size = new System.Drawing.Size(93, 27);
+            this.skin_retry.TabIndex = 5;
+            this.skin_retry.Text = "重试";
+            this.skin_retry.UseVisualStyleBackColor = false;
+            this.skin_retry.Visible = false;
+            this.skin_retry.Click += new System.EventHandler(this.skin_retry_Click);
             // 
             // WorkerAddStateForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(757, 374);
-            this.Controls.Add(this.panelKtpState);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.gridControl1);
+            this.ClientSize = new System.Drawing.Size(688, 281);
+            this.Controls.Add(this.skin_close);
+            this.Controls.Add(this.panel2);
             this.Name = "WorkerAddStateForm";
             this.Text = "WorkerAddStateForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WorkerAddStateForm_FormClosed);
             this.Load += new System.EventHandler(this.WorkerAddStateForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grid_Device)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelKtpState)).EndInit();
-            this.panelKtpState.ResumeLayout(false);
-            this.panelKtpState.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.skingrid_sysPanel)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView grid_Device;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridId;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
-        private DevExpress.XtraEditors.SimpleButton btnClose;
-        private DevExpress.XtraEditors.SimpleButton btnRetry;
-        private DevExpress.XtraEditors.PanelControl panelKtpState;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private CCWin.SkinControl.SkinButton skin_close;
+        private CCWin.SkinControl.SkinDataGridView skingrid_sysPanel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deviceIP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deviceIn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn magAdd;
+        private System.Windows.Forms.DataGridViewButtonColumn btnReason;
+        private System.Windows.Forms.Panel panel2;
+        public System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label skinlable_addworkImg;
+        private CCWin.SkinControl.SkinButton skin_retry;
     }
 }

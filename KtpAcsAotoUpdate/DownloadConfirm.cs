@@ -29,7 +29,7 @@ namespace KtpAcsAotoUpdate
 
         private void OnLoad(object sender, EventArgs e)
         {
-       
+            this.FormBorderStyle = FormBorderStyle.None;
             skinLabel2.Text = this.downloadFileList[0].LastVer;
             string updateText = "";
             foreach (DownloadFileInfo file in this.downloadFileList)

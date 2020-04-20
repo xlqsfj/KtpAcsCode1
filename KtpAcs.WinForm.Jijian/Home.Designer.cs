@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.Utils.ContextButton contextButton1 = new DevExpress.Utils.ContextButton();
             DevExpress.Utils.ContextButton contextButton2 = new DevExpress.Utils.ContextButton();
             DevExpress.Utils.ContextButton contextButton3 = new DevExpress.Utils.ContextButton();
@@ -60,7 +61,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.labProjectCode = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.labProjectManageNum = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -76,6 +76,8 @@
             this.btnSyn = new DevExpress.XtraEditors.SimpleButton();
             this.comProjectList = new DevExpress.XtraEditors.LookUpEdit();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.labProjectManageNum = new DevExpress.XtraEditors.LabelControl();
+            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.spl)).BeginInit();
             this.spl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit6.Properties)).BeginInit();
@@ -184,6 +186,7 @@
             this.picExit.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             this.picExit.Size = new System.Drawing.Size(61, 39);
             this.picExit.TabIndex = 3;
+            this.picExit.EditValueChanged += new System.EventHandler(this.picExit_EditValueChanged);
             this.picExit.Click += new System.EventHandler(this.picExit_Click);
             // 
             // flowDevice
@@ -453,10 +456,10 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.labProjectManageNum);
             this.panelControl1.Controls.Add(this.label5);
             this.panelControl1.Controls.Add(this.labProjectCode);
             this.panelControl1.Controls.Add(this.label8);
-            this.panelControl1.Controls.Add(this.labProjectManageNum);
             this.panelControl1.Controls.Add(this.label13);
             this.panelControl1.Controls.Add(this.label14);
             this.panelControl1.Controls.Add(this.label12);
@@ -501,22 +504,6 @@
             this.label8.Size = new System.Drawing.Size(124, 23);
             this.label8.TabIndex = 4;
             this.label8.Text = "项目总人数：";
-            // 
-            // labProjectManageNum
-            // 
-            this.labProjectManageNum.AllowDrop = true;
-            this.labProjectManageNum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labProjectManageNum.AutoEllipsis = true;
-            this.labProjectManageNum.AutoSize = true;
-            this.labProjectManageNum.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.labProjectManageNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.labProjectManageNum.Location = new System.Drawing.Point(343, 18);
-            this.labProjectManageNum.Name = "labProjectManageNum";
-            this.labProjectManageNum.Size = new System.Drawing.Size(70, 23);
-            this.labProjectManageNum.TabIndex = 4;
-            this.labProjectManageNum.Text = "200000";
-            this.labProjectManageNum.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label13
             // 
@@ -698,6 +685,20 @@
             this.simpleButton3.Size = new System.Drawing.Size(6, 27);
             this.simpleButton3.TabIndex = 8;
             // 
+            // labProjectManageNum
+            // 
+            this.labProjectManageNum.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.labProjectManageNum.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.labProjectManageNum.Appearance.Options.UseFont = true;
+            this.labProjectManageNum.Appearance.Options.UseForeColor = true;
+            this.labProjectManageNum.Location = new System.Drawing.Point(341, 18);
+            this.labProjectManageNum.Name = "labProjectManageNum";
+            this.labProjectManageNum.Size = new System.Drawing.Size(30, 23);
+            this.labProjectManageNum.TabIndex = 5;
+            this.labProjectManageNum.Tag = "1111";
+            this.labProjectManageNum.Text = "200";
+            this.labProjectManageNum.ToolTipController = this.toolTipController1;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -779,7 +780,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label labProjectManageNum;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label labProjectCode;
         private DevExpress.XtraEditors.PanelControl panelWorker;
@@ -787,5 +787,7 @@
         private DevExpress.XtraEditors.PanelControl panelDevice;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private System.Windows.Forms.Label label5;
+        private DevExpress.XtraEditors.LabelControl labProjectManageNum;
+        private DevExpress.Utils.ToolTipController toolTipController1;
     }
 }

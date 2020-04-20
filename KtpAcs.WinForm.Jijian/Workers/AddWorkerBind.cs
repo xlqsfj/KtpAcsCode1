@@ -2,9 +2,11 @@
 using KtpAcs.Infrastructure.Utilities;
 using KtpAcs.KtpApiService;
 using KtpAcs.KtpApiService.Base;
+using KtpAcs.KtpApiService.Model;
 using KtpAcs.KtpApiService.Result;
 using KtpAcs.KtpApiService.Send;
 using KtpAcs.KtpApiService.Worker;
+using KtpAcs.PanelApi.Yushi;
 using KtpAcs.WinForm.Jijian.Base;
 using KtpAcs.WinForm.Jijian.Workers;
 using KtpAcsMiddleware.KtpApiService.Base;
@@ -32,8 +34,9 @@ namespace KtpAcs.WinForm.Jijian
             this.ComNation.Properties.DisplayMember = "Value";
             this.ComNation.Properties.ValueMember = "Key";
             this.ComNation.EditValue = "Value";
-            this.ComNation.Properties.NullText = "==请选择==";
+          
             this.ComNation.Properties.DataSource = nations;
+            this.ComNation.Properties.NullText = "==请选择==";
 
             if (selectedValue != null)
             {
@@ -55,8 +58,9 @@ namespace KtpAcs.WinForm.Jijian
             this.ComEducationLevel.Properties.DisplayMember = "Value";
             this.ComEducationLevel.Properties.ValueMember = "Key";
             this.ComEducationLevel.EditValue = "Value";
-            this.ComEducationLevel.Properties.NullText = "==请选择==";
+
             this.ComEducationLevel.Properties.DataSource = nations;
+            this.ComEducationLevel.Properties.NullText = "==请选择==";
             //是否显示列名
 
             ComEducationLevel.Properties.ShowHeader = false;
@@ -113,8 +117,9 @@ namespace KtpAcs.WinForm.Jijian
                 this.ComOrganizationUuid.Properties.DisplayMember = "name";
                 this.ComOrganizationUuid.Properties.ValueMember = "uuid";
                 this.ComOrganizationUuid.Properties.DataSource = pList;
-                //this.ComOrganizationUuid.EditValue = "uuid";
-
+                this.ComOrganizationUuid.Properties.NullText = "===请选择===";
+                this.comWorkerTeamUuid.Properties.NullText = "===请先选择劳务公司===";
+                
             }
         }
 
@@ -147,10 +152,10 @@ namespace KtpAcs.WinForm.Jijian
         /// 添加花名册
         /// </summary>
         /// <param name="add"></param>
-        private int addUser(AddWorerkSend add)
+        private int? addUser(AddWorerkSend add)
         {
 
-            int userId = 0;
+            int? userId = 0;
             add.organizationUuid = this.ComOrganizationUuid.EditValue.ToString();
             add.workType = this.comWorkType.EditValue.ToString();
             add.workerTeamUuid = this.comWorkerTeamUuid.EditValue.ToString();
@@ -180,9 +185,9 @@ namespace KtpAcs.WinForm.Jijian
         /// 甲子分包
         /// </summary>
         /// <param name="add"></param>
-        private int addJiaZiUser(AddWorerkSend add)
+        private int? addJiaZiUser(AddWorerkSend add)
         {
-            int userId = 0;
+            int? userId = 0;
 
             IMulePusher imIsexits = new GetWorkerIsExistApi() { RequestParam = new { phone = add.phone } };
             PushSummary PuIsexits = imIsexits.Push();
@@ -196,8 +201,8 @@ namespace KtpAcs.WinForm.Jijian
             PushSummary pushAddworkers = addworkers.Push();
             if (pushAddworkers.Success)
             {
-                BaseResult.Data data = pushAddworkers.ResponseData;
-                userId = data.userId;
+                BaseResult data = pushAddworkers.ResponseData;
+                userId = data.data.userId;
             }
             return userId;
         }
@@ -300,25 +305,7 @@ namespace KtpAcs.WinForm.Jijian
             }
 
         }
-        public void ShowAddInfoForm()
-        {
-
-            this.BeginInvoke((EventHandler)delegate
-            {
-                WorkerAddStateForm _workerAddState = new WorkerAddStateForm(txtName.Text.Trim(), txtIdCard.Text.Trim());
-                _workerAddState.ShowSubmit += new AgainSubmit(AddSubWorkInfo);
-
-                _workerAddState.ShowDialog();
-            });
-
-        }
-        /// <summary>
-        //提交接口信息
-        /// </summary>
-        public void AddSubWorkInfo(string close)
-        {
-
-        }
+     
 
 
     }

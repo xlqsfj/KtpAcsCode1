@@ -355,17 +355,18 @@ namespace KtpAcs.Infrastructure.Utilities
             {
                 string dir;
 
-                if (!ConfigHelper.KtpUploadNetWork|| ConfigHelper.IsApplicationUpload)
-                {
-                    dir = Path.Combine(SiteContentDir, "data\\img") + "\\";
-                }
-               else if (ConfigurationManager.AppSettings["CustomFilesDir"] != null)
+           
+                if (ConfigurationManager.AppSettings["CustomFilesDir"] != null)
                 {
                     dir = ConfigurationManager.AppSettings["CustomFilesDir"];
                     if (!dir.EndsWith("\\"))
                     {
                         dir = dir + "\\";
                     }
+                }
+                else if (!ConfigHelper.KtpUploadNetWork || ConfigHelper.IsApplicationUpload)
+                {
+                    dir = Path.Combine(SiteContentDir, "data\\img") + "\\";
                 }
                 else
                 {

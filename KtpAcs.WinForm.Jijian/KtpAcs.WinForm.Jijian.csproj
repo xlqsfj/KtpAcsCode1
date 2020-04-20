@@ -227,6 +227,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="update.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -284,6 +285,10 @@
     <ProjectReference Include="..\KtpAcs.PanelApi.Yushi\KtpAcs.PanelApi.Yushi.csproj">
       <Project>{E22816B6-3E02-4D0A-A2F8-36F15AF8E383}</Project>
       <Name>KtpAcs.PanelApi.Yushi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KtpAcsAotoUpdate\KtpAcsAotoUpdate.csproj">
+      <Project>{669c1176-b2fa-4f32-90cf-7f7a2b6e4bfc}</Project>
+      <Name>KtpAcsAotoUpdate</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

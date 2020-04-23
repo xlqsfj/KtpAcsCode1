@@ -35,8 +35,8 @@
             // 
             // pictureEdit1
             // 
-            this.pictureEdit1.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading33;
-            this.pictureEdit1.Location = new System.Drawing.Point(122, 38);
+            this.pictureEdit1.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.Loading4;
+            this.pictureEdit1.Location = new System.Drawing.Point(110, 38);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -57,7 +57,7 @@
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 197);
+            this.ClientSize = new System.Drawing.Size(429, 174);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.pictureEdit1);
             this.Name = "WorkerSynForm";

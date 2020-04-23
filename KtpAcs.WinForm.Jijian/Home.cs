@@ -41,7 +41,6 @@ namespace KtpAcs.WinForm.Jijian
         private void GetProjectList()
         {
 
-
             IMulePusher pusherLogin = new GetProjectListApi() { RequestParam = new { pageNum = 0, pageSize = 0, type = 0 } };
             PushSummary pushLogin = pusherLogin.Push();
             if (pushLogin.Success)
@@ -59,6 +58,10 @@ namespace KtpAcs.WinForm.Jijian
                 this.comProjectList.Properties.DataSource = pList;
                 this.comProjectList.EditValue = pList[0].projectUuid;
                 ConfigHelper._KtpLoginProjectId = pList[0].projectUuid;
+                this.comProjectList.Properties.Columns.Add(
+               new DevExpress.XtraEditors.Controls.LookUpColumnInfo("organizationName","公司名称"));
+                this.comProjectList.Properties.Columns.Add(
+                new DevExpress.XtraEditors.Controls.LookUpColumnInfo("projectName","项目名称"));
 
             }
         }
@@ -77,18 +80,12 @@ namespace KtpAcs.WinForm.Jijian
                 this.labProjectManageNum.Text = (projectCountResult.projectWorkerNum + projectCountResult.jiaziNum + projectCountResult.projectManageNum).ToString();
                 this.labProjectManageNum.ToolTip = $"花名册:{ projectCountResult.projectWorkerNum} 甲指分包人员:{ projectCountResult.jiaziNum} 项目人员:{projectCountResult.projectManageNum}";
                 this.labVerificationNum.Text = projectCountResult.workerVerificationNum.ToString();
-
+                this.labPhone.Text = ConfigHelper.KtpLoginPhone;
 
             }
         }
 
 
-        private void pictureEdit1_MouseEnter(object sender, EventArgs e)
-        {
-            this.flowAdmin.Visible = true;
-            this.label1.ForeColor = Color.White;
-            this.flowAdmin.BackColor = Color.GhostWhite;
-        }
 
 
 
@@ -107,6 +104,13 @@ namespace KtpAcs.WinForm.Jijian
             TabForm(_DeivceForm, flowDevice.Name);
 
         }
+
+
+        /// <summary>
+        /// 循环tab切换
+        /// </summary>
+        /// <param name="form"></param>
+        /// <param name="cName"></param>
 
         public void TabForm(DevExpress.XtraEditors.XtraForm form, string cName)
         {
@@ -161,23 +165,14 @@ namespace KtpAcs.WinForm.Jijian
             _DeivceForm = null;
             this.panelWorker.Visible = true;
             this.panelDevice.Visible = false;
-            _workerAdminForm = new WorkerAdminForm();
+            if (_workerAdminForm != null)
+                _workerAdminForm.isExiet();
+            _workerAdminForm = new WorkerAdminForm(radHMC.SelectedIndex);
             TabForm(_workerAdminForm, flowWorerk.Name);
 
 
         }
 
-        private void simpleButton5_Click(object sender, EventArgs e)
-        {
-            AddDevice addDevice = new AddDevice();
-            addDevice.ShowDialog();
-        }
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            AddDevice addDevice = new AddDevice();
-            addDevice.ShowDialog();
-        }
 
 
 
@@ -239,18 +234,8 @@ namespace KtpAcs.WinForm.Jijian
         {
 
             _DeivceForm.SysWorkerToPanel();
+            flowDevice_Click(null, null);
         }
-
-        private void Home_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowDevice_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         /// <summary>
         /// 点击项目下拉框
         /// </summary>
@@ -261,14 +246,27 @@ namespace KtpAcs.WinForm.Jijian
             ConfigHelper.KtpLoginProjectId = this.comProjectList.EditValue.ToString();
             GetProjectCount();
 
+
+            flowDevice_Click(null, null);
+        }
+
+
+        private void btnAddDevice_Click(object sender, EventArgs e)
+        {
+            AddDevice addDevice = new AddDevice();
+            addDevice.ShowDialog();
             if (_DeivceForm != null)
             {
                 _DeivceForm.GetDevice();
             }
-            flowDevice_Click(null, null);
         }
 
-        private void picExit_EditValueChanged(object sender, EventArgs e)
+        private void Home_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
         {
 
         }

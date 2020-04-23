@@ -54,6 +54,7 @@ namespace KtpAcs.KtpApiService.Send
         public string startTime { get; set; }
         public string workType { get; set; }
         public string workerTeamUuid { get; set; }
+        public string cardAgency { get; set; }
 
         /// <summary>
         /// 保存本地的文件名的识别人像

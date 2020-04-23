@@ -20,6 +20,7 @@ using KtpAcs.KtpApiService.Model;
 using KtpAcs.PanelApi.Yushi.Model;
 using KtpAcs.PanelApi.Yushi.Api;
 using KtpAcs.PanelApi.Yushi;
+using static KtpAcs.WinForm.Jijian.Device.AddDevice;
 
 namespace KtpAcs.WinForm.Jijian
 {
@@ -52,6 +53,7 @@ namespace KtpAcs.WinForm.Jijian
                 //清空上次同步失败的人员
                 WorkSysFail.list.Clear();
                 WorkerSynForm frm = new WorkerSynForm(list);
+                frm.StartPosition = FormStartPosition.CenterParent;
                 //注册事件
                 frm.ShowSubmit += ShowExptForm;
                 frm.ShowDialog();
@@ -66,8 +68,9 @@ namespace KtpAcs.WinForm.Jijian
         {
             if (WorkSysFail.list.Count() > 0)
             {
-
-                new WorkerSynForm().ShowDialog();
+                WorkerSynFail workerSynFail = new WorkerSynFail();
+                workerSynFail.StartPosition = FormStartPosition.CenterParent;
+                workerSynFail.ShowDialog();
             }
 
         }
@@ -187,8 +190,12 @@ namespace KtpAcs.WinForm.Jijian
                 dynamic row = this.grid_Device.GetFocusedRow();
                 string id = row.uuid;
                 AddDevice addDevice = new AddDevice(id);
-                addDevice.Show();
-                GetDevice();
+                addDevice.StartPosition = FormStartPosition.CenterParent;
+                addDevice.ShowSubmit += new AgainSubmit(o => GetDevice());
+                addDevice.ShowDialog();
+             
+       
+             
 
             }
             catch (Exception ex)
@@ -223,9 +230,12 @@ namespace KtpAcs.WinForm.Jijian
                         IMulePusherYs panelDeleteApi = new PanelLibraryDeleteApi() { PanelIp = ip };
 
                         PushSummarYs pushSummarySet = panelDeleteApi.Push();
-                        XtraMessageBox.Show($"QQ：删除成功！");
+                        XtraMessageBox.Show($"{ip}:删除成功！");
                         this.grid_Device.DeleteRow(this.grid_Device.FocusedRowHandle);//删除行
-
+                        if (this.grid_Device.RowCount < 1) {
+                            panelContent.Visible = true;
+                            gridControl.Visible = false;
+                        }
                     }
 
                 }
@@ -267,5 +277,10 @@ namespace KtpAcs.WinForm.Jijian
             AddDevice addDevice = new AddDevice();
             addDevice.ShowDialog();
         }
+        //public void GetUpdate(string  isSumit) {
+        //    GetDevice();
+
+        //}
+
     }
 }

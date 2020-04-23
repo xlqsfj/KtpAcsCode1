@@ -43,7 +43,7 @@ namespace KtpAcs.WinForm.Jijian
 
         private int _state = 0;
        
-        public AddWorker(int hmc = 0)
+        public AddWorker(int hmc = 0, int openState=0)
         {
             _state = hmc;
             InitializeComponent();
@@ -59,6 +59,29 @@ namespace KtpAcs.WinForm.Jijian
             ContentState(_state);
         }
 
+        /// <summary>
+        /// 编辑，或查看
+        /// </summary>
+        /// <param name="uuId"></param>
+        /// <param name="hmc"></param>
+        /// <param name="isEdit"></param>
+        public AddWorker(string  uuId, int hmc = 0, bool isEdit=false)
+        {
+            _state = hmc;
+            InitializeComponent();
+            CameraConn();
+            BindNationsCb();
+            BindEducationLeveCb();
+            //查询工种
+            GetProjectList();
+            //劳务公司
+            GetOrganizationUuidList();
+            //银行
+            //  BindBankCardCb();
+            ContentState(_state);
+            GetInfo(hmc, uuId);
+        }
+
 
         private void CameraConn()
         {
@@ -71,6 +94,8 @@ namespace KtpAcs.WinForm.Jijian
             }
             catch (NotFoundException nfException)
             {
+                f1.Visible = true; 
+                f2.Visible = true;
                 MessageHelper.Show(nfException.Message);
             }
         }
@@ -159,6 +184,7 @@ namespace KtpAcs.WinForm.Jijian
                             ComNation.EditValue = (int.Parse(cardMsg.Nation));
                             txtStartTime.Text = cardMsg.UserLifeBegin.Trim();
                             txtExpireTime.Text = cardMsg.UserLifeEnd.Trim();
+                            txtCardAgency.Text = cardMsg.GrantDept.Trim();
                             if (!string.IsNullOrEmpty(cardMsg.PhotoFileName))
                             {
                                 //IdentityHeadPic.Image = Image.FromFile(cardMsg.PhotoFileName);
@@ -168,9 +194,6 @@ namespace KtpAcs.WinForm.Jijian
                                 fs.Close();
 
                             }
-
-
-
                             _fromReader = true;
                         }
                         catch (Exception ex)
@@ -238,6 +261,7 @@ namespace KtpAcs.WinForm.Jijian
                 add.emergencyContactPhone = this.txtEmergencyContactPhone.Text;
                 add.gender = this.txtGender.SelectedIndex == 0 ? 1 : 2;
                 add.idCard = this.txtIdCard.Text;
+                add.cardAgency = this.txtCardAgency.Text;
                 add.name = this.txtName.Text;
                 add.nation = this.ComNation.Text;
                 add.nativePlace = this.txtNativePlace.Text;
@@ -355,7 +379,7 @@ namespace KtpAcs.WinForm.Jijian
             else if (close == "close")
             {//新增
 
-                // Reset();
+                reslt(_state);
                 return;
             }
          
@@ -366,36 +390,11 @@ namespace KtpAcs.WinForm.Jijian
         private void ComOrganizationUuid_EditValueChanged(object sender, EventArgs e)
         {
             var uuid = ComOrganizationUuid.EditValue;
-            IMulePusher pusherLogin = new GeTeamsApi() { RequestParam = new { organizationUuid = uuid } };
-            PushSummary pushLogin = pusherLogin.Push();
-            if (pushLogin.Success)
-            {
-                List<TeamList> pList = pushLogin.ResponseData;
-                this.comWorkerTeamUuid.Properties.DisplayMember = "teamName";
-                this.comWorkerTeamUuid.Properties.ValueMember = "uuid";
-                this.comWorkerTeamUuid.Properties.DataSource = pList;
-                this.comWorkerTeamUuid.Properties.NullText = "==请选择==";
-
-            }
+            GetTeamInfo(uuid);
         }
 
 
 
-        private void AddWorker_VisibleChanged(object sender, EventArgs e)
-        {
-
-        }
-
-      
-        private void txtBankNo_EditValueChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void txtBankNo_MouseLeave(object sender, EventArgs e)
-        {
-
-
-        }
         public void GetIsAVide() {
             if (AVidePlayer.IsRunning)
             {
@@ -430,6 +429,13 @@ namespace KtpAcs.WinForm.Jijian
                 MessageHelper.Show(pushLogin.Message);
             }
 
+        }
+
+  
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            reslt(_state);
         }
     }
 }

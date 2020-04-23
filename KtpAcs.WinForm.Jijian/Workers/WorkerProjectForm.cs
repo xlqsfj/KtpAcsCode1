@@ -16,6 +16,11 @@ using KtpAcs.KtpApiService.Send;
 using DevExpress.XtraTab;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraEditors.Controls;
+using KtpAcs.PanelApi.Yushi;
+using KtpAcs.PanelApi.Yushi.Api;
+using KtpAcs.PanelApi.Yushi.Model;
+using RestSharp;
+using KtpAcs.KtpApiService.Model;
 
 namespace KtpAcs.WinForm.Jijian.Workers
 {
@@ -104,7 +109,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                 //    }
                 //}
                 XtraTabPage page = new XtraTabPage();
-                 addWorker = new AddWorker(phone, name, id)
+                addWorker = new AddWorker(phone, name, id)
                 {
                     Visible = true,
                     Dock = DockStyle.Fill,
@@ -115,9 +120,9 @@ namespace KtpAcs.WinForm.Jijian.Workers
                 page.Text = "项目人员办理入场";
                 xtraTabControl1.SelectedTabPage = page;
                 isOpen = true;
-               
+
                 xtraTabControl1.TabPages.Add(page);
-               
+
             }
             else
             {
@@ -141,6 +146,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                     {
 
                         MessageHelper.Show($"离场成功");
+                        GetWorkerList();
                     }
                     else
                     {
@@ -155,9 +161,22 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
 
         }
-        public void GetIsOpen() {
-            if(addWorker !=null)
-            addWorker.GetIsAVide();
+        public void DeletePanelProjectUser(int userId)
+        {
+
+            //宇视产品
+            foreach (WorkAddInfo device in WorkSysFail.workAdd)
+            {
+
+                IMulePusherYs PanelLibrarySet = new PanelWorkerDeleteApi() { API = "/PeopleLibraries/3/People/" + userId + $"?Lastchange={DateTime.Now.Ticks}", MethodType = Method.DELETE, PanelIp = device.deviceIp };
+                PushSummarYs pushSummary = PanelLibrarySet.Push();
+                PanelDeleteResult rr = pushSummary.ResponseData;
+            }
+        }
+        public void GetIsOpen()
+        {
+            if (addWorker != null)
+                addWorker.GetIsAVide();
         }
         private void grid_WorkerProject_CustomFilterDisplayText(object sender, DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs e)
         {
@@ -173,5 +192,12 @@ namespace KtpAcs.WinForm.Jijian.Workers
             return link;
         }
 
+        private void xtraTabControl1_SelectedPageChanged(object sender, TabPageChangedEventArgs e)
+        {
+            if (e.Page.Name == "xtraTabPage2")
+            {
+                GetWorkerList();
+            }
+        }
     }
 }

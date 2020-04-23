@@ -42,6 +42,8 @@ namespace KtpAcs.KtpApiService.Result
         {
             public string projectName { get; set; }
             public string projectUuid { get; set; }
+
+            public string organizationName { get; set; }
         }
 
     }

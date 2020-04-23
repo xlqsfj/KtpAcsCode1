@@ -50,12 +50,15 @@
             // 
             // buttonOk
             // 
+            this.buttonOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
+            this.buttonOk.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonOk.ForeColor = System.Drawing.Color.White;
             this.buttonOk.Location = new System.Drawing.Point(245, 110);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 14;
             this.buttonOk.Text = "取消";
-            this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.UseVisualStyleBackColor = false;
             this.buttonOk.Click += new System.EventHandler(this.OnCancel);
             // 
             // progressBarTotal
@@ -95,6 +98,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(332, 140);
             this.Controls.Add(this.skinLabel1);
             this.Controls.Add(this.buttonOk);

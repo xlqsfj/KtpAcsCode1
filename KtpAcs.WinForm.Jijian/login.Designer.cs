@@ -71,7 +71,7 @@
             this.panelControl1.Controls.Add(this.UserNameTxt);
             this.panelControl1.Location = new System.Drawing.Point(-1, 1);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(553, 409);
+            this.panelControl1.Size = new System.Drawing.Size(554, 412);
             this.panelControl1.TabIndex = 0;
             // 
             // picClose
@@ -88,9 +88,9 @@
             // 
             // btn_send
             // 
-            this.btn_send.Location = new System.Drawing.Point(477, 183);
+            this.btn_send.Location = new System.Drawing.Point(458, 183);
             this.btn_send.Name = "btn_send";
-            this.btn_send.Size = new System.Drawing.Size(73, 23);
+            this.btn_send.Size = new System.Drawing.Size(92, 23);
             this.btn_send.TabIndex = 20;
             this.btn_send.Text = "验证码";
             this.btn_send.Click += new System.EventHandler(this.btnVerification_Click);
@@ -113,8 +113,8 @@
             // 
             // pictureEdit1
             // 
-            this.pictureEdit1.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.img_login3;
-            this.pictureEdit1.Location = new System.Drawing.Point(3, -2);
+            this.pictureEdit1.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.img_login1;
+            this.pictureEdit1.Location = new System.Drawing.Point(0, 0);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -142,10 +142,10 @@
             // 
             // PasswordTxt
             // 
-            this.PasswordTxt.EditValue = "11";
+            this.PasswordTxt.EditValue = "";
             this.PasswordTxt.Location = new System.Drawing.Point(300, 184);
             this.PasswordTxt.Name = "PasswordTxt";
-            this.PasswordTxt.Size = new System.Drawing.Size(171, 20);
+            this.PasswordTxt.Size = new System.Drawing.Size(152, 20);
             this.PasswordTxt.TabIndex = 15;
             // 
             // UserNameTxt

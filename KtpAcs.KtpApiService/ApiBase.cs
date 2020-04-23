@@ -5,6 +5,7 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -118,6 +119,13 @@ namespace KtpAcs.KtpApiService
             bool isDataNull = true;
             PushSummary pushSummary = null;
 
+
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                //  throw new InvalidOperationException("调用接口失败, 错误信息：" + response.ErrorException.Message);
+
+                return InvokeOnPushFailed(request, response);
+            }
             if (isDataNull)
             {
                 Tr receiveData = JsonConvert.DeserializeObject<Tr>(contentPost);
@@ -132,7 +140,37 @@ namespace KtpAcs.KtpApiService
 
 
         }
+        private PushSummary InvokeOnPushFailed(RichRestRequest request, IRestResponse response)
+        {
+            string errorSummary = "";
+            if (response.StatusCode == HttpStatusCode.BadGateway)
+            {
 
+                errorSummary = "调用服务失败";
+                return new PushSummary(false, errorSummary, this.ServiceName, request, "接口");
+
+            }
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                errorSummary = "找不到服务";
+                return new PushSummary(false, errorSummary, this.ServiceName, request, "接口");
+
+
+            }
+            return new PushSummary(false, errorSummary, this.ServiceName, request, "接口");
+
+
+            //OnPushFailed(request, errorSummary);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="errorSummary"></param>
+        protected virtual void OnPushFailed(RichRestRequest request, string errorSummary)
+        {
+
+        }
         private RichRestRequest CreateRestRequest<T>(T postdata)
         {
             // Method.POST

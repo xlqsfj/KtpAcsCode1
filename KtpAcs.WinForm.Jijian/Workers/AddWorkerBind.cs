@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using static KtpAcs.KtpApiService.Result.OrganizationListResult;
+using static KtpAcs.KtpApiService.Result.TeamListResult;
 using static KtpAcs.KtpApiService.Result.WorkerTypeListResult;
 using static KtpAcs.WinForm.Jijian.Workers.WorkerAddStateForm;
 
@@ -97,7 +98,9 @@ namespace KtpAcs.WinForm.Jijian
                 this.comWorkType.Properties.DisplayMember = "name";
                 this.comWorkType.Properties.ValueMember = "code";
                 this.comWorkType.Properties.DataSource = pList;
-                this.comWorkType.EditValue = "code";
+                this.ComOrganizationUuid.Properties.NullText = "===请选择===";
+                this.comWorkType.Properties.Columns.Add(
+                 new DevExpress.XtraEditors.Controls.LookUpColumnInfo("name"));
 
             }
         }
@@ -119,7 +122,23 @@ namespace KtpAcs.WinForm.Jijian
                 this.ComOrganizationUuid.Properties.DataSource = pList;
                 this.ComOrganizationUuid.Properties.NullText = "===请选择===";
                 this.comWorkerTeamUuid.Properties.NullText = "===请先选择劳务公司===";
-                
+                this.ComOrganizationUuid.Properties.Columns.Add(
+               new DevExpress.XtraEditors.Controls.LookUpColumnInfo("name"));
+            }
+        }
+        private void GetTeamInfo(object uuid)
+        {
+            IMulePusher pusherLogin = new GeTeamsApi() { RequestParam = new { organizationUuid = uuid } };
+            PushSummary pushLogin = pusherLogin.Push();
+            if (pushLogin.Success)
+            {
+                List<TeamList> pList = pushLogin.ResponseData;
+                this.comWorkerTeamUuid.Properties.DisplayMember = "teamName";
+                this.comWorkerTeamUuid.Properties.ValueMember = "uuid";
+                this.comWorkerTeamUuid.Properties.DataSource = pList;
+                this.comWorkerTeamUuid.Properties.NullText = "==请选择==";
+                this.comWorkerTeamUuid.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("teamName", "选择班组"));
+
             }
         }
 
@@ -206,6 +225,7 @@ namespace KtpAcs.WinForm.Jijian
             }
             return userId;
         }
+        #region 提交验证
 
         private bool SubmitBtnPreValidation()
         {
@@ -214,6 +234,7 @@ namespace KtpAcs.WinForm.Jijian
             PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, txtName, "姓名不允许为空", ref isPrePass);
             PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, txtIdCard, "身份证号不允许为空", ref isPrePass);
             PreValidationHelper.IsIdCard(FormErrorProvider, txtIdCard, "身份证号格式错误", ref isPrePass);
+            PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, txtCardAgency, "发证机关不能为空", ref isPrePass);
             PreValidationHelper.MustNotBeNull(FormErrorProvider, ComNation, "民族必须选择", ref isPrePass);
             PreValidationHelper.MustNotBeNull(FormErrorProvider, ComEducationLevel, "文化程度不能为空", ref isPrePass);
             PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, txtAddress, "身份证地址不允许为空", ref isPrePass);
@@ -284,7 +305,9 @@ namespace KtpAcs.WinForm.Jijian
             this.txtName.ReadOnly = true;
             //this.ComNation.ReadOnly = true;
             this.txtNativePlace.ReadOnly = true;
-
+            this.txtExpireTime.ReadOnly = true;
+            this.txtStartTime.ReadOnly = true;
+            this.txtCardAgency.ReadOnly = true;
 
             if (state == 1)
             {
@@ -305,8 +328,98 @@ namespace KtpAcs.WinForm.Jijian
             }
 
         }
-     
 
+        /// <summary>
+        /// 清空
+        /// </summary>
+        /// <param name="state"></param>
+        public void reslt(int state)
+        {
+            this.txtAddress.Text = "";
+            this.txtAvg.Text = "";
+            this.txtBankName.Text = "";
+
+            this.txtBirthday.Text = "";
+            this.txtEmergencyContactName.Text = "";
+            this.txtEmergencyContactPhone.Text = "";
+            this.txtGender.Text = "";
+            this.txtIdCard.Text = "";
+            this.txtName.Text = "";
+            this.txtNativePlace.Text = "";
+            this.txtExpireTime.Text = "";
+            this.txtStartTime.Text = "";
+            this.txtCardAgency.Text = "";
+            this.txtCardAgency.Text = "";
+            this.ComEducationLevel.Properties.NullText = "===请选择===";
+            this.ComOrganizationUuid.Properties.NullText = "===请选择===";
+            this.comWorkerTeamUuid.Properties.NullText = "===请选择===";
+            this.comWorkType.Properties.NullText = "===请选择===";
+            this.ComNation.Properties.NullText = "===请选择===";
+            this.ComNation.EditValue = null;
+            this.ComEducationLevel.EditValue = null;
+            this.ComOrganizationUuid.EditValue = null;
+            this.comWorkerTeamUuid.EditValue = null;
+            this.comWorkType.EditValue = null;
+            this.pic_facePic.Image = Jijian.Properties.Resources.sfz_r;
+            this.pic_picturePositive.Image = Jijian.Properties.Resources.sfz_z;
+            this.pic_pictureReverse.Image = Jijian.Properties.Resources.sfz_f;
+            this.IdentityHeadPic.Image = Jijian.Properties.Resources.img_zjz1;
+            if (state == 1 || state == 0)
+            {
+
+                panelBankInfo.Text = "";
+                this.txtPhone.Text = "";
+
+            }
+
+        }
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="state"></param>
+        public void GetInfo(int state, string workerId)
+        {
+
+            IMulePusher PanelLibrarySet = new GetWorkerApi() { RequestParam = new { projectId = ConfigHelper.KtpLoginProjectId, userId = workerId } };
+
+            PushSummary pushSummary = PanelLibrarySet.Push();
+            WorkerResult.Data w = pushSummary.ResponseData;
+
+            this.txtAddress.Text = w.address;
+            this.txtAvg.Text = w.age.ToString();
+            this.txtBankName.Text = w.bankName;
+
+            this.txtBirthday.Text = w.birthday;
+            this.txtEmergencyContactName.Text = w.emergencyContactName;
+            this.txtEmergencyContactPhone.Text = w.emergencyContactPhone;
+            this.txtGender.SelectedIndex = w.gender == 1 ? 0 : 1;
+            this.txtIdCard.Text = w.idCard;
+            this.txtName.Text = w.name;
+            this.txtNativePlace.Text = w.nativePlace;
+            this.txtExpireTime.Text = "";
+            this.txtStartTime.Text = "";
+            this.txtCardAgency.Text = "";
+            this.txtBankNo.Text = "";
+            this.ComNation.EditValue = w.nation;
+            this.ComEducationLevel.EditValue = w.educationLevel;
+            this.ComOrganizationUuid.EditValue = w.organizationUuid;
+            this.comWorkerTeamUuid.EditValue = w.workerTeamUuid;
+            this.comWorkType.EditValue = w.workType;
+            this.pic_facePic.Image = Jijian.Properties.Resources.sfz_r;
+            this.pic_picturePositive.Image = Jijian.Properties.Resources.sfz_z;
+            this.pic_pictureReverse.Image = Jijian.Properties.Resources.sfz_f;
+            this.IdentityHeadPic.Image = Jijian.Properties.Resources.img_zjz1;
+            if (state == 1 || state == 0)
+            {
+
+                this.txtPhone.Text = w.phone;
+
+            }
+
+        }
+
+        #endregion
 
     }
 }

@@ -24,6 +24,11 @@ namespace KtpAcs.WinForm.Jijian.Device
 {
     public partial class AddDevice : DevExpress.XtraEditors.XtraForm
     {
+        //声明委托重新提交
+        public delegate void AgainSubmit(string close);
+        //声明事件
+        public event AgainSubmit ShowSubmit;
+
         public AddDevice()
         {
             InitializeComponent();
@@ -42,7 +47,7 @@ namespace KtpAcs.WinForm.Jijian.Device
 
             try
             {
-                IMulePusher pusherDevice = new GetDeviceApi() { RequestParam = new { uuid = id, pageNum = 0, pageSize = 0, projectUuid = ConfigHelper.KtpLoginProjectId } };
+                IMulePusher pusherDevice = new GetDeviceApi() { RequestParam = new { deviceUuid = id, pageNum = 0, pageSize = 0, projectUuid = ConfigHelper.KtpLoginProjectId } };
                 PushSummary push = pusherDevice.Push();
                 if (push.Success)
                 {
@@ -52,7 +57,7 @@ namespace KtpAcs.WinForm.Jijian.Device
                     this.txt_description.Text = deviceList.description;
                     this.txt_deviceId.Text = deviceList.deviceId;
                     this.txtDeviceIp.Text = deviceList.deviceIp;
-                   
+
 
 
                 }
@@ -70,7 +75,7 @@ namespace KtpAcs.WinForm.Jijian.Device
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-        
+
             try
             {
                 CheckVerification();
@@ -99,7 +104,14 @@ namespace KtpAcs.WinForm.Jijian.Device
 
                     btnSave.Enabled = true;
                     btnSave.Text = "保存";
-                    XtraMessageBox.Show($"添加成功");
+                    if (this._Id != "")
+                    {
+                        MessageHelper.Show($"修改成功");
+                        if(ShowSubmit != null) ShowSubmit("");
+                 
+                    }
+                    else
+                        MessageHelper.Show($"添加成功");
                     this.Close();
                 }
                 else
@@ -107,13 +119,13 @@ namespace KtpAcs.WinForm.Jijian.Device
                     btnSave.Enabled = true;
                     btnSave.Text = "保存";
 
-                    XtraMessageBox.Show($"添加失败:" + pushLogin.Message);
+                    MessageHelper.Show($"添加失败:" + pushLogin.Message);
                 }
             }
-            catch (Exception  ex)
+            catch (Exception ex)
             {
 
-                XtraMessageBox.Show($"添加失败:" + ex.Message);
+                MessageHelper.Show($"添加失败:" + ex.Message);
             }
         }
 

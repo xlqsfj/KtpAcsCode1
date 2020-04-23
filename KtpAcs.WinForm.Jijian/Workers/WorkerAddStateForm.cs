@@ -1,4 +1,5 @@
 ﻿using CCWin;
+using KtpAcs.Infrastructure.Utilities;
 using KtpAcs.KtpApiService.Model;
 
 using System;
@@ -23,9 +24,11 @@ namespace KtpAcs.WinForm.Jijian.Workers
         public event AgainSubmit ShowSubmit;
         //添加是否成功
         private bool isSubSuccess = true;
+        private bool isFinish = true;
         private string _name = "";
         private string _idCard = "";
         private int addSum = 0; //判断是否结束添加
+        private int addCount = 0;
 
         public WorkerAddStateForm(string name, string idCard)
         {
@@ -33,6 +36,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
             this._idCard = idCard;
 
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
             this.Text = name + "提交中";
             this.skingrid_sysPanel.AutoGenerateColumns = false;//不自动 
             WorkSysFail.workAdd.ForEach(w => w.magAdd = "添加中..");
@@ -56,7 +60,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
         private void startFillDv()
         {
 
-            while (true)
+            while (isFinish)
             {
                 Dictionary<string, string> d = WorkSysFail.dicAddMag;
                 lock (this)
@@ -64,52 +68,63 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
 
                     if (WorkSysFail.dicWorkadd.Count > 0)
-                    { 
-                        this.Invoke(new Action(() =>
-                        {
+                    {
 
-                            var dicWAddImg = WorkSysFail.dicWorkadd.LastOrDefault();
-                            var mag = dicWAddImg.Value;
-                            if (!dicWAddImg.Key)
-                            { //请求云端出错
-                                isSubSuccess = false;
-                                skin_retry.Visible = true;
-                                skinlable_addworkImg.ForeColor = Color.Red;
-                                panel1.Visible = true;
-                                skingrid_sysPanel.Visible = false;
 
-                                skin_close.Enabled = true;
-                            }
-                            else
-                            { //成功
+                        var dicWAddImg = WorkSysFail.dicWorkadd.LastOrDefault();
+                        var mag = dicWAddImg.Value;
 
-                                panel1.Visible = false;
-                                skingrid_sysPanel.Dock = DockStyle.Fill;
-                                //this.Height = 300;
-                                skingrid_sysPanel.Visible = true;
 
-                             
+                        if (!dicWAddImg.Key)
+                        { //请求云端出错
+                            isSubSuccess = false;
+                            skin_retry.Visible = true;
+                            skinlable_addworkImg.ForeColor = Color.Red;
+                            panel1.Visible = true;
+                            skingrid_sysPanel.Visible = false;
 
-                            }
+                            skin_close.Enabled = true;
+                            isFinish = false;
                             skinlable_addworkImg.Text = mag;
+                        }
+                        else
+                        { //成功
 
-                            //WorkSysFail.dicWorkadd.Clear();
-                            WorkSysFail.dicWorkadd.Reverse();
-                        }));
-                    }
-                    if (d.Count > 0) {
-                        this.Invoke(new Action(() =>
-                        {
+                            panel1.Visible = false;
+                            skingrid_sysPanel.Dock = DockStyle.Fill;
+                            //this.Height = 300;
+                            skingrid_sysPanel.Visible = true;
 
-                            Grid(d);
-                        }));
+                            skinlable_addworkImg.Text = mag;
+                         
+                        }
+                        //WorkSysFail.dicWorkadd.Clear();
+                        WorkSysFail.dicWorkadd.Reverse();
+
                     }
-                    
+
+
 
                 }
 
 
+                if (ConfigHelper.IsDivceAdd)
+                    Grid(d);
+                else
+                {
+                    if (isSubSuccess)
+                    {
+                        skin_close.Text = "关 闭";
+                        myThread.Abort();
+                    }
+                    else
+                    {
+                        myThread.Abort();
+                        skin_close.Text = "返 回 编 辑";
+                        skin_close.Enabled = true;
+                    }
 
+                }
 
             }
 
@@ -150,15 +165,16 @@ namespace KtpAcs.WinForm.Jijian.Workers
                                 skingrid_sysPanel.Rows[i].Cells[3] = txtcell;
 
                             }
-                            addSum++;
+                            addCount++;
                             this.skingrid_sysPanel.Rows[i].Cells[2].Value = keyIp.Value;
 
 
                             dicAddMag.Remove(keyIp.Key);
-                            if (addSum == this.skingrid_sysPanel.Rows.Count)
+                            if (addCount == this.skingrid_sysPanel.Rows.Count)
                             {
                                 //结束添加
                                 skin_close.Enabled = true;
+                                isFinish = false;
                                 myThread.Abort();
                                 isSubSuccess = true;
 
@@ -200,6 +216,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
         /// <param name="e"></param>
         private void skin_close_Click(object sender, EventArgs e)
         {
+            myThread.Abort();
             this.Close();
         }
 
@@ -244,7 +261,7 @@ Color.DimGray, 1, ButtonBorderStyle.Dashed, //左边
                 {
                     isSubSuccess = false;
                     //请求云端出错
-                    skin_retry.Visible = true;
+                    skin_retry.Visible = false;
                     skinlable_addworkImg.ForeColor = Color.Red;
 
                 }
@@ -283,14 +300,15 @@ Color.DimGray, 1, ButtonBorderStyle.Dashed, //左边
         /// <param name="e"></param>
         private void WorkerAddState_FormClosing(object sender, FormClosingEventArgs e)
         {
-       
+
 
         }
 
         private void WorkerAddStateForm_Load(object sender, EventArgs e)
         {
+            addCount = 0;
             myThread = new Thread(startFillDv);//实例化线程
-            myThread.IsBackground = true;
+            myThread.IsBackground = false;
             myThread.Start();
         }
 
@@ -298,7 +316,8 @@ Color.DimGray, 1, ButtonBorderStyle.Dashed, //左边
         {
             if (isSubSuccess)
                 ShowSubmit("close");
-
+            else
+                ShowSubmit("error");
             myThread.Abort();
         }
     }

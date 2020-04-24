@@ -276,6 +276,9 @@
             this.simpleButton4.Appearance.Font = new System.Drawing.Font("微軟正黑體", 12F);
             this.simpleButton4.Appearance.Options.UseBackColor = true;
             this.simpleButton4.Appearance.Options.UseFont = true;
+            this.simpleButton4.ImageOptions.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.tj12;
+            this.simpleButton4.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.simpleButton4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.simpleButton4.Location = new System.Drawing.Point(407, 370);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(251, 45);

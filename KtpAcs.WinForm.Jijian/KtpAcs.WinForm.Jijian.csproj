@@ -282,6 +282,7 @@
     <None Include="image\btn_close.png" />
     <None Include="image\blue_03_1.png" />
     <None Include="image\caidan.png" />
+    <None Include="image\cd.png" />
     <Content Include="image\img_404.png" />
     <None Include="image\img_admin.png" />
     <None Include="image\img_exit.png" />

@@ -192,7 +192,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                         skin_close.Text = "返 回 编 辑";
                         skin_close.Enabled = true;
                     }
-                    myThread.Abort();
+                  //  myThread.Abort();
                     Thread.Sleep(1000);
                 }
 

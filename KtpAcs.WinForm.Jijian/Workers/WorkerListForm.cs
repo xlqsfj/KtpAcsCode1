@@ -49,10 +49,10 @@ namespace KtpAcs.WinForm.Jijian.Workers
                     WorkerListResult.Data data = push.ResponseData;
                     this.gridControl1.DataSource = data.list;
                 }
-                RepositoryItemHyperLinkEdit linkSalesMoney = CreateRepositoryItemHyperLinkEdit("销售金额");
-                linkSalesMoney.OpenLink += new OpenLinkEventHandler(repositoryItemButtonEdit3_Click);  //事件
-                this.SalesMoney.ColumnEdit = linkSalesMoney;  //绑定
-
+                //RepositoryItemHyperLinkEdit linkSalesMoney = CreateRepositoryItemHyperLinkEdit("销售金额");
+                //linkSalesMoney.OpenLink += new OpenLinkEventHandler(repositoryItemButtonEdit3_Click);  //事件
+                //this.SalesMoney.ColumnEdit = linkSalesMoney;  //绑定
+              //  this.repositoryItemButtonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEdit1ButtonClick);
             }
             catch (Exception ex)
             {
@@ -103,6 +103,14 @@ namespace KtpAcs.WinForm.Jijian.Workers
             dynamic row = this.gridView1.GetFocusedRow();
             string uuid = row.uuid;
             AddWorker addWorker = new AddWorker(uuid,_isHmc,false);
+            addWorker.StartPosition = FormStartPosition.CenterParent;
+            addWorker.Show();
+        }
+        private void  repositoryItemButtonEdit1ButtonClick() {
+
+            dynamic row = this.gridView1.GetFocusedRow();
+            string uuid = row.uuid;
+            AddWorker addWorker = new AddWorker(uuid, _isHmc, false);
             addWorker.StartPosition = FormStartPosition.CenterParent;
             addWorker.Show();
         }

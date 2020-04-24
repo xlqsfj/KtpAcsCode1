@@ -78,16 +78,19 @@
             // 
             this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picClose.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.img_gi;
-            this.picClose.Location = new System.Drawing.Point(509, 1);
+            this.picClose.Location = new System.Drawing.Point(509, 5);
             this.picClose.Name = "picClose";
             this.picClose.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.picClose.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.picClose.Size = new System.Drawing.Size(43, 38);
+            this.picClose.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.picClose.Size = new System.Drawing.Size(40, 34);
             this.picClose.TabIndex = 21;
             this.picClose.Click += new System.EventHandler(this.picClose_Click);
             // 
             // btn_send
             // 
+            this.btn_send.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
+            this.btn_send.Appearance.Options.UseBackColor = true;
             this.btn_send.Location = new System.Drawing.Point(458, 183);
             this.btn_send.Name = "btn_send";
             this.btn_send.Size = new System.Drawing.Size(92, 23);

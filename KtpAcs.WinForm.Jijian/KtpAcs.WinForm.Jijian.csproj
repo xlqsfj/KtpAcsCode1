@@ -256,6 +256,7 @@
   <ItemGroup>
     <Content Include="image\250.png" />
     <Content Include="image\300.png" />
+    <None Include="image\tb2.png" />
     <None Include="image\sx2.png" />
     <None Include="image\sx1.png" />
     <None Include="image\tb1.png" />
@@ -279,15 +280,15 @@
     <None Include="image\home_addP.png" />
     <None Include="image\blue_03.png" />
     <None Include="image\btn_close.png" />
+    <None Include="image\blue_03_1.png" />
+    <None Include="image\caidan.png" />
     <Content Include="image\img_404.png" />
     <None Include="image\img_admin.png" />
     <None Include="image\img_exit.png" />
     <None Include="image\jx.png" />
     <None Include="image\jx2.png" />
-    <None Include="image\img_login2.png" />
     <None Include="image\img_gi.png" />
     <None Include="image\img_login.png" />
-    <Content Include="image\img_login3.png" />
     <None Include="image\img_zjz.png" />
     <Content Include="image\ktp_logo.jpg" />
     <None Include="image\l1.png" />

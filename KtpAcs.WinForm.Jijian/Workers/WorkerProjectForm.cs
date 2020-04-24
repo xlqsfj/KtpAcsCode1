@@ -81,14 +81,13 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
             dynamic row = this.grid_WorkerProject.GetFocusedRow();
             string id = row.organizationUserUuid;
+            int userId = FormatHelper.StringToInt(row.organizationUserId, 0);
             string phone = row.phone;
             string state = row.status;
             string name = row.name;
 
             if (state == "未进场" || state == "已离场")
             {
-
-
                 if (xtraTabControl1.TabPages.Count > 1)
                 {
                     if (xtraTabControl1.TabPages[1].Text == "项目人员办理入场")
@@ -109,18 +108,14 @@ namespace KtpAcs.WinForm.Jijian.Workers
                 //    }
                 //}
                 XtraTabPage page = new XtraTabPage();
-                addWorker = new AddWorker(phone, name, id)
-                {
-                    Visible = true,
-                    Dock = DockStyle.Fill,
-                    FormBorderStyle = FormBorderStyle.None,
-                    TopLevel = false//在这里一定要注意  不然加载不出来
-                };
+                addWorker = new AddWorker(phone, name, id);
+                addWorker.FormBorderStyle = FormBorderStyle.None;
+                addWorker.TopLevel = false;
                 page.Controls.Add(addWorker);
+                addWorker.Show();
                 page.Text = "项目人员办理入场";
                 xtraTabControl1.SelectedTabPage = page;
                 isOpen = true;
-
                 xtraTabControl1.TabPages.Add(page);
 
             }
@@ -144,7 +139,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                     PushSummary pushAddworkers = addworkers.Push();
                     if (pushAddworkers.Success)
                     {
-
+                        DeletePanelProjectUser(userId);
                         MessageHelper.Show($"离场成功");
                         GetWorkerList();
                     }

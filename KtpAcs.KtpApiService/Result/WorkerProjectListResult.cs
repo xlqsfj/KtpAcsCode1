@@ -35,6 +35,8 @@ namespace KtpAcs.KtpApiService.Result
             public int size { get; set; }
             public int startRow { get; set; }
             public int total { get; set; }
+            public int organizationUserUuid { get; set; }
+            
         }
 
         public class WorkerProjectList
@@ -42,6 +44,10 @@ namespace KtpAcs.KtpApiService.Result
             public string mail { get; set; }
             public string name { get; set; }
             public string organizationUserUuid { get; set; }
+            /// <summary>
+            /// 用户主键id
+            /// </summary>
+            public string organizationUserId { get; set; }
             public string phone { get; set; }
             public string projectUuid { get; set; }
             public string roleNames { get; set; }

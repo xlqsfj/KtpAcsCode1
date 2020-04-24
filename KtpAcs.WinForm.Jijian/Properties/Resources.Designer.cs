@@ -73,29 +73,9 @@ namespace KtpAcs.WinForm.Jijian.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap btn_addDeive {
+        internal static System.Drawing.Bitmap blue_03_1 {
             get {
-                object obj = ResourceManager.GetObject("btn_addDeive", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap btn_addDeive1 {
-            get {
-                object obj = ResourceManager.GetObject("btn_addDeive1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap btn_addDeive2 {
-            get {
-                object obj = ResourceManager.GetObject("btn_addDeive2", resourceCulture);
+                object obj = ResourceManager.GetObject("blue_03_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,6 +176,16 @@ namespace KtpAcs.WinForm.Jijian.Properties {
         internal static System.Drawing.Bitmap btnSubmit {
             get {
                 object obj = ResourceManager.GetObject("btnSubmit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap caidan {
+            get {
+                object obj = ResourceManager.GetObject("caidan", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -633,6 +623,46 @@ namespace KtpAcs.WinForm.Jijian.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap sx21 {
+            get {
+                object obj = ResourceManager.GetObject("sx21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap sx22 {
+            get {
+                object obj = ResourceManager.GetObject("sx22", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap sx23 {
+            get {
+                object obj = ResourceManager.GetObject("sx23", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap sx24 {
+            get {
+                object obj = ResourceManager.GetObject("sx24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap tb1 {
             get {
                 object obj = ResourceManager.GetObject("tb1", resourceCulture);
@@ -643,9 +673,39 @@ namespace KtpAcs.WinForm.Jijian.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap tb11 {
+            get {
+                object obj = ResourceManager.GetObject("tb11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap tb2 {
+            get {
+                object obj = ResourceManager.GetObject("tb2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap tj1 {
             get {
                 object obj = ResourceManager.GetObject("tj1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap tj11 {
+            get {
+                object obj = ResourceManager.GetObject("tj11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -666,6 +726,26 @@ namespace KtpAcs.WinForm.Jijian.Properties {
         internal static System.Drawing.Bitmap tj21 {
             get {
                 object obj = ResourceManager.GetObject("tj21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap tj22 {
+            get {
+                object obj = ResourceManager.GetObject("tj22", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap tj23 {
+            get {
+                object obj = ResourceManager.GetObject("tj23", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

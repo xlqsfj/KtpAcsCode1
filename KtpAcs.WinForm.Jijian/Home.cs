@@ -95,7 +95,11 @@ namespace KtpAcs.WinForm.Jijian
         }
 
 
-
+        /// <summary>
+        /// 面板管理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void flowDevice_Click(object sender, EventArgs e)
         {
             this.panelWorker.Visible = false;
@@ -123,6 +127,7 @@ namespace KtpAcs.WinForm.Jijian
                 {
                     c.BackColor = Color.Transparent;
                     c.BackgroundImage = Jijian.Properties.Resources.blue_03;
+                    c.BackgroundImageLayout = ImageLayout.Stretch;
                 }
                 else if (c is FlowLayoutPanel)
                 {
@@ -200,6 +205,11 @@ namespace KtpAcs.WinForm.Jijian
 
         }
 
+        /// <summary>
+        /// 管理员管理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void flowAdmin_Click(object sender, EventArgs e)
         {
 
@@ -251,6 +261,11 @@ namespace KtpAcs.WinForm.Jijian
         }
 
 
+        /// <summary>
+        /// 添加设备信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddDevice_Click(object sender, EventArgs e)
         {
             AddDevice addDevice = new AddDevice();
@@ -268,6 +283,17 @@ namespace KtpAcs.WinForm.Jijian
 
         private void simpleButton4_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void pictureEdit8_MouseDown(object sender, MouseEventArgs e)
+        {
+            //如果是单击的是左键
+            if (e.Button == MouseButtons.Left)
+            {
+              //  popupMenu1.ShowPopup((Button)sender, new Point(e.X, e.Y)); //在你单击的地方弹出菜单
+                this.popupMenu1.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
+            }
 
         }
     }

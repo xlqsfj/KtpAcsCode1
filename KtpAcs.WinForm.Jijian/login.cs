@@ -104,8 +104,8 @@ namespace KtpAcs.WinForm.Jijian
                 {
                     MessageHelper.Show(pushLogin.Message);
 
-                    FormErrorProvider.SetError(PasswordTxt, loginErroMsg);
-                    throw new PreValidationException(loginErroMsg);
+                    //FormErrorProvider.SetError(PasswordTxt, loginErroMsg);
+                    //throw new PreValidationException(loginErroMsg);
 
                     //ConfigHelper.KtpUploadNetWork = true;
                     return;

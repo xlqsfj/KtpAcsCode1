@@ -13,6 +13,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using static KtpAcs.KtpApiService.Result.BankCardCheckResult;
 using static KtpAcs.KtpApiService.Result.TeamListResult;
 using static KtpAcs.WinForm.Jijian.Workers.WorkerAddStateForm;
@@ -42,21 +43,23 @@ namespace KtpAcs.WinForm.Jijian
         private AddWorerkSend add;
 
         private int _state = 0;
-       
-        public AddWorker(int hmc = 0, int openState=0)
+
+        public AddWorker(int hmc = 0, int openState = 0)
         {
             _state = hmc;
             InitializeComponent();
+            //
             CameraConn();
             BindNationsCb();
             BindEducationLeveCb();
-            //查询工种
-            GetProjectList();
-            //劳务公司
-            GetOrganizationUuidList();
             //银行
             //  BindBankCardCb();
             ContentState(_state);
+            // 查询工种
+            GetProjectList();
+            // 劳务公司
+            GetOrganizationUuidList();
+
         }
 
         /// <summary>
@@ -65,7 +68,7 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="uuId"></param>
         /// <param name="hmc"></param>
         /// <param name="isEdit"></param>
-        public AddWorker(string  uuId, int hmc = 0, bool isEdit=false)
+        public AddWorker(string uuId, int hmc = 0, bool isEdit = false)
         {
             _state = hmc;
             InitializeComponent();
@@ -94,7 +97,7 @@ namespace KtpAcs.WinForm.Jijian
             }
             catch (NotFoundException nfException)
             {
-                f1.Visible = true; 
+                f1.Visible = true;
                 f2.Visible = true;
                 MessageHelper.Show(nfException.Message);
             }
@@ -382,7 +385,7 @@ namespace KtpAcs.WinForm.Jijian
                 reslt(_state);
                 return;
             }
-         
+
 
 
         }
@@ -395,7 +398,8 @@ namespace KtpAcs.WinForm.Jijian
 
 
 
-        public void GetIsAVide() {
+        public void GetIsAVide()
+        {
             if (AVidePlayer.IsRunning)
             {
                 AVidePlayer.SignalToStop();
@@ -431,7 +435,7 @@ namespace KtpAcs.WinForm.Jijian
 
         }
 
-  
+
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {

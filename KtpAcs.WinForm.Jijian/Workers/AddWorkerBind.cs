@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using static KtpAcs.KtpApiService.Result.OrganizationListResult;
 using static KtpAcs.KtpApiService.Result.TeamListResult;
 using static KtpAcs.KtpApiService.Result.WorkerTypeListResult;
@@ -35,7 +36,7 @@ namespace KtpAcs.WinForm.Jijian
             this.ComNation.Properties.DisplayMember = "Value";
             this.ComNation.Properties.ValueMember = "Key";
             this.ComNation.EditValue = "Value";
-          
+
             this.ComNation.Properties.DataSource = nations;
             this.ComNation.Properties.NullText = "==请选择==";
 
@@ -111,20 +112,24 @@ namespace KtpAcs.WinForm.Jijian
         private void GetOrganizationUuidList()
         {
 
+            List<OrganizationList> pList = null;
+            //Task.Run(() =>
+            //{
+                IMulePusher pusherLogin = new GetOrganizationApi() { RequestParam = new { uuid = 1, projectUuid = ConfigHelper.KtpLoginProjectId } };
+                PushSummary pushLogin = pusherLogin.Push();
+                if (pushLogin.Success)
+                {
+                    pList = pushLogin.ResponseData;
 
-            IMulePusher pusherLogin = new GetOrganizationApi() { RequestParam = new { uuid = 1, projectUuid = ConfigHelper.KtpLoginProjectId } };
-            PushSummary pushLogin = pusherLogin.Push();
-            if (pushLogin.Success)
-            {
-                List<OrganizationList> pList = pushLogin.ResponseData;
-                this.ComOrganizationUuid.Properties.DisplayMember = "name";
-                this.ComOrganizationUuid.Properties.ValueMember = "uuid";
-                this.ComOrganizationUuid.Properties.DataSource = pList;
-                this.ComOrganizationUuid.Properties.NullText = "===请选择===";
-                this.comWorkerTeamUuid.Properties.NullText = "===请先选择劳务公司===";
-                this.ComOrganizationUuid.Properties.Columns.Add(
-               new DevExpress.XtraEditors.Controls.LookUpColumnInfo("name"));
-            }
+                }
+           // });
+            this.ComOrganizationUuid.Properties.DisplayMember = "name";
+            this.ComOrganizationUuid.Properties.ValueMember = "uuid";
+            this.ComOrganizationUuid.Properties.DataSource = pList;
+            this.ComOrganizationUuid.Properties.NullText = "===请选择===";
+            this.comWorkerTeamUuid.Properties.NullText = "===请先选择劳务公司===";
+            this.ComOrganizationUuid.Properties.Columns.Add(
+           new DevExpress.XtraEditors.Controls.LookUpColumnInfo("name"));
         }
         private void GetTeamInfo(object uuid)
         {
@@ -179,9 +184,10 @@ namespace KtpAcs.WinForm.Jijian
             add.workType = this.comWorkType.EditValue.ToString();
             add.workerTeamUuid = this.comWorkerTeamUuid.EditValue.ToString();
 
-            IMulePusher imIsexits = new GetWorkerIsExistApi() { RequestParam = new { phone= add.phone } };
+            IMulePusher imIsexits = new GetWorkerIsExistApi() { RequestParam = new { phone = add.phone } };
             PushSummary PuIsexits = imIsexits.Push();
-            if (PuIsexits.Success) {
+            if (PuIsexits.Success)
+            {
 
                 BaseResult data = PuIsexits.ResponseData;
                 add.userUuid = data.data.userUuid;

@@ -175,7 +175,6 @@ namespace KtpAcs.WinForm.Jijian.Workers
                                 //结束添加
                                 skin_close.Enabled = true;
                                 isFinish = false;
-                                myThread.Abort();
                                 isSubSuccess = true;
 
 
@@ -193,6 +192,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                         skin_close.Text = "返 回 编 辑";
                         skin_close.Enabled = true;
                     }
+                    myThread.Abort();
                     Thread.Sleep(1000);
                 }
 

@@ -15,39 +15,34 @@ namespace KtpAcs.WinForm.Jijian.Workers
     {
         int _state = 0;
         AddWorker workerform = null;
-        public WorkerAdminForm(int i=0)
+        public WorkerAdminForm(int i = 0)
         {
             InitializeComponent();
             _state = i;
-        
-            workerform = new AddWorker(i)
-            {
-                Visible = true,
-                Dock = DockStyle.Fill,
-                FormBorderStyle = FormBorderStyle.None,
-                TopLevel = false//在这里一定要注意  不然加载不出来
-            };
-            xTabPage.Controls.Add(workerform);
-            
+            workerform = new AddWorker(i);
+            workerform.FormBorderStyle = FormBorderStyle.None;
+            workerform.TopLevel = false;
+            this.xTabPage.Controls.Clear();
+            this.xTabPage.Controls.Add(workerform);
+            workerform.Show();
         }
-        public void isExiet() {
+        public void isExiet()
+        {
 
             if (workerform != null)
                 workerform.GetIsAVide();
         }
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
+            //列表显示
             if (e.Page.Name == "tabPageWorkerList")
             {
-                WorkerListForm workerform = new WorkerListForm(_state) {
-
-                    Visible = true,
-                    Dock = DockStyle.Fill,
-                    FormBorderStyle = FormBorderStyle.None,
-                    TopLevel = false//在这里一定要注意  不然加载不出来
-                };
-                this.tabPageWorkerList.Controls.Add(workerform);
-             
+                WorkerListForm listform = new WorkerListForm(_state);
+                listform.FormBorderStyle = FormBorderStyle.None;
+                listform.TopLevel = false;
+                this.tabPageWorkerList.Controls.Clear();
+                this.tabPageWorkerList.Controls.Add(listform);
+                listform.Show();
 
             }
             //else

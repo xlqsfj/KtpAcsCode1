@@ -40,7 +40,7 @@ namespace KtpAcs.KtpApiService
 
             if (appType == ApiType.KTP && success == false)
             {
-                this.Message = "调用云端接口失败。错误信息：" + message;
+                this.Message = "调用云端服务失败。错误信息：" + message;
                 LogHelper.Info(ApiType.KTP.ToEnumText() + apiName);
                 LogHelper.EntryLog(this.RequestParam, "url:" + request.Resource);
                 LogHelper.ExceptionLog(this.Message);
@@ -56,7 +56,7 @@ namespace KtpAcs.KtpApiService
             }
             else if (appType == ApiType.Panel && success == false)
             {
-                this.Message = "调用人脸识别设备接口失败。错误信息：" + message;
+                this.Message = "调用人脸识别设备服务失败。错误信息：" + message;
                 LogHelper.Info(ApiType.Panel.ToEnumText() + apiName);
                 LogHelper.EntryLog(this.RequestParam, "url:" + request.Resource);
                 LogHelper.ExceptionLog(this.Message);

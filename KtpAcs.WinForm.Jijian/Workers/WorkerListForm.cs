@@ -49,11 +49,10 @@ namespace KtpAcs.WinForm.Jijian.Workers
                     WorkerListResult.Data data = push.ResponseData;
                     this.gridControl1.DataSource = data.list;
                 }
-                //RepositoryItemHyperLinkEdit linkSalesMoney = CreateRepositoryItemHyperLinkEdit("销售金额");
-                //linkSalesMoney.OpenLink += new OpenLinkEventHandler(repositoryItemButtonEdit3_Click);  //事件
-                //this.SalesMoney.ColumnEdit = linkSalesMoney;  //绑定
-              //  this.repositoryItemButtonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEdit1ButtonClick);
-            }
+              //  RepositoryItemHyperLinkEdit linkDetails = CreateRepositoryItemHyperLinkEdit("销售金额");
+              //  linkDetails.OpenLink += new OpenLinkEventHandler(repositoryItemButtonEdit3_Click);  //事件
+              //this.details.ColumnEdit = linkDetails;  //绑定
+          }
             catch (Exception ex)
             {
                 XtraMessageBox.Show($"错误信息:{0}", ex.Message);
@@ -78,6 +77,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
             link.TextEditStyle = TextEditStyles.Standard;
             link.ReadOnly = true;
             link.SingleClick = true;
+            link.Caption = caption;
             return link;
         }
         private void btnQuery_Click(object sender, EventArgs e)
@@ -90,29 +90,15 @@ namespace KtpAcs.WinForm.Jijian.Workers
             this.txtQuery.Text = "";
         }
 
-        private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)
-        {
-            AddWorker addWorker = new AddWorker();
-            addWorker.StartPosition = FormStartPosition.CenterParent;
-            addWorker.Show();
-
-        }
-
-        private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void repositoryItemButtonEdit1_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
             dynamic row = this.gridView1.GetFocusedRow();
-            string uuid = row.uuid;
-            AddWorker addWorker = new AddWorker(uuid,_isHmc,false);
+            string userUuid = row.userUuid;
+            AddWorker addWorker = new AddWorker(userUuid, _isHmc, false);
             addWorker.StartPosition = FormStartPosition.CenterParent;
             addWorker.Show();
-        }
-        private void  repositoryItemButtonEdit1ButtonClick() {
 
-            dynamic row = this.gridView1.GetFocusedRow();
-            string uuid = row.uuid;
-            AddWorker addWorker = new AddWorker(uuid, _isHmc, false);
-            addWorker.StartPosition = FormStartPosition.CenterParent;
-            addWorker.Show();
+
         }
     }
 }

@@ -92,57 +92,64 @@ namespace KtpAcs.WinForm.Jijian
                     if (data.list.Count > 0)
                     {
                         WorkSysFail.workAdd.Clear();
+
                         Parallel.ForEach(data.list, (list, DeviceList) =>
                         {
 
-                            bool isConn = true;
-                            var workAdd = WorkSysFail.workAdd.FirstOrDefault(a => a.deviceIp == list.deviceIp);
-                            if (workAdd != null)
-                            {
-                                isConn = workAdd.isConn;
-
-                            }
-                            else
+                            Task.Run(() =>
                             {
 
-                                //设备是否连接
-                                isConn = ConfigHelper.MyPing(list.deviceIp);
-
-                                if (isConn)
+                                bool isConn = true;
+                                var workAdd = WorkSysFail.workAdd.FirstOrDefault(a => a.deviceIp == list.deviceIp);
+                                if (workAdd != null)
                                 {
-                                    var okConnPanelInfo = new WorkAddInfo
-                                    {
-                                        deviceIp = list.deviceIp,
-                                        isConn = true,
-                                        deviceIn = list.gateType,
-                                        deviceNo = list.deviceId,
-                                        magAdd = "添加中.."
-                                    };
-                                    WorkSysFail.workAdd.Add(okConnPanelInfo);
-
-                                    //返回设备的数量
-
-                                    Liblist liblist = PanelBase.GetPanelDeviceInfo(list.deviceIp);
-                                    if (liblist != null)
-                                    {
-
-                                        //设备数量
-
-                                        list.deviceCount = liblist.MemberNum;
-                                    }
-                                    else
-                                    {
-                                        list.deviceStatus = "否";
-                                        WorkSysFail.DeleteDeviceInfo(list.deviceIp);
-                                    }
+                                    isConn = workAdd.isConn;
 
                                 }
-                                list.deviceStatus = isConn ? "是" : "否";
+                                else
+                                {
 
-                            }
+                                    //设备是否连接
+                                    isConn = ConfigHelper.MyPing(list.deviceIp);
+
+                                    if (isConn)
+                                    {
+                                        var okConnPanelInfo = new WorkAddInfo
+                                        {
+                                            deviceIp = list.deviceIp,
+                                            isConn = true,
+                                            deviceIn = list.gateType,
+                                            deviceNo = list.deviceId,
+                                            magAdd = "添加中.."
+                                        };
+                                        WorkSysFail.workAdd.Add(okConnPanelInfo);
+
+                                        //返回设备的数量
+
+                                        Liblist liblist = PanelBase.GetPanelDeviceInfo(list.deviceIp);
+                                        if (liblist != null)
+                                        {
+
+                                            //设备数量
+
+                                            list.deviceCount = liblist.MemberNum;
+                                        }
+                                        else
+                                        {
+                                            list.deviceStatus = "否";
+                                            WorkSysFail.DeleteDeviceInfo(list.deviceIp);
+                                        }
+
+                                    }
+                                    list.deviceStatus = isConn ? "是" : "否";
+
+                                }
 
 
 
+
+
+                            });
                         });
 
                         this.gridControl.DataSource = data.list;
@@ -276,6 +283,7 @@ namespace KtpAcs.WinForm.Jijian
         {
             AddDevice addDevice = new AddDevice();
             addDevice.ShowDialog();
+            GetDevice();
         }
         //public void GetUpdate(string  isSumit) {
         //    GetDevice();

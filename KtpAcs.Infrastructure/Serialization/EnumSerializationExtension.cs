@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
@@ -30,7 +31,25 @@ namespace KtpAcs.Infrastructure.Serialization
             }
             return attribute == null ? null : attribute.Description;
         }
-
+        public static int GetEnumValue( Type enumType, string enumName)
+        {
+            try
+            {
+                if (!enumType.IsEnum)
+                    throw new ArgumentException("enumType必须是枚举类型");
+                var values = Enum.GetValues(enumType);
+                var ht = new Hashtable();
+                foreach (var val in values)
+                {
+                    ht.Add(Enum.GetName(enumType, val), val);
+                }
+                return (int)ht[enumName];
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
         public static string ToEnumText<T>(this T enumValue)
         {
             var value = enumValue.ToString();

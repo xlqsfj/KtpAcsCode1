@@ -21,6 +21,7 @@ using KtpAcs.PanelApi.Yushi.Api;
 using KtpAcs.PanelApi.Yushi.Model;
 using RestSharp;
 using KtpAcs.KtpApiService.Model;
+using KtpAcs.WinForm.Jijian.Device;
 
 namespace KtpAcs.WinForm.Jijian.Workers
 {
@@ -96,19 +97,10 @@ namespace KtpAcs.WinForm.Jijian.Workers
                         xtraTabControl1.TabPages.Remove(xtraTabControl1.TabPages[1]);
                     }
                 }
-                ////判断是否已创建过
-                //foreach (XtraTabPage page1 in xtraTabControl1.TabPages)
-                //{
-                //    if (page1.Text == "项目人员办理入场")
-                //    {
-
-                //        xtraTabControl1.SelectedTabPage = page1;//显示该页
-                //        xtraTabControl1.TabPages.Remove(xtraTabControl1.TabPages[1]);
-                //        page1.Dispose();
-                //    }
-                //}
+               
                 XtraTabPage page = new XtraTabPage();
                 addWorker = new AddWorker(phone, name, id);
+                addWorker.ShowProjectList += new AgainSubmit(a => GetIsClose(a));
                 addWorker.FormBorderStyle = FormBorderStyle.None;
                 addWorker.TopLevel = false;
                 page.Controls.Add(addWorker);
@@ -124,7 +116,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
 
 
-                DialogResult result = XtraMessageBox.Show("确定要删除?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                DialogResult result = XtraMessageBox.Show("确定要离场吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
                     BaseSend baseSend = new BaseSend
@@ -140,7 +132,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                     if (pushAddworkers.Success)
                     {
                         DeletePanelProjectUser(userId);
-                        MessageHelper.Show($"离场成功");
+                        MessageHelper.Show($"{ name}离场成功");
                         GetWorkerList();
                     }
                     else
@@ -156,6 +148,25 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
 
         }
+        public void GetIsClose(string state)
+        {
+            
+
+                //判断是否已创建过
+                foreach (XtraTabPage page1 in xtraTabControl1.TabPages)
+                {
+                    if (page1.Text == "项目人员办理入场")
+                    {
+
+                        xtraTabControl1.SelectedTabPage = page1;//显示该页
+                        xtraTabControl1.TabPages.Remove(xtraTabControl1.TabPages[1]);
+                        page1.Dispose();
+                        break;
+                    }
+                }
+           
+        }
+             
         public void DeletePanelProjectUser(int userId)
         {
 

@@ -121,6 +121,9 @@
   <data name="Loading4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\Loading4.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="tj22" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\image\tj2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Camera1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\Camera.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -154,9 +157,6 @@
   <data name="imgworek" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\imgworek.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btn_qx1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\image\btn_qx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="jx5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\jx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -164,9 +164,6 @@
     <value>..\image\tj1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="jx3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\image\jx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="jx2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\jx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="btn_close" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -193,6 +190,9 @@
   <data name="tj23" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\tj2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btn_qx" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\image\btn_qx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="img_login1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\img_login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -214,8 +214,8 @@
   <data name="sfzp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\sfzp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="sx1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\image\sx1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ktp_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\image\ktp_logo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="jx4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\jx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -238,8 +238,8 @@
   <data name="PanelImg_ico" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\PanelImg.ico.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btn_syn1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\image\btn_syn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btn_qx1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\image\btn_qx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="img_gi" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\img_gi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -258,9 +258,6 @@
   </data>
   <data name="sfz_f" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\sfz_f.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btn_cj1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\image\btn_cj.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="imgAuth" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\imgAuth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -286,6 +283,9 @@
   <data name="tb11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\tb1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="sx11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\image\sx1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="caidan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\caidan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -301,11 +301,14 @@
   <data name="loading3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\loading3.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tj22" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\image\tj2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="jx2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\image\jx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="img_zjz1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\img_zjz.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btn_syn1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\image\btn_syn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="loading33" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\loading3.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -316,11 +319,11 @@
   <data name="sx2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\sx2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btn_qx" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\image\btn_qx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btn_cj1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\image\btn_cj.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ktp_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\image\ktp_logo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="sx1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\image\sx1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PanelImg.ico" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\PanelImg.ico.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -337,7 +340,7 @@
   <data name="btn_cxcj" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\image\btn_cxcj.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="sx11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\image\sx1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\image\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

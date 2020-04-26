@@ -14,6 +14,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static KtpAcs.KtpApiService.Result.BankCardCheckResult;
 using static KtpAcs.KtpApiService.Result.TeamListResult;
 using static KtpAcs.WinForm.Jijian.Workers.WorkerAddStateForm;
@@ -72,7 +73,7 @@ namespace KtpAcs.WinForm.Jijian
         {
             _state = hmc;
             InitializeComponent();
-            CameraConn();
+          //  CameraConn();
             BindNationsCb();
             BindEducationLeveCb();
             //查询工种
@@ -360,6 +361,7 @@ namespace KtpAcs.WinForm.Jijian
             this.BeginInvoke((EventHandler)delegate
             {
                 WorkerAddStateForm _workerAddState = new WorkerAddStateForm(txtName.Text.Trim(), txtIdCard.Text.Trim());
+                _workerAddState.StartPosition = FormStartPosition.CenterParent;
                 _workerAddState.ShowSubmit += new AgainSubmit(AddSubWorkInfo);
 
                 _workerAddState.ShowDialog();
@@ -383,6 +385,7 @@ namespace KtpAcs.WinForm.Jijian
             {//新增
 
                 reslt(_state);
+                ShowProjectList("ok");
                 return;
             }
 

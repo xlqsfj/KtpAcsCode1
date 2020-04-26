@@ -22,10 +22,11 @@ using KtpAcs.KtpApiService;
 
 namespace KtpAcs.WinForm.Jijian.Device
 {
+    //声明委托重新提交
+    public delegate void AgainSubmit(string close);
+
     public partial class AddDevice : DevExpress.XtraEditors.XtraForm
     {
-        //声明委托重新提交
-        public delegate void AgainSubmit(string close);
         //声明事件
         public event AgainSubmit ShowSubmit;
 

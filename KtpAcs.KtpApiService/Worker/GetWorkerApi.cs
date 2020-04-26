@@ -13,7 +13,7 @@ namespace KtpAcs.KtpApiService.Worker
 {
 
     //查询详细信息
-    public class GetWorkerApi : ApiBase<WorkerSend, WorkerResult>
+    public class GetWorkerApi : ApiBase<dynamic, WorkerResult>
     {
         public GetWorkerApi()
      : base()
@@ -25,7 +25,7 @@ namespace KtpAcs.KtpApiService.Worker
             base.MethodType = Method.POST;
             base.Token = ConfigHelper.KtpLoginToken;
         }
-        protected override WorkerSend FetchDataToPush()
+        protected override dynamic FetchDataToPush()
         {
             return base.RequestParam;
         }
@@ -33,7 +33,7 @@ namespace KtpAcs.KtpApiService.Worker
         protected override PushSummary OnPushSuccess(RichRestRequest request, WorkerResult receiveData)
         {
             PushSummary mag = new PushSummary(receiveData.result == 1 ? true : false, receiveData.msg, ApiType.KTP, request, "查询人员列表接口");
-            mag.ResponseData = receiveData;
+            mag.ResponseData = receiveData.data;
             return mag;
         }
     }

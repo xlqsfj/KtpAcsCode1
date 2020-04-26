@@ -40,6 +40,9 @@ namespace KtpAcs.KtpApiService.Result
             public string workType { get; set; }
             public string workerTeamName { get; set; }
             public string workerTeamUuid { get; set; }
+            public string cardAgency { get; set; }
+            public string startTime { get; set; }
+            public string expireTime { get; set; }
         }
 
     }

@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ using System.Windows.Forms;
 
 namespace KtpAcs.WinForm.Jijian.Workers
 {
-    public partial class WorkerAddStateForm : Skin_Color
+    public partial class WorkerAddStateForm : DevExpress.XtraEditors.XtraForm
     {  //启动更新线程
         Thread myThread;
         //声明委托重新提交
@@ -29,6 +30,8 @@ namespace KtpAcs.WinForm.Jijian.Workers
         private string _idCard = "";
         private int addSum = 0; //判断是否结束添加
         private int addCount = 0;
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
 
         public WorkerAddStateForm(string name, string idCard)
         {
@@ -175,7 +178,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                                 //结束添加
                                 skin_close.Enabled = true;
                                 isFinish = false;
-                                isSubSuccess = true;
+                                //isSubSuccess = true;
 
 
 

@@ -1,4 +1,5 @@
-﻿using KtpAcs.Infrastructure.Serialization;
+﻿using KtpAcs.Infrastructure.Search.Extensions;
+using KtpAcs.Infrastructure.Serialization;
 using KtpAcs.Infrastructure.Utilities;
 using KtpAcs.KtpApiService;
 using KtpAcs.KtpApiService.Base;
@@ -13,6 +14,7 @@ using KtpAcsMiddleware.KtpApiService.Base;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using static KtpAcs.KtpApiService.Result.OrganizationListResult;
@@ -115,14 +117,14 @@ namespace KtpAcs.WinForm.Jijian
             List<OrganizationList> pList = null;
             //Task.Run(() =>
             //{
-                IMulePusher pusherLogin = new GetOrganizationApi() { RequestParam = new { uuid = 1, projectUuid = ConfigHelper.KtpLoginProjectId } };
-                PushSummary pushLogin = pusherLogin.Push();
-                if (pushLogin.Success)
-                {
-                    pList = pushLogin.ResponseData;
+            IMulePusher pusherLogin = new GetOrganizationApi() { RequestParam = new { uuid = 1, projectUuid = ConfigHelper.KtpLoginProjectId } };
+            PushSummary pushLogin = pusherLogin.Push();
+            if (pushLogin.Success)
+            {
+                pList = pushLogin.ResponseData;
 
-                }
-           // });
+            }
+            // });
             this.ComOrganizationUuid.Properties.DisplayMember = "name";
             this.ComOrganizationUuid.Properties.ValueMember = "uuid";
             this.ComOrganizationUuid.Properties.DataSource = pList;
@@ -386,11 +388,24 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="state"></param>
         public void GetInfo(int state, string workerId)
         {
+            WorkerResult.Data w=new WorkerResult.Data();
 
-            IMulePusher PanelLibrarySet = new GetWorkerApi() { RequestParam = new { projectId = ConfigHelper.KtpLoginProjectId, userId = workerId } };
+            try
+            {
+                IMulePusher PanelLibrarySet = new GetWorkerApi() { RequestParam = new { projectUuid = ConfigHelper.KtpLoginProjectId, userUuid = workerId, designatedFlag= state } };
 
-            PushSummary pushSummary = PanelLibrarySet.Push();
-            WorkerResult.Data w = pushSummary.ResponseData;
+                PushSummary pushSummary = PanelLibrarySet.Push();
+                if (!pushSummary.Success)
+                    MessageHelper.Show(pushSummary.Message);
+                else
+
+                    w = pushSummary.ResponseData;
+            }
+            catch (Exception ex)
+            {
+
+                MessageHelper.Show(ex.Message);
+            }
 
             this.txtAddress.Text = w.address;
             this.txtAvg.Text = w.age.ToString();
@@ -403,19 +418,79 @@ namespace KtpAcs.WinForm.Jijian
             this.txtIdCard.Text = w.idCard;
             this.txtName.Text = w.name;
             this.txtNativePlace.Text = w.nativePlace;
-            this.txtExpireTime.Text = "";
-            this.txtStartTime.Text = "";
-            this.txtCardAgency.Text = "";
-            this.txtBankNo.Text = "";
-            this.ComNation.EditValue = w.nation;
+            this.txtExpireTime.Text =w.expireTime;
+            this.txtStartTime.Text = w.startTime;
+            this.txtCardAgency.Text = w.cardAgency;
+            this.txtBankNo.Text = w.bankNo;
+            //IList<DicKeyValueDto> nations = EnumSerializationExtension.GetEnumValue(IdentityNation.Wu, w.nation);  
+
             this.ComEducationLevel.EditValue = w.educationLevel;
             this.ComOrganizationUuid.EditValue = w.organizationUuid;
             this.comWorkerTeamUuid.EditValue = w.workerTeamUuid;
             this.comWorkType.EditValue = w.workType;
-            this.pic_facePic.Image = Jijian.Properties.Resources.sfz_r;
-            this.pic_picturePositive.Image = Jijian.Properties.Resources.sfz_z;
-            this.pic_pictureReverse.Image = Jijian.Properties.Resources.sfz_f;
-            this.IdentityHeadPic.Image = Jijian.Properties.Resources.img_zjz1;
+
+            //人脸采集照片
+            if (!string.IsNullOrEmpty(w.facePic))
+            {
+                try
+                {
+                    Image img = Image.FromStream(System.Net.WebRequest.Create(w.facePic).GetResponse().GetResponseStream());
+                    _url_facePicId = w.facePic;
+                    pic_facePic.Image = pic_facePic.Image = img;
+
+                }
+                catch (Exception ex)
+                {
+
+
+                }
+            }
+            //身份证正面
+            if (!string.IsNullOrEmpty(w.picturePositive))
+            {
+                try
+                {
+                    Image imgPic2 = Image.FromStream(System.Net.WebRequest.Create(w.picturePositive).GetResponse().GetResponseStream());
+                    _url_identityPicId = w.picturePositive;
+                    this.pic_picturePositive.Image = imgPic2;
+                }
+                catch (Exception ex)
+                {
+
+
+                }
+            }
+            //身份证反面
+            if (!string.IsNullOrEmpty(w.pictureReverse))
+            {
+                try
+                {
+                    Image imgPic3 = Image.FromStream(System.Net.WebRequest.Create(w.pictureReverse).GetResponse().GetResponseStream());
+                    this.pic_pictureReverse.Image = imgPic3;
+                    _url_identityBackPicId = w.pictureReverse;
+                }
+                catch (Exception ex)
+                {
+
+
+                }
+            }
+            //头像
+            if (!string.IsNullOrEmpty(w.icon))
+            {
+                try
+                {
+                    Image imgUpic = Image.FromStream(System.Net.WebRequest.Create(w.icon).GetResponse().GetResponseStream());
+                    this.IdentityHeadPic.Image = imgUpic;
+                    _url_upic = w.icon;
+                }
+                catch (Exception ex)
+                {
+
+
+                }
+            }
+
             if (state == 1 || state == 0)
             {
 

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WorkerListForm));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -45,7 +44,7 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SalesMoney = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.details = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.txtQuery = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -96,11 +95,11 @@
             this.gridColumn8,
             this.gridColumn9,
             this.gridColumn10,
-            this.SalesMoney});
+            this.details});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
@@ -171,30 +170,27 @@
             // 
             // gridColumn10
             // 
-            this.gridColumn10.Caption = "uuid";
-            this.gridColumn10.FieldName = "uuid";
+            this.gridColumn10.Caption = "userUuid";
+            this.gridColumn10.FieldName = "userUuid";
             this.gridColumn10.Name = "gridColumn10";
             // 
-            // SalesMoney
+            // details
             // 
-            this.SalesMoney.Caption = "操作";
-            this.SalesMoney.ColumnEdit = this.repositoryItemButtonEdit1;
-            this.SalesMoney.Name = "SalesMoney";
-            this.SalesMoney.Visible = true;
-            this.SalesMoney.VisibleIndex = 8;
+            this.details.Caption = "操作";
+            this.details.ColumnEdit = this.repositoryItemButtonEdit1;
+            this.details.FieldName = "details";
+            this.details.Name = "details";
+            this.details.Visible = true;
+            this.details.VisibleIndex = 8;
             // 
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
-            editorButtonImageOptions1.Location = DevExpress.XtraEditors.ImageLocation.Default;
-            serializableAppearanceObject1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "详情", -1, true, true, true, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "详情", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEdit1_ButtonClick);
-            this.repositoryItemButtonEdit1.Click += new System.EventHandler(this.repositoryItemButtonEdit1_Click);
             // 
             // txtQuery
             // 
@@ -317,7 +313,7 @@
         private DevExpress.XtraEditors.ComboBoxEdit ComUsable;
         private DevExpress.XtraEditors.SimpleButton btnClear;
         private DevExpress.XtraEditors.SimpleButton btnQuery;
-        private DevExpress.XtraGrid.Columns.GridColumn SalesMoney;
+        private DevExpress.XtraGrid.Columns.GridColumn details;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
     }
 }

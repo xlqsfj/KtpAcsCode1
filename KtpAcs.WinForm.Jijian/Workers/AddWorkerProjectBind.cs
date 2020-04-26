@@ -18,6 +18,7 @@ using System.Linq;
 using static KtpAcs.KtpApiService.Result.OrganizationListResult;
 using static KtpAcs.KtpApiService.Result.WorkerTypeListResult;
 using KtpAcs.KtpApiService.Result;
+using KtpAcs.WinForm.Jijian.Device;
 
 namespace KtpAcs.WinForm.Jijian
 {
@@ -26,6 +27,8 @@ namespace KtpAcs.WinForm.Jijian
     public partial class AddWorker
     {
 
+        //声明事件判断是否关闭项目人员信息录入
+        public event AgainSubmit ShowProjectList;
         private string _status;
         private string _organizationUserUuid;
         public AddWorker(string phone, string name, string organizationUserUuid, int status = 2)

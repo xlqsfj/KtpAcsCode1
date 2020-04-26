@@ -17,6 +17,7 @@ using KtpAcs.KtpApiService.Project;
 using static KtpAcs.KtpApiService.Result.ProjectListResult;
 using KtpAcs.Infrastructure.Utilities;
 using KtpAcs.WinForm.Jijian.Workers;
+using System.Runtime.InteropServices;
 
 namespace KtpAcs.WinForm.Jijian
 {
@@ -32,6 +33,20 @@ namespace KtpAcs.WinForm.Jijian
             GetProjectList();
             GetProjectCount();
             flowDevice_Click(null, null);
+        }
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x112)
+            {
+                if (m.WParam.ToInt32() == 61539 || m.WParam.ToInt32() == 61587)
+                {
+                    return;
+                }
+            }
+            base.WndProc(ref m);
         }
 
 

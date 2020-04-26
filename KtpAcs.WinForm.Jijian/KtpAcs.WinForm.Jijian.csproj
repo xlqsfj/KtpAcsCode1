@@ -295,6 +295,7 @@
     <None Include="image\l1.png" />
     <Content Include="image\loading3.gif" />
     <None Include="image\Loading4.gif" />
+    <None Include="image\logo.png" />
     <Content Include="image\off.png" />
     <Content Include="image\PanelImg.ico.ico" />
     <None Include="image\sfz_z.png" />

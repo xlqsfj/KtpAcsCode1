@@ -69,9 +69,14 @@ namespace KtpAcs.KtpApiService.Result
             /// </summary>
            public string userUuid { get; set; }
             /// <summary>
-            /// 用户主键id
+            /// 用户主键id SalesMoney
             /// </summary>
             public int  userId { get; set; }
+
+            /// <summary>
+            /// 详情
+            /// </summary>
+            public string details{ get { return "详情"; } }
             /// <summary>
             /// 用户人脸图片
             /// </summary>

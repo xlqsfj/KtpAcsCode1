@@ -92,6 +92,7 @@ namespace KtpAcs.PanelApi.Yushi
                 Gender = receiveData.usex,
                 PersonName = receiveData.uname,
                 ImageNum = 1,
+                TimeTemplate = new TimeTemplate { BeginTime = 0, EndTime = 4294967295, Index = 0 },
                 PersonID = receiveData.userId,
                 IdentificationNum = 1,
                 IdentificationList = new List<IdentificationListItem> { new IdentificationListItem { Number = receiveData.usfz, Type = 0 } },

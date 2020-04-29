@@ -74,9 +74,9 @@ namespace KtpAcs.WinForm.Jijian
                 this.comProjectList.EditValue = pList[0].projectUuid;
                 ConfigHelper._KtpLoginProjectId = pList[0].projectUuid;
                 this.comProjectList.Properties.Columns.Add(
-               new DevExpress.XtraEditors.Controls.LookUpColumnInfo("organizationName","公司名称"));
+               new DevExpress.XtraEditors.Controls.LookUpColumnInfo("organizationName", "公司名称"));
                 this.comProjectList.Properties.Columns.Add(
-                new DevExpress.XtraEditors.Controls.LookUpColumnInfo("projectName","项目名称"));
+                new DevExpress.XtraEditors.Controls.LookUpColumnInfo("projectName", "项目名称"));
 
             }
         }
@@ -106,6 +106,17 @@ namespace KtpAcs.WinForm.Jijian
 
         private void picExit_Click(object sender, EventArgs e)
         {
+            if (_workerAdminForm != null)
+                _workerAdminForm.isExiet();
+            if (_workerProjectForm != null)
+            {
+                if (_workerProjectForm.isOpen)
+                {
+
+                    _workerProjectForm.GetIsOpen();
+                }
+
+            }
             Application.Exit();
         }
 
@@ -157,14 +168,18 @@ namespace KtpAcs.WinForm.Jijian
                 {
 
                     _workerProjectForm.GetIsOpen();
+                    _workerProjectForm = null;
                 }
 
             }
+         
             if (form.Name != "WorkerAdminForm")
             {
                 if (_workerAdminForm != null)
                     _workerAdminForm.isExiet();
+                _workerAdminForm = null;
             }
+         
 
             form.FormBorderStyle = FormBorderStyle.None;
             form.TopLevel = false;
@@ -259,7 +274,7 @@ namespace KtpAcs.WinForm.Jijian
         {
 
             _DeivceForm.SysWorkerToPanel();
-            flowDevice_Click(null, null);
+      
         }
         /// <summary>
         /// 点击项目下拉框
@@ -293,6 +308,17 @@ namespace KtpAcs.WinForm.Jijian
 
         private void Home_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (_workerAdminForm != null)
+                _workerAdminForm.isExiet();
+            if (_workerProjectForm != null)
+            {
+                if (_workerProjectForm.isOpen)
+                {
+
+                    _workerProjectForm.GetIsOpen();
+                }
+
+            }
             Application.Exit();
         }
 
@@ -306,7 +332,7 @@ namespace KtpAcs.WinForm.Jijian
             //如果是单击的是左键
             if (e.Button == MouseButtons.Left)
             {
-              //  popupMenu1.ShowPopup((Button)sender, new Point(e.X, e.Y)); //在你单击的地方弹出菜单
+                //  popupMenu1.ShowPopup((Button)sender, new Point(e.X, e.Y)); //在你单击的地方弹出菜单
                 this.popupMenu1.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
             }
 

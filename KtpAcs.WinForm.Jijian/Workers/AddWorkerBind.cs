@@ -37,14 +37,14 @@ namespace KtpAcs.WinForm.Jijian
             IList<DicKeyValueDto> nations = IdentityNation.Wu.GetDescriptions().Where(i => i.Key != 0).ToList();
             this.ComNation.Properties.DisplayMember = "Value";
             this.ComNation.Properties.ValueMember = "Key";
-            this.ComNation.EditValue = "Value";
-
+            //this.ComNation.EditValue = "Value";
             this.ComNation.Properties.DataSource = nations;
-            this.ComNation.Properties.NullText = "==请选择==";
-
+      
+           // this.ComNation.Properties.NullText = "===请选择===";
+         
             if (selectedValue != null)
             {
-                this.ComNation.SelectedText = selectedValue;
+                this.ComNation.Properties.NullText = selectedValue;
             }
             else
             {
@@ -306,8 +306,7 @@ namespace KtpAcs.WinForm.Jijian
             this.txtBankName.ReadOnly = false;
 
             this.txtBirthday.ReadOnly = true;
-            //this.txtEmergencyContactName.ReadOnly = true;
-            //this.txtEmergencyContactPhone.ReadOnly = true;
+
             this.txtGender.ReadOnly = true;
             this.txtIdCard.ReadOnly = true;
             this.txtName.ReadOnly = true;
@@ -316,7 +315,7 @@ namespace KtpAcs.WinForm.Jijian
             this.txtExpireTime.ReadOnly = true;
             this.txtStartTime.ReadOnly = true;
             this.txtCardAgency.ReadOnly = true;
-
+            this.ComNation.ReadOnly = true;
             if (state == 1)
             {
                 panelProjectInfo.Visible = false;
@@ -328,10 +327,29 @@ namespace KtpAcs.WinForm.Jijian
                 panelBankInfo.Visible = false;
                 this.txtPhone.ReadOnly = true;
             }
-            else
+            else if (state == 0)
             {
                 panelProjectInfo.Visible = true;
                 panelBankInfo.Visible = true;
+
+            }
+            if (!string.IsNullOrEmpty(_uuId))
+            {
+                //详情
+                this.btnSubmit.Visible = false;
+                this.AVidePlayer.Visible = false;
+                this.simpleButton1.Text = "关闭";
+                this.txtEmergencyContactName.ReadOnly = true;
+                this.txtEmergencyContactPhone.ReadOnly = true;
+                this.txtPhone.ReadOnly = true;
+                this.comWorkerTeamUuid.ReadOnly = true;
+                this.comWorkType.ReadOnly = true;
+                this.ComOrganizationUuid.ReadOnly = true;
+                this.txtBankNo.ReadOnly = true;
+                this.ComEducationLevel.ReadOnly = true;
+
+
+
 
             }
 
@@ -372,6 +390,7 @@ namespace KtpAcs.WinForm.Jijian
             this.pic_picturePositive.Image = Jijian.Properties.Resources.sfz_z;
             this.pic_pictureReverse.Image = Jijian.Properties.Resources.sfz_f;
             this.IdentityHeadPic.Image = Jijian.Properties.Resources.img_zjz1;
+            
             if (state == 1 || state == 0)
             {
 
@@ -388,11 +407,11 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="state"></param>
         public void GetInfo(int state, string workerId)
         {
-            WorkerResult.Data w=new WorkerResult.Data();
+            WorkerResult.Data w = new WorkerResult.Data();
 
             try
             {
-                IMulePusher PanelLibrarySet = new GetWorkerApi() { RequestParam = new { projectUuid = ConfigHelper.KtpLoginProjectId, userUuid = workerId, designatedFlag= state } };
+                IMulePusher PanelLibrarySet = new GetWorkerApi() { RequestParam = new { projectUuid = ConfigHelper.KtpLoginProjectId, userUuid = workerId, designatedFlag = state } };
 
                 PushSummary pushSummary = PanelLibrarySet.Push();
                 if (!pushSummary.Success)
@@ -418,17 +437,17 @@ namespace KtpAcs.WinForm.Jijian
             this.txtIdCard.Text = w.idCard;
             this.txtName.Text = w.name;
             this.txtNativePlace.Text = w.nativePlace;
-            this.txtExpireTime.Text =w.expireTime;
+            this.txtExpireTime.Text = w.expireTime;
             this.txtStartTime.Text = w.startTime;
             this.txtCardAgency.Text = w.cardAgency;
             this.txtBankNo.Text = w.bankNo;
             //IList<DicKeyValueDto> nations = EnumSerializationExtension.GetEnumValue(IdentityNation.Wu, w.nation);  
-
+      
             this.ComEducationLevel.EditValue = w.educationLevel;
             this.ComOrganizationUuid.EditValue = w.organizationUuid;
             this.comWorkerTeamUuid.EditValue = w.workerTeamUuid;
             this.comWorkType.EditValue = w.workType;
-
+            BindNationsCb(w.nation);
             //人脸采集照片
             if (!string.IsNullOrEmpty(w.facePic))
             {

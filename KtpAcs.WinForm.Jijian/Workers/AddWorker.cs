@@ -6,6 +6,7 @@ using KtpAcs.KtpApiService.Send;
 using KtpAcs.KtpApiService.Worker;
 using KtpAcs.PanelApi.Yushi;
 using KtpAcs.WinForm.Jijian.Base;
+using KtpAcs.WinForm.Jijian.Device;
 using KtpAcs.WinForm.Jijian.Workers;
 using System;
 using System.Collections.Generic;
@@ -23,10 +24,10 @@ namespace KtpAcs.WinForm.Jijian
 {
     public partial class AddWorker : DevExpress.XtraEditors.XtraForm
     {
+        public event Action<DevExpress.XtraEditors.XtraForm> CloseDdetailedWinform;
         //端口号
         private int _synIdCardPort;
         private readonly string _msgCaption = "提示:";
-        private bool _fromReader = false;
         private bool _isColse = false;
         private string _facePicId;
         private string _identityBackPicId;
@@ -36,10 +37,9 @@ namespace KtpAcs.WinForm.Jijian
         private string _identityPicId;
         private string _url_facePicId;
         private string _url_identityBackPicId;
-        private int? teamType;
-        private int? _userId = null;
+
         private string _url_identityPicId;
-        private string _send;
+        private string _uuId;
         private bool _isSys = false;
         private AddWorerkSend add;
 
@@ -72,26 +72,23 @@ namespace KtpAcs.WinForm.Jijian
         public AddWorker(string uuId, int hmc = 0, bool isEdit = false)
         {
             _state = hmc;
+            _uuId = uuId;
             InitializeComponent();
-          //  CameraConn();
-            BindNationsCb();
+           // BindNationsCb();
             BindEducationLeveCb();
             //查询工种
             GetProjectList();
             //劳务公司
             GetOrganizationUuidList();
-            //银行
-            //  BindBankCardCb();
+            //控件状态
             ContentState(_state);
+            //加载详细页
             GetInfo(hmc, uuId);
         }
 
 
         private void CameraConn()
         {
-
-
-
             try
             {
                 AForgeVidePlayerHelper.CameraConn(AVidePlayer);
@@ -198,7 +195,7 @@ namespace KtpAcs.WinForm.Jijian
                                 fs.Close();
 
                             }
-                            _fromReader = true;
+
                         }
                         catch (Exception ex)
                         {
@@ -331,7 +328,7 @@ namespace KtpAcs.WinForm.Jijian
                 }
                 else
                 {
-
+                    ConfigHelper.IsDivceAdd = false;
                     WorkSysFail.dicWorkadd.Add(false, "添加失败，未连接人脸识别面板!");
                 }
             }
@@ -339,7 +336,7 @@ namespace KtpAcs.WinForm.Jijian
             {
 
                 MessageHelper.Show(ex.Message);
-                _send = "";
+
 
                 btnSubmit.Text = submit;
                 btnSubmit.Enabled = true;
@@ -348,7 +345,7 @@ namespace KtpAcs.WinForm.Jijian
             {
 
                 MessageHelper.Show(ex);
-                _send = "";
+
 
                 btnSubmit.Text = submit;
                 btnSubmit.Enabled = true;
@@ -375,7 +372,7 @@ namespace KtpAcs.WinForm.Jijian
         {
             btnSubmit.Text = @"提交";
             btnSubmit.Enabled = true;
-            _send = "";
+
             if (_isColse && close == "close")
             { //编辑
                 Hide();
@@ -385,7 +382,8 @@ namespace KtpAcs.WinForm.Jijian
             {//新增
 
                 reslt(_state);
-                ShowProjectList("ok");
+                if (ShowProjectList != null)
+                    ShowProjectList("ok");
                 return;
             }
 
@@ -442,7 +440,10 @@ namespace KtpAcs.WinForm.Jijian
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            reslt(_state);
+            if (string.IsNullOrEmpty(_uuId))
+                reslt(_state);
+            else if(CloseDdetailedWinform !=null)
+                CloseDdetailedWinform(null);
         }
     }
 }

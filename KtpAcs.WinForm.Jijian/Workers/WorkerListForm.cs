@@ -7,6 +7,7 @@ using KtpAcs.KtpApiService;
 using KtpAcs.KtpApiService.Result;
 using KtpAcs.KtpApiService.Send;
 using KtpAcs.KtpApiService.Worker;
+using KtpAcs.WinForm.Jijian.Device;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -16,6 +17,9 @@ namespace KtpAcs.WinForm.Jijian.Workers
     public partial class WorkerListForm : DevExpress.XtraEditors.XtraForm
     {
         private int _isHmc = 0;
+
+        //声明事件用于显示详细页面
+        public event Action<DevExpress.XtraEditors.XtraForm> ShowDetail;
         public WorkerListForm(int isHmc = 0)
         {
             _isHmc = isHmc;
@@ -49,9 +53,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                     WorkerListResult.Data data = push.ResponseData;
                     this.gridControl1.DataSource = data.list;
                 }
-              //  RepositoryItemHyperLinkEdit linkDetails = CreateRepositoryItemHyperLinkEdit("销售金额");
-              //  linkDetails.OpenLink += new OpenLinkEventHandler(repositoryItemButtonEdit3_Click);  //事件
-              //this.details.ColumnEdit = linkDetails;  //绑定
+              
           }
             catch (Exception ex)
             {
@@ -95,8 +97,10 @@ namespace KtpAcs.WinForm.Jijian.Workers
             dynamic row = this.gridView1.GetFocusedRow();
             string userUuid = row.userUuid;
             AddWorker addWorker = new AddWorker(userUuid, _isHmc, false);
-            addWorker.StartPosition = FormStartPosition.CenterParent;
-            addWorker.Show();
+            addWorker.CloseDdetailedWinform += new Action<DevExpress.XtraEditors.XtraForm>(ShowDetail);
+            //addWorker.StartPosition = FormStartPosition.CenterParent;
+            //addWorker.Show();
+            ShowDetail(addWorker);
 
 
         }

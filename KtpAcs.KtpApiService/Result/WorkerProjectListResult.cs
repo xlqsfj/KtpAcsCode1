@@ -47,17 +47,17 @@ namespace KtpAcs.KtpApiService.Result
             /// <summary>
             /// 用户主键id
             /// </summary>
-            public string organizationUserId { get; set; }
+            public int  organizationUserId { get; set; }
             public string phone { get; set; }
             public string projectUuid { get; set; }
             public string roleNames { get; set; }
             public string roleUuid { get; set; }
 
+            public string facePic { get; set; }
+
 
             private string _status;
-            /// <summary>
-            /// 性别 1男2 女
-            /// </summary>
+      
             public string status
             {
                 get { return _status; }
@@ -83,10 +83,7 @@ namespace KtpAcs.KtpApiService.Result
 
                 }
             }
-            // private string _statusShow;
-            /// <summary>
-            /// 性别 1男2 女
-            /// </summary>
+      
             public string statusShow { get; set; }
 
             public string uuid { get; set; }

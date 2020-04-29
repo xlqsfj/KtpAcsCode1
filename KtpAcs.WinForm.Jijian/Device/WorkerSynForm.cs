@@ -20,6 +20,9 @@ using KtpAcs.KtpApiService.Worker;
 using KtpAcs.PanelApi.Yushi;
 using static KtpAcs.KtpApiService.Result.WorkerListResult;
 using static KtpAcs.PanelApi.Yushi.Api.PanelWorkerSend;
+using static KtpAcs.KtpApiService.Result.WorkerProjectListResult;
+using KtpAcs.KtpApiService.Base;
+using KtpAcs.Infrastructure.Serialization;
 
 namespace KtpAcs.WinForm.Jijian.Device
 {
@@ -84,6 +87,7 @@ namespace KtpAcs.WinForm.Jijian.Device
 
 
                     MessageHelper.Show("同步成功");
+                    ShowSubmit();
 
 
                 }
@@ -120,7 +124,7 @@ namespace KtpAcs.WinForm.Jijian.Device
             {
                 if (_workthread != null && _workthread.IsAlive)
                 {
-                    _workthread.Resume();
+
                     _workthread.Abort();
                 }
             }
@@ -136,6 +140,12 @@ namespace KtpAcs.WinForm.Jijian.Device
         private string workerSyn()
         {
 
+            if (workers == null)
+            {
+                workers = new List<WorkerList>();
+                workers = GetWorkerLists();
+
+            }
 
 
             foreach (var ip in _ip)
@@ -159,34 +169,40 @@ namespace KtpAcs.WinForm.Jijian.Device
             return "";
         }
 
-        public void AddPaneIpInfo(dynamic ip)
+        public List<WorkerList> AddWokerLists(List<WorkerList> list, EnumWorkerType type)
         {
 
-            lock (objLock)
-            {
-                if (workers == null)
-                {
-                    WorkerSend workerSend = new WorkerSend()
-                    {
-                        designatedFlag = null,
-                        pageSize = 0,
-                        projectUuid = ConfigHelper.KtpLoginProjectId,
-                        pageNum = 0,
-                        status = 2
-                    };
-                    //查询所有人员的详细接口
-                    IMulePusher pusherDevice = new GetWorkersApi() { RequestParam = workerSend };
-                    PushSummary push = pusherDevice.Push();
-                    WorkerListResult.Data rr = push.ResponseData;
 
-                    workers = rr.list;
-                }
+            foreach (WorkerList workerList in list)
+            {
+                workerList.enumWorkerType = type;
+                workers.Add(workerList);
             }
+            return workers;
+        }
+        public void AddPaneIpInfo(dynamic ip)
+        {
             Liblist liblist = PanelBase.GetPanelDeviceInfo(ip);
             int Limit = 10;
             if (liblist != null)
                 Limit = liblist.MemberNum == 0 ? 10 : liblist.MemberNum;
+            List<Personlist> personlist = GetPanelData(ip, ref Limit);
+            //循环面板的人员，跟项目人员对比，不存在进行删除
+            DeletePanelWorek(ip, personlist);
+            //循环项目的人员，跟面板人员对比，不存在进行添加，存在跳过
+            AddWorerToPanel(ip, personlist);
+            _ip = _ip.Where(a => a != ip).ToList();
+            if (_ip.Count < 1)
+                _hasNew.Set();
+
+
+
+        }
+
+        private static List<Personlist> GetPanelData(dynamic ip, ref int Limit)
+        {
             List<Personlist> personlist = new List<Personlist>();
+
             if (Limit > 1000)
             {
                 Limit = Limit / 2;
@@ -214,22 +230,11 @@ namespace KtpAcs.WinForm.Jijian.Device
                 personlist = paneSummary.ResponseData;
             }
 
-            //循环面板的人员，跟项目人员对比，不存在进行删除
-            foreach (Personlist items in personlist)
-            {
-                var p = workers.Where(a => a.userId == items.PersonID).Count();
-                if (p == 0)
-                {
+            return personlist;
+        }
 
-                    IMulePusherYs panelWorkerApi = new PanelWorkerDeleteApi() { API = "/PeopleLibraries/3/People/" + items.PersonID + $"?Lastchange={DateTime.Now.Ticks}", PanelIp = ip };
-
-                    PushSummarYs pushDeleteSummary = panelWorkerApi.Push();
-                    PanelDeleteResult pr = pushDeleteSummary.ResponseData;
-                }
-
-
-            }
-            //循环项目的人员，跟面板人员对比，不存在进行添加，存在跳过
+        private void AddWorerToPanel(dynamic ip, List<Personlist> personlist)
+        {
             int panelCount = 0;
             _numerOfThreadsNotYetCompleted = workers.Count();
             foreach (WorkerList items in workers)
@@ -255,7 +260,8 @@ namespace KtpAcs.WinForm.Jijian.Device
                     _numerOfThreadsNotYetCompleted = _numerOfThreadsNotYetCompleted - 1;
                     continue;
                 }
-                if (string.IsNullOrEmpty(items.name) || string.IsNullOrEmpty(items.idCard))
+               //string.IsNullOrEmpty(items.idCard)
+                if (string.IsNullOrEmpty(items.name) )
                 {
                     AddSysFail(items, "错误信息:基本信息不全");
                     _numerOfThreadsNotYetCompleted = _numerOfThreadsNotYetCompleted - 1;
@@ -266,23 +272,89 @@ namespace KtpAcs.WinForm.Jijian.Device
 
 
 
-
-
-                //ThreadPool.QueueUserWorkItem(new WaitCallback(AddPanePerson),
-
-                //   (object)items);
-
                 AddPanePerson(items);
 
 
             }
-            _ip = _ip.Where(a => a != ip).ToList();
-            if (_ip.Count < 1)
-                _hasNew.Set();
-
-
-
         }
+
+        private void DeletePanelWorek(dynamic ip, List<Personlist> personlist)
+        {
+
+            foreach (Personlist items in personlist)
+            {
+                var p = workers.Where(a => a.userId == items.PersonID).Count();
+                if (p == 0)
+                {
+
+                    IMulePusherYs panelWorkerApi = new PanelWorkerDeleteApi() { API = "/PeopleLibraries/3/People/" + items.PersonID + $"?Lastchange={DateTime.Now.Ticks}", PanelIp = ip };
+
+                    PushSummarYs pushDeleteSummary = panelWorkerApi.Push();
+                    PanelDeleteResult pr = pushDeleteSummary.ResponseData;
+                }
+
+
+            }
+        }
+
+        private List<WorkerList> GetWorkerLists()
+        {
+         
+            WorkerSend workerSend = new WorkerSend()
+            {
+                designatedFlag = false, //花名册
+                pageSize = 0,
+                projectUuid = ConfigHelper.KtpLoginProjectId,
+                pageNum = 0,
+                status = 2
+            };
+            //查询所有人员的详细接口
+            IMulePusher pusherDevice = new GetWorkersApi() { RequestParam = workerSend };
+            PushSummary push = pusherDevice.Push();
+            WorkerListResult.Data rr = push.ResponseData;
+            if (rr.list.Count > 0)
+            {
+           workers= AddWokerLists(rr.list, EnumWorkerType.Hmc);
+            }
+            //甲子分包
+            workerSend.designatedFlag = true;
+            pusherDevice = new GetWorkersApi() { RequestParam = workerSend };
+            push = pusherDevice.Push();
+            rr = push.ResponseData;
+            if (rr.list.Count > 0)
+            {
+                workers = AddWokerLists(rr.list, EnumWorkerType.Jzfb);
+            }
+            WorkerSend projectSend = new WorkerSend()
+            {
+
+                pageSize = 0,
+                projectUuid = ConfigHelper.KtpLoginProjectId,
+                pageNum = 0,
+                status = 2
+            };
+            //项目部人员
+            pusherDevice = new GetWorkersProjectApi() { RequestParam = projectSend };
+            push = pusherDevice.Push();
+            if (push.Success)
+            {
+                WorkerProjectListResult.Data data1 = push.ResponseData;
+                List<WorkerProjectList> projectList = data1.list;
+                foreach (var plist in projectList)
+                {
+                    WorkerList worker = new WorkerList();
+                    worker.phone = plist.phone;
+                    worker.facePic = plist.facePic;
+                    worker.name = plist.name;
+                    worker.enumWorkerType = EnumWorkerType.Hmry;
+                    worker.userId = plist.organizationUserId;
+                    workers.Add(worker);
+                }
+            }
+
+            return workers;
+        }
+
         public void AddPanePerson(WorkerList items)
         {
 
@@ -326,8 +398,10 @@ namespace KtpAcs.WinForm.Jijian.Device
                     PersonName = items.name,
                     ImageNum = 1,
                     PersonID = items.userId,
+                    TimeTemplate = new TimeTemplate { BeginTime = 0, EndTime = 4294967295, Index = 0 },
+
                     IdentificationNum = 1,
-                    IdentificationList = new List<IdentificationListItem> { new IdentificationListItem { Number = items.idCard, Type = 0 } },
+                    IdentificationList = new List<IdentificationListItem> { new IdentificationListItem { Number = items.idCard??"123456789", Type = 0 } },
                     ImageList = new List<ImageListItem> { new ImageListItem { Name = $"{items.userId}_{DateTime.Now}.jpg", Data = items.imgBase64, Size = items.imgBase64.Length, FaceID = items.userId } }
 
                 };
@@ -360,13 +434,6 @@ namespace KtpAcs.WinForm.Jijian.Device
             finally
             {
 
-                //if (Interlocked.Decrement(ref _numerOfThreadsNotYetCompleted) == 0)
-                //{
-                //    _FinishListIp = _ip.Where(a => a != items.panelIp).ToList();
-                //    if (_FinishListIp.Count <1)
-                //        _hasNew.Set();
-
-                //}
             }
 
 
@@ -399,7 +466,8 @@ namespace KtpAcs.WinForm.Jijian.Device
                         userId = items.userId,
                         name = items.name,
                         phone = items.phone,
-                        reason = mag
+                        reason = mag,
+                        workerType = items.enumWorkerType.GetDescription()
                     };
                     WorkSysFail.list.Add(wokersList);
                 }
@@ -412,15 +480,7 @@ namespace KtpAcs.WinForm.Jijian.Device
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //  new AddWorkerInfo(1).ShowDialog();
-        }
 
-        private void WorkerSyncPrompt_Load(object sender, EventArgs e)
-        {
-
-        }
 
         /// <summary>
         /// 关闭命令
@@ -457,10 +517,7 @@ namespace KtpAcs.WinForm.Jijian.Device
             }
         }
 
-        private void WorkerSyncPrompt_Load_1(object sender, EventArgs e)
-        {
 
-        }
     }
     public class CONSTANTDEFINE
     {

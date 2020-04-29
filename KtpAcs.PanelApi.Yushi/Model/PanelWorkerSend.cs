@@ -111,11 +111,15 @@ namespace KtpAcs.PanelApi.Yushi.Api
             /// 人员名字
             /// </summary>
             public string PersonName { get; set; }
+            /// <summary>
+            /// 时间模板相关信息，
+            /// </summary>
+            public TimeTemplate TimeTemplate { get; set; }
 
             /// <summary>
             /// 成员性别
-           ///0：未知	1：男性
-           ///2：女性	9：未说明
+            ///0：未知	1：男性
+            ///2：女性	9：未说明
             /// </summary>
             public int Gender { get; set; }
 

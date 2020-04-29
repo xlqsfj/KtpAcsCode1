@@ -82,7 +82,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
             dynamic row = this.grid_WorkerProject.GetFocusedRow();
             string id = row.organizationUserUuid;
-            int userId = FormatHelper.StringToInt(row.organizationUserId, 0);
+            int userId = row.organizationUserId;
             string phone = row.phone;
             string state = row.status;
             string name = row.name;
@@ -97,7 +97,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                         xtraTabControl1.TabPages.Remove(xtraTabControl1.TabPages[1]);
                     }
                 }
-               
+
                 XtraTabPage page = new XtraTabPage();
                 addWorker = new AddWorker(phone, name, id);
                 addWorker.ShowProjectList += new AgainSubmit(a => GetIsClose(a));
@@ -150,23 +150,25 @@ namespace KtpAcs.WinForm.Jijian.Workers
         }
         public void GetIsClose(string state)
         {
-            
 
-                //判断是否已创建过
-                foreach (XtraTabPage page1 in xtraTabControl1.TabPages)
+
+            //判断是否已创建过
+            foreach (XtraTabPage page1 in xtraTabControl1.TabPages)
+            {
+                if (page1.Text == "项目人员办理入场")
                 {
-                    if (page1.Text == "项目人员办理入场")
-                    {
 
-                        xtraTabControl1.SelectedTabPage = page1;//显示该页
-                        xtraTabControl1.TabPages.Remove(xtraTabControl1.TabPages[1]);
-                        page1.Dispose();
-                        break;
-                    }
+                    GetIsOpen();
+                    addWorker = null;
+                    xtraTabControl1.SelectedTabPage = page1;//显示该页
+                    xtraTabControl1.TabPages.Remove(xtraTabControl1.TabPages[1]);
+                    page1.Dispose();
+                    break;
                 }
-           
+            }
+
         }
-             
+
         public void DeletePanelProjectUser(int userId)
         {
 

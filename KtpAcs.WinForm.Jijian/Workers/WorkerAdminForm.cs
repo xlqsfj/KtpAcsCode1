@@ -8,6 +8,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using KtpAcs.WinForm.Jijian.Device;
+using DevExpress.XtraTab;
 
 namespace KtpAcs.WinForm.Jijian.Workers
 {
@@ -38,6 +40,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
             if (e.Page.Name == "tabPageWorkerList")
             {
                 WorkerListForm listform = new WorkerListForm(_state);
+                listform.ShowDetail += new Action<DevExpress.XtraEditors.XtraForm>(tabCreate);
                 listform.FormBorderStyle = FormBorderStyle.None;
                 listform.TopLevel = false;
                 this.tabPageWorkerList.Controls.Clear();
@@ -45,16 +48,43 @@ namespace KtpAcs.WinForm.Jijian.Workers
                 listform.Show();
 
             }
-            //else
-            //{
-            //    AddWorker workerform = new AddWorker();
-            //    workerform.TopLevel = false;
-            //    this.tabPageWorkerList.Controls.Add(workerform);
-            //    workerform.Show();
-
-            //}
+        
 
 
+        }
+        private void tabCreate(DevExpress.XtraEditors.XtraForm detailedWinform)
+        {
+
+
+            if (detailedWinform != null)
+            {
+                XtraTabPage page = new XtraTabPage();
+                detailedWinform.FormBorderStyle = FormBorderStyle.None;
+                detailedWinform.TopLevel = false;
+                page.Controls.Add(detailedWinform);
+                detailedWinform.Show();
+                page.Text = "详情";
+                xtraTabControl1.SelectedTabPage = page;
+                xtraTabControl1.TabPages.Add(page);
+            }
+            else
+            {
+              
+                //判断是否已创建过
+                foreach (XtraTabPage page1 in xtraTabControl1.TabPages)
+                {
+                    if (page1.Text == "详情")
+                    {
+
+                        xtraTabControl1.SelectedTabPage = page1;//显示该页
+                        xtraTabControl1.TabPages.Remove(xtraTabControl1.TabPages[2]);
+                        page1.Dispose();
+                        break;
+                    }
+                }
+                xtraTabControl1.SelectedTabPage = xtraTabControl1.TabPages[1];//显示该页
+
+            }
         }
 
 

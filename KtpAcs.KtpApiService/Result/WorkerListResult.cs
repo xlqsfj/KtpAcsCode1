@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KtpAcs.KtpApiService.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -92,6 +93,12 @@ namespace KtpAcs.KtpApiService.Result
                   
                 }
             }
+            /// <summary>
+            /// 工人类型
+            /// </summary>
+            public EnumWorkerType enumWorkerType { get ; set; }
+
+            public String workerType { get; set; }
         }
 
     }

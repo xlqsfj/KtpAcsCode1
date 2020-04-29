@@ -102,7 +102,8 @@ namespace KtpAcs.WinForm.Jijian.Device
                 PushSummary pushLogin = pusherLogin.Push();
                 if (pushLogin.Success)
                 {
-
+                    //Device device = this.RequestParam;
+                    Liblist liblist = PanelBase.GetPanelDeviceInfo(txtDeviceIp.Text);
                     btnSave.Enabled = true;
                     btnSave.Text = "保存";
                     if (this._Id != "")

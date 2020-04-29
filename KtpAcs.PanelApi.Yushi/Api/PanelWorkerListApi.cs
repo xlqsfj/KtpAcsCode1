@@ -22,7 +22,7 @@ namespace KtpAcs.PanelApi.Yushi.Api
         {
 
 
-     
+            base.API = "/PeopleLibraries/3/UpdateTime";
             base.MethodType = Method.POST;
             base.ServiceName = ApiType.Panel;
 

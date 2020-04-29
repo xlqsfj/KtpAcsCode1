@@ -21,16 +21,19 @@ using KtpAcs.PanelApi.Yushi.Model;
 using KtpAcs.PanelApi.Yushi.Api;
 using KtpAcs.PanelApi.Yushi;
 using static KtpAcs.WinForm.Jijian.Device.AddDevice;
+using KtpAcs.WinForm.Jijian.Base;
 
 namespace KtpAcs.WinForm.Jijian
 {
     public partial class DeviceListForm : DevExpress.XtraEditors.XtraForm
     {
 
+        public event Action IsSynEnd;  
         public DeviceListForm()
         {
             InitializeComponent();
-
+            CheckForIllegalCrossThreadCalls = false;
+            GetDevice();
         }
 
 
@@ -72,6 +75,7 @@ namespace KtpAcs.WinForm.Jijian
                 workerSynFail.StartPosition = FormStartPosition.CenterParent;
                 workerSynFail.ShowDialog();
             }
+            GetDevice();
 
         }
 
@@ -81,6 +85,7 @@ namespace KtpAcs.WinForm.Jijian
 
             try
             {
+          
                 IMulePusher pusherDevice = new GetDeviceApi() { RequestParam = new { pageNum = 0, pageSize = 0, projectUuid = ConfigHelper.KtpLoginProjectId } };
                 PushSummary push = pusherDevice.Push();
                 if (push.Success)
@@ -91,68 +96,23 @@ namespace KtpAcs.WinForm.Jijian
 
                     if (data.list.Count > 0)
                     {
+                      
                         WorkSysFail.workAdd.Clear();
-
+                        TaskFactory taskFactory = new TaskFactory();
+                        List<Task> taskList = new List<Task>();
+                        LoadingHelper.ShowLoadingScreen();//显示
                         Parallel.ForEach(data.list, (list, DeviceList) =>
                         {
-
-                            Task.Run(() =>
-                            {
-
-                                bool isConn = true;
-                                var workAdd = WorkSysFail.workAdd.FirstOrDefault(a => a.deviceIp == list.deviceIp);
-                                if (workAdd != null)
-                                {
-                                    isConn = workAdd.isConn;
-
-                                }
-                                else
-                                {
-
-                                    //设备是否连接
-                                    isConn = ConfigHelper.MyPing(list.deviceIp);
-
-                                    if (isConn)
-                                    {
-                                        var okConnPanelInfo = new WorkAddInfo
-                                        {
-                                            deviceIp = list.deviceIp,
-                                            isConn = true,
-                                            deviceIn = list.gateType,
-                                            deviceNo = list.deviceId,
-                                            magAdd = "添加中.."
-                                        };
-                                        WorkSysFail.workAdd.Add(okConnPanelInfo);
-
-                                        //返回设备的数量
-
-                                        Liblist liblist = PanelBase.GetPanelDeviceInfo(list.deviceIp);
-                                        if (liblist != null)
-                                        {
-
-                                            //设备数量
-
-                                            list.deviceCount = liblist.MemberNum;
-                                        }
-                                        else
-                                        {
-                                            list.deviceStatus = "否";
-                                            WorkSysFail.DeleteDeviceInfo(list.deviceIp);
-                                        }
-
-                                    }
-                                    list.deviceStatus = isConn ? "是" : "否";
-
-                                }
-
-
-
-
-
-                            });
+                            taskList.Add(taskFactory.StartNew(() => NewMethod(list)));
                         });
 
-                        this.gridControl.DataSource = data.list;
+                        taskFactory.ContinueWhenAll(taskList.ToArray(), a =>
+                        {
+                            this.gridControl.DataSource = data.list;
+                            taskList.Clear();
+                            LoadingHelper.CloseForm();//关闭
+                        });
+                  
                         panelContent.Visible = false;
                         gridControl.Visible = true;
                     }
@@ -160,6 +120,7 @@ namespace KtpAcs.WinForm.Jijian
                     {
                         panelContent.Visible = true;
                         gridControl.Visible = false;
+                      //LoadingHelper.CloseForm();//关闭
                     }
 
                 }
@@ -175,6 +136,49 @@ namespace KtpAcs.WinForm.Jijian
 
         }
 
+        private static void NewMethod(DeviceList list)
+        {
+                bool isConn = true;
+              
+
+                    //设备是否连接
+                    isConn = ConfigHelper.MyPing(list.deviceIp);
+
+                    if (isConn)
+                    {
+                        var okConnPanelInfo = new WorkAddInfo
+                        {
+                            deviceIp = list.deviceIp,
+                            isConn = true,
+                            deviceIn = list.gateType,
+                            deviceNo = list.deviceId,
+                            magAdd = "添加中.."
+                        };
+                      if(!WorkSysFail.workAdd.Contains(okConnPanelInfo))
+                        WorkSysFail.workAdd.Add(okConnPanelInfo);
+
+                        //返回设备的数量
+
+                        Liblist liblist = PanelBase.GetPanelDeviceInfo(list.deviceIp);
+                        if (liblist != null)
+                        {
+
+                            //设备数量
+
+                            list.deviceCount = liblist.MemberNum;
+                        }
+                        else
+                        {
+                            list.deviceStatus = "否";
+                            WorkSysFail.DeleteDeviceInfo(list.deviceIp);
+                        }
+
+                    }
+                    list.deviceStatus = isConn ? "是" : "否";
+
+           
+         
+        }
 
         private void grid_Device_MouseDown(object sender, MouseEventArgs e)
         {
@@ -239,6 +243,8 @@ namespace KtpAcs.WinForm.Jijian
                         PushSummarYs pushSummarySet = panelDeleteApi.Push();
                         XtraMessageBox.Show($"{ip}:删除成功！");
                         this.grid_Device.DeleteRow(this.grid_Device.FocusedRowHandle);//删除行
+                        WorkSysFail.DeleteDeviceInfo(ip);
+
                         if (this.grid_Device.RowCount < 1) {
                             panelContent.Visible = true;
                             gridControl.Visible = false;
@@ -258,10 +264,7 @@ namespace KtpAcs.WinForm.Jijian
             }
         }
 
-        private void DeviceListForm_Load(object sender, EventArgs e)
-        {
-            GetDevice();
-        }
+    
 
         private void grid_Device_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {

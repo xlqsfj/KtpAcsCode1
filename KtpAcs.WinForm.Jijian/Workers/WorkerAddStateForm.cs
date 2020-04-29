@@ -1,7 +1,7 @@
 ﻿using CCWin;
 using KtpAcs.Infrastructure.Utilities;
 using KtpAcs.KtpApiService.Model;
-
+using KtpAcs.WinForm.Jijian.Device;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,8 +19,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
     public partial class WorkerAddStateForm : DevExpress.XtraEditors.XtraForm
     {  //启动更新线程
         Thread myThread;
-        //声明委托重新提交
-        public delegate void AgainSubmit(string close);
+     
         //声明事件
         public event AgainSubmit ShowSubmit;
         //添加是否成功

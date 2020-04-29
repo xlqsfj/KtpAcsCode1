@@ -75,7 +75,7 @@
             // gridColumn1
             // 
             this.gridColumn1.Caption = "类型";
-            this.gridColumn1.FieldName = "deviceId";
+            this.gridColumn1.FieldName = "workerType";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;

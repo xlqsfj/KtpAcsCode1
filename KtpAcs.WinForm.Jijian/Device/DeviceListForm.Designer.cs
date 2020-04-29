@@ -310,7 +310,6 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "DeviceListForm";
             this.Text = "DeviceListForm";
-            this.Load += new System.EventHandler(this.DeviceListForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();

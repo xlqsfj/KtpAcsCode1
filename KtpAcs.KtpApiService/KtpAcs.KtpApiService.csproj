@@ -56,6 +56,7 @@
     <Compile Include="Base\BankCardType.cs" />
     <Compile Include="Base\EnumBankCardType.cs" />
     <Compile Include="Base\EnumDiploma.cs" />
+    <Compile Include="Base\EnumWorkerType.cs" />
     <Compile Include="Base\IdentityNation.cs" />
     <Compile Include="Device\DelDeviceApi.cs" />
     <Compile Include="Device\GetDeviceApi.cs" />

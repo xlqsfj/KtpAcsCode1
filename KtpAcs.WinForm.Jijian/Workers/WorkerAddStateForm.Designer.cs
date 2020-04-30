@@ -35,15 +35,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.skin_close = new CCWin.SkinControl.SkinButton();
             this.skingrid_sysPanel = new CCWin.SkinControl.SkinDataGridView();
+            this.deviceIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deviceIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.magAdd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnReason = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.skinlable_addworkImg = new System.Windows.Forms.Label();
             this.skin_retry = new CCWin.SkinControl.SkinButton();
-            this.deviceIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deviceIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.magAdd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnReason = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.skingrid_sysPanel)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -123,6 +123,42 @@
             this.skingrid_sysPanel.TitleBackColorBegin = System.Drawing.Color.White;
             this.skingrid_sysPanel.TitleBackColorEnd = System.Drawing.SystemColors.ActiveBorder;
             // 
+            // deviceIP
+            // 
+            this.deviceIP.DataPropertyName = "deviceIP";
+            this.deviceIP.HeaderText = "设备Ip号";
+            this.deviceIP.Name = "deviceIP";
+            this.deviceIP.ReadOnly = true;
+            this.deviceIP.Width = 115;
+            // 
+            // deviceIn
+            // 
+            this.deviceIn.DataPropertyName = "deviceIn";
+            this.deviceIn.HeaderText = "是否进出方向";
+            this.deviceIn.Name = "deviceIn";
+            this.deviceIn.ReadOnly = true;
+            this.deviceIn.Width = 150;
+            // 
+            // magAdd
+            // 
+            this.magAdd.DataPropertyName = "magAdd";
+            this.magAdd.HeaderText = "添加消息";
+            this.magAdd.Name = "magAdd";
+            this.magAdd.ReadOnly = true;
+            this.magAdd.Width = 320;
+            // 
+            // btnReason
+            // 
+            this.btnReason.DataPropertyName = "reason";
+            this.btnReason.HeaderText = "操作";
+            this.btnReason.Name = "btnReason";
+            this.btnReason.ReadOnly = true;
+            this.btnReason.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnReason.Text = "重试";
+            this.btnReason.ToolTipText = "失败重试";
+            this.btnReason.UseColumnTextForButtonValue = true;
+            this.btnReason.Width = 130;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.panel1);
@@ -182,42 +218,6 @@
             this.skin_retry.UseVisualStyleBackColor = false;
             this.skin_retry.Visible = false;
             this.skin_retry.Click += new System.EventHandler(this.skin_retry_Click);
-            // 
-            // deviceIP
-            // 
-            this.deviceIP.DataPropertyName = "deviceIP";
-            this.deviceIP.HeaderText = "设备Ip号";
-            this.deviceIP.Name = "deviceIP";
-            this.deviceIP.ReadOnly = true;
-            this.deviceIP.Width = 115;
-            // 
-            // deviceIn
-            // 
-            this.deviceIn.DataPropertyName = "deviceIn";
-            this.deviceIn.HeaderText = "是否进出方向";
-            this.deviceIn.Name = "deviceIn";
-            this.deviceIn.ReadOnly = true;
-            this.deviceIn.Width = 150;
-            // 
-            // magAdd
-            // 
-            this.magAdd.DataPropertyName = "magAdd";
-            this.magAdd.HeaderText = "添加消息";
-            this.magAdd.Name = "magAdd";
-            this.magAdd.ReadOnly = true;
-            this.magAdd.Width = 320;
-            // 
-            // btnReason
-            // 
-            this.btnReason.DataPropertyName = "reason";
-            this.btnReason.HeaderText = "操作";
-            this.btnReason.Name = "btnReason";
-            this.btnReason.ReadOnly = true;
-            this.btnReason.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnReason.Text = "重试";
-            this.btnReason.ToolTipText = "失败重试";
-            this.btnReason.UseColumnTextForButtonValue = true;
-            this.btnReason.Width = 130;
             // 
             // WorkerAddStateForm
             // 

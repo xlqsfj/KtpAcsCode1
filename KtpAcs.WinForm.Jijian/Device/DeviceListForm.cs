@@ -28,7 +28,7 @@ namespace KtpAcs.WinForm.Jijian
     public partial class DeviceListForm : DevExpress.XtraEditors.XtraForm
     {
 
-        public event Action IsSynEnd;  
+ 
         public DeviceListForm()
         {
             InitializeComponent();
@@ -63,7 +63,7 @@ namespace KtpAcs.WinForm.Jijian
             }
             else
             {
-
+                MessageHelper.Show("请先选择同步的面板!");
             }
 
         }
@@ -128,7 +128,7 @@ namespace KtpAcs.WinForm.Jijian
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"错误信息:{0}", ex.Message);
+                MessageHelper.Show($"错误信息:{ex.Message}",ex);
 
             }
 
@@ -211,7 +211,7 @@ namespace KtpAcs.WinForm.Jijian
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"错误信息:{0}", ex.Message);
+                MessageHelper.Show($"错误信息:{ex.Message}", ex);
 
             }
 
@@ -254,7 +254,7 @@ namespace KtpAcs.WinForm.Jijian
                 }
                 catch (Exception ex)
                 {
-                    XtraMessageBox.Show($"错误信息:{0}", ex.Message);
+                    MessageHelper.Show($"错误信息:{ex.Message}", ex);
 
                 }
 
@@ -263,35 +263,21 @@ namespace KtpAcs.WinForm.Jijian
 
             }
         }
-
-    
-
-        private void grid_Device_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
-        {
-            int index = this.grid_Device.FocusedRowHandle;
-            dynamic d = this.grid_Device.GetRow(index);
-            if (e.Column.Caption == "checkbox")
-            {
-                int i = 0;
-            }
-            //DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)grid_Device.Cells[0];
-            //for (int i = 0; i < grid_Device.GetChildRowCount(index); i++)
-            //{
-            //    int row = _view.GetChildRowHandle(rowHandle, i);
-
-            //}
-        }
-
         private void simpleButton4_Click(object sender, EventArgs e)
         {
             AddDevice addDevice = new AddDevice();
             addDevice.ShowDialog();
             GetDevice();
         }
-        //public void GetUpdate(string  isSumit) {
-        //    GetDevice();
 
-        //}
+        private void grid_Device_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
 
+            if (e.Column.FieldName == "deviceStatus") //指定列
+            {
+                if ((string)e.CellValue == "否")  //条件  e.CellValue 为object类型
+                    e.Appearance.BackColor = Color.FromArgb(0,118,248);
+            }
+        }
     }
 }

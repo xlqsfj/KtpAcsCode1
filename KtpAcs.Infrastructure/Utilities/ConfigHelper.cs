@@ -170,15 +170,15 @@ namespace KtpAcs.Infrastructure.Utilities
         /// <summary>
         ///     项目ID
         /// </summary>
-        public static int ProjectId
+        public static string  ProjectId
         {
             get
             {
              
                 if (ConfigurationManager.AppSettings["ProjectId"] != null)
-                    return int.Parse(ConfigurationManager.AppSettings["ProjectId"]);
+                    return ConfigurationManager.AppSettings["ProjectId"];
                 //可用户测试的项目ID：24、70
-                return 138;
+                return "";
             }
         }
 

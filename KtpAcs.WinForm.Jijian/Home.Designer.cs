@@ -87,8 +87,8 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.btnUpdate = new DevExpress.XtraBars.BarButtonItem();
-            this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
+            this.btnLog = new DevExpress.XtraBars.BarButtonItem();
+            this.btnIsEdit = new DevExpress.XtraBars.BarCheckItem();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.spl)).BeginInit();
             this.spl.SuspendLayout();
@@ -766,8 +766,8 @@
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.btnUpdate,
-            this.barCheckItem1});
+            this.btnLog,
+            this.btnIsEdit});
             this.barManager1.MaxItemId = 5;
             // 
             // barDockControlTop
@@ -802,23 +802,25 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 610);
             // 
-            // btnUpdate
+            // btnLog
             // 
-            this.btnUpdate.Caption = "日志";
-            this.btnUpdate.Id = 0;
-            this.btnUpdate.Name = "btnUpdate";
+            this.btnLog.Caption = "日志";
+            this.btnLog.Id = 0;
+            this.btnLog.Name = "btnLog";
+            this.btnLog.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLog_ItemClick);
             // 
-            // barCheckItem1
+            // btnIsEdit
             // 
-            this.barCheckItem1.Caption = "是否编辑";
-            this.barCheckItem1.Id = 2;
-            this.barCheckItem1.Name = "barCheckItem1";
+            this.btnIsEdit.Caption = "是否手动编辑";
+            this.btnIsEdit.Id = 2;
+            this.btnIsEdit.Name = "btnIsEdit";
+            this.btnIsEdit.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.btnIsEdit_CheckedChanged);
             // 
             // popupMenu1
             // 
             this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnUpdate),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnLog),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnIsEdit)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
@@ -926,9 +928,9 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarButtonItem btnUpdate;
+        private DevExpress.XtraBars.BarButtonItem btnLog;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
-        private DevExpress.XtraBars.BarCheckItem barCheckItem1;
+        private DevExpress.XtraBars.BarCheckItem btnIsEdit;
         private DevExpress.XtraEditors.PictureEdit pictureEdit8;
         private DevExpress.XtraEditors.PictureEdit pictureEdit2;
     }

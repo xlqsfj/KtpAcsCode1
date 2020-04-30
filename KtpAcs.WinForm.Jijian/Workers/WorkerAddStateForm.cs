@@ -19,7 +19,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
     public partial class WorkerAddStateForm : DevExpress.XtraEditors.XtraForm
     {  //启动更新线程
         Thread myThread;
-     
+
         //声明事件
         public event AgainSubmit ShowSubmit;
         //添加是否成功
@@ -27,7 +27,6 @@ namespace KtpAcs.WinForm.Jijian.Workers
         private bool isFinish = true;
         private string _name = "";
         private string _idCard = "";
-        private int addSum = 0; //判断是否结束添加
         private int addCount = 0;
         [DllImport("user32.dll")]
         private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
@@ -42,6 +41,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
             this.Text = name + "提交中";
             this.skingrid_sysPanel.AutoGenerateColumns = false;//不自动 
             WorkSysFail.workAdd.ForEach(w => w.magAdd = "添加中..");
+
 
             skingrid_sysPanel.DataSource = WorkSysFail.workAdd;
             if (WorkSysFail.workAdd.Count() < 1)
@@ -86,7 +86,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                             skingrid_sysPanel.Visible = false;
 
                             skin_close.Enabled = true;
-                            isFinish = false;
+                            //isFinish = false;
                             skinlable_addworkImg.Text = mag;
                         }
                         else
@@ -98,7 +98,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                             skingrid_sysPanel.Visible = true;
 
                             skinlable_addworkImg.Text = mag;
-                         
+
                         }
                         //WorkSysFail.dicWorkadd.Clear();
                         WorkSysFail.dicWorkadd.Reverse();
@@ -129,6 +129,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                 }
 
             }
+          
 
         }
         //更新UI
@@ -194,7 +195,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                         skin_close.Text = "返 回 编 辑";
                         skin_close.Enabled = true;
                     }
-                  //  myThread.Abort();
+                    //  myThread.Abort();
                     Thread.Sleep(1000);
                 }
 
@@ -312,6 +313,8 @@ Color.DimGray, 1, ButtonBorderStyle.Dashed, //左边
             myThread = new Thread(startFillDv);//实例化线程
             myThread.IsBackground = false;
             myThread.Start();
+            if (ShowSubmit != null)
+                ShowSubmit("begin");
         }
 
         private void WorkerAddStateForm_FormClosed(object sender, FormClosedEventArgs e)

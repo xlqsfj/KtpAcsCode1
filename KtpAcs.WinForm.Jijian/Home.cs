@@ -18,6 +18,8 @@ using static KtpAcs.KtpApiService.Result.ProjectListResult;
 using KtpAcs.Infrastructure.Utilities;
 using KtpAcs.WinForm.Jijian.Workers;
 using System.Runtime.InteropServices;
+using System.Configuration;
+using System.Reflection;
 
 namespace KtpAcs.WinForm.Jijian
 {
@@ -71,14 +73,28 @@ namespace KtpAcs.WinForm.Jijian
                 this.comProjectList.Properties.DisplayMember = "projectName";
                 this.comProjectList.Properties.ValueMember = "projectUuid";
                 this.comProjectList.Properties.DataSource = pList;
+          
                 this.comProjectList.EditValue = pList[0].projectUuid;
                 ConfigHelper._KtpLoginProjectId = pList[0].projectUuid;
+
                 this.comProjectList.Properties.Columns.Add(
                new DevExpress.XtraEditors.Controls.LookUpColumnInfo("organizationName", "公司名称"));
                 this.comProjectList.Properties.Columns.Add(
                 new DevExpress.XtraEditors.Controls.LookUpColumnInfo("projectName", "项目名称"));
 
             }
+        }
+        public string SetProjectId(string projectUid)
+        {
+
+            string pid = ConfigHelper.ProjectId;
+
+
+
+            modifyItem("ProjectId", pid);
+            return pid;
+
+
         }
         /// <summary>
         /// 查询项目人数
@@ -120,7 +136,23 @@ namespace KtpAcs.WinForm.Jijian
             Application.Exit();
         }
 
+        public void modifyItem(string keyName, string newKeyValue)
+        {    //修改配置文件中键为keyName的项的值   
 
+            //读取程序集的配置文件
+            string assemblyConfigFile = Assembly.GetEntryAssembly().Location;
+            string appDomainConfigFile = AppDomain.CurrentDomain.SetupInformation.ConfigurationFile;
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            //获取appSettings节点
+            AppSettingsSection appSettings = (AppSettingsSection)config.GetSection("appSettings");
+
+            //删除name，然后添加新值
+            appSettings.Settings.Remove(keyName);
+            appSettings.Settings.Add(keyName, newKeyValue);
+            //保存配置文件
+            config.Save();
+        }
         /// <summary>
         /// 面板管理
         /// </summary>
@@ -172,14 +204,14 @@ namespace KtpAcs.WinForm.Jijian
                 }
 
             }
-         
+
             if (form.Name != "WorkerAdminForm")
             {
                 if (_workerAdminForm != null)
                     _workerAdminForm.isExiet();
                 _workerAdminForm = null;
             }
-         
+
 
             form.FormBorderStyle = FormBorderStyle.None;
             form.TopLevel = false;
@@ -274,7 +306,7 @@ namespace KtpAcs.WinForm.Jijian
         {
 
             _DeivceForm.SysWorkerToPanel();
-      
+
         }
         /// <summary>
         /// 点击项目下拉框
@@ -336,6 +368,60 @@ namespace KtpAcs.WinForm.Jijian
                 this.popupMenu1.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
             }
 
+        }
+
+        /// <summary>
+        /// 是否编辑
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnIsEdit_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int i = 0;
+            if (!btnIsEdit.Checked)
+                return;
+            try
+            {
+                if (_workerAdminForm != null)
+                {
+                    i = _workerAdminForm.BtnCurrentEdit();
+                }
+                else if (_workerProjectForm != null)
+                {
+                    i = _workerProjectForm.BtnCurrentEdit();
+                }
+                else
+                {
+                    i = 1;
+
+                }
+                if (i > 0)
+                {
+                    MessageHelper.Show("是否手动编辑只有当前录入页面有效");
+
+                }
+                btnIsEdit.Checked = false;
+            }
+            catch (Exception ex)
+            {
+                MessageHelper.Show(ex.Message, ex);
+
+            }
+        }
+
+
+        /// <summary>
+        /// 调用日志
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnLog_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + "\\logs";
+            if (Directory.Exists(path))
+                System.Diagnostics.Process.Start(path);
+            else
+                MessageHelper.Show("日志目录还未生成！");
         }
     }
 }

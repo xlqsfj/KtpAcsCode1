@@ -154,7 +154,7 @@
             this.grid_Device.Name = "grid_Device";
             this.grid_Device.OptionsSelection.MultiSelect = true;
             this.grid_Device.OptionsView.ShowGroupPanel = false;
-            this.grid_Device.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.grid_Device_RowCellClick);
+            this.grid_Device.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.grid_Device_CustomDrawCell);
             this.grid_Device.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grid_Device_MouseDown);
             // 
             // gridColumn1

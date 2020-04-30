@@ -3,11 +3,7 @@ using KtpAcs.Infrastructure.Utilities;
 using KtpAcs.KtpApiService;
 using KtpAcs.KtpApiService.Base;
 using KtpAcs.KtpApiService.Send;
-using KtpAcs.Infrastructure.Serialization;
-using KtpAcs.Infrastructure.Utilities;
-using KtpAcs.KtpApiService;
-using KtpAcs.KtpApiService.Base;
-using KtpAcs.KtpApiService.Send;
+
 using KtpAcs.KtpApiService.Worker;
 using KtpAcs.WinForm.Jijian.Base;
 using KtpAcsMiddleware.KtpApiService.Base;

@@ -34,6 +34,16 @@ namespace KtpAcs.WinForm.Jijian.Workers
             if (workerform != null)
                 workerform.GetIsAVide();
         }
+        public int BtnCurrentEdit() {
+
+            if (workerform != null)
+                workerform.CurrentManualEdit();
+            else
+                return 1;
+            return 0;
+
+                
+        }
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
             //列表显示

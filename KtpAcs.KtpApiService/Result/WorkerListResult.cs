@@ -58,8 +58,13 @@ namespace KtpAcs.KtpApiService.Result
                 get { return _sex; }
                 set
                 {
-
-                    _sex = value == "1" ? "男" : "女";
+                    if (value == "1")
+                        _sex  = "男";
+                    else if (value == "2")
+                        _sex  = "女";
+                    else
+                        _sex = value;
+                 
                 }
             }
 

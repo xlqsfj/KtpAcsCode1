@@ -994,6 +994,8 @@
             this.txtBirthday.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.txtBirthday.Size = new System.Drawing.Size(164, 20);
             this.txtBirthday.TabIndex = 355;
+            this.txtBirthday.EditValueChanged += new System.EventHandler(this.txtBirthday_EditValueChanged);
+
             // 
             // txtGender
             // 

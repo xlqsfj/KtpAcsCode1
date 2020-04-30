@@ -96,8 +96,8 @@ namespace KtpAcs.WinForm.Jijian.Device
             }
             catch (Exception ex)
             {
+                closeOrder();
                 LogHelper.ExceptionLog(ex);
-
                 MessageHelper.Show(ex.Message);
             }
             finally
@@ -172,7 +172,7 @@ namespace KtpAcs.WinForm.Jijian.Device
         public List<WorkerList> AddWokerLists(List<WorkerList> list, EnumWorkerType type)
         {
 
-
+        
             foreach (WorkerList workerList in list)
             {
                 workerList.enumWorkerType = type;
@@ -260,8 +260,8 @@ namespace KtpAcs.WinForm.Jijian.Device
                     _numerOfThreadsNotYetCompleted = _numerOfThreadsNotYetCompleted - 1;
                     continue;
                 }
-               //string.IsNullOrEmpty(items.idCard)
-                if (string.IsNullOrEmpty(items.name) )
+                //string.IsNullOrEmpty(items.idCard)
+                if (string.IsNullOrEmpty(items.name))
                 {
                     AddSysFail(items, "错误信息:基本信息不全");
                     _numerOfThreadsNotYetCompleted = _numerOfThreadsNotYetCompleted - 1;
@@ -299,7 +299,7 @@ namespace KtpAcs.WinForm.Jijian.Device
 
         private List<WorkerList> GetWorkerLists()
         {
-         
+
             WorkerSend workerSend = new WorkerSend()
             {
                 designatedFlag = false, //花名册
@@ -311,15 +311,19 @@ namespace KtpAcs.WinForm.Jijian.Device
             //查询所有人员的详细接口
             IMulePusher pusherDevice = new GetWorkersApi() { RequestParam = workerSend };
             PushSummary push = pusherDevice.Push();
+            if (!push.Success)
+                throw new Exception(push.Message);
             WorkerListResult.Data rr = push.ResponseData;
             if (rr.list.Count > 0)
             {
-           workers= AddWokerLists(rr.list, EnumWorkerType.Hmc);
+                workers = AddWokerLists(rr.list, EnumWorkerType.Hmc);
             }
             //甲子分包
             workerSend.designatedFlag = true;
             pusherDevice = new GetWorkersApi() { RequestParam = workerSend };
             push = pusherDevice.Push();
+            if (!push.Success)
+                throw new Exception(push.Message);
             rr = push.ResponseData;
             if (rr.list.Count > 0)
             {
@@ -336,6 +340,8 @@ namespace KtpAcs.WinForm.Jijian.Device
             //项目部人员
             pusherDevice = new GetWorkersProjectApi() { RequestParam = projectSend };
             push = pusherDevice.Push();
+            if (!push.Success)
+                throw new Exception(push.Message);
             if (push.Success)
             {
                 WorkerProjectListResult.Data data1 = push.ResponseData;
@@ -401,7 +407,7 @@ namespace KtpAcs.WinForm.Jijian.Device
                     TimeTemplate = new TimeTemplate { BeginTime = 0, EndTime = 4294967295, Index = 0 },
 
                     IdentificationNum = 1,
-                    IdentificationList = new List<IdentificationListItem> { new IdentificationListItem { Number = items.idCard??"123456789", Type = 0 } },
+                    IdentificationList = new List<IdentificationListItem> { new IdentificationListItem { Number = items.idCard ?? "123456789", Type = 0 } },
                     ImageList = new List<ImageListItem> { new ImageListItem { Name = $"{items.userId}_{DateTime.Now}.jpg", Data = items.imgBase64, Size = items.imgBase64.Length, FaceID = items.userId } }
 
                 };

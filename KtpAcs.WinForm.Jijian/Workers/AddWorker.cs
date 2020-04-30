@@ -40,10 +40,11 @@ namespace KtpAcs.WinForm.Jijian
 
         private string _url_identityPicId;
         private string _uuId;
-        private bool _isSys = false;
+
         private AddWorerkSend add;
 
         private int _state = 0;
+        private bool _isManualEdit = false;
 
         public AddWorker(int hmc = 0, int openState = 0)
         {
@@ -74,7 +75,7 @@ namespace KtpAcs.WinForm.Jijian
             _state = hmc;
             _uuId = uuId;
             InitializeComponent();
-           // BindNationsCb();
+            // BindNationsCb();
             BindEducationLeveCb();
             //查询工种
             GetProjectList();
@@ -177,7 +178,7 @@ namespace KtpAcs.WinForm.Jijian
                             }
                             txtName.Text = cardMsg.Name.Trim();
                             txtBirthday.EditValue = DateTime.Parse(cardMsg.Born);
-                            txtAvg.Text = FormatHelper.GetAgeByBirthdate(DateTime.Parse(cardMsg.Born)).ToString();
+                            //txtAvg.Text = FormatHelper.GetAgeByBirthdate(DateTime.Parse(cardMsg.Born)).ToString();
                             txtIdCard.Text = cardMsg.IDCardNo.Trim();
 
                             txtNativePlace.Text = WorkerInfoHelper.GetProvinceDicList(cardMsg.IDCardNo.Trim());
@@ -215,6 +216,11 @@ namespace KtpAcs.WinForm.Jijian
                 stmp = $"{FormatHelper.GetIsoDateTimeString(DateTime.Now)} 打开端口失败,确认身份证阅读器是否正常连接";
                 MessageHelper.Show(stmp, _msgCaption);
             }
+            if (_isManualEdit)
+            {
+                ContentState(_state);
+                _isManualEdit = false;
+            }
         }
 
         private void btnFacePic_Click(object sender, EventArgs e)
@@ -240,6 +246,7 @@ namespace KtpAcs.WinForm.Jijian
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             add = null;
+            ConfigHelper.IsDivceAdd = true;
             string submit = btnSubmit.Text;
             try
             {
@@ -247,6 +254,11 @@ namespace KtpAcs.WinForm.Jijian
                 if (!SubmitBtnPreValidation())
                 {
                     throw new PreValidationException(PreValidationHelper.ErroMsg);
+                }
+                if (WorkSysFail.workAdd.Count() < 1)
+                {
+                    MessageHelper.Show("未添加面板，请先添加面板");
+                    return;
                 }
                 ShowAddInfoForm();
                 btnSubmit.Text = @"正在提交";
@@ -308,29 +320,8 @@ namespace KtpAcs.WinForm.Jijian
                 }
                 WorkSysFail.dicAddMag.Clear();
                 WorkSysFail.dicWorkadd.Clear();
-                if (WorkSysFail.workAdd.Count() > 0)
-                {
-                    int? uid = 0;
 
-                    if (_state == 0)
-                        uid = addUser(add);
-                    else if (_state == 1)
-                        uid = addJiaZiUser(add);
-                    else
-                        uid = addProject(add);
-                    if (uid > 0)
-                    {
-                        WorkSysFail.dicWorkadd.Add(true, "添加成功");
-                        AddFaceToPanel addFaceToPanel = new AddFaceToPanel();
-                        addFaceToPanel.AddFaceInfo(add, uid);
-                    }
-                    btnSubmit.Enabled = true;
-                }
-                else
-                {
-                    ConfigHelper.IsDivceAdd = false;
-                    WorkSysFail.dicWorkadd.Add(false, "添加失败，未连接人脸识别面板!");
-                }
+
             }
             catch (PreValidationException ex)
             {
@@ -352,9 +343,42 @@ namespace KtpAcs.WinForm.Jijian
             }
         }
 
+        private void SubmitData()
+        {
+
+            if (WorkSysFail.workAdd.Count() > 0)
+            {
+                int? uid = 0;
+
+                if (_state == 0)
+                    uid = addUser(add);
+                else if (_state == 1)
+                    uid = addJiaZiUser(add);
+                else
+                    uid = addProject(add);
+                if (uid > 0)
+                {
+                    WorkSysFail.dicWorkadd.Add(true, "添加成功");
+                    AddFaceToPanel addFaceToPanel = new AddFaceToPanel();
+                    addFaceToPanel.AddFaceInfo(add, uid);
+                }
+                btnSubmit.Enabled = true;
+            }
+            else
+            {
+                ConfigHelper.IsDivceAdd = false;
+                WorkSysFail.dicWorkadd.Add(false, "添加失败，未连接人脸识别面板!");
+            }
+
+            //return;
+            //   }
+        }
+
         public void ShowAddInfoForm()
         {
 
+            //Task.Run(() =>
+            //{
             this.BeginInvoke((EventHandler)delegate
             {
                 WorkerAddStateForm _workerAddState = new WorkerAddStateForm(txtName.Text.Trim(), txtIdCard.Text.Trim());
@@ -363,6 +387,7 @@ namespace KtpAcs.WinForm.Jijian
 
                 _workerAddState.ShowDialog();
             });
+            // });
 
         }
         /// <summary>
@@ -370,9 +395,14 @@ namespace KtpAcs.WinForm.Jijian
         /// </summary>
         public void AddSubWorkInfo(string close)
         {
+            if (close == "begin")
+            {
+                SubmitData();
+                return;
+            }
+
             btnSubmit.Text = @"提交";
             btnSubmit.Enabled = true;
-
             if (_isColse && close == "close")
             { //编辑
                 Hide();
@@ -382,6 +412,11 @@ namespace KtpAcs.WinForm.Jijian
             {//新增
 
                 reslt(_state);
+                if (_isManualEdit)
+                {
+                    ContentState(_state);
+                    _isManualEdit = false;
+                }
                 if (ShowProjectList != null)
                     ShowProjectList("ok");
                 return;
@@ -442,8 +477,18 @@ namespace KtpAcs.WinForm.Jijian
         {
             if (string.IsNullOrEmpty(_uuId))
                 reslt(_state);
-            else if(CloseDdetailedWinform !=null)
+            else if (CloseDdetailedWinform != null)
                 CloseDdetailedWinform(null);
+            if (ShowProjectList != null)
+                ShowProjectList("ok");
+        }
+
+    
+
+        private void txtBirthday_EditValueChanged(object sender, EventArgs e)
+        {
+           // MessageHelper.Show("时间EditValueChanged"+ txtBirthday.EditValue +""+ txtBirthday.Text);
+            txtAvg.Text = FormatHelper.GetAgeByBirthdate(DateTime.Parse(txtBirthday.Text)).ToString();
         }
     }
 }

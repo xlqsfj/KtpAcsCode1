@@ -39,9 +39,9 @@ namespace KtpAcs.WinForm.Jijian
             this.ComNation.Properties.ValueMember = "Key";
             //this.ComNation.EditValue = "Value";
             this.ComNation.Properties.DataSource = nations;
-      
-           // this.ComNation.Properties.NullText = "===请选择===";
-         
+
+            this.ComNation.Properties.NullText = "";
+
             if (selectedValue != null)
             {
                 this.ComNation.Properties.NullText = selectedValue;
@@ -303,7 +303,7 @@ namespace KtpAcs.WinForm.Jijian
 
             this.txtAddress.ReadOnly = true;
             this.txtAvg.ReadOnly = true;
-            this.txtBankName.ReadOnly = false;
+            this.txtBankName.ReadOnly = true;
 
             this.txtBirthday.ReadOnly = true;
 
@@ -353,6 +353,28 @@ namespace KtpAcs.WinForm.Jijian
 
             }
 
+        }
+
+
+        /// <summary>
+        /// 点击可以手动编辑
+        /// </summary>
+        public void CurrentManualEdit() {
+
+            _isManualEdit = true;
+            this.txtAddress.ReadOnly = false;
+
+            this.txtBirthday.ReadOnly = false;
+
+            this.txtGender.ReadOnly = false;
+            this.txtIdCard.ReadOnly = false;
+            this.txtName.ReadOnly = false;
+            //this.ComNation.ReadOnly = false;
+            this.txtNativePlace.ReadOnly = false;
+            this.txtExpireTime.ReadOnly = false;
+            this.txtStartTime.ReadOnly = false;
+            this.txtCardAgency.ReadOnly = false;
+            this.ComNation.ReadOnly = false;
         }
 
         /// <summary>

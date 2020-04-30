@@ -49,7 +49,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                 WorkerSend workerSend = new WorkerSend()
                 {
 
-                    pageSize = 10,
+                    pageSize = 20,
                     projectUuid = ConfigHelper.KtpLoginProjectId,
                     pageNum = 1,
                     status = 0,
@@ -79,72 +79,82 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
         private void repositoryItemButtonEdit3_Click(object sender, EventArgs e)
         {
-
-            dynamic row = this.grid_WorkerProject.GetFocusedRow();
-            string id = row.organizationUserUuid;
-            int userId = row.organizationUserId;
-            string phone = row.phone;
-            string state = row.status;
-            string name = row.name;
-
-            if (state == "未进场" || state == "已离场")
-            {
-                if (xtraTabControl1.TabPages.Count > 1)
-                {
-                    if (xtraTabControl1.TabPages[1].Text == "项目人员办理入场")
-                    {
-
-                        xtraTabControl1.TabPages.Remove(xtraTabControl1.TabPages[1]);
-                    }
-                }
-
-                XtraTabPage page = new XtraTabPage();
-                addWorker = new AddWorker(phone, name, id);
-                addWorker.ShowProjectList += new AgainSubmit(a => GetIsClose(a));
-                addWorker.FormBorderStyle = FormBorderStyle.None;
-                addWorker.TopLevel = false;
-                page.Controls.Add(addWorker);
-                addWorker.Show();
-                page.Text = "项目人员办理入场";
-                xtraTabControl1.SelectedTabPage = page;
-                isOpen = true;
-                xtraTabControl1.TabPages.Add(page);
-
-            }
-            else
+            try
             {
 
 
+                dynamic row = this.grid_WorkerProject.GetFocusedRow();
+                string id = row.organizationUserUuid;
+                string phone = row.phone;
+                string state = row.status;
+                string name = row.name;
 
-                DialogResult result = XtraMessageBox.Show("确定要离场吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.OK)
+                if (state == "未进场" || state == "已离场")
                 {
-                    BaseSend baseSend = new BaseSend
+                    if (xtraTabControl1.TabPages.Count > 1)
                     {
-                        status = "3",
-                        projectUuid = ConfigHelper.KtpLoginProjectId,
-                        organizationUserUuid = id
+                        if (xtraTabControl1.TabPages[1].Text == "项目人员办理入场")
+                        {
 
-                    };
-
-                    IMulePusher addworkers = new SetWorkerProjectApi() { RequestParam = baseSend };
-                    PushSummary pushAddworkers = addworkers.Push();
-                    if (pushAddworkers.Success)
-                    {
-                        DeletePanelProjectUser(userId);
-                        MessageHelper.Show($"{ name}离场成功");
-                        GetWorkerList();
-                    }
-                    else
-                    {
-                        MessageHelper.Show("离场失败:" + pushAddworkers.Message);
+                            xtraTabControl1.TabPages.Remove(xtraTabControl1.TabPages[1]);
+                        }
                     }
 
-
+                    XtraTabPage page = new XtraTabPage();
+                    addWorker = new AddWorker(phone, name, id);
+                    addWorker.ShowProjectList += new AgainSubmit(a => GetIsClose(a));
+                    addWorker.FormBorderStyle = FormBorderStyle.None;
+                    addWorker.TopLevel = false;
+                    page.Controls.Add(addWorker);
+                    addWorker.Show();
+                    page.Text = "项目人员办理入场";
+                    xtraTabControl1.SelectedTabPage = page;
+                    isOpen = true;
+                    xtraTabControl1.TabPages.Add(page);
 
                 }
-            }
+                else
+                {
 
+                    var userId = row.organizationUserId;
+
+                    userId = FormatHelper.GetToString(userId);
+
+                    DialogResult result = XtraMessageBox.Show("确定要离场吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (result == DialogResult.OK)
+                    {
+                        BaseSend baseSend = new BaseSend
+                        {
+                            status = "3",
+                            projectUuid = ConfigHelper.KtpLoginProjectId,
+                            organizationUserUuid = id
+
+                        };
+
+                        IMulePusher addworkers = new SetWorkerProjectApi() { RequestParam = baseSend };
+                        PushSummary pushAddworkers = addworkers.Push();
+                        if (pushAddworkers.Success)
+                        {
+                            DeletePanelProjectUser(userId);
+                            MessageHelper.Show($"{ name}离场成功");
+                            GetWorkerList();
+                        }
+                        else
+                        {
+                            MessageHelper.Show("离场失败:" + pushAddworkers.Message);
+                        }
+
+
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageHelper.Show(ex.Message, ex);
+
+            }
 
 
         }
@@ -169,7 +179,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
         }
 
-        public void DeletePanelProjectUser(int userId)
+        public void DeletePanelProjectUser(string userId)
         {
 
             //宇视产品
@@ -206,6 +216,17 @@ namespace KtpAcs.WinForm.Jijian.Workers
             {
                 GetWorkerList();
             }
+        }
+        public int BtnCurrentEdit()
+        {
+
+            if (addWorker != null)
+                addWorker.CurrentManualEdit();
+            else
+                return 1;
+            return 0;
+
+
         }
     }
 }

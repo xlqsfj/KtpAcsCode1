@@ -483,12 +483,13 @@ namespace KtpAcs.WinForm.Jijian
                 ShowProjectList("ok");
         }
 
-    
+
 
         private void txtBirthday_EditValueChanged(object sender, EventArgs e)
         {
-           // MessageHelper.Show("时间EditValueChanged"+ txtBirthday.EditValue +""+ txtBirthday.Text);
-            txtAvg.Text = FormatHelper.GetAgeByBirthdate(DateTime.Parse(txtBirthday.Text)).ToString();
+            // MessageHelper.Show("时间EditValueChanged"+ txtBirthday.EditValue +""+ txtBirthday.Text);
+            if (!string.IsNullOrEmpty(txtBirthday.Text))
+                txtAvg.Text = FormatHelper.GetAgeByBirthdate(DateTime.Parse(txtBirthday.Text)).ToString();
         }
     }
 }

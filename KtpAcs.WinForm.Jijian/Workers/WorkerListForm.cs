@@ -25,32 +25,54 @@ namespace KtpAcs.WinForm.Jijian.Workers
             _isHmc = isHmc;
             InitializeComponent();
             GetWorkerList("");
+            InitGridPagingNavigatorControl();
+        }
+        /// <summary>
+        ///     分页控件翻页事件绑定
+        /// </summary>
+        private void InitGridPagingNavigatorControl()
+        {
+            WorkersGridPager.PagingHandler = GridPagingNavigatorControlPagingEvent;
         }
 
+        /// <summary>
+        ///     分页控件翻页事件
+        /// </summary>
+        public void GridPagingNavigatorControlPagingEvent()
+        {
+            //不是点击搜索的情况下
+
+            GetWorkerList("");
+        }
         public void GetWorkerList(string Query = "")
         {
 
             try
             {
+                var pageSize = WorkersGridPager.PageSize;
+                var pageIndex = WorkersGridPager.PageIndex;
+
                 WorkerSend workerSend = new WorkerSend()
                 {
 
-                    pageSize = 20,
+                    pageSize = pageSize,
+                    pageNum = pageIndex,
                     projectUuid = ConfigHelper.KtpLoginProjectId,
-                    pageNum = 1,
+                  
                     status = 2,
-                    keyWord = Query,
+                    keyWord = this.txtQuery.Text,
                     designatedFlag = _isHmc == 0 ? false : true
 
                 };
-
+            
                 IMulePusher pusherDevice = new GetWorkersApi() { RequestParam = workerSend };
                 PushSummary push = pusherDevice.Push();
                 if (push.Success)
                 {
 
-
+                 
                     WorkerListResult.Data data = push.ResponseData;
+                    WorkersGridPager.PageCount = (data.total + pageSize - 1) / pageSize;
                     this.gridControl1.DataSource = data.list;
                 }
               
@@ -64,27 +86,11 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
 
         }
-        private void repositoryItemButtonEdit3_Click(object sender, EventArgs e)
-        {
-            dynamic row = this.gridView1.GetFocusedRow();
-            string uuid = row.uuid;
-            AddWorker addWorker = new AddWorker(uuid, _isHmc, false);
-            addWorker.StartPosition = FormStartPosition.CenterParent;
-            addWorker.Show();
-        }
-        protected virtual RepositoryItemHyperLinkEdit CreateRepositoryItemHyperLinkEdit(string caption)
-        {
-            RepositoryItemHyperLinkEdit link = new RepositoryItemHyperLinkEdit();
-            link.AutoHeight = false;
-            link.TextEditStyle = TextEditStyles.Standard;
-            link.ReadOnly = true;
-            link.SingleClick = true;
-            link.Caption = caption;
-            return link;
-        }
+   
+       
         private void btnQuery_Click(object sender, EventArgs e)
         {
-            GetWorkerList(txtQuery.Text);
+            WorkersGridPager.PageIndex = 1;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -92,7 +98,9 @@ namespace KtpAcs.WinForm.Jijian.Workers
             this.txtQuery.Text = "";
         }
 
-        private void repositoryItemButtonEdit1_ButtonClick(object sender, ButtonPressedEventArgs e)
+      
+
+        private void repositoryItemButtonEdit2_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
             dynamic row = this.gridView1.GetFocusedRow();
             string userUuid = row.userUuid;

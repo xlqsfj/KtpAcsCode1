@@ -57,44 +57,68 @@ namespace KtpAcs.WinForm.Jijian
         /// </summary>
         private void GetProjectList()
         {
-
-            IMulePusher pusherLogin = new GetProjectListApi() { RequestParam = new { pageNum = 0, pageSize = 0, type = 0 } };
-            PushSummary pushLogin = pusherLogin.Push();
-            if (pushLogin.Success)
+            try
             {
-                List<ProjectList> pList = pushLogin.ResponseData;
-                if (pList.Count < 1)
-                {
 
-                    MessageHelper.Show("该账号未添加项目,请在后台添加在继续操作");
-                    return;
+                IMulePusher pusherLogin = new GetProjectListApi() { RequestParam = new { pageNum = 0, pageSize = 0, type = 0 } };
+                PushSummary pushLogin = pusherLogin.Push();
+                if (pushLogin.Success)
+                {
+                    List<ProjectList> pList = pushLogin.ResponseData;
+                    if (pList.Count < 1)
+                    {
+
+                        MessageHelper.Show("该账号未添加项目,请在后台添加在继续操作");
+                        return;
+
+                    }
+                    this.comProjectList.Properties.DisplayMember = "projectName";
+                    this.comProjectList.Properties.ValueMember = "projectUuid";
+                    this.comProjectList.Properties.DataSource = pList;
+
+                    this.comProjectList.EditValue = SetProjectId(pList);
+
+
+                    this.comProjectList.Properties.Columns.Add(
+                   new DevExpress.XtraEditors.Controls.LookUpColumnInfo("organizationName", "公司名称"));
+                    this.comProjectList.Properties.Columns.Add(
+                    new DevExpress.XtraEditors.Controls.LookUpColumnInfo("projectName", "项目名称"));
 
                 }
-                this.comProjectList.Properties.DisplayMember = "projectName";
-                this.comProjectList.Properties.ValueMember = "projectUuid";
-                this.comProjectList.Properties.DataSource = pList;
-          
-                this.comProjectList.EditValue = pList[0].projectUuid;
-                ConfigHelper._KtpLoginProjectId = pList[0].projectUuid;
+            }
+            catch (Exception ex)
+            {
 
-                this.comProjectList.Properties.Columns.Add(
-               new DevExpress.XtraEditors.Controls.LookUpColumnInfo("organizationName", "公司名称"));
-                this.comProjectList.Properties.Columns.Add(
-                new DevExpress.XtraEditors.Controls.LookUpColumnInfo("projectName", "项目名称"));
-
+                MessageHelper.Show(ex.Message, ex);
             }
         }
-        public string SetProjectId(string projectUid)
+        /// <summary>
+        /// 设置项目选中的项目
+        /// </summary>
+        /// <param name="pList"></param>
+        /// <returns></returns>
+        public string SetProjectId(List<ProjectList> pList)
         {
-
+            bool isMatching = false;
             string pid = ConfigHelper.ProjectId;
 
+            foreach (var item in pList)
+            {
+
+                if (item.projectUuid == pid)
+                {
+                    isMatching = true;
+                }
 
 
-            modifyItem("ProjectId", pid);
+            }
+            if (!isMatching)
+            {
+                pid = pList[0].projectUuid;
+                modifyItem("ProjectId", pid);
+            }
+            ConfigHelper._KtpLoginProjectId = pid;
             return pid;
-
-
         }
         /// <summary>
         /// 查询项目人数
@@ -112,7 +136,7 @@ namespace KtpAcs.WinForm.Jijian
                 this.labProjectManageNum.ToolTip = $"花名册:{ projectCountResult.projectWorkerNum} 甲指分包人员:{ projectCountResult.jiaziNum} 项目人员:{projectCountResult.projectManageNum}";
                 this.labVerificationNum.Text = projectCountResult.workerVerificationNum.ToString();
                 this.labPhone.Text = ConfigHelper.KtpLoginPhone;
-
+          
             }
         }
 
@@ -315,9 +339,10 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="e"></param>
         private void comProjectList_EditValueChanged(object sender, EventArgs e)
         {
-            ConfigHelper.KtpLoginProjectId = this.comProjectList.EditValue.ToString();
+            string ProjectId = this.comProjectList.EditValue.ToString();
+            ConfigHelper.KtpLoginProjectId = ProjectId;
+            modifyItem("ProjectId", ProjectId);
             GetProjectCount();
-
 
             flowDevice_Click(null, null);
         }

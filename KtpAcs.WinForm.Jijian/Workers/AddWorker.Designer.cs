@@ -986,16 +986,16 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtBirthday.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtBirthday.Properties.DisplayFormat.FormatString = "";
+            this.txtBirthday.Properties.DisplayFormat.FormatString = "yyyy-MM-dd";
             this.txtBirthday.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtBirthday.Properties.EditFormat.FormatString = "";
             this.txtBirthday.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.txtBirthday.Properties.Mask.EditMask = "";
+            this.txtBirthday.Properties.Mask.EditMask = "yyyy-MM-dd";
             this.txtBirthday.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.txtBirthday.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.txtBirthday.Size = new System.Drawing.Size(164, 20);
             this.txtBirthday.TabIndex = 355;
             this.txtBirthday.EditValueChanged += new System.EventHandler(this.txtBirthday_EditValueChanged);
-
             // 
             // txtGender
             // 

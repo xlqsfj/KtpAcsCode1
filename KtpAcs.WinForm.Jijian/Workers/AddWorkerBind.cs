@@ -117,7 +117,11 @@ namespace KtpAcs.WinForm.Jijian
             List<OrganizationList> pList = null;
             //Task.Run(() =>
             //{
-            IMulePusher pusherLogin = new GetOrganizationApi() { RequestParam = new { uuid = 1, projectUuid = ConfigHelper.KtpLoginProjectId } };
+            IMulePusher pusherLogin = new GetOrganizationApi() { RequestParam = new {
+               projectUuid = ConfigHelper.KtpLoginProjectId,
+                pageSize = 0,
+                pageNum = 0,
+            } };
             PushSummary pushLogin = pusherLogin.Push();
             if (pushLogin.Success)
             {
@@ -135,10 +139,15 @@ namespace KtpAcs.WinForm.Jijian
         }
         private void GetTeamInfo(object uuid)
         {
-            IMulePusher pusherLogin = new GeTeamsApi() { RequestParam = new { organizationUuid = uuid } };
+            IMulePusher pusherLogin = new GeTeamsApi() { RequestParam = new
+            {
+                pageSize = 0,
+                pageNum = 0,
+                organizationUuid = uuid } };
             PushSummary pushLogin = pusherLogin.Push();
             if (pushLogin.Success)
             {
+                this.comWorkerTeamUuid.Properties.Columns.Clear();
                 List<TeamList> pList = pushLogin.ResponseData;
                 this.comWorkerTeamUuid.Properties.DisplayMember = "teamName";
                 this.comWorkerTeamUuid.Properties.ValueMember = "uuid";

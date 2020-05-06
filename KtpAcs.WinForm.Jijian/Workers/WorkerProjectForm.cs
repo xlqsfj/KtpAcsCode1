@@ -49,7 +49,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                 WorkerSend workerSend = new WorkerSend()
                 {
 
-                    pageSize = 20,
+                    pageSize = 25,
                     projectUuid = ConfigHelper.KtpLoginProjectId,
                     pageNum = 1,
                     status = 0,

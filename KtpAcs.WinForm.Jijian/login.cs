@@ -183,5 +183,115 @@ namespace KtpAcs.WinForm.Jijian
         {
             Application.Exit();
         }
+        bool beginMove = false;//初始化鼠标位置
+        int currentXPosition;
+        int currentYPosition;
+        private void Login_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                beginMove = true;
+                currentXPosition = MousePosition.X;//鼠标的x坐标为当前窗体左上角x坐标
+                currentYPosition = MousePosition.Y;//鼠标的y坐标为当前窗体左上角y坐标
+            }
+        }
+
+        private void Login_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (beginMove)
+            {
+                this.Left += MousePosition.X - currentXPosition;//根据鼠标x坐标确定窗体的左边坐标x
+                this.Top += MousePosition.Y - currentYPosition;//根据鼠标的y坐标窗体的顶部，即Y坐标
+                currentXPosition = MousePosition.X;
+                currentYPosition = MousePosition.Y;
+            }
+
+
+        }
+        Point mouseOff;//鼠标移动位置变量
+        bool leftFlag;//标签是否为左键
+        private void Login_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                currentXPosition = 0; //设置初始状态
+                currentYPosition = 0;
+                beginMove = false;
+            }
+
+        }
+
+        private void panelControl1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                beginMove = true;
+                currentXPosition = MousePosition.X;//鼠标的x坐标为当前窗体左上角x坐标
+                currentYPosition = MousePosition.Y;//鼠标的y坐标为当前窗体左上角y坐标
+            }
+        }
+
+        private void panelControl1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (beginMove)
+            {
+                this.Left += MousePosition.X - currentXPosition;//根据鼠标x坐标确定窗体的左边坐标x
+                this.Top += MousePosition.Y - currentYPosition;//根据鼠标的y坐标窗体的顶部，即Y坐标
+                currentXPosition = MousePosition.X;
+                currentYPosition = MousePosition.Y;
+            }
+
+        }
+
+        private void panelControl1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                currentXPosition = 0; //设置初始状态
+                currentYPosition = 0;
+                beginMove = false;
+            }
+        }
+
+        private void pictureEdit1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                beginMove = true;
+                currentXPosition = MousePosition.X;//鼠标的x坐标为当前窗体左上角x坐标
+                currentYPosition = MousePosition.Y;//鼠标的y坐标为当前窗体左上角y坐标
+            }
+        }
+
+        private void pictureEdit1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (beginMove)
+            {
+                this.Left += MousePosition.X - currentXPosition;//根据鼠标x坐标确定窗体的左边坐标x
+                this.Top += MousePosition.Y - currentYPosition;//根据鼠标的y坐标窗体的顶部，即Y坐标
+                currentXPosition = MousePosition.X;
+                currentYPosition = MousePosition.Y;
+            }
+
+        }
+
+        private void pictureEdit1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                currentXPosition = 0; //设置初始状态
+                currentYPosition = 0;
+                beginMove = false;
+            }
+        }
+
+        private void PasswordTxt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.LoginBtn_Click(sender, e);//触发button事件
+            }
+  
+        }
     }
 }

@@ -68,7 +68,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.labProjectCode = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.labwei = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -518,7 +518,7 @@
             this.panelControl1.Controls.Add(this.label5);
             this.panelControl1.Controls.Add(this.labProjectCode);
             this.panelControl1.Controls.Add(this.label8);
-            this.panelControl1.Controls.Add(this.label13);
+            this.panelControl1.Controls.Add(this.labwei);
             this.panelControl1.Controls.Add(this.label14);
             this.panelControl1.Controls.Add(this.label12);
             this.panelControl1.Controls.Add(this.label15);
@@ -577,16 +577,16 @@
             this.label8.TabIndex = 4;
             this.label8.Text = "项目总人数：";
             // 
-            // label13
+            // labwei
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.label13.Location = new System.Drawing.Point(778, 15);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(20, 23);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "0";
+            this.labwei.AutoSize = true;
+            this.labwei.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.labwei.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.labwei.Location = new System.Drawing.Point(778, 15);
+            this.labwei.Name = "labwei";
+            this.labwei.Size = new System.Drawing.Size(20, 23);
+            this.labwei.TabIndex = 4;
+            this.labwei.Text = "0";
             // 
             // label14
             // 
@@ -906,7 +906,7 @@
         private DevExpress.XtraEditors.SimpleButton btnSyn;
         private DevExpress.XtraEditors.SimpleButton btnAddDevice;
         private DevExpress.XtraEditors.LookUpEdit comProjectList;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label labwei;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label labVerificationNum;
         private System.Windows.Forms.Label label10;

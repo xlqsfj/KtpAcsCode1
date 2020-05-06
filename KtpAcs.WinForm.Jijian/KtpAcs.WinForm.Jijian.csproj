@@ -164,11 +164,11 @@
     <Compile Include="Device\DeviceListForm.Designer.cs">
       <DependentUpon>DeviceListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DeviceUserCon.cs">
+    <Compile Include="PageCon.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DeviceUserCon.Designer.cs">
-      <DependentUpon>DeviceUserCon.cs</DependentUpon>
+    <Compile Include="PageCon.Designer.cs">
+      <DependentUpon>PageCon.cs</DependentUpon>
     </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
@@ -226,8 +226,8 @@
     <EmbeddedResource Include="Device\DeviceListForm.resx">
       <DependentUpon>DeviceListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DeviceUserCon.resx">
-      <DependentUpon>DeviceUserCon.cs</DependentUpon>
+    <EmbeddedResource Include="PageCon.resx">
+      <DependentUpon>PageCon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Device\FormLoad.resx">
       <DependentUpon>FormLoad.cs</DependentUpon>

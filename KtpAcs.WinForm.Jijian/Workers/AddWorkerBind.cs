@@ -44,7 +44,16 @@ namespace KtpAcs.WinForm.Jijian
 
             if (selectedValue != null)
             {
-                this.ComNation.Properties.NullText = selectedValue;
+                if (selectedValue == "汉")
+                    selectedValue = "汉族";
+                DicKeyValueDto dicKeyValueDto= nations.Where(a => a.Value == selectedValue).FirstOrDefault();
+                int key = 0;
+                if (dicKeyValueDto != null)
+                    key = dicKeyValueDto.Key;
+               
+                this.ComNation.EditValue = key;
+                this.ComNation.Text = selectedValue;
+
             }
             else
             {
@@ -117,11 +126,15 @@ namespace KtpAcs.WinForm.Jijian
             List<OrganizationList> pList = null;
             //Task.Run(() =>
             //{
-            IMulePusher pusherLogin = new GetOrganizationApi() { RequestParam = new {
-               projectUuid = ConfigHelper.KtpLoginProjectId,
-                pageSize = 0,
-                pageNum = 0,
-            } };
+            IMulePusher pusherLogin = new GetOrganizationApi()
+            {
+                RequestParam = new
+                {
+                    projectUuid = ConfigHelper.KtpLoginProjectId,
+                    pageSize = 0,
+                    pageNum = 0,
+                }
+            };
             PushSummary pushLogin = pusherLogin.Push();
             if (pushLogin.Success)
             {
@@ -139,11 +152,15 @@ namespace KtpAcs.WinForm.Jijian
         }
         private void GetTeamInfo(object uuid)
         {
-            IMulePusher pusherLogin = new GeTeamsApi() { RequestParam = new
+            IMulePusher pusherLogin = new GeTeamsApi()
             {
-                pageSize = 0,
-                pageNum = 0,
-                organizationUuid = uuid } };
+                RequestParam = new
+                {
+                    pageSize = 0,
+                    pageNum = 0,
+                    organizationUuid = uuid
+                }
+            };
             PushSummary pushLogin = pusherLogin.Push();
             if (pushLogin.Success)
             {
@@ -342,8 +359,28 @@ namespace KtpAcs.WinForm.Jijian
                 panelBankInfo.Visible = true;
 
             }
-            if (!string.IsNullOrEmpty(_uuId))
+
+        }
+        public void SetIsEdit(bool isEdit)
+        {
+
+            if (isEdit)
             {
+                //修改
+                this.simpleButton1.Text = "关闭";
+                this.txtPhone.ReadOnly = true;
+                this.comWorkerTeamUuid.ReadOnly = true;
+                this.comWorkType.ReadOnly = true;
+                this.ComOrganizationUuid.ReadOnly = true;
+                this.txtBankNo.ReadOnly = true;
+                this.btnPicturePositive.Visible = false;
+                this.btnPictureReverse.Visible = false;
+                this.btnReadIC.Visible = false;
+            }
+            else
+            {
+
+
                 //详情
                 this.btnSubmit.Visible = false;
                 this.AVidePlayer.Visible = false;
@@ -356,10 +393,10 @@ namespace KtpAcs.WinForm.Jijian
                 this.ComOrganizationUuid.ReadOnly = true;
                 this.txtBankNo.ReadOnly = true;
                 this.ComEducationLevel.ReadOnly = true;
-
-
-
-
+                this.btnFacePic.Visible = false;
+                this.btnPicturePositive.Visible = false;
+                this.btnPictureReverse.Visible = false;
+                this.btnReadIC.Visible = false;
             }
 
         }
@@ -368,7 +405,8 @@ namespace KtpAcs.WinForm.Jijian
         /// <summary>
         /// 点击可以手动编辑
         /// </summary>
-        public void CurrentManualEdit() {
+        public void CurrentManualEdit()
+        {
 
             _isManualEdit = true;
             this.txtAddress.ReadOnly = false;
@@ -395,7 +433,7 @@ namespace KtpAcs.WinForm.Jijian
             this.txtAddress.Text = "";
             this.txtAvg.Text = "";
             this.txtBankName.Text = "";
-
+            this.txtBankNo.Text = "";
             this.txtBirthday.Text = "";
             this.txtEmergencyContactName.Text = "";
             this.txtEmergencyContactPhone.Text = "";
@@ -407,6 +445,7 @@ namespace KtpAcs.WinForm.Jijian
             this.txtStartTime.Text = "";
             this.txtCardAgency.Text = "";
             this.txtCardAgency.Text = "";
+
             this.ComEducationLevel.Properties.NullText = "===请选择===";
             this.ComOrganizationUuid.Properties.NullText = "===请选择===";
             this.comWorkerTeamUuid.Properties.NullText = "===请选择===";
@@ -421,7 +460,7 @@ namespace KtpAcs.WinForm.Jijian
             this.pic_picturePositive.Image = Jijian.Properties.Resources.sfz_z;
             this.pic_pictureReverse.Image = Jijian.Properties.Resources.sfz_f;
             this.IdentityHeadPic.Image = Jijian.Properties.Resources.img_zjz1;
-            
+
             if (state == 1 || state == 0)
             {
 
@@ -473,7 +512,7 @@ namespace KtpAcs.WinForm.Jijian
             this.txtCardAgency.Text = w.cardAgency;
             this.txtBankNo.Text = w.bankNo;
             //IList<DicKeyValueDto> nations = EnumSerializationExtension.GetEnumValue(IdentityNation.Wu, w.nation);  
-      
+
             this.ComEducationLevel.EditValue = w.educationLevel;
             this.ComOrganizationUuid.EditValue = w.organizationUuid;
             this.comWorkerTeamUuid.EditValue = w.workerTeamUuid;

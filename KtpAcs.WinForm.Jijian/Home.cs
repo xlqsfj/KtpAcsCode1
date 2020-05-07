@@ -80,7 +80,7 @@ namespace KtpAcs.WinForm.Jijian
 
 
                     this.comProjectList.Properties.Columns.Add(
-                   new DevExpress.XtraEditors.Controls.LookUpColumnInfo("organizationName", "公司名称"));
+                    new DevExpress.XtraEditors.Controls.LookUpColumnInfo("organizationName", "公司名称"));
                     this.comProjectList.Properties.Columns.Add(
                     new DevExpress.XtraEditors.Controls.LookUpColumnInfo("projectName", "项目名称"));
 
@@ -104,7 +104,8 @@ namespace KtpAcs.WinForm.Jijian
 
             foreach (var item in pList)
             {
-
+                if (item == null)
+                    continue;
                 if (item.projectUuid == pid)
                 {
                     isMatching = true;
@@ -114,8 +115,17 @@ namespace KtpAcs.WinForm.Jijian
             }
             if (!isMatching)
             {
-                pid = pList[0].projectUuid;
-                modifyItem("ProjectId", pid);
+
+                foreach (var item in pList)
+                {
+                    if (item == null)
+                        continue;
+                    pid = item.projectUuid;
+                    modifyItem("ProjectId", pid);
+                    break;
+
+                }
+
             }
             ConfigHelper._KtpLoginProjectId = pid;
             return pid;
@@ -125,18 +135,34 @@ namespace KtpAcs.WinForm.Jijian
         /// </summary>
         private void GetProjectCount()
         {
-            IMulePusher pusherLogin = new GetProjectCountApi() { RequestParam = new { projectUuid = ConfigHelper.KtpLoginProjectId } };
-            PushSummary pushLogin = pusherLogin.Push();
-            if (pushLogin.Success)
+            try
             {
-                ProjectCountResult.Data projectCountResult = pushLogin.ResponseData;
 
-                this.labProjectCode.Text = projectCountResult.projectCode;
-                this.labProjectManageNum.Text = (projectCountResult.projectWorkerNum + projectCountResult.jiaziNum + projectCountResult.projectManageNum).ToString();
-                this.labProjectManageNum.ToolTip = $"花名册:{ projectCountResult.projectWorkerNum} 甲指分包人员:{ projectCountResult.jiaziNum} 项目人员:{projectCountResult.projectManageNum}";
-                this.labVerificationNum.Text = projectCountResult.workerVerificationNum.ToString();
-                this.labPhone.Text = ConfigHelper.KtpLoginPhone;
-          
+                IMulePusher pusherLogin = new GetProjectCountApi() { RequestParam = new { projectUuid = ConfigHelper.KtpLoginProjectId } };
+                PushSummary pushLogin = pusherLogin.Push();
+                if (pushLogin.Success)
+                {
+                    ProjectCountResult.Data projectCountResult = pushLogin.ResponseData;
+
+                    this.labProjectCode.Text = projectCountResult.projectCode;
+                    //总人数
+                    int countSum = (projectCountResult.projectWorkerNum + projectCountResult.jiaziNum + projectCountResult.projectManageNum);
+                    this.labProjectManageNum.Text = countSum.ToString();
+                    this.labProjectManageNum.ToolTip = $"花名册:{ projectCountResult.projectWorkerNum} 甲指分包人员:{ projectCountResult.jiaziNum} 项目人员:{projectCountResult.projectManageNum}";
+                    //已认证人数
+                    int okNum = projectCountResult.workerVerificationNum + projectCountResult.manageVerificationNum + projectCountResult.jiaziVerificationNum;
+                    this.labVerificationNum.Text = okNum.ToString();
+                    this.labPhone.Text = ConfigHelper.KtpLoginPhone;
+                    //未认证人数
+                    int noNum = countSum - okNum;
+                    this.labwei.Text = noNum.ToString();
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageHelper.Show(ex.Message, ex);
             }
         }
 
@@ -184,10 +210,18 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="e"></param>
         private void flowDevice_Click(object sender, EventArgs e)
         {
-            this.panelWorker.Visible = false;
-            this.panelDevice.Visible = true;
-            _DeivceForm = new DeviceListForm();
-            TabForm(_DeivceForm, flowDevice.Name);
+            try
+            {
+                this.panelWorker.Visible = false;
+                this.panelDevice.Visible = true;
+                _DeivceForm = new DeviceListForm();
+                TabForm(_DeivceForm, flowDevice.Name);
+            }
+            catch (Exception ex)
+            {
+
+                MessageHelper.Show(ex.Message, ex);
+            }
 
         }
 
@@ -266,7 +300,11 @@ namespace KtpAcs.WinForm.Jijian
 
 
 
-
+        /// <summary>
+        /// 花名册和甲指分包切换
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radHMC_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -363,36 +401,60 @@ namespace KtpAcs.WinForm.Jijian
             }
         }
 
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Home_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (_workerAdminForm != null)
-                _workerAdminForm.isExiet();
-            if (_workerProjectForm != null)
+            try
             {
-                if (_workerProjectForm.isOpen)
-                {
 
-                    _workerProjectForm.GetIsOpen();
+                if (_workerAdminForm != null)
+                    _workerAdminForm.isExiet();
+                if (_workerProjectForm != null)
+                {
+                    if (_workerProjectForm.isOpen)
+                    {
+
+                        _workerProjectForm.GetIsOpen();
+                    }
+
+                }
+                Application.Exit();
+            }
+            catch (Exception ex)
+            {
+
+                MessageHelper.Show(ex.Message, ex);
+            }
+        }
+
+
+
+        /// <summary>
+        /// 右键菜单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pictureEdit8_MouseDown(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                //如果是单击的是左键
+                if (e.Button == MouseButtons.Left)
+                {
+                    //  popupMenu1.ShowPopup((Button)sender, new Point(e.X, e.Y)); //在你单击的地方弹出菜单
+                    this.popupMenu1.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
                 }
 
             }
-            Application.Exit();
-        }
-
-        private void simpleButton4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureEdit8_MouseDown(object sender, MouseEventArgs e)
-        {
-            //如果是单击的是左键
-            if (e.Button == MouseButtons.Left)
+            catch (Exception ex)
             {
-                //  popupMenu1.ShowPopup((Button)sender, new Point(e.X, e.Y)); //在你单击的地方弹出菜单
-                this.popupMenu1.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
-            }
 
+                MessageHelper.Show(ex.Message, ex);
+            }
         }
 
         /// <summary>
@@ -442,11 +504,19 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="e"></param>
         private void btnLog_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory + "\\logs";
-            if (Directory.Exists(path))
-                System.Diagnostics.Process.Start(path);
-            else
-                MessageHelper.Show("日志目录还未生成！");
+            try
+            {
+                string path = AppDomain.CurrentDomain.BaseDirectory + "\\logs";
+                if (Directory.Exists(path))
+                    System.Diagnostics.Process.Start(path);
+                else
+                    MessageHelper.Show("日志目录还未生成！");
+            }
+            catch (Exception ex)
+            {
+
+                MessageHelper.Show(ex.Message, ex);
+            }
         }
     }
 }

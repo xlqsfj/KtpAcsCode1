@@ -67,13 +67,12 @@
             this.tabPageWorkerList.Appearance.PageClient.BackColor = System.Drawing.Color.White;
             this.tabPageWorkerList.Appearance.PageClient.Options.UseBackColor = true;
             this.tabPageWorkerList.Name = "tabPageWorkerList";
-            this.tabPageWorkerList.Size = new System.Drawing.Size(1270, 796);
+            this.tabPageWorkerList.Size = new System.Drawing.Size(1270, 879);
             this.tabPageWorkerList.Text = "已入职";
             // 
             // WorkerAdminForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1298, 916);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "WorkerAdminForm";

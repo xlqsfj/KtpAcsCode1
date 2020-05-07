@@ -24,7 +24,7 @@ namespace KtpAcs.WinForm.Jijian
 {
     public partial class AddWorker : DevExpress.XtraEditors.XtraForm
     {
-        public event Action<DevExpress.XtraEditors.XtraForm> CloseDdetailedWinform;
+        public event Action<DevExpress.XtraEditors.XtraForm, bool, string> CloseDdetailedWinform;
         //端口号
         private int _synIdCardPort;
         private readonly string _msgCaption = "提示:";
@@ -85,10 +85,11 @@ namespace KtpAcs.WinForm.Jijian
             ContentState(_state);
             //加载详细页
             GetInfo(hmc, uuId);
+            SetIsEdit(isEdit);
         }
 
 
-        private void CameraConn()
+        public void CameraConn()
         {
             try
             {
@@ -248,21 +249,26 @@ namespace KtpAcs.WinForm.Jijian
             add = null;
             ConfigHelper.IsDivceAdd = true;
             string submit = btnSubmit.Text;
+            btnSubmit.Text = @"正在提交";
+            btnSubmit.Enabled = false;
             try
             {
 
                 if (!SubmitBtnPreValidation())
                 {
+                    btnSubmit.Text = @"提交";
+                    btnSubmit.Enabled = true;
                     throw new PreValidationException(PreValidationHelper.ErroMsg);
                 }
                 if (WorkSysFail.workAdd.Count() < 1)
                 {
                     MessageHelper.Show("未添加面板，请先添加面板");
+                    btnSubmit.Text = @"提交";
+                    btnSubmit.Enabled = true;
                     return;
                 }
                 ShowAddInfoForm();
-                btnSubmit.Text = @"正在提交";
-                btnSubmit.Enabled = false;
+
                 add = new AddWorerkSend();
                 add.address = this.txtAddress.Text;
                 add.age = Convert.ToInt32(this.txtAvg.Text);
@@ -403,12 +409,7 @@ namespace KtpAcs.WinForm.Jijian
 
             btnSubmit.Text = @"提交";
             btnSubmit.Enabled = true;
-            if (_isColse && close == "close")
-            { //编辑
-                Hide();
-                return;
-            }
-            else if (close == "close")
+            if (close == "close")
             {//新增
 
                 reslt(_state);
@@ -419,6 +420,8 @@ namespace KtpAcs.WinForm.Jijian
                 }
                 if (ShowProjectList != null)
                     ShowProjectList("ok");
+                if (CloseDdetailedWinform != null)
+                    CloseDdetailedWinform(null, false, "");
                 return;
             }
 
@@ -436,10 +439,18 @@ namespace KtpAcs.WinForm.Jijian
 
         public void GetIsAVide()
         {
-            if (AVidePlayer.IsRunning)
+            try
             {
-                AVidePlayer.SignalToStop();
-                AVidePlayer.Stop();
+                if (AVidePlayer.IsRunning)
+                {
+                    AVidePlayer.SignalToStop();
+                    AVidePlayer.Stop();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
 
 
@@ -478,7 +489,7 @@ namespace KtpAcs.WinForm.Jijian
             if (string.IsNullOrEmpty(_uuId))
                 reslt(_state);
             else if (CloseDdetailedWinform != null)
-                CloseDdetailedWinform(null);
+                CloseDdetailedWinform(null, false, "");
             if (ShowProjectList != null)
                 ShowProjectList("ok");
         }

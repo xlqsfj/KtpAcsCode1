@@ -24,6 +24,8 @@ namespace KtpAcs.WinForm.Jijian
             //全局Liquid Sky The Asphalt World Office 2007 Blue 
             //Valentine Springtime
             UserLookAndFeel.Default.SetSkinStyle("The Asphalt World");//皮肤主题
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-Hans");
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("zh-Hans");
             Application.Run(new Login());
         }
     }

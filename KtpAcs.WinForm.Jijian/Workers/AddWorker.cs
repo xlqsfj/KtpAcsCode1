@@ -120,110 +120,117 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="e"></param>
         private void btnReadIC_Click(object sender, EventArgs e)
         {
+            try
+            {
 
-            /***初始化控件************************************************************/
-            if (IdentityHeadPic.Image != null)
-            {
-                IdentityHeadPic.Image.Dispose();
-                IdentityHeadPic.Image = null;
-            }
-            /***阅读器设置************************************************************/
-            if (_synIdCardPort <= 0)
-            {
-                //查找读卡器，获取端口
-                _synIdCardPort = SynIdCardApi.Syn_FindUSBReader();
-            }
-            var nPort = _synIdCardPort;
-            if (nPort == 0)
-            {
-                MessageHelper.Show(
-                    $@"{Convert.ToString(DateTime.Now, CultureInfo.InvariantCulture)} 没有找到读卡器", _msgCaption);
-                return;
-            }
-            string stmp;
-            var pucIin = new byte[4];
-            var pucSn = new byte[8];
-            //byte[] cPath = new byte[255];
-            //图片保存路径
-            var cPath = Encoding.UTF8.GetBytes(ConfigHelper.CustomFilesDir);
-            // var cPath = Encoding.UTF8.GetBytes(System.Windows.Forms.Application.StartupPath);
-            SynIdCardApi.Syn_SetPhotoPath(2, ref cPath[0]); //设置照片路径，iOption 路径选项：0=C:，1=当前路径，2=指定路径
-            //cPhotoPath	绝对路径,仅在iOption=2时有效
-            SynIdCardApi.Syn_SetPhotoType(1); //0 = bmp ,1 = jpg , 2 = base64 , 3 = WLT ,4 = 不生成
-            SynIdCardApi.Syn_SetPhotoName(2); // 生成照片文件名 0=tmp 1=姓名 2=身份证号 3=姓名_身份证号 
-            SynIdCardApi.Syn_SetSexType(1); // 0=卡中存储的数据	1=解释之后的数据,男、女、未知
-            SynIdCardApi.Syn_SetNationType(0); // 0=卡中存储的数据	1=解释之后的数据 2=解释之后加"族"
-            SynIdCardApi.Syn_SetBornType(3); // 0=YYYYMMDD,1=YYYY年MM月DD日,2=YYYY.MM.DD,3=YYYY-MM-DD,4=YYYY/MM/DD
-            SynIdCardApi.Syn_SetUserLifeBType(3); // 0=YYYYMMDD,1=YYYY年MM月DD日,2=YYYY.MM.DD,3=YYYY-MM-DD,4=YYYY/MM/DD
-                                                  // 0=YYYYMMDD(不转换),1=YYYY年MM月DD日,2=YYYY.MM.DD,3=YYYY-MM-DD,4=YYYY/MM/DD,0=长期 不转换,	1=长期转换为 有效期开始+50年
-                                                  //string imgMsg = new string(' ', 1024); //身份证图片信息返回长度为1024
-                                                  //IntPtr img = Marshal.StringToHGlobalAnsi(imgMsg); //身份证图片
-            SynIdCardApi.Syn_SetUserLifeEType(3, 1);
-            /***打开读取信息************************************************************/
-            if (SynIdCardApi.Syn_OpenPort(nPort) == 0)
-            {
-                if (SynIdCardApi.Syn_SetMaxRFByte(nPort, 80, 0) == 0)
+                /***初始化控件************************************************************/
+                if (IdentityHeadPic.Image != null)
                 {
-                    var cardMsg = new SynIdCardDto();
-                    SynIdCardApi.Syn_StartFindIDCard(nPort, ref pucIin[0], 0);
-                    SynIdCardApi.Syn_SelectIDCard(nPort, ref pucSn[0], 0);
-                    var readMsgResult = SynIdCardApi.Syn_ReadMsg(nPort, 0, ref cardMsg);
-                    if (readMsgResult == 0 || readMsgResult == 1)
+                    IdentityHeadPic.Image.Dispose();
+                    IdentityHeadPic.Image = null;
+                }
+                /***阅读器设置************************************************************/
+                if (_synIdCardPort <= 0)
+                {
+                    //查找读卡器，获取端口
+                    _synIdCardPort = SynIdCardApi.Syn_FindUSBReader();
+                }
+                var nPort = _synIdCardPort;
+                if (nPort == 0)
+                {
+                    MessageHelper.Show(
+                        $@"{Convert.ToString(DateTime.Now, CultureInfo.InvariantCulture)} 没有找到读卡器", _msgCaption);
+                    return;
+                }
+                string stmp;
+                var pucIin = new byte[4];
+                var pucSn = new byte[8];
+                //byte[] cPath = new byte[255];
+                //图片保存路径
+                var cPath = Encoding.UTF8.GetBytes(ConfigHelper.CustomFilesDir);
+                // var cPath = Encoding.UTF8.GetBytes(System.Windows.Forms.Application.StartupPath);
+                SynIdCardApi.Syn_SetPhotoPath(2, ref cPath[0]); //设置照片路径，iOption 路径选项：0=C:，1=当前路径，2=指定路径
+                                                                //cPhotoPath	绝对路径,仅在iOption=2时有效
+                SynIdCardApi.Syn_SetPhotoType(1); //0 = bmp ,1 = jpg , 2 = base64 , 3 = WLT ,4 = 不生成
+                SynIdCardApi.Syn_SetPhotoName(2); // 生成照片文件名 0=tmp 1=姓名 2=身份证号 3=姓名_身份证号 
+                SynIdCardApi.Syn_SetSexType(1); // 0=卡中存储的数据	1=解释之后的数据,男、女、未知
+                SynIdCardApi.Syn_SetNationType(0); // 0=卡中存储的数据	1=解释之后的数据 2=解释之后加"族"
+                SynIdCardApi.Syn_SetBornType(3); // 0=YYYYMMDD,1=YYYY年MM月DD日,2=YYYY.MM.DD,3=YYYY-MM-DD,4=YYYY/MM/DD
+                SynIdCardApi.Syn_SetUserLifeBType(3); // 0=YYYYMMDD,1=YYYY年MM月DD日,2=YYYY.MM.DD,3=YYYY-MM-DD,4=YYYY/MM/DD
+                                                      // 0=YYYYMMDD(不转换),1=YYYY年MM月DD日,2=YYYY.MM.DD,3=YYYY-MM-DD,4=YYYY/MM/DD,0=长期 不转换,	1=长期转换为 有效期开始+50年
+                                                      //string imgMsg = new string(' ', 1024); //身份证图片信息返回长度为1024
+                                                      //IntPtr img = Marshal.StringToHGlobalAnsi(imgMsg); //身份证图片
+                SynIdCardApi.Syn_SetUserLifeEType(3, 1);
+                /***打开读取信息************************************************************/
+                if (SynIdCardApi.Syn_OpenPort(nPort) == 0)
+                {
+                    if (SynIdCardApi.Syn_SetMaxRFByte(nPort, 80, 0) == 0)
                     {
-                        try
+                        var cardMsg = new SynIdCardDto();
+                        SynIdCardApi.Syn_StartFindIDCard(nPort, ref pucIin[0], 0);
+                        SynIdCardApi.Syn_SelectIDCard(nPort, ref pucSn[0], 0);
+                        var readMsgResult = SynIdCardApi.Syn_ReadMsg(nPort, 0, ref cardMsg);
+                        if (readMsgResult == 0 || readMsgResult == 1)
                         {
-                            if (cardMsg.Sex == "女")
+                            try
                             {
-                                txtGender.SelectedIndex = 1;
+                                if (cardMsg.Sex == "女")
+                                {
+                                    txtGender.SelectedIndex = 1;
+                                }
+                                else
+                                {
+                                    txtGender.SelectedIndex = 0;
+                                }
+                                txtName.Text = cardMsg.Name.Trim();
+                                txtBirthday.EditValue = DateTime.Parse(cardMsg.Born);
+                                //txtAvg.Text = FormatHelper.GetAgeByBirthdate(DateTime.Parse(cardMsg.Born)).ToString();
+                                txtIdCard.Text = cardMsg.IDCardNo.Trim();
+
+                                txtNativePlace.Text = WorkerInfoHelper.GetProvinceDicList(cardMsg.IDCardNo.Trim());
+                                txtAddress.Text = cardMsg.Address.Trim();
+                                ComNation.EditValue = (int.Parse(cardMsg.Nation));
+                                txtStartTime.Text = cardMsg.UserLifeBegin.Trim();
+                                txtExpireTime.Text = cardMsg.UserLifeEnd.Trim();
+                                txtCardAgency.Text = cardMsg.GrantDept.Trim();
+                                if (!string.IsNullOrEmpty(cardMsg.PhotoFileName))
+                                {
+                                    //IdentityHeadPic.Image = Image.FromFile(cardMsg.PhotoFileName);
+                                    _upic = $"{cardMsg.IDCardNo}.Jpg";
+                                    System.IO.FileStream fs = System.IO.File.OpenRead($"{ConfigHelper.CustomFilesDir}{_upic}");
+                                    IdentityHeadPic.Image = Image.FromStream(fs);
+                                    fs.Close();
+
+                                }
+
                             }
-                            else
+                            catch (Exception ex)
                             {
-                                txtGender.SelectedIndex = 0;
+                                LogHelper.ExceptionLog(ex);
+                                MessageHelper.Show($@"读取身份证出现错误：{ex.Message}", _msgCaption);
                             }
-                            txtName.Text = cardMsg.Name.Trim();
-                            txtBirthday.EditValue = DateTime.Parse(cardMsg.Born);
-                            //txtAvg.Text = FormatHelper.GetAgeByBirthdate(DateTime.Parse(cardMsg.Born)).ToString();
-                            txtIdCard.Text = cardMsg.IDCardNo.Trim();
-
-                            txtNativePlace.Text = WorkerInfoHelper.GetProvinceDicList(cardMsg.IDCardNo.Trim());
-                            txtAddress.Text = cardMsg.Address.Trim();
-                            ComNation.EditValue = (int.Parse(cardMsg.Nation));
-                            txtStartTime.Text = cardMsg.UserLifeBegin.Trim();
-                            txtExpireTime.Text = cardMsg.UserLifeEnd.Trim();
-                            txtCardAgency.Text = cardMsg.GrantDept.Trim();
-                            if (!string.IsNullOrEmpty(cardMsg.PhotoFileName))
-                            {
-                                //IdentityHeadPic.Image = Image.FromFile(cardMsg.PhotoFileName);
-                                _upic = $"{cardMsg.IDCardNo}.Jpg";
-                                System.IO.FileStream fs = System.IO.File.OpenRead($"{ConfigHelper.CustomFilesDir}{_upic}");
-                                IdentityHeadPic.Image = Image.FromStream(fs);
-                                fs.Close();
-
-                            }
-
                         }
-                        catch (Exception ex)
+                        else
                         {
-                            LogHelper.ExceptionLog(ex);
-                            MessageHelper.Show($@"读取身份证出现错误：{ex.Message}", _msgCaption);
+                            stmp = $"{FormatHelper.GetIsoDateTimeString(DateTime.Now)} 读取身份证信息错误,确认身份证放置位置，如放置正确则身份证可能损坏";
+                            MessageHelper.Show(stmp, _msgCaption);
                         }
-                    }
-                    else
-                    {
-                        stmp = $"{FormatHelper.GetIsoDateTimeString(DateTime.Now)} 读取身份证信息错误,确认身份证放置位置，如放置正确则身份证可能损坏";
-                        MessageHelper.Show(stmp, _msgCaption);
                     }
                 }
+                else
+                {
+                    stmp = $"{FormatHelper.GetIsoDateTimeString(DateTime.Now)} 打开端口失败,确认身份证阅读器是否正常连接";
+                    MessageHelper.Show(stmp, _msgCaption);
+                }
+                if (_isManualEdit)
+                {
+                    ContentState(_state);
+                    _isManualEdit = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                stmp = $"{FormatHelper.GetIsoDateTimeString(DateTime.Now)} 打开端口失败,确认身份证阅读器是否正常连接";
-                MessageHelper.Show(stmp, _msgCaption);
-            }
-            if (_isManualEdit)
-            {
-                ContentState(_state);
-                _isManualEdit = false;
+                MessageHelper.Show(ex.Message, ex);
             }
         }
 
@@ -404,28 +411,36 @@ namespace KtpAcs.WinForm.Jijian
         /// </summary>
         public void AddSubWorkInfo(string close)
         {
-            if (close == "begin")
+            try
             {
-                SubmitData();
-                return;
-            }
 
-            btnSubmit.Text = @"提交";
-            btnSubmit.Enabled = true;
-            if (close == "close")
-            {//新增
-
-                reslt(_state);
-                if (_isManualEdit)
+                if (close == "begin")
                 {
-                    ContentState(_state);
-                    _isManualEdit = false;
+                    SubmitData();
+                    return;
                 }
-                if (ShowProjectList != null)
-                    ShowProjectList("ok");
-                if (CloseDdetailedWinform != null)
-                    CloseDdetailedWinform(null, false, "");
-                return;
+
+                btnSubmit.Text = @"提交";
+                btnSubmit.Enabled = true;
+                if (close == "close")
+                {//新增
+
+                    reslt(_state);
+                    if (_isManualEdit)
+                    {
+                        ContentState(_state);
+                        _isManualEdit = false;
+                    }
+                    if (ShowProjectList != null)
+                        ShowProjectList("ok");
+                    if (CloseDdetailedWinform != null)
+                        CloseDdetailedWinform(null, false, "");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageHelper.Show(ex.Message, ex);
             }
 
 

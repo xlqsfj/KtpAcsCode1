@@ -40,7 +40,8 @@ namespace KtpAcs.WinForm.Jijian
             flowDevice_Click(null, null);
         }
 
-        public void GetIp() {
+        public void GetIp()
+        {
 
             string hostName = Dns.GetHostName();//本机名              
             System.Net.IPAddress[] ipHost = Dns.GetHostAddresses(hostName);//会返回所有地址，包括IPv4和IPv6 
@@ -49,7 +50,7 @@ namespace KtpAcs.WinForm.Jijian
             {
                 if (ip.AddressFamily.ToString() == "InterNetwork")
                 {
-                    this.Text ="开太平云建筑      本地IP:"+ ip.ToString();
+                    this.Text = "开太平云建筑      本地IP:" + ip.ToString();
                 }
 
             }
@@ -94,8 +95,8 @@ namespace KtpAcs.WinForm.Jijian
                     this.comProjectList.Properties.DisplayMember = "projectName";
                     this.comProjectList.Properties.ValueMember = "projectUuid";
                     this.comProjectList.Properties.DataSource = pList;
-
-                    this.comProjectList.EditValue = SetProjectId(pList);
+                    string currentProject = SetProjectId(pList);
+                    this.comProjectList.EditValue = currentProject;
 
 
                     this.comProjectList.Properties.Columns.Add(
@@ -128,6 +129,7 @@ namespace KtpAcs.WinForm.Jijian
                 if (item.projectUuid == pid)
                 {
                     isMatching = true;
+                    this.comProjectList.ToolTip = item.projectName;
                 }
 
 
@@ -141,6 +143,7 @@ namespace KtpAcs.WinForm.Jijian
                         continue;
                     pid = item.projectUuid;
                     modifyItem("ProjectId", pid);
+                    this.comProjectList.ToolTip = item.projectName;
                     break;
 
                 }
@@ -355,11 +358,19 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="e"></param>
         private void flowAdmin_Click(object sender, EventArgs e)
         {
+            try
+            {
 
-            _workerProjectForm = new WorkerProjectForm();
-            this.panelWorker.Visible = false;
-            this.panelDevice.Visible = false;
-            TabForm(_workerProjectForm, flowAdmin.Name);
+                _workerProjectForm = new WorkerProjectForm();
+                this.panelWorker.Visible = false;
+                this.panelDevice.Visible = false;
+                TabForm(_workerProjectForm, flowAdmin.Name);
+            }
+            catch (Exception ex)
+            {
+                MessageHelper.Show(ex.Message, ex);
+         
+            }
 
         }
 
@@ -396,12 +407,21 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="e"></param>
         private void comProjectList_EditValueChanged(object sender, EventArgs e)
         {
-            string ProjectId = this.comProjectList.EditValue.ToString();
-            ConfigHelper.KtpLoginProjectId = ProjectId;
-            modifyItem("ProjectId", ProjectId);
-            GetProjectCount();
+            try
+            {
+                string ProjectId = this.comProjectList.EditValue.ToString();
+                if (this.comProjectList.Text != "[EditValue is null]")
+                    this.comProjectList.ToolTip = this.comProjectList.Text;
+                ConfigHelper.KtpLoginProjectId = ProjectId;
+                modifyItem("ProjectId", ProjectId);
+                GetProjectCount();
 
-            flowDevice_Click(null, null);
+                flowDevice_Click(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageHelper.Show(ex.Message, ex);
+            }
         }
 
 

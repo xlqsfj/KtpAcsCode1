@@ -145,7 +145,7 @@
             this.spl.Panel2.Controls.Add(this.panelContent);
             this.spl.Panel2.Controls.Add(this.panelHead);
             this.spl.Panel2.Text = "Panel2";
-            this.spl.Size = new System.Drawing.Size(1429, 599);
+            this.spl.Size = new System.Drawing.Size(1412, 599);
             this.spl.SplitterPosition = 89;
             this.spl.TabIndex = 0;
             // 
@@ -427,7 +427,7 @@
             this.panelContent.Controls.Add(this.pictureEdit5);
             this.panelContent.FireScrollEventOnMouseWheel = true;
             this.panelContent.InvertTouchScroll = true;
-            this.panelContent.Location = new System.Drawing.Point(0, 120);
+            this.panelContent.Location = new System.Drawing.Point(1, 117);
             this.panelContent.Margin = new System.Windows.Forms.Padding(0);
             this.panelContent.Name = "panelContent";
             this.panelContent.Size = new System.Drawing.Size(1309, 477);
@@ -753,6 +753,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comProjectList.Size = new System.Drawing.Size(345, 30);
             this.comProjectList.TabIndex = 9;
+            this.comProjectList.ToolTipController = this.toolTipController1;
             this.comProjectList.EditValueChanged += new System.EventHandler(this.comProjectList_EditValueChanged);
             // 
             // barManager1
@@ -773,7 +774,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1429, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1412, 0);
             // 
             // barDockControlBottom
             // 
@@ -781,7 +782,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 599);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1429, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1412, 0);
             // 
             // barDockControlLeft
             // 
@@ -795,7 +796,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1429, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1412, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 599);
             // 
@@ -824,7 +825,7 @@
             // Home
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1429, 599);
+            this.ClientSize = new System.Drawing.Size(1412, 599);
             this.Controls.Add(this.spl);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

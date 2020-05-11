@@ -139,7 +139,7 @@ namespace KtpAcs.WinForm.Jijian.Device
         /// <returns></returns>
         private string workerSyn()
         {
-
+            //请求平台数据
             if (workers == null)
             {
                 workers = new List<WorkerList>();
@@ -172,7 +172,7 @@ namespace KtpAcs.WinForm.Jijian.Device
         public List<WorkerList> AddWokerLists(List<WorkerList> list, EnumWorkerType type)
         {
 
-        
+
             foreach (WorkerList workerList in list)
             {
                 workerList.enumWorkerType = type;

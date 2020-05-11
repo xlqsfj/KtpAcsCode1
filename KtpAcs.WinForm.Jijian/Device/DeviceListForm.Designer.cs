@@ -87,7 +87,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1039, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1283, 0);
             // 
             // barDockControlBottom
             // 
@@ -95,7 +95,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 467);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1039, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1283, 0);
             // 
             // barDockControlLeft
             // 
@@ -109,7 +109,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1039, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1283, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 467);
             // 
@@ -225,7 +225,7 @@
             this.gridControl.Location = new System.Drawing.Point(15, 27);
             this.gridControl.MainView = this.grid_Device;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1006, 428);
+            this.gridControl.Size = new System.Drawing.Size(1265, 428);
             this.gridControl.TabIndex = 1;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grid_Device});
@@ -244,7 +244,7 @@
             this.panelContent.InvertTouchScroll = true;
             this.panelContent.Location = new System.Drawing.Point(12, 27);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1009, 418);
+            this.panelContent.Size = new System.Drawing.Size(1268, 418);
             this.panelContent.TabIndex = 6;
             this.panelContent.Visible = false;
             // 
@@ -301,7 +301,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1039, 467);
+            this.ClientSize = new System.Drawing.Size(1283, 467);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.barDockControlLeft);

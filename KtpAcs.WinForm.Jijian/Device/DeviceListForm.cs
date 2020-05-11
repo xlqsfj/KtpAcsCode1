@@ -63,7 +63,7 @@ namespace KtpAcs.WinForm.Jijian
             }
             else
             {
-                MessageHelper.Show("请先选择同步的面板!");
+                MessageHelper.Show("请先选择同步的面板,未连接的人脸识别设备不能同步!");
             }
 
         }

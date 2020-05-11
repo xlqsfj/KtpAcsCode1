@@ -115,7 +115,7 @@ namespace KtpAcs.Infrastructure.Utilities
             {
                 return saveKey;
             }
-            throw new Exception($"Upload file qiniu exception,result.Code={result.Code},result.Text={result.Text}");
+            throw new Exception($"上传图片到服务出错={result.Code},result.Text={result.Text},请重试!");
         }
 
         public static string GetUrlByUploadBase64StringData(string base64Data)

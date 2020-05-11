@@ -125,7 +125,7 @@
             // 
             this.spl.CausesValidation = false;
             this.spl.CollapsePanel = DevExpress.XtraEditors.SplitCollapsePanel.Panel1;
-            this.spl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.spl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spl.Location = new System.Drawing.Point(0, 0);
             this.spl.Name = "spl";
             this.spl.Panel1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
@@ -145,7 +145,7 @@
             this.spl.Panel2.Controls.Add(this.panelContent);
             this.spl.Panel2.Controls.Add(this.panelHead);
             this.spl.Panel2.Text = "Panel2";
-            this.spl.Size = new System.Drawing.Size(1436, 608);
+            this.spl.Size = new System.Drawing.Size(1429, 599);
             this.spl.SplitterPosition = 89;
             this.spl.TabIndex = 0;
             // 
@@ -155,7 +155,7 @@
             this.pictureEdit8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureEdit8.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.cd;
             this.pictureEdit8.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.pictureEdit8.Location = new System.Drawing.Point(36, 523);
+            this.pictureEdit8.Location = new System.Drawing.Point(36, 514);
             this.pictureEdit8.Name = "pictureEdit8";
             this.pictureEdit8.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEdit8.Properties.Appearance.Options.UseBackColor = true;
@@ -175,7 +175,6 @@
             // 
             // pictureEdit6
             // 
-            this.pictureEdit6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureEdit6.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.l1;
             this.pictureEdit6.ImeMode = System.Windows.Forms.ImeMode.On;
             this.pictureEdit6.Location = new System.Drawing.Point(14, 12);
@@ -211,7 +210,7 @@
             this.picExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picExit.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.img_exit;
             this.picExit.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.picExit.Location = new System.Drawing.Point(24, 555);
+            this.picExit.Location = new System.Drawing.Point(24, 546);
             this.picExit.Name = "picExit";
             this.picExit.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.picExit.Properties.Appearance.Options.UseBackColor = true;
@@ -428,7 +427,7 @@
             this.panelContent.Controls.Add(this.pictureEdit5);
             this.panelContent.FireScrollEventOnMouseWheel = true;
             this.panelContent.InvertTouchScroll = true;
-            this.panelContent.Location = new System.Drawing.Point(0, 131);
+            this.panelContent.Location = new System.Drawing.Point(0, 120);
             this.panelContent.Margin = new System.Windows.Forms.Padding(0);
             this.panelContent.Name = "panelContent";
             this.panelContent.Size = new System.Drawing.Size(1309, 477);
@@ -473,7 +472,6 @@
             this.simpleButton4.Size = new System.Drawing.Size(251, 45);
             this.simpleButton4.TabIndex = 1;
             this.simpleButton4.Text = "添加面板";
-            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // pictureEdit5
             // 
@@ -498,13 +496,13 @@
             this.panelHead.Controls.Add(this.comProjectList);
             this.panelHead.Location = new System.Drawing.Point(1, 3);
             this.panelHead.Name = "panelHead";
-            this.panelHead.Size = new System.Drawing.Size(1306, 122);
+            this.panelHead.Size = new System.Drawing.Size(1306, 111);
             this.panelHead.TabIndex = 0;
             // 
             // pictureEdit7
             // 
             this.pictureEdit7.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.jx21;
-            this.pictureEdit7.Location = new System.Drawing.Point(17, 28);
+            this.pictureEdit7.Location = new System.Drawing.Point(17, 17);
             this.pictureEdit7.Name = "pictureEdit7";
             this.pictureEdit7.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit7.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -525,7 +523,7 @@
             this.panelControl1.Controls.Add(this.labVerificationNum);
             this.panelControl1.Controls.Add(this.label16);
             this.panelControl1.Controls.Add(this.label10);
-            this.panelControl1.Location = new System.Drawing.Point(33, 64);
+            this.panelControl1.Location = new System.Drawing.Point(33, 53);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(939, 52);
             this.panelControl1.TabIndex = 4;
@@ -536,12 +534,12 @@
             this.labProjectManageNum.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
             this.labProjectManageNum.Appearance.Options.UseFont = true;
             this.labProjectManageNum.Appearance.Options.UseForeColor = true;
-            this.labProjectManageNum.Location = new System.Drawing.Point(341, 18);
+            this.labProjectManageNum.Location = new System.Drawing.Point(419, 18);
             this.labProjectManageNum.Name = "labProjectManageNum";
-            this.labProjectManageNum.Size = new System.Drawing.Size(30, 23);
+            this.labProjectManageNum.Size = new System.Drawing.Size(50, 23);
             this.labProjectManageNum.TabIndex = 5;
             this.labProjectManageNum.Tag = "1111";
-            this.labProjectManageNum.Text = "200";
+            this.labProjectManageNum.Text = "20000";
             this.labProjectManageNum.ToolTipController = this.toolTipController1;
             // 
             // label5
@@ -560,18 +558,18 @@
             this.labProjectCode.AutoSize = true;
             this.labProjectCode.Font = new System.Drawing.Font("Tahoma", 14F);
             this.labProjectCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.labProjectCode.Location = new System.Drawing.Point(117, 18);
+            this.labProjectCode.Location = new System.Drawing.Point(104, 18);
             this.labProjectCode.Name = "labProjectCode";
-            this.labProjectCode.Size = new System.Drawing.Size(60, 23);
+            this.labProjectCode.Size = new System.Drawing.Size(100, 23);
             this.labProjectCode.TabIndex = 4;
-            this.labProjectCode.Text = "12780";
+            this.labProjectCode.Text = "127801111";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Tahoma", 14F);
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.label8.Location = new System.Drawing.Point(221, 18);
+            this.label8.Location = new System.Drawing.Point(289, 18);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(124, 23);
             this.label8.TabIndex = 4;
@@ -582,22 +580,20 @@
             this.labwei.AutoSize = true;
             this.labwei.Font = new System.Drawing.Font("Tahoma", 14F);
             this.labwei.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.labwei.Location = new System.Drawing.Point(778, 15);
+            this.labwei.Location = new System.Drawing.Point(847, 18);
             this.labwei.Name = "labwei";
-            this.labwei.Size = new System.Drawing.Size(20, 23);
+            this.labwei.Size = new System.Drawing.Size(60, 23);
             this.labwei.TabIndex = 4;
-            this.labwei.Text = "0";
+            this.labwei.Text = "88888";
             // 
             // label14
             // 
             this.label14.AllowDrop = true;
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoEllipsis = true;
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Tahoma", 14F);
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.label14.Location = new System.Drawing.Point(417, 18);
+            this.label14.Location = new System.Drawing.Point(478, 18);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(29, 23);
             this.label14.TabIndex = 4;
@@ -608,7 +604,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Tahoma", 14F);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.label12.Location = new System.Drawing.Point(653, 15);
+            this.label12.Location = new System.Drawing.Point(733, 18);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(124, 23);
             this.label12.TabIndex = 4;
@@ -619,7 +615,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Tahoma", 14F);
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.label15.Location = new System.Drawing.Point(618, 15);
+            this.label15.Location = new System.Drawing.Point(707, 18);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(29, 23);
             this.label15.TabIndex = 4;
@@ -630,18 +626,18 @@
             this.labVerificationNum.AutoSize = true;
             this.labVerificationNum.Font = new System.Drawing.Font("Tahoma", 14F);
             this.labVerificationNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.labVerificationNum.Location = new System.Drawing.Point(597, 17);
+            this.labVerificationNum.Location = new System.Drawing.Point(631, 18);
             this.labVerificationNum.Name = "labVerificationNum";
-            this.labVerificationNum.Size = new System.Drawing.Size(20, 23);
+            this.labVerificationNum.Size = new System.Drawing.Size(60, 23);
             this.labVerificationNum.TabIndex = 4;
-            this.labVerificationNum.Text = "6";
+            this.labVerificationNum.Text = "66666";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Tahoma", 14F);
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.label16.Location = new System.Drawing.Point(804, 15);
+            this.label16.Location = new System.Drawing.Point(905, 15);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(29, 23);
             this.label16.TabIndex = 4;
@@ -653,7 +649,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Tahoma", 14F);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.label10.Location = new System.Drawing.Point(463, 18);
+            this.label10.Location = new System.Drawing.Point(513, 18);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(124, 23);
             this.label10.TabIndex = 4;
@@ -665,7 +661,7 @@
             this.panelWorker.Appearance.Options.UseBackColor = true;
             this.panelWorker.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelWorker.Controls.Add(this.radHMC);
-            this.panelWorker.Location = new System.Drawing.Point(1013, 45);
+            this.panelWorker.Location = new System.Drawing.Point(1013, 28);
             this.panelWorker.Name = "panelWorker";
             this.panelWorker.Size = new System.Drawing.Size(283, 77);
             this.panelWorker.TabIndex = 231;
@@ -688,7 +684,7 @@
             this.panelDevice.Controls.Add(this.btnAddDevice);
             this.panelDevice.Controls.Add(this.btnRefresh);
             this.panelDevice.Controls.Add(this.btnSyn);
-            this.panelDevice.Location = new System.Drawing.Point(1013, 42);
+            this.panelDevice.Location = new System.Drawing.Point(1013, 31);
             this.panelDevice.Name = "panelDevice";
             this.panelDevice.Size = new System.Drawing.Size(283, 77);
             this.panelDevice.TabIndex = 230;
@@ -747,14 +743,15 @@
             // 
             // comProjectList
             // 
-            this.comProjectList.Location = new System.Drawing.Point(33, 29);
+            this.comProjectList.Location = new System.Drawing.Point(33, 18);
             this.comProjectList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comProjectList.Name = "comProjectList";
             this.comProjectList.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.comProjectList.Properties.Appearance.Options.UseFont = true;
+            this.comProjectList.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.comProjectList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comProjectList.Size = new System.Drawing.Size(256, 30);
+            this.comProjectList.Size = new System.Drawing.Size(345, 30);
             this.comProjectList.TabIndex = 9;
             this.comProjectList.EditValueChanged += new System.EventHandler(this.comProjectList_EditValueChanged);
             // 
@@ -776,15 +773,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1436, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1429, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 610);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 599);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1436, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1429, 0);
             // 
             // barDockControlLeft
             // 
@@ -792,15 +789,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 610);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 599);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1436, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1429, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 610);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 599);
             // 
             // btnLog
             // 
@@ -826,9 +823,8 @@
             // 
             // Home
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1436, 610);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(1429, 599);
             this.Controls.Add(this.spl);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

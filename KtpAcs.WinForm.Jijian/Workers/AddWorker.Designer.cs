@@ -1125,7 +1125,9 @@
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1193, 881);
+            this.AutoScroll = true;
+            this.AutoScrollMargin = new System.Drawing.Size(0, 20);
+            this.ClientSize = new System.Drawing.Size(1210, 898);
             this.Controls.Add(this.panelBankInfo);
             this.Controls.Add(this.panelProjectInfo);
             this.Controls.Add(this.ComEducationLevel);

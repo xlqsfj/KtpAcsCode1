@@ -9,6 +9,7 @@ using KtpAcs.KtpApiService.Send;
 using KtpAcs.KtpApiService.Worker;
 using KtpAcs.WinForm.Jijian.Device;
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -19,7 +20,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
         private int _isHmc = 0;
 
         //声明事件用于显示详细页面
-        public event Action<DevExpress.XtraEditors.XtraForm> ShowDetail;
+        public event Action<DevExpress.XtraEditors.XtraForm,bool,string> ShowDetail;
         public WorkerListForm(int isHmc = 0)
         {
             _isHmc = isHmc;
@@ -100,17 +101,53 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
       
 
+        /// <summary>
+        /// 打开详情页面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void repositoryItemButtonEdit2_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
             dynamic row = this.gridView1.GetFocusedRow();
             string userUuid = row.userUuid;
+            string userName = row.name;
             AddWorker addWorker = new AddWorker(userUuid, _isHmc, false);
-            addWorker.CloseDdetailedWinform += new Action<DevExpress.XtraEditors.XtraForm>(ShowDetail);
+            addWorker.CloseDdetailedWinform += new Action<DevExpress.XtraEditors.XtraForm,bool,string>(ShowDetail);
             //addWorker.StartPosition = FormStartPosition.CenterParent;
             //addWorker.Show();
-            ShowDetail(addWorker);
+            ShowDetail(addWorker,false, userName);
 
 
+        }
+
+        /// <summary>
+        /// 修改页面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnUpdate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            dynamic row = this.gridView1.GetFocusedRow();
+            string userUuid = row.userUuid;
+           string userName = row.name;
+            AddWorker addWorker = new AddWorker(userUuid, _isHmc, true);
+            addWorker.CloseDdetailedWinform += new Action<DevExpress.XtraEditors.XtraForm, bool,string>(ShowDetail);
+            //addWorker.StartPosition = FormStartPosition.CenterParent;
+            //addWorker.Show();
+            ShowDetail(addWorker,true, userName);
+        }
+
+        private void gridView1_MouseDown(object sender, MouseEventArgs e)
+        {
+
+
+            if (e.Button == MouseButtons.Right)
+            {
+
+                //this.popupMenu2.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
+                //    popupMenu1.ShowPopup(Control.MousePosition);
+                this.popupMenu1.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
+            }
         }
     }
 }

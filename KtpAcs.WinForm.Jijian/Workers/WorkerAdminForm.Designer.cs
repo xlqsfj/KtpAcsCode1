@@ -37,12 +37,17 @@
             // 
             // xtraTabControl1
             // 
+            this.xtraTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.xtraTabControl1.Appearance.BackColor = System.Drawing.Color.White;
             this.xtraTabControl1.Appearance.Options.UseBackColor = true;
-            this.xtraTabControl1.Location = new System.Drawing.Point(3, 12);
+            this.xtraTabControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.xtraTabControl1.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xTabPage;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1272, 901);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1260, 916);
             this.xtraTabControl1.TabIndex = 2;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xTabPage,
@@ -51,10 +56,11 @@
             // 
             // xTabPage
             // 
+            this.xTabPage.AlwaysScrollActiveControlIntoView = false;
             this.xTabPage.Appearance.PageClient.BackColor = System.Drawing.Color.White;
             this.xTabPage.Appearance.PageClient.Options.UseBackColor = true;
             this.xTabPage.Name = "xTabPage";
-            this.xTabPage.Size = new System.Drawing.Size(1270, 879);
+            this.xTabPage.Size = new System.Drawing.Size(1258, 894);
             this.xTabPage.Text = "人工采集";
             // 
             // tabPageWorkerList
@@ -67,14 +73,14 @@
             this.tabPageWorkerList.Appearance.PageClient.BackColor = System.Drawing.Color.White;
             this.tabPageWorkerList.Appearance.PageClient.Options.UseBackColor = true;
             this.tabPageWorkerList.Name = "tabPageWorkerList";
-            this.tabPageWorkerList.Size = new System.Drawing.Size(1270, 796);
+            this.tabPageWorkerList.Size = new System.Drawing.Size(1258, 894);
             this.tabPageWorkerList.Text = "已入职";
             // 
             // WorkerAdminForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1298, 916);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1217, 916);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "WorkerAdminForm";
             this.Text = "WorkerAdminForm";

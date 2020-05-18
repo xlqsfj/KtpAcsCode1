@@ -102,6 +102,7 @@ namespace KtpAcs.KtpApiService.Result
             /// 工人类型
             /// </summary>
             public EnumWorkerType enumWorkerType { get ; set; }
+            public int  workerIntType { get; set; }
 
             public String workerType { get; set; }
         }

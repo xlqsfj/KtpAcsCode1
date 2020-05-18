@@ -336,7 +336,7 @@ namespace KtpAcs.WinForm.Jijian
                 }
                 WorkSysFail.dicAddMag.Clear();
                 WorkSysFail.dicWorkadd.Clear();
-
+                SubmitData();
 
             }
             catch (PreValidationException ex)
@@ -364,6 +364,7 @@ namespace KtpAcs.WinForm.Jijian
 
             if (WorkSysFail.workAdd.Count() > 0)
             {
+                LogHelper.Info("addUser(add)调用");
                 int? uid = 0;
 
                 if (_state == 0)
@@ -413,12 +414,12 @@ namespace KtpAcs.WinForm.Jijian
         {
             try
             {
-
-                if (close == "begin")
-                {
-                    SubmitData();
-                    return;
-                }
+                LogHelper.Info("AddSubWorkInfo");
+                //if (close == "begin")
+                //{
+                //    SubmitData();
+                //    return;
+                //}
 
                 btnSubmit.Text = @"提交";
                 btnSubmit.Enabled = true;
@@ -504,12 +505,23 @@ namespace KtpAcs.WinForm.Jijian
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(_uuId))
-                reslt(_state);
-            else if (CloseDdetailedWinform != null)
-                CloseDdetailedWinform(null, false, "");
-            if (ShowProjectList != null)
-                ShowProjectList("ok");
+            try
+            {
+
+                if (string.IsNullOrEmpty(_uuId))
+                    reslt(_state);
+                else if (CloseDdetailedWinform != null)
+                    CloseDdetailedWinform(null, false, "");
+                if (ShowProjectList != null)
+                    ShowProjectList("ok");
+                else
+                    this.Close();
+            }
+            catch (Exception ex)
+            {
+
+                MessageHelper.Show(ex.Message, ex);
+            }
         }
 
 
@@ -519,6 +531,42 @@ namespace KtpAcs.WinForm.Jijian
             // MessageHelper.Show("时间EditValueChanged"+ txtBirthday.EditValue +""+ txtBirthday.Text);
             if (!string.IsNullOrEmpty(txtBirthday.Text))
                 txtAvg.Text = FormatHelper.GetAgeByBirthdate(DateTime.Parse(txtBirthday.Text)).ToString();
+        }
+
+        private void ComEducationLevel_Properties_MouseWheel(object sender, MouseEventArgs e)
+        {
+            HandledMouseEventArgs h = e as HandledMouseEventArgs;
+            if (h != null)
+            {
+                h.Handled = true;
+            }
+        }
+
+        private void ComOrganizationUuid_Properties_MouseWheel(object sender, MouseEventArgs e)
+        {
+            HandledMouseEventArgs h = e as HandledMouseEventArgs;
+            if (h != null)
+            {
+                h.Handled = true;
+            }
+        }
+
+        private void comWorkerTeamUuid_Properties_MouseWheel(object sender, MouseEventArgs e)
+        {
+            HandledMouseEventArgs h = e as HandledMouseEventArgs;
+            if (h != null)
+            {
+                h.Handled = true;
+            }
+        }
+
+        private void comWorkType_Properties_MouseWheel(object sender, MouseEventArgs e)
+        {
+            HandledMouseEventArgs h = e as HandledMouseEventArgs;
+            if (h != null)
+            {
+                h.Handled = true;
+            }
         }
     }
 }

@@ -39,20 +39,17 @@ namespace KtpAcs.WinForm.Jijian.Workers
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
             this.Text = name + "提交中";
+
             this.skingrid_sysPanel.AutoGenerateColumns = false;//不自动 
-            WorkSysFail.workAdd.ForEach(w => w.magAdd = "添加中..");
-
-
-            skingrid_sysPanel.DataSource = WorkSysFail.workAdd;
-            if (WorkSysFail.workAdd.Count() < 1)
-            {//没有连接成功的面板
-                skingrid_sysPanel.Visible = false;
-                panel1.Visible = true;
-                skin_close.Enabled = true;
-            }
-
             skingrid_sysPanel.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             skingrid_sysPanel.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            addCount = 0;
+            myThread = new Thread(startFillDv);//实例化线程
+            myThread.IsBackground = false;
+            myThread.Start();
+
+
+
         }
         private delegate void myDelegate(Dictionary<string, string> dicAddMag);//定义委托
         //不断更新UI
@@ -61,7 +58,9 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
         private void startFillDv()
         {
-
+         
+            WorkSysFail.workAdd.ForEach(w => w.magAdd = "添加中..");
+            skingrid_sysPanel.DataSource = WorkSysFail.workAdd;
             while (isFinish)
             {
                 Dictionary<string, string> d = WorkSysFail.dicAddMag;
@@ -73,11 +72,17 @@ namespace KtpAcs.WinForm.Jijian.Workers
                     {
 
 
-                        var dicWAddImg = WorkSysFail.dicWorkadd.LastOrDefault();
-                        var mag = dicWAddImg.Value;
+                        var mag = "";
+                        var dicWAddImg = false;
+                        foreach (var items in WorkSysFail.dicWorkadd)
+                        {
+                            if (items.Value == null)
+                                continue;
+                            mag = items.Value;
+                            dicWAddImg = items.Key;
+                        }
 
-
-                        if (!dicWAddImg.Key)
+                        if (!dicWAddImg)
                         { //请求云端出错
                             isSubSuccess = false;
                             skin_retry.Visible = true;
@@ -96,7 +101,6 @@ namespace KtpAcs.WinForm.Jijian.Workers
                             skingrid_sysPanel.Dock = DockStyle.Fill;
                             //this.Height = 300;
                             skingrid_sysPanel.Visible = true;
-
                             skinlable_addworkImg.Text = mag;
 
                         }
@@ -110,37 +114,21 @@ namespace KtpAcs.WinForm.Jijian.Workers
                 }
 
 
-                if (ConfigHelper.IsDivceAdd)
-                    Grid(d);
-                else
-                {
-                    if (isSubSuccess)
-                    {
-                        skin_close.Text = "关 闭";
-                        myThread.Abort();
-                    }
-                    else
-                    {
-                        myThread.Abort();
-                        skin_close.Text = "返 回 编 辑";
-                        skin_close.Enabled = true;
-                    }
 
-                }
+                Grid(d);
+
+
+
+
+
 
             }
-          
+
 
         }
         //更新UI
         private void Grid(Dictionary<string, string> dicAddMag)
         {
-            //if (this.InvokeRequired)
-            //{
-            //    this.Invoke(new myDelegate(Grid), new object[] { dicAddMag });
-            //}
-            //else
-            //{
 
             try
             {
@@ -177,9 +165,22 @@ namespace KtpAcs.WinForm.Jijian.Workers
                             {
                                 //结束添加
                                 skin_close.Enabled = true;
-                                isFinish = false;
-                                //isSubSuccess = true;
+                                // isFinish = false;
 
+                                if (isSubSuccess)
+                                {
+                                    myThread.Abort();
+                                    isFinish = false;
+                                    skin_close.Text = "关 闭";
+                                }
+                                else
+                                {
+                                    myThread.Abort();
+                                    isFinish = false;
+                                    skin_close.Text = "返 回 编 辑";
+                                    skin_close.Enabled = true;
+
+                                }
 
 
                             }
@@ -188,12 +189,15 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
                     if (isSubSuccess)
                     {
+                        // isFinish = false;
                         skin_close.Text = "关 闭";
                     }
                     else
                     {
+                        // myThread.Abort();
                         skin_close.Text = "返 回 编 辑";
                         skin_close.Enabled = true;
+
                     }
                     //  myThread.Abort();
                     Thread.Sleep(1000);
@@ -279,21 +283,29 @@ Color.DimGray, 1, ButtonBorderStyle.Dashed, //左边
         /// <param name="e"></param>
         private void skingrid_sysPanel_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                string value = this.skingrid_sysPanel.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                //点击button按钮事件
-                if (skingrid_sysPanel.Columns[e.ColumnIndex].Name == "btnReason" && e.RowIndex >= 0 && !value.Equals("已成功"))
+                if (e.RowIndex >= 0)
                 {
-                    WorkSysFail.dicAddMag.Clear();
-                    //说明点击的列是DataGridViewButtonColumn列
-                    DataGridViewColumn column = skingrid_sysPanel.Columns[e.ColumnIndex];
-                    WorkSysFail.dicAddMag.Clear();
-                    WorkSysFail.dicWorkadd.Clear();
-                    //  skinlable_addworkImg.Text = "添加中";
-                    //刷新时，放在需要执行刷新的事件里
-                    if (ShowSubmit != null) ShowSubmit("");
+                    string value = this.skingrid_sysPanel.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                    //点击button按钮事件
+                    if (skingrid_sysPanel.Columns[e.ColumnIndex].Name == "btnReason" && e.RowIndex >= 0 && !value.Equals("已成功"))
+                    {
+                        WorkSysFail.dicAddMag.Clear();
+                        //说明点击的列是DataGridViewButtonColumn列
+                        DataGridViewColumn column = skingrid_sysPanel.Columns[e.ColumnIndex];
+                        WorkSysFail.dicAddMag.Clear();
+                        WorkSysFail.dicWorkadd.Clear();
+                        //  skinlable_addworkImg.Text = "添加中";
+                        //刷新时，放在需要执行刷新的事件里
+                        if (ShowSubmit != null) ShowSubmit("");
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+
+                MessageHelper.Show(ex.Message, ex);
             }
         }
         /// <summary>
@@ -309,12 +321,7 @@ Color.DimGray, 1, ButtonBorderStyle.Dashed, //左边
 
         private void WorkerAddStateForm_Load(object sender, EventArgs e)
         {
-            addCount = 0;
-            myThread = new Thread(startFillDv);//实例化线程
-            myThread.IsBackground = false;
-            myThread.Start();
-            if (ShowSubmit != null)
-                ShowSubmit("begin");
+
         }
 
         private void WorkerAddStateForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -325,6 +332,8 @@ Color.DimGray, 1, ButtonBorderStyle.Dashed, //左边
                 ShowSubmit("error");
             myThread.Abort();
         }
+
+
     }
 
 }

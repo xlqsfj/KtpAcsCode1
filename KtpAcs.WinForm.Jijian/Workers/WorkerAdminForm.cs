@@ -23,7 +23,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
         {
             InitializeComponent();
             _state = i;
-
+     
             workerform = new AddWorker(i);
             workerform.FormBorderStyle = FormBorderStyle.None;
             workerform.AutoScaleMode = AutoScaleMode.Dpi;

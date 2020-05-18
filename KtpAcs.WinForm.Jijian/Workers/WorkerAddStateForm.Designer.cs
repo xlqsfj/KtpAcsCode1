@@ -57,11 +57,11 @@
             this.skin_close.DownBack = null;
             this.skin_close.Enabled = false;
             this.skin_close.ForeColor = System.Drawing.Color.Transparent;
-            this.skin_close.Location = new System.Drawing.Point(258, 283);
+            this.skin_close.Location = new System.Drawing.Point(258, 303);
             this.skin_close.MouseBack = null;
             this.skin_close.Name = "skin_close";
             this.skin_close.NormlBack = null;
-            this.skin_close.Size = new System.Drawing.Size(236, 31);
+            this.skin_close.Size = new System.Drawing.Size(236, 33);
             this.skin_close.TabIndex = 8;
             this.skin_close.Text = "返 回 编 辑";
             this.skin_close.UseVisualStyleBackColor = false;
@@ -78,7 +78,7 @@
             this.skingrid_sysPanel.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(246)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -93,7 +93,7 @@
             this.skingrid_sysPanel.ColumnSelectForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(188)))), ((int)(((byte)(240)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
@@ -101,9 +101,9 @@
             this.skingrid_sysPanel.DefaultCellStyle = dataGridViewCellStyle3;
             this.skingrid_sysPanel.EnableHeadersVisualStyles = false;
             this.skingrid_sysPanel.GridColor = System.Drawing.SystemColors.ScrollBar;
-            this.skingrid_sysPanel.HeadFont = new System.Drawing.Font("Tahoma", 9F);
+            this.skingrid_sysPanel.HeadFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.skingrid_sysPanel.HeadSelectForeColor = System.Drawing.SystemColors.HighlightText;
-            this.skingrid_sysPanel.Location = new System.Drawing.Point(0, 44);
+            this.skingrid_sysPanel.Location = new System.Drawing.Point(0, 47);
             this.skingrid_sysPanel.Name = "skingrid_sysPanel";
             this.skingrid_sysPanel.ReadOnly = true;
             this.skingrid_sysPanel.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -116,12 +116,13 @@
             this.skingrid_sysPanel.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.skingrid_sysPanel.RowTemplate.Height = 23;
             this.skingrid_sysPanel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.skingrid_sysPanel.Size = new System.Drawing.Size(721, 164);
+            this.skingrid_sysPanel.Size = new System.Drawing.Size(721, 176);
             this.skingrid_sysPanel.SkinGridColor = System.Drawing.SystemColors.ScrollBar;
             this.skingrid_sysPanel.TabIndex = 1;
             this.skingrid_sysPanel.TitleBack = null;
             this.skingrid_sysPanel.TitleBackColorBegin = System.Drawing.Color.White;
             this.skingrid_sysPanel.TitleBackColorEnd = System.Drawing.SystemColors.ActiveBorder;
+            this.skingrid_sysPanel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.skingrid_sysPanel_CellContentClick);
             // 
             // deviceIP
             // 
@@ -163,9 +164,9 @@
             // 
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.skingrid_sysPanel);
-            this.panel2.Location = new System.Drawing.Point(42, 57);
+            this.panel2.Location = new System.Drawing.Point(42, 61);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(730, 219);
+            this.panel2.Size = new System.Drawing.Size(730, 235);
             this.panel2.TabIndex = 9;
             // 
             // panel1
@@ -175,15 +176,15 @@
             this.panel1.Controls.Add(this.skin_retry);
             this.panel1.Location = new System.Drawing.Point(13, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(708, 38);
+            this.panel1.Size = new System.Drawing.Size(708, 41);
             this.panel1.TabIndex = 6;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 12);
+            this.label1.Location = new System.Drawing.Point(24, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 14);
+            this.label1.Size = new System.Drawing.Size(67, 15);
             this.label1.TabIndex = 6;
             this.label1.Text = "向云端添加";
             // 
@@ -193,7 +194,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.skinlable_addworkImg.AutoSize = true;
             this.skinlable_addworkImg.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinlable_addworkImg.Location = new System.Drawing.Point(121, 12);
+            this.skinlable_addworkImg.Location = new System.Drawing.Point(121, 13);
             this.skinlable_addworkImg.Name = "skinlable_addworkImg";
             this.skinlable_addworkImg.Size = new System.Drawing.Size(72, 16);
             this.skinlable_addworkImg.TabIndex = 6;
@@ -212,7 +213,7 @@
             this.skin_retry.MouseBack = null;
             this.skin_retry.Name = "skin_retry";
             this.skin_retry.NormlBack = null;
-            this.skin_retry.Size = new System.Drawing.Size(108, 31);
+            this.skin_retry.Size = new System.Drawing.Size(108, 33);
             this.skin_retry.TabIndex = 5;
             this.skin_retry.Text = "重试";
             this.skin_retry.UseVisualStyleBackColor = false;
@@ -221,9 +222,9 @@
             // 
             // WorkerAddStateForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 328);
+            this.ClientSize = new System.Drawing.Size(803, 351);
             this.Controls.Add(this.skin_close);
             this.Controls.Add(this.panel2);
             this.Name = "WorkerAddStateForm";

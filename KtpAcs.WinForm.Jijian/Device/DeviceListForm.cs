@@ -108,9 +108,17 @@ namespace KtpAcs.WinForm.Jijian
 
                         taskFactory.ContinueWhenAll(taskList.ToArray(), a =>
                         {
-                            this.gridControl.DataSource = data.list;
-                            taskList.Clear();
-                            LoadingHelper.CloseForm();//关闭
+                            try
+                            {
+                                this.gridControl.DataSource = data.list;
+                                taskList.Clear();
+                                LoadingHelper.CloseForm();//关闭
+                            }
+                            catch (Exception)
+                            {
+
+                                throw;
+                            }
                         });
                   
                         panelContent.Visible = false;
@@ -138,57 +146,73 @@ namespace KtpAcs.WinForm.Jijian
 
         private static void NewMethod(DeviceList list)
         {
+            try
+            {
                 bool isConn = true;
-              
 
-                    //设备是否连接
-                    isConn = ConfigHelper.MyPing(list.deviceIp);
 
-                    if (isConn)
+                //设备是否连接
+                isConn = ConfigHelper.MyPing(list.deviceIp);
+
+                if (isConn)
+                {
+                    var okConnPanelInfo = new WorkAddInfo
                     {
-                        var okConnPanelInfo = new WorkAddInfo
-                        {
-                            deviceIp = list.deviceIp,
-                            isConn = true,
-                            deviceIn = list.gateType,
-                            deviceNo = list.deviceId,
-                            magAdd = "添加中.."
-                        };
-                      if(!WorkSysFail.workAdd.Contains(okConnPanelInfo))
+                        deviceIp = list.deviceIp,
+                        isConn = true,
+                        deviceIn = list.gateType,
+                        deviceNo = list.deviceId,
+                        magAdd = "添加中.."
+                    };
+                    if (!WorkSysFail.workAdd.Contains(okConnPanelInfo))
                         WorkSysFail.workAdd.Add(okConnPanelInfo);
 
-                        //返回设备的数量
+                    //返回设备的数量
 
-                        Liblist liblist = PanelBase.GetPanelDeviceInfo(list.deviceIp);
-                        if (liblist != null)
-                        {
+                    Liblist liblist = PanelBase.GetPanelDeviceInfo(list.deviceIp);
+                    if (liblist != null)
+                    {
 
-                            //设备数量
+                        //设备数量
 
-                            list.deviceCount = liblist.MemberNum;
-                        }
-                        else
-                        {
-                            list.deviceStatus = "否";
-                            WorkSysFail.DeleteDeviceInfo(list.deviceIp);
-                        }
-
+                        list.deviceCount = liblist.MemberNum;
                     }
-                    list.deviceStatus = isConn ? "是" : "否";
+                    else
+                    {
+                        list.deviceStatus = "否";
+                        WorkSysFail.DeleteDeviceInfo(list.deviceIp);
+                    }
 
-           
+                }
+                list.deviceStatus = isConn ? "是" : "否";
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
          
         }
 
         private void grid_Device_MouseDown(object sender, MouseEventArgs e)
         {
-
-            if (e.Button == MouseButtons.Right)
+            try
             {
 
-                //this.popupMenu2.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
-                //    popupMenu1.ShowPopup(Control.MousePosition);
-                this.popupMenu1.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
+                if (e.Button == MouseButtons.Right)
+                {
+
+                    //this.popupMenu2.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
+                    //    popupMenu1.ShowPopup(Control.MousePosition);
+                    this.popupMenu1.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageHelper.Show(ex.Message, ex);
             }
         }
 
@@ -265,18 +289,33 @@ namespace KtpAcs.WinForm.Jijian
         }
         private void simpleButton4_Click(object sender, EventArgs e)
         {
-            AddDevice addDevice = new AddDevice();
-            addDevice.ShowDialog();
-            GetDevice();
+            try
+            {
+                AddDevice addDevice = new AddDevice();
+                addDevice.ShowDialog();
+                GetDevice();
+            }
+            catch (Exception ex)
+            {
+                MessageHelper.Show(ex.Message, ex);
+            }
         }
 
         private void grid_Device_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
 
-            if (e.Column.FieldName == "deviceStatus") //指定列
+            try
             {
-                if ((string)e.CellValue == "否")  //条件  e.CellValue 为object类型
-                    e.Appearance.BackColor = Color.FromArgb(0,118,248);
+                if (e.Column.FieldName == "deviceStatus") //指定列
+                {
+                    if ((string)e.CellValue == "否")  //条件  e.CellValue 为object类型
+                        e.Appearance.BackColor = Color.FromArgb(0, 118, 248);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageHelper.Show(ex.Message, ex);
             }
         }
     }

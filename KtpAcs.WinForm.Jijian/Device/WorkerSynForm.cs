@@ -469,11 +469,12 @@ namespace KtpAcs.WinForm.Jijian.Device
                     {
                         idCard = items.idCard,
                         sex = FormatHelper.GetToString(items.sex),
-                        userId = items.userId,
+                        userUuid = items.userUuid,
                         name = items.name,
                         phone = items.phone,
                         reason = mag,
-                        workerType = items.enumWorkerType.GetDescription()
+                        workerType = items.enumWorkerType.GetDescription(),
+                        workerIntType =(int)items.enumWorkerType
                     };
                     WorkSysFail.list.Add(wokersList);
                 }

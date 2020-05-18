@@ -33,6 +33,7 @@ namespace KtpAcs.WinForm.Jijian
         public Home()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
             //this.FormBorderStyle = FormBorderStyle.None;
             GetIp();
             GetProjectList();
@@ -309,14 +310,22 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="e"></param>
         private void flowWorerk_Click(object sender, EventArgs e)
         {
-            _DeivceForm = null;
-            this.panelWorker.Visible = true;
-            this.panelDevice.Visible = false;
-            if (_workerAdminForm != null)
-                _workerAdminForm.isExiet();
-            _workerAdminForm = new WorkerAdminForm(radHMC.SelectedIndex);
-            TabForm(_workerAdminForm, flowWorerk.Name);
+            try
+            {
+                _DeivceForm = null;
+                this.panelWorker.Visible = true;
+                this.panelDevice.Visible = false;
+                if (_workerAdminForm != null)
+                    _workerAdminForm.isExiet();
+                _workerAdminForm = new WorkerAdminForm(radHMC.SelectedIndex);
+                TabForm(_workerAdminForm, flowWorerk.Name);
 
+            }
+            catch (Exception ex)
+            {
+
+                MessageHelper.Show(ex.Message, ex);
+            }
 
         }
 
@@ -381,11 +390,19 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="e"></param>
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            GetProjectCount();
-
-            if (_DeivceForm != null)
+            try
             {
-                _DeivceForm.GetDevice();
+                GetProjectCount();
+
+                if (_DeivceForm != null)
+                {
+                    _DeivceForm.GetDevice();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageHelper.Show(ex.Message, ex);
             }
         }
 
@@ -432,11 +449,19 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="e"></param>
         private void btnAddDevice_Click(object sender, EventArgs e)
         {
-            AddDevice addDevice = new AddDevice();
-            addDevice.ShowDialog();
-            if (_DeivceForm != null)
+            try
             {
-                _DeivceForm.GetDevice();
+                AddDevice addDevice = new AddDevice();
+                addDevice.ShowDialog();
+                if (_DeivceForm != null)
+                {
+                    _DeivceForm.GetDevice();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageHelper.Show(ex.Message, ex);
             }
         }
 
@@ -555,6 +580,15 @@ namespace KtpAcs.WinForm.Jijian
             {
 
                 MessageHelper.Show(ex.Message, ex);
+            }
+        }
+
+        private void comProjectList_Properties_MouseWheel(object sender, MouseEventArgs e)
+        {
+            HandledMouseEventArgs h = e as HandledMouseEventArgs;
+            if (h != null)
+            {
+                h.Handled = true;
             }
         }
     }

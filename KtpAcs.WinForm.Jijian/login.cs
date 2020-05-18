@@ -113,7 +113,7 @@ namespace KtpAcs.WinForm.Jijian
 
 
 
-
+                this.timer1.Stop();
                 Hide();
                 new Home().Show();
             }
@@ -135,41 +135,57 @@ namespace KtpAcs.WinForm.Jijian
 
         private void btnVerification_Click(object sender, EventArgs e)
         {
-            //发送手机验证码
-            IMulePusher phoneApi = new LoginVerificationApi() { RequestParam = new { phone = this.UserNameTxt.Text } };
-            PushSummary pushSummary = phoneApi.Push();
-            if (pushSummary.Success)
+            try
             {
-                btn_send.Enabled = false;
-                timer1.Enabled = true;
+                //发送手机验证码
+                IMulePusher phoneApi = new LoginVerificationApi() { RequestParam = new { phone = this.UserNameTxt.Text } };
+                PushSummary pushSummary = phoneApi.Push();
+                if (pushSummary.Success)
+                {
+                    btn_send.Enabled = false;
+                    timer1.Enabled = true;
+                }
+                else
+                {
+                    MessageHelper.Show("验证码发送失败:" + pushSummary.Message);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageHelper.Show("验证码发送失败:"+pushSummary.Message);
+
+                MessageHelper.Show(ex.Message, ex);
             }
 
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            try
+            {
 
-            btn_send.Enabled = false;
-            this.timer1.Interval = 1000;
-            btn_send.Text = "倒计时:" + Seconds.ToString();
-            if (Seconds == 0)
-            {
-                //倒计时到“00”，计时器停止
-                this.timer1.Stop();
-                //去做其他事情
-                //......
-                btn_send.Enabled = true;
-                timer1.Enabled = false;
-                btn_send.Text = "重新发送验证码";
-                Seconds = 60;
+                btn_send.Enabled = false;
+                this.timer1.Interval = 1000;
+                btn_send.Text = "倒计时:" + Seconds.ToString();
+                if (Seconds == 0)
+                {
+                    //倒计时到“00”，计时器停止
+                    this.timer1.Stop();
+                    //去做其他事情
+                    //......
+                    btn_send.Enabled = true;
+                    timer1.Enabled = false;
+                    btn_send.Text = "重新发送验证码";
+                    Seconds = 60;
+                }
+                else
+                {
+                    Seconds--;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Seconds--;
+
+                MessageHelper.Show(ex.Message, ex);
             }
 
         }

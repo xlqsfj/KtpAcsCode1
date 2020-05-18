@@ -108,14 +108,22 @@ namespace KtpAcs.WinForm.Jijian.Workers
         /// <param name="e"></param>
         private void repositoryItemButtonEdit2_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
-            dynamic row = this.gridView1.GetFocusedRow();
-            string userUuid = row.userUuid;
-            string userName = row.name;
-            AddWorker addWorker = new AddWorker(userUuid, _isHmc, false);
-            addWorker.CloseDdetailedWinform += new Action<DevExpress.XtraEditors.XtraForm,bool,string>(ShowDetail);
-            //addWorker.StartPosition = FormStartPosition.CenterParent;
-            //addWorker.Show();
-            ShowDetail(addWorker,false, userName);
+            try
+            {
+                dynamic row = this.gridView1.GetFocusedRow();
+                string userUuid = row.userUuid;
+                string userName = row.name;
+                AddWorker addWorker = new AddWorker(userUuid, _isHmc, false);
+                addWorker.CloseDdetailedWinform += new Action<DevExpress.XtraEditors.XtraForm, bool, string>(ShowDetail);
+                //addWorker.StartPosition = FormStartPosition.CenterParent;
+                //addWorker.Show();
+                ShowDetail(addWorker, false, userName);
+            }
+            catch (Exception ex)
+            {
+
+                MessageHelper.Show(ex.Message, ex);
+            }
 
 
         }
@@ -127,26 +135,40 @@ namespace KtpAcs.WinForm.Jijian.Workers
         /// <param name="e"></param>
         private void btnUpdate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            dynamic row = this.gridView1.GetFocusedRow();
-            string userUuid = row.userUuid;
-           string userName = row.name;
-            AddWorker addWorker = new AddWorker(userUuid, _isHmc, true);
-            addWorker.CloseDdetailedWinform += new Action<DevExpress.XtraEditors.XtraForm, bool,string>(ShowDetail);
-            //addWorker.StartPosition = FormStartPosition.CenterParent;
-            //addWorker.Show();
-            ShowDetail(addWorker,true, userName);
+            try
+            {
+                dynamic row = this.gridView1.GetFocusedRow();
+                string userUuid = row.userUuid;
+                string userName = row.name;
+                AddWorker addWorker = new AddWorker(userUuid, _isHmc, true);
+                addWorker.CloseDdetailedWinform += new Action<DevExpress.XtraEditors.XtraForm, bool, string>(ShowDetail);
+                //addWorker.StartPosition = FormStartPosition.CenterParent;
+                //addWorker.Show();
+                ShowDetail(addWorker, true, userName);
+            }
+            catch (Exception ex)
+            {
+                MessageHelper.Show(ex.Message, ex);
+            }
         }
 
         private void gridView1_MouseDown(object sender, MouseEventArgs e)
         {
 
-
-            if (e.Button == MouseButtons.Right)
+            try
             {
 
-                //this.popupMenu2.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
-                //    popupMenu1.ShowPopup(Control.MousePosition);
-                this.popupMenu1.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
+                if (e.Button == MouseButtons.Right)
+                {
+
+                    //this.popupMenu2.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
+                    //    popupMenu1.ShowPopup(Control.MousePosition);
+                    this.popupMenu1.ShowPopup(new Point(Cursor.Position.X, Cursor.Position.Y));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageHelper.Show(ex.Message, ex);
             }
         }
     }

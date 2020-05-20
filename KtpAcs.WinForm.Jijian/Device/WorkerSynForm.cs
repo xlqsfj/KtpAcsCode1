@@ -461,8 +461,7 @@ namespace KtpAcs.WinForm.Jijian.Device
                 catch (Exception ex)
                 {
                     LogHelper.Info("同步失败:AddPanePerson2" + ex);
-                    throw;
-                    //  AddSysFail(items, ex.Message);
+                    AddSysFail(items, ex.Message);
                 }
 
             }
@@ -495,6 +494,7 @@ namespace KtpAcs.WinForm.Jijian.Device
 
                 if (isExit == null)
                 {
+                    LogHelper.Info("同步失败:isExit");
                     WorkerList wokersList = new WorkerList
                     {
                         idCard = items.idCard,
@@ -507,13 +507,14 @@ namespace KtpAcs.WinForm.Jijian.Device
                         workerIntType = (int)items.enumWorkerType
                     };
                     WorkSysFail.list.Add(wokersList);
+                    LogHelper.Info("同步失败:isExit结束");
                 }
 
             }
             catch (Exception ex)
             {
-                LogHelper.Info("同步失败:" + items.name);
-                throw;
+                LogHelper.Info("同步失败ex:" + items.name);
+                LogHelper.ExceptionLog(ex);
 
 
             }

@@ -188,10 +188,11 @@ namespace KtpAcs.WinForm.Jijian
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                LogHelper.ExceptionLog(ex);
+                
             }
          
         }

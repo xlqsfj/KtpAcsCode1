@@ -32,7 +32,7 @@ namespace KtpAcs.WinForm.Jijian
             thread.Start();
         }
 
-   
+
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -42,10 +42,10 @@ namespace KtpAcs.WinForm.Jijian
         {
             if (ConfigurationManager.AppSettings["IsAutoUpdater"] == "True")
             {
-            
+
 
                 Application.EnableVisualStyles();
-        
+
 
                 AutoUpdater au = new AutoUpdater();
                 try
@@ -307,7 +307,7 @@ namespace KtpAcs.WinForm.Jijian
             {
                 this.LoginBtn_Click(sender, e);//触发button事件
             }
-  
+
         }
     }
 }

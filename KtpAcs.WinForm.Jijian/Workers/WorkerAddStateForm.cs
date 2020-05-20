@@ -58,7 +58,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
         private void startFillDv()
         {
-         
+
             WorkSysFail.workAdd.ForEach(w => w.magAdd = "添加中..");
             skingrid_sysPanel.DataSource = WorkSysFail.workAdd;
             while (isFinish)
@@ -74,12 +74,21 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
                         var mag = "";
                         var dicWAddImg = false;
-                        foreach (var items in WorkSysFail.dicWorkadd)
+                        //foreach (var items in WorkSysFail.dicWorkadd)
+                        //{
+                        //    if (items.Value == null)
+                        //        continue;
+                        //    mag = items.Value;
+                        //    dicWAddImg = items.Key;
+                        //}
+
+                        for (int i = 0; i < WorkSysFail.dicWorkadd.Count; i++)
                         {
-                            if (items.Value == null)
+
+                            if (WorkSysFail.dicWorkadd.ToList()[i].Value == null)
                                 continue;
-                            mag = items.Value;
-                            dicWAddImg = items.Key;
+                            mag = WorkSysFail.dicWorkadd.ToList()[i].Value;
+                            dicWAddImg = WorkSysFail.dicWorkadd.ToList()[i].Key;
                         }
 
                         if (!dicWAddImg)

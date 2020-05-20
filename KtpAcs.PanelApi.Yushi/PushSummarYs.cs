@@ -31,31 +31,19 @@ namespace KtpAcs.PanelApi.Yushi
         /// </summary>
         /// <param name="success"></param>
         /// <param name="message"></param>
-        public PushSummarYs(bool success, string message, ApiType appType, RichRestRequest request, string apiName)
+        public PushSummarYs(bool success, string message, ApiType appType, RichRestRequest request, string apiName,int  state=200)
         {
             this.Message = "";
             this.Success = success;
             List<Parameter> ts = request.Parameters;
             this.RequestParam = $"传的json参数:" + request.Parameters[ts.Count - 2];
 
-            if (appType == ApiType.KTP && success == false)
+          if (appType == ApiType.Panel && success == false)
             {
-                this.Message = "调用云端接口失败。错误信息：" + message;
-                LogHelper.Info(ApiType.KTP.ToEnumText() + apiName);
-                LogHelper.EntryLog(this.RequestParam, "url:" + request.Resource);
-                LogHelper.ExceptionLog(this.Message);
-
-                if (message == "您的账号已在其他地方登录,请重新登录")
-                {
-
-                    throw new Exception("您的账号已在其他地方登录,请重新登录");
-
-
-                }
-
-            }
-            else if (appType == ApiType.Panel && success == false)
-            {
+                if (state == 502)
+                    this.Message = "调用人脸识别设备接口失败502:请重试!";
+                if (state == 404)
+                    this.Message = "调用人脸识别设备接口失败404:请重试!";
                 this.Message = "调用人脸识别设备接口失败。错误信息：" + message;
                 LogHelper.Info(ApiType.Panel.ToEnumText() + apiName);
                 LogHelper.EntryLog(this.RequestParam, "url:" + request.Resource);

@@ -31,7 +31,7 @@ namespace KtpAcs.KtpApiService
         /// </summary>
         /// <param name="success"></param>
         /// <param name="message"></param>
-        public PushSummary(bool success, string message, ApiType appType, RichRestRequest request, string apiName)
+        public PushSummary(bool success, string message, ApiType appType, RichRestRequest request, string apiName,int state=200)
         {
             this.Message = "";
             this.Success = success;
@@ -40,7 +40,12 @@ namespace KtpAcs.KtpApiService
 
             if (appType == ApiType.KTP && success == false)
             {
-                this.Message = "调用云端服务失败。错误信息：" + message;
+                 
+                this.Message = "调用云端服务失败:" + message;
+                if (state == 502)
+                    this.Message = "调用云端服务失败502:请重试!";
+                if (state ==404)
+                    this.Message = "调用云端服务失败404:请重试!";
                 LogHelper.Info(ApiType.KTP.ToEnumText() + apiName);
                 LogHelper.EntryLog(this.RequestParam, "url:" + request.Resource);
                 LogHelper.ExceptionLog(this.Message);
@@ -56,7 +61,7 @@ namespace KtpAcs.KtpApiService
             }
             else if (appType == ApiType.Panel && success == false)
             {
-                this.Message = "调用人脸识别设备服务失败。错误信息：" + message;
+                this.Message = "调用人脸识别设备服务失败:" + message;
                 LogHelper.Info(ApiType.Panel.ToEnumText() + apiName);
                 LogHelper.EntryLog(this.RequestParam, "url:" + request.Resource);
                 LogHelper.ExceptionLog(this.Message);

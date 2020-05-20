@@ -14,6 +14,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static KtpAcs.KtpApiService.Result.BankCardCheckResult;
@@ -343,16 +344,15 @@ namespace KtpAcs.WinForm.Jijian
             {
 
                 MessageHelper.Show(ex.Message);
-
-
                 btnSubmit.Text = submit;
                 btnSubmit.Enabled = true;
             }
             catch (Exception ex)
             {
 
-                MessageHelper.Show(ex);
 
+                WorkSysFail.dicWorkadd.Add(false, ex.Message);
+                MessageHelper.Show(ex.Message);
 
                 btnSubmit.Text = submit;
                 btnSubmit.Enabled = true;
@@ -361,32 +361,44 @@ namespace KtpAcs.WinForm.Jijian
 
         private void SubmitData()
         {
-
-            if (WorkSysFail.workAdd.Count() > 0)
+            Task.Run(() =>
             {
-                LogHelper.Info("addUser(add)调用");
-                int? uid = 0;
-
-                if (_state == 0)
-                    uid = addUser(add);
-                else if (_state == 1)
-                    uid = addJiaZiUser(add);
-                else
-                    uid = addProject(add);
-                if (uid > 0)
+                try
                 {
-                    WorkSysFail.dicWorkadd.Add(true, "添加成功");
-                    AddFaceToPanel addFaceToPanel = new AddFaceToPanel();
-                    addFaceToPanel.AddFaceInfo(add, uid);
-                }
-                btnSubmit.Enabled = true;
-            }
-            else
-            {
-                ConfigHelper.IsDivceAdd = false;
-                WorkSysFail.dicWorkadd.Add(false, "添加失败，未连接人脸识别面板!");
-            }
 
+                    if (WorkSysFail.workAdd.Count() > 0)
+                    {
+                        LogHelper.Info("addUser(add)调用");
+                        int? uid = 0;
+
+                        if (_state == 0)
+                            uid = addUser(add);
+                        else if (_state == 1)
+                            uid = addJiaZiUser(add);
+                        else
+                            uid = addProject(add);
+                        if (uid > 0)
+                        {
+                         
+                            WorkSysFail.dicWorkadd.Add(true, "添加成功");
+                            AddFaceToPanel addFaceToPanel = new AddFaceToPanel();
+                            addFaceToPanel.AddFaceInfo(add, uid);
+                        }
+                        btnSubmit.Enabled = true;
+                    }
+                    else
+                    {
+                        ConfigHelper.IsDivceAdd = false;
+                        WorkSysFail.dicWorkadd.Add(false, "添加失败，未连接人脸识别面板!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    WorkSysFail.dicWorkadd.Add(false, ex.Message);
+                    LogHelper.ExceptionLog(ex);
+                }
+
+            });
             //return;
             //   }
         }
@@ -394,8 +406,7 @@ namespace KtpAcs.WinForm.Jijian
         public void ShowAddInfoForm()
         {
 
-            //Task.Run(() =>
-            //{
+
             this.BeginInvoke((EventHandler)delegate
             {
                 WorkerAddStateForm _workerAddState = new WorkerAddStateForm(txtName.Text.Trim(), txtIdCard.Text.Trim());
@@ -404,7 +415,7 @@ namespace KtpAcs.WinForm.Jijian
 
                 _workerAddState.ShowDialog();
             });
-            // });
+
 
         }
         /// <summary>

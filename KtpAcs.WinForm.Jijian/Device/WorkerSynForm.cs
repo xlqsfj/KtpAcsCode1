@@ -78,7 +78,7 @@ namespace KtpAcs.WinForm.Jijian.Device
                 if (WorkSysFail.list.Count() > 0)
                 {
 
-                    MessageHelper.Show("同步失败,请选择人员，重新拍照");
+                    MessageHelper.Show("同步失败,请点击ok选择人员，重新拍照");
                     ShowSubmit();
 
                 }
@@ -299,13 +299,15 @@ namespace KtpAcs.WinForm.Jijian.Device
 
         private List<WorkerList> GetWorkerLists()
         {
-
+            int sizeCount = 100;
+            int currentPage = 1;
+            EnumWorkerType enumWorkerType = EnumWorkerType.Hmc;
             WorkerSend workerSend = new WorkerSend()
             {
                 designatedFlag = false, //花名册
-                pageSize = 0,
+                pageSize = sizeCount,
                 projectUuid = ConfigHelper.KtpLoginProjectId,
-                pageNum = 0,
+                pageNum = currentPage,
                 status = 2
             };
             //查询所有人员的详细接口
@@ -316,8 +318,15 @@ namespace KtpAcs.WinForm.Jijian.Device
             WorkerListResult.Data rr = push.ResponseData;
             if (rr.list.Count > 0)
             {
+
                 workers = AddWokerLists(rr.list, EnumWorkerType.Hmc);
+                if (rr.total > sizeCount)
+                {
+                    GetPageWorkerData(sizeCount, enumWorkerType, workerSend, ref pusherDevice, ref push, ref rr);
+
+                }
             }
+
             //甲子分包
             workerSend.designatedFlag = true;
             pusherDevice = new GetWorkersApi() { RequestParam = workerSend };
@@ -328,6 +337,12 @@ namespace KtpAcs.WinForm.Jijian.Device
             if (rr.list.Count > 0)
             {
                 workers = AddWokerLists(rr.list, EnumWorkerType.Jzfb);
+                if (rr.total > sizeCount)
+                {
+                    enumWorkerType = EnumWorkerType.Jzfb;
+                    GetPageWorkerData(sizeCount, enumWorkerType, workerSend, ref pusherDevice, ref push, ref rr);
+
+                }
             }
             WorkerSend projectSend = new WorkerSend()
             {
@@ -359,6 +374,19 @@ namespace KtpAcs.WinForm.Jijian.Device
             }
 
             return workers;
+        }
+
+        private void GetPageWorkerData(int sizeCount, EnumWorkerType enumWorkerType, WorkerSend workerSend, ref IMulePusher pusherDevice, ref PushSummary push, ref WorkerListResult.Data rr)
+        {
+            for (int i = 2; i <= (rr.total + sizeCount - 1) / sizeCount; i++)
+            {
+                workerSend.designatedFlag = enumWorkerType == EnumWorkerType.Hmc ? false : true;
+                workerSend.pageNum = i;
+                pusherDevice = new GetWorkersApi() { RequestParam = workerSend };
+                push = pusherDevice.Push();
+                rr = push.ResponseData;
+                workers = AddWokerLists(rr.list, enumWorkerType);
+            }
         }
 
         public void AddPanePerson(WorkerList items)
@@ -423,7 +451,7 @@ namespace KtpAcs.WinForm.Jijian.Device
 
                     if (!push.Success)
                     {
-
+                        LogHelper.Info("同步失败:AddPanePerson1");
 
                         AddSysFail(items, push.Message);
 
@@ -432,8 +460,9 @@ namespace KtpAcs.WinForm.Jijian.Device
                 }
                 catch (Exception ex)
                 {
-
-                    AddSysFail(items, ex.Message);
+                    LogHelper.Info("同步失败:AddPanePerson2" + ex);
+                    throw;
+                    //  AddSysFail(items, ex.Message);
                 }
 
             }
@@ -451,6 +480,7 @@ namespace KtpAcs.WinForm.Jijian.Device
         /// <param name="mag">失败原因</param>
         public void AddSysFail(WorkerList items, string mag)
         {
+            LogHelper.Info("同步失败:" + items.name);
             try
             {
                 object isExit = null;
@@ -474,7 +504,7 @@ namespace KtpAcs.WinForm.Jijian.Device
                         phone = items.phone,
                         reason = mag,
                         workerType = items.enumWorkerType.GetDescription(),
-                        workerIntType =(int)items.enumWorkerType
+                        workerIntType = (int)items.enumWorkerType
                     };
                     WorkSysFail.list.Add(wokersList);
                 }
@@ -482,7 +512,9 @@ namespace KtpAcs.WinForm.Jijian.Device
             }
             catch (Exception ex)
             {
-                LogHelper.ExceptionLog(ex);
+                LogHelper.Info("同步失败:" + items.name);
+                throw;
+
 
             }
         }

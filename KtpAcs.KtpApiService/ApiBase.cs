@@ -146,14 +146,14 @@ namespace KtpAcs.KtpApiService
             if (response.StatusCode == HttpStatusCode.BadGateway)
             {
 
-                errorSummary = "调用服务失败";
-                return new PushSummary(false, errorSummary, this.ServiceName, request, "接口");
+                errorSummary = "调用服务失败,请重试!";
+                return new PushSummary(false, errorSummary, this.ServiceName, request, "接口", (int)response.StatusCode);
 
             }
             if (response.StatusCode == HttpStatusCode.NotFound)
             {
                 errorSummary = "找不到服务";
-                return new PushSummary(false, errorSummary, this.ServiceName, request, "接口");
+                return new PushSummary(false, errorSummary, this.ServiceName, request, "接口", (int)response.StatusCode);
 
 
             }

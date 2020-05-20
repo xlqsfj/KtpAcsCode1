@@ -163,13 +163,13 @@ namespace KtpAcs.PanelApi.Yushi
             {
 
                 errorSummary = "调用服务失败";
-                return new PushSummarYs(false, errorSummary, this.ServiceName, request, "接口");
+                return new PushSummarYs(false, errorSummary, this.ServiceName, request, "接口",(int) response.StatusCode);
 
             }
             if (response.StatusCode == HttpStatusCode.NotFound)
             {
                 errorSummary = "找不到服务";
-                return new PushSummarYs(false, errorSummary, this.ServiceName, request, "接口");
+                return new PushSummarYs(false, errorSummary, this.ServiceName, request, "接口", (int)response.StatusCode);
 
 
             }

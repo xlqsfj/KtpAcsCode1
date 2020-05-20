@@ -59,7 +59,6 @@ namespace KtpAcs.WinForm.Jijian.Workers
                     pageSize = pageSize,
                     pageNum = pageIndex,
                     projectUuid = ConfigHelper.KtpLoginProjectId,
-                  
                     status = 2,
                     keyWord = this.txtQuery.Text,
                     designatedFlag = _isHmc == 0 ? false : true

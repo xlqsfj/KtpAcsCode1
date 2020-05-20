@@ -127,6 +127,8 @@ namespace KtpAcs.WinForm.Jijian
             {
                 if (item == null)
                     continue;
+                if (item.projectName == null)
+                    continue;
                 if (item.projectUuid == pid)
                 {
                     isMatching = true;
@@ -141,6 +143,8 @@ namespace KtpAcs.WinForm.Jijian
                 foreach (var item in pList)
                 {
                     if (item == null)
+                        continue;
+                    if (item.projectName == null)
                         continue;
                     pid = item.projectUuid;
                     modifyItem("ProjectId", pid);

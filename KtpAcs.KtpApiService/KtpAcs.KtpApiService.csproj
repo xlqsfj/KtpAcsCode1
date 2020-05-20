@@ -60,6 +60,7 @@
     <Compile Include="Base\IdentityNation.cs" />
     <Compile Include="Device\DelDeviceApi.cs" />
     <Compile Include="Device\GetDeviceApi.cs" />
+    <Compile Include="Device\GetDeviceStateApi.cs" />
     <Compile Include="Device\SetDeviceApi.cs" />
     <Compile Include="IMulePusher.cs" />
     <Compile Include="LoginApi.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Result\BankCardCheckResult.cs" />
     <Compile Include="Result\BaseStringResult.cs" />
     <Compile Include="Result\DeviceListResult.cs" />
+    <Compile Include="Result\DeviceStateResult.cs" />
     <Compile Include="Result\LoginResult.cs" />
     <Compile Include="Result\OrganizationListResult.cs" />
     <Compile Include="Result\ProjectCountResult.cs" />

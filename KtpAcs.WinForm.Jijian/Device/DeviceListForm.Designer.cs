@@ -45,7 +45,6 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.panelContent = new DevExpress.XtraEditors.PanelControl();
@@ -53,6 +52,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit5 = new DevExpress.XtraEditors.PictureEdit();
+            this.deviceToServiceState = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -93,7 +93,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 467);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 500);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1283, 0);
             // 
@@ -103,7 +103,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 467);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 500);
             // 
             // barDockControlRight
             // 
@@ -111,7 +111,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1283, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 467);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 500);
             // 
             // btnUpdate
             // 
@@ -148,8 +148,9 @@
             this.gridColumn4,
             this.gridColumn6,
             this.gridColumn5,
-            this.gridId,
+            this.deviceToServiceState,
             this.gridColumn7});
+            this.grid_Device.DetailHeight = 375;
             this.grid_Device.GridControl = this.gridControl;
             this.grid_Device.Name = "grid_Device";
             this.grid_Device.OptionsSelection.MultiSelect = true;
@@ -205,12 +206,6 @@
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
             // 
-            // gridId
-            // 
-            this.gridId.Caption = "id";
-            this.gridId.FieldName = "uuid";
-            this.gridId.Name = "gridId";
-            // 
             // gridColumn7
             // 
             this.gridColumn7.Caption = "选择";
@@ -218,14 +213,14 @@
             this.gridColumn7.FieldName = "isSeleced";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.VisibleIndex = 7;
             // 
             // gridControl
             // 
-            this.gridControl.Location = new System.Drawing.Point(15, 27);
+            this.gridControl.Location = new System.Drawing.Point(15, 29);
             this.gridControl.MainView = this.grid_Device;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1265, 428);
+            this.gridControl.Size = new System.Drawing.Size(1265, 459);
             this.gridControl.TabIndex = 1;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grid_Device});
@@ -242,9 +237,9 @@
             this.panelContent.Controls.Add(this.pictureEdit5);
             this.panelContent.FireScrollEventOnMouseWheel = true;
             this.panelContent.InvertTouchScroll = true;
-            this.panelContent.Location = new System.Drawing.Point(12, 27);
+            this.panelContent.Location = new System.Drawing.Point(15, 29);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1268, 418);
+            this.panelContent.Size = new System.Drawing.Size(1268, 448);
             this.panelContent.TabIndex = 6;
             this.panelContent.Visible = false;
             // 
@@ -253,7 +248,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 11F);
             this.label7.ForeColor = System.Drawing.Color.Gray;
-            this.label7.Location = new System.Drawing.Point(414, 325);
+            this.label7.Location = new System.Drawing.Point(414, 348);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(233, 18);
             this.label7.TabIndex = 3;
@@ -264,7 +259,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label6.Location = new System.Drawing.Point(430, 291);
+            this.label6.Location = new System.Drawing.Point(430, 312);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(181, 22);
             this.label6.TabIndex = 2;
@@ -279,9 +274,9 @@
             this.simpleButton4.ImageOptions.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.tj12;
             this.simpleButton4.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.simpleButton4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.simpleButton4.Location = new System.Drawing.Point(407, 370);
+            this.simpleButton4.Location = new System.Drawing.Point(407, 396);
             this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(251, 45);
+            this.simpleButton4.Size = new System.Drawing.Size(251, 48);
             this.simpleButton4.TabIndex = 1;
             this.simpleButton4.Text = "添加面板";
             this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
@@ -289,19 +284,27 @@
             // pictureEdit5
             // 
             this.pictureEdit5.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.home_addP;
-            this.pictureEdit5.Location = new System.Drawing.Point(249, 13);
+            this.pictureEdit5.Location = new System.Drawing.Point(249, 14);
             this.pictureEdit5.Name = "pictureEdit5";
             this.pictureEdit5.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit5.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit5.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.pictureEdit5.Size = new System.Drawing.Size(553, 261);
+            this.pictureEdit5.Size = new System.Drawing.Size(553, 280);
             this.pictureEdit5.TabIndex = 0;
+            // 
+            // deviceToServiceState
+            // 
+            this.deviceToServiceState.Caption = "人脸识别设备是否连接面板";
+            this.deviceToServiceState.FieldName = "deviceToServiceState";
+            this.deviceToServiceState.Name = "deviceToServiceState";
+            this.deviceToServiceState.Visible = true;
+            this.deviceToServiceState.VisibleIndex = 6;
             // 
             // DeviceListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1283, 467);
+            this.ClientSize = new System.Drawing.Size(1283, 500);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.barDockControlLeft);
@@ -341,7 +344,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridId;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraEditors.PanelControl panelContent;
         private System.Windows.Forms.Label label7;
@@ -349,5 +351,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.PictureEdit pictureEdit5;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
+        private DevExpress.XtraGrid.Columns.GridColumn deviceToServiceState;
     }
 }

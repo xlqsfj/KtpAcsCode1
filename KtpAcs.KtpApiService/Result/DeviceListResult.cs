@@ -84,6 +84,7 @@ namespace KtpAcs.KtpApiService.Result
             public string uuid { get; set; }
 
             public bool isSeleced { get; set; }
+            public string deviceToServiceState { get; set; }
         }
 
     }

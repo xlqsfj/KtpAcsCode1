@@ -101,6 +101,7 @@ namespace KtpAcs.WinForm.Jijian
                         TaskFactory taskFactory = new TaskFactory();
                         List<Task> taskList = new List<Task>();
                         LoadingHelper.ShowLoadingScreen();//显示
+                        GetDeviceHeart(data);
                         Parallel.ForEach(data.list, (list, DeviceList) =>
                         {
                             taskList.Add(taskFactory.StartNew(() => NewMethod(list)));
@@ -196,7 +197,23 @@ namespace KtpAcs.WinForm.Jijian
             }
          
         }
+        private void GetDeviceHeart(DeviceListResult.Data data)
+        {
+            IMulePusher pusherDeviceState = new GetDeviceStateApi() { RequestParam = new { projectUuid = ConfigHelper.KtpLoginProjectId } };
+            PushSummary pushState = pusherDeviceState.Push();
+            if (pushState.Success)
+            {
+                DeviceStateResult stateList = pushState.ResponseData;
+                foreach (var items in data.list)
+                {
 
+                    var deviceInfo = stateList.data.Where(a => a.deviceId == items.deviceId).FirstOrDefault();
+
+                    items.deviceToServiceState = deviceInfo.status == 1 ? "是" : "否";
+
+                }
+            }
+        }
         private void grid_Device_MouseDown(object sender, MouseEventArgs e)
         {
             try
@@ -312,6 +329,7 @@ namespace KtpAcs.WinForm.Jijian
                     if ((string)e.CellValue == "否")  //条件  e.CellValue 为object类型
                         e.Appearance.BackColor = Color.FromArgb(0, 118, 248);
                 }
+
             }
             catch (Exception ex)
             {

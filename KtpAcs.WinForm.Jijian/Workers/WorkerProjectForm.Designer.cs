@@ -46,6 +46,7 @@
             this.organizationUserUuid = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SalesMoney = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.organizationUserId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemFontEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemFontEdit();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
@@ -54,7 +55,6 @@
             this.repositoryItemCheckedComboBoxEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.organizationUserId = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
@@ -73,10 +73,10 @@
             // 
             // xtraTabControl1
             // 
-            this.xtraTabControl1.Location = new System.Drawing.Point(2, 12);
+            this.xtraTabControl1.Location = new System.Drawing.Point(2, 13);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1268, 737);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1268, 790);
             this.xtraTabControl1.TabIndex = 4;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage2});
@@ -86,7 +86,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.gridControl1);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1266, 715);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1266, 767);
             this.xtraTabPage2.Text = "项目人员";
             // 
             // gridControl1
@@ -94,7 +94,7 @@
             this.gridControl1.EmbeddedNavigator.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
             this.gridControl1.EmbeddedNavigator.Cursor = System.Windows.Forms.Cursors.Default;
             this.gridControl1.EmbeddedNavigator.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
-            this.gridControl1.Location = new System.Drawing.Point(33, 60);
+            this.gridControl1.Location = new System.Drawing.Point(33, 64);
             this.gridControl1.MainView = this.grid_WorkerProject;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -107,7 +107,7 @@
             this.repositoryItemCheckedComboBoxEdit1,
             this.repositoryItemComboBox1,
             this.repositoryItemCheckEdit2});
-            this.gridControl1.Size = new System.Drawing.Size(1211, 535);
+            this.gridControl1.Size = new System.Drawing.Size(1211, 573);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -129,6 +129,7 @@
             this.organizationUserUuid,
             this.SalesMoney,
             this.organizationUserId});
+            this.grid_WorkerProject.DetailHeight = 375;
             this.grid_WorkerProject.GridControl = this.gridControl1;
             this.grid_WorkerProject.Name = "grid_WorkerProject";
             this.grid_WorkerProject.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
@@ -206,6 +207,12 @@
             this.repositoryItemButtonEdit3.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit3.Click += new System.EventHandler(this.repositoryItemButtonEdit3_Click);
             // 
+            // organizationUserId
+            // 
+            this.organizationUserId.Caption = "gridColumn2";
+            this.organizationUserId.FieldName = "organizationUserId";
+            this.organizationUserId.Name = "organizationUserId";
+            // 
             // repositoryItemFontEdit1
             // 
             this.repositoryItemFontEdit1.AccessibleDescription = "111";
@@ -258,17 +265,11 @@
             this.repositoryItemCheckEdit2.AutoHeight = false;
             this.repositoryItemCheckEdit2.Name = "repositoryItemCheckEdit2";
             // 
-            // organizationUserId
-            // 
-            this.organizationUserId.Caption = "gridColumn2";
-            this.organizationUserId.FieldName = "organizationUserId";
-            this.organizationUserId.Name = "organizationUserId";
-            // 
             // WorkerProjectForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1272, 754);
+            this.ClientSize = new System.Drawing.Size(1272, 808);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "WorkerProjectForm";
             this.Text = "WorkerProjectForm";

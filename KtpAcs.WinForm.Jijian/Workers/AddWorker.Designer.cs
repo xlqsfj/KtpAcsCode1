@@ -422,6 +422,7 @@
             // 
             // txtExpireTime
             // 
+            this.txtExpireTime.EditValue = "";
             this.txtExpireTime.Location = new System.Drawing.Point(765, 524);
             this.txtExpireTime.Name = "txtExpireTime";
             this.txtExpireTime.Properties.AutoHeight = false;
@@ -430,12 +431,13 @@
             // 
             // txtStartTime
             // 
-            this.txtStartTime.EditValue = "";
+            this.txtStartTime.EditValue = "yyyy-mm-dd";
             this.txtStartTime.Location = new System.Drawing.Point(527, 524);
             this.txtStartTime.Name = "txtStartTime";
             this.txtStartTime.Properties.AutoHeight = false;
             this.txtStartTime.Size = new System.Drawing.Size(160, 21);
             this.txtStartTime.TabIndex = 380;
+            this.txtStartTime.Click += new System.EventHandler(this.txtStartTime_Click);
             // 
             // labelControl10
             // 
@@ -1132,7 +1134,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(0, 100);
-            this.ClientSize = new System.Drawing.Size(1255, 962);
+            this.ClientSize = new System.Drawing.Size(1289, 962);
             this.Controls.Add(this.panelBankInfo);
             this.Controls.Add(this.panelProjectInfo);
             this.Controls.Add(this.ComEducationLevel);

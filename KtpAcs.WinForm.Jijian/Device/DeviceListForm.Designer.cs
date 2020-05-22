@@ -45,6 +45,7 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.deviceToServiceState = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.panelContent = new DevExpress.XtraEditors.PanelControl();
@@ -52,7 +53,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit5 = new DevExpress.XtraEditors.PictureEdit();
-            this.deviceToServiceState = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -187,6 +187,7 @@
             this.gridColumn4.Caption = "是否连接人脸识别设备";
             this.gridColumn4.FieldName = "deviceStatus";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.ToolTip = "显示<否>可能跟面板的ip不是一个网段，请检查！";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
             // 
@@ -205,6 +206,15 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
+            // 
+            // deviceToServiceState
+            // 
+            this.deviceToServiceState.Caption = "人脸识别设备是否连接平台";
+            this.deviceToServiceState.FieldName = "deviceToServiceState";
+            this.deviceToServiceState.Name = "deviceToServiceState";
+            this.deviceToServiceState.ToolTip = "显示<否>可能设备未连接网络,请检查！";
+            this.deviceToServiceState.Visible = true;
+            this.deviceToServiceState.VisibleIndex = 6;
             // 
             // gridColumn7
             // 
@@ -291,14 +301,6 @@
             this.pictureEdit5.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             this.pictureEdit5.Size = new System.Drawing.Size(553, 280);
             this.pictureEdit5.TabIndex = 0;
-            // 
-            // deviceToServiceState
-            // 
-            this.deviceToServiceState.Caption = "人脸识别设备是否连接面板";
-            this.deviceToServiceState.FieldName = "deviceToServiceState";
-            this.deviceToServiceState.Name = "deviceToServiceState";
-            this.deviceToServiceState.Visible = true;
-            this.deviceToServiceState.VisibleIndex = 6;
             // 
             // DeviceListForm
             // 

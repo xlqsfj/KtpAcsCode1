@@ -237,16 +237,31 @@ namespace KtpAcs.WinForm.Jijian
 
         private void btnFacePic_Click(object sender, EventArgs e)
         {
+            if (f1.Visible)
+            {
+                MessageBox.Show("未连接摄像头,不能采集");
+                return;
+            }
             _facePicId = GetPic(pic_facePic);
         }
 
         private void btnPicturePositive_Click(object sender, EventArgs e)
         {
+            if (f1.Visible)
+            {
+                MessageBox.Show("未连接摄像头,不能采集");
+                return;
+            }
             _identityPicId = GetPic(pic_picturePositive);
         }
 
         private void btnPictureReverse_Click(object sender, EventArgs e)
         {
+            if (f1.Visible)
+            {
+                MessageBox.Show("未连接摄像头,不能采集");
+                return;
+            }
             _identityBackPicId = GetPic(pic_pictureReverse);
         }
 
@@ -269,7 +284,13 @@ namespace KtpAcs.WinForm.Jijian
                 {
                     btnSubmit.Text = @"提交";
                     btnSubmit.Enabled = true;
+
                     throw new PreValidationException(PreValidationHelper.ErroMsg);
+                }
+                if (this.txtStartTime.Text == "yyyy-mm-dd")
+                {
+                    MessageHelper.Show("身份证有效开始日期未填写");
+                    return;
                 }
                 if (WorkSysFail.workAdd.Count() < 1)
                 {
@@ -379,7 +400,7 @@ namespace KtpAcs.WinForm.Jijian
                             uid = addProject(add);
                         if (uid > 0)
                         {
-                         
+
                             WorkSysFail.dicWorkadd.Add(true, "添加成功");
                             AddFaceToPanel addFaceToPanel = new AddFaceToPanel();
                             addFaceToPanel.AddFaceInfo(add, uid);
@@ -577,6 +598,14 @@ namespace KtpAcs.WinForm.Jijian
             if (h != null)
             {
                 h.Handled = true;
+            }
+        }
+
+        private void txtStartTime_Click(object sender, EventArgs e)
+        {
+            if (this.txtStartTime.Text == "yyyy-mm-dd")
+            {
+                this.txtStartTime.Text = "";
             }
         }
     }

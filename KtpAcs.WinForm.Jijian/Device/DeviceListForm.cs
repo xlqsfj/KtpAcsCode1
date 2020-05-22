@@ -28,7 +28,7 @@ namespace KtpAcs.WinForm.Jijian
     public partial class DeviceListForm : DevExpress.XtraEditors.XtraForm
     {
 
- 
+
         public DeviceListForm()
         {
             InitializeComponent();
@@ -81,11 +81,11 @@ namespace KtpAcs.WinForm.Jijian
 
         public void GetDevice()
         {
-
+            
 
             try
             {
-          
+
                 IMulePusher pusherDevice = new GetDeviceApi() { RequestParam = new { pageNum = 0, pageSize = 0, projectUuid = ConfigHelper.KtpLoginProjectId } };
                 PushSummary push = pusherDevice.Push();
                 if (push.Success)
@@ -96,7 +96,7 @@ namespace KtpAcs.WinForm.Jijian
 
                     if (data.list.Count > 0)
                     {
-                      
+
                         WorkSysFail.workAdd.Clear();
                         TaskFactory taskFactory = new TaskFactory();
                         List<Task> taskList = new List<Task>();
@@ -111,9 +111,14 @@ namespace KtpAcs.WinForm.Jijian
                         {
                             try
                             {
-                                this.gridControl.DataSource = data.list;
-                                taskList.Clear();
-                                LoadingHelper.CloseForm();//关闭
+                                this.BeginInvoke((EventHandler)delegate
+                                {
+
+                                    this.gridControl.DataSource = data.list;
+
+                                    taskList.Clear();
+                                    LoadingHelper.CloseForm();//关闭
+                                });
                             }
                             catch (Exception)
                             {
@@ -121,7 +126,7 @@ namespace KtpAcs.WinForm.Jijian
                                 throw;
                             }
                         });
-                  
+
                         panelContent.Visible = false;
                         gridControl.Visible = true;
                     }
@@ -129,7 +134,7 @@ namespace KtpAcs.WinForm.Jijian
                     {
                         panelContent.Visible = true;
                         gridControl.Visible = false;
-                      //LoadingHelper.CloseForm();//关闭
+                        //LoadingHelper.CloseForm();//关闭
                     }
 
                 }
@@ -137,7 +142,7 @@ namespace KtpAcs.WinForm.Jijian
             }
             catch (Exception ex)
             {
-                MessageHelper.Show($"错误信息:{ex.Message}",ex);
+                MessageHelper.Show($"错误信息:{ex.Message}", ex);
 
             }
 
@@ -193,9 +198,9 @@ namespace KtpAcs.WinForm.Jijian
             {
 
                 LogHelper.ExceptionLog(ex);
-                
+
             }
-         
+
         }
         private void GetDeviceHeart(DeviceListResult.Data data)
         {
@@ -246,9 +251,9 @@ namespace KtpAcs.WinForm.Jijian
                 addDevice.StartPosition = FormStartPosition.CenterParent;
                 addDevice.ShowSubmit += new AgainSubmit(o => GetDevice());
                 addDevice.ShowDialog();
-             
-       
-             
+
+
+
 
             }
             catch (Exception ex)
@@ -287,7 +292,8 @@ namespace KtpAcs.WinForm.Jijian
                         this.grid_Device.DeleteRow(this.grid_Device.FocusedRowHandle);//删除行
                         WorkSysFail.DeleteDeviceInfo(ip);
 
-                        if (this.grid_Device.RowCount < 1) {
+                        if (this.grid_Device.RowCount < 1)
+                        {
                             panelContent.Visible = true;
                             gridControl.Visible = false;
                         }
@@ -328,6 +334,11 @@ namespace KtpAcs.WinForm.Jijian
                 {
                     if ((string)e.CellValue == "否")  //条件  e.CellValue 为object类型
                         e.Appearance.BackColor = Color.FromArgb(0, 118, 248);
+                }
+                if (e.Column.FieldName == "deviceToServiceState") //设备是否有网络
+                {
+                    if ((string)e.CellValue == "否")  //条件  e.CellValue 为object类型
+                        e.Appearance.BackColor = Color.FromArgb(0, 158, 178);
                 }
 
             }

@@ -57,7 +57,6 @@
             this.txtQuery = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.ComUsable = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnClear = new DevExpress.XtraEditors.SimpleButton();
             this.btnQuery = new DevExpress.XtraEditors.SimpleButton();
             this.WorkersGridPager = new KtpAcs.WinForm.Jijian.PageCon();
@@ -68,14 +67,15 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.ComUsable = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuery.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ComUsable.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComUsable.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemButtonEdit1
@@ -232,6 +232,7 @@
             this.txtQuery.Properties.AutoHeight = false;
             this.txtQuery.Size = new System.Drawing.Size(338, 37);
             this.txtQuery.TabIndex = 224;
+            this.txtQuery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuery_KeyDown);
             // 
             // labelControl7
             // 
@@ -259,32 +260,17 @@
             this.labelControl1.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl1.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl1.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl1.Location = new System.Drawing.Point(578, 13);
+            this.labelControl1.Location = new System.Drawing.Point(604, 14);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(48, 17);
             this.labelControl1.TabIndex = 222;
-            this.labelControl1.Text = "是否停用";
-            this.labelControl1.Visible = false;
-            // 
-            // ComUsable
-            // 
-            this.ComUsable.Location = new System.Drawing.Point(632, 3);
-            this.ComUsable.Name = "ComUsable";
-            this.ComUsable.Properties.AutoHeight = false;
-            this.ComUsable.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ComUsable.Properties.Items.AddRange(new object[] {
-            "已启用",
-            "已停用"});
-            this.ComUsable.Size = new System.Drawing.Size(153, 37);
-            this.ComUsable.TabIndex = 224;
-            this.ComUsable.Visible = false;
+            this.labelControl1.Text = "入场状态";
             // 
             // btnClear
             // 
             this.btnClear.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
             this.btnClear.Appearance.Options.UseBackColor = true;
-            this.btnClear.Location = new System.Drawing.Point(1090, 14);
+            this.btnClear.Location = new System.Drawing.Point(1085, 3);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(106, 36);
             this.btnClear.TabIndex = 225;
@@ -295,7 +281,7 @@
             // 
             this.btnQuery.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
             this.btnQuery.Appearance.Options.UseBackColor = true;
-            this.btnQuery.Location = new System.Drawing.Point(968, 13);
+            this.btnQuery.Location = new System.Drawing.Point(963, 2);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(107, 37);
             this.btnQuery.TabIndex = 231;
@@ -370,11 +356,25 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 629);
             // 
+            // ComUsable
+            // 
+            this.ComUsable.Location = new System.Drawing.Point(658, 3);
+            this.ComUsable.Name = "ComUsable";
+            this.ComUsable.Properties.AllowMouseWheel = false;
+            this.ComUsable.Properties.AutoHeight = false;
+            this.ComUsable.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ComUsable.Properties.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.ComEducationLevel_Properties_MouseWheel);
+            this.ComUsable.Size = new System.Drawing.Size(132, 37);
+            this.ComUsable.TabIndex = 384;
+            this.ComUsable.EditValueChanged += new System.EventHandler(this.ComUsable_EditValueChanged);
+            // 
             // WorkerListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1206, 629);
+            this.Controls.Add(this.ComUsable);
             this.Controls.Add(this.WorkersGridPager);
             this.Controls.Add(this.btnQuery);
             this.Controls.Add(this.btnClear);
@@ -382,7 +382,6 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.gridControl1);
-            this.Controls.Add(this.ComUsable);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -390,14 +389,15 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "WorkerListForm";
             this.Text = "WorkerListForm";
+            this.Load += new System.EventHandler(this.WorkerListForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuery.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ComUsable.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComUsable.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,7 +419,6 @@
         private DevExpress.XtraEditors.TextEdit txtQuery;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.ComboBoxEdit ComUsable;
         private DevExpress.XtraEditors.SimpleButton btnClear;
         private DevExpress.XtraEditors.SimpleButton btnQuery;
         private DevExpress.XtraGrid.Columns.GridColumn details;
@@ -433,5 +432,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraEditors.LookUpEdit ComUsable;
     }
 }

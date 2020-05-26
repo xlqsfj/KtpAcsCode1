@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KtpAcs.Infrastructure", "Kt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KtpAcsAotoUpdate", "KtpAcsAotoUpdate\KtpAcsAotoUpdate.csproj", "{669C1176-B2FA-4F32-90CF-7F7A2B6E4BFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KtpAcs.PanelApi.Haiqing", "KtpAcs.PanelApi.Haiqing\KtpAcs.PanelApi.Haiqing.csproj", "{6EE4429D-230B-4297-BE8E-79D1893E98A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{669C1176-B2FA-4F32-90CF-7F7A2B6E4BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{669C1176-B2FA-4F32-90CF-7F7A2B6E4BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{669C1176-B2FA-4F32-90CF-7F7A2B6E4BFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EE4429D-230B-4297-BE8E-79D1893E98A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EE4429D-230B-4297-BE8E-79D1893E98A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EE4429D-230B-4297-BE8E-79D1893E98A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE4429D-230B-4297-BE8E-79D1893E98A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

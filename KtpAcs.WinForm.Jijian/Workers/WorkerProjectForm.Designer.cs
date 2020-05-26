@@ -35,6 +35,7 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.ComUsable = new DevExpress.XtraEditors.LookUpEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.grid_WorkerProject = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -55,9 +56,15 @@
             this.repositoryItemCheckedComboBoxEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.btnQuery = new DevExpress.XtraEditors.SimpleButton();
+            this.txtQuery = new DevExpress.XtraEditors.TextEdit();
+            this.btnClear = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ComUsable.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid_WorkerProject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit3)).BeginInit();
@@ -69,6 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuery.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -84,10 +92,28 @@
             // 
             // xtraTabPage2
             // 
+            this.xtraTabPage2.Controls.Add(this.ComUsable);
             this.xtraTabPage2.Controls.Add(this.gridControl1);
+            this.xtraTabPage2.Controls.Add(this.btnQuery);
+            this.xtraTabPage2.Controls.Add(this.txtQuery);
+            this.xtraTabPage2.Controls.Add(this.btnClear);
+            this.xtraTabPage2.Controls.Add(this.labelControl7);
+            this.xtraTabPage2.Controls.Add(this.labelControl1);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1266, 767);
             this.xtraTabPage2.Text = "项目人员";
+            // 
+            // ComUsable
+            // 
+            this.ComUsable.Location = new System.Drawing.Point(711, 12);
+            this.ComUsable.Name = "ComUsable";
+            this.ComUsable.Properties.AllowMouseWheel = false;
+            this.ComUsable.Properties.AutoHeight = false;
+            this.ComUsable.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ComUsable.Properties.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.ComEducationLevel_Properties_MouseWheel);
+            this.ComUsable.Size = new System.Drawing.Size(132, 37);
+            this.ComUsable.TabIndex = 390;
             // 
             // gridControl1
             // 
@@ -265,6 +291,69 @@
             this.repositoryItemCheckEdit2.AutoHeight = false;
             this.repositoryItemCheckEdit2.Name = "repositoryItemCheckEdit2";
             // 
+            // btnQuery
+            // 
+            this.btnQuery.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
+            this.btnQuery.Appearance.Options.UseBackColor = true;
+            this.btnQuery.Location = new System.Drawing.Point(1016, 11);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(107, 37);
+            this.btnQuery.TabIndex = 389;
+            this.btnQuery.Text = "查找";
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
+            // 
+            // txtQuery
+            // 
+            this.txtQuery.Location = new System.Drawing.Point(191, 12);
+            this.txtQuery.Name = "txtQuery";
+            this.txtQuery.Properties.AutoHeight = false;
+            this.txtQuery.Size = new System.Drawing.Size(338, 37);
+            this.txtQuery.TabIndex = 387;
+            this.txtQuery.Visible = false;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
+            this.btnClear.Appearance.Options.UseBackColor = true;
+            this.btnClear.Location = new System.Drawing.Point(1138, 12);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(106, 36);
+            this.btnClear.TabIndex = 388;
+            this.btnClear.Text = "清空";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.labelControl7.Appearance.Options.UseFont = true;
+            this.labelControl7.Appearance.Options.UseForeColor = true;
+            this.labelControl7.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
+            this.labelControl7.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
+            this.labelControl7.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
+            this.labelControl7.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.labelControl7.Location = new System.Drawing.Point(149, 23);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(36, 17);
+            this.labelControl7.TabIndex = 386;
+            this.labelControl7.Text = "关键字";
+            this.labelControl7.Visible = false;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
+            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
+            this.labelControl1.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
+            this.labelControl1.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
+            this.labelControl1.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.labelControl1.Location = new System.Drawing.Point(657, 23);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(48, 17);
+            this.labelControl1.TabIndex = 385;
+            this.labelControl1.Text = "入场状态";
+            // 
             // WorkerProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -276,6 +365,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
+            this.xtraTabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ComUsable.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid_WorkerProject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit3)).EndInit();
@@ -287,6 +378,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuery.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -315,5 +407,11 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
         private DevExpress.XtraGrid.Columns.GridColumn organizationUserId;
+        private DevExpress.XtraEditors.LookUpEdit ComUsable;
+        private DevExpress.XtraEditors.SimpleButton btnQuery;
+        private DevExpress.XtraEditors.TextEdit txtQuery;
+        private DevExpress.XtraEditors.SimpleButton btnClear;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

@@ -32,6 +32,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
         public WorkerProjectForm()
         {
             InitializeComponent();
+            GetStateList();
             GetWorkerList();
             RepositoryItemHyperLinkEdit linkSalesMoney = CreateRepositoryItemHyperLinkEdit("销售金额");
             linkSalesMoney.OpenLink += new OpenLinkEventHandler(repositoryItemButtonEdit3_Click);  //事件
@@ -52,7 +53,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                     pageSize = 25,
                     projectUuid = ConfigHelper.KtpLoginProjectId,
                     pageNum = 1,
-                    status = 0,
+                    status = (int)this.ComUsable.EditValue,
                     keyWord = Query
                 };
 
@@ -178,7 +179,29 @@ namespace KtpAcs.WinForm.Jijian.Workers
             }
 
         }
+        private void GetStateList()
+        {
+            List<DicKeyValueDto> list = new List<DicKeyValueDto>();
+            list.Add(new DicKeyValueDto { Key = 0, Value = "全部" });
+            list.Add(new DicKeyValueDto { Key = 1, Value = "未入场" });
+            list.Add(new DicKeyValueDto { Key = 2, Value = "已入场" });
+            list.Add(new DicKeyValueDto { Key = 3, Value = "已退场" });
+            this.ComUsable.Properties.DisplayMember = "Value";
+            this.ComUsable.Properties.ValueMember = "Key";
+            this.ComUsable.EditValue = 0;
+            this.ComUsable.Properties.DataSource = list;
+            this.ComUsable.ItemIndex = 0;
+            this.ComUsable.Properties.Columns.Add(
+             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Value"));
+            //是否显示列名
 
+            ComUsable.Properties.ShowHeader = false;
+
+            //是否显示底部
+
+            //ComUsable.Properties.ShowFooter = false;
+
+        }
         public void DeletePanelProjectUser(string userId)
         {
 
@@ -227,6 +250,16 @@ namespace KtpAcs.WinForm.Jijian.Workers
             return 0;
 
 
+        }
+
+        private void ComEducationLevel_Properties_MouseWheel(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void btnQuery_Click(object sender, EventArgs e)
+        {
+            GetWorkerList();
         }
     }
 }

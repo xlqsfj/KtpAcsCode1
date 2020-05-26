@@ -172,6 +172,7 @@ namespace KtpAcs.WinForm.Jijian
                     ProjectCountResult.Data projectCountResult = pushLogin.ResponseData;
 
                     this.labProjectCode.Text = projectCountResult.projectCode;
+                    this.labPhone.Text = ConfigHelper.KtpLoginPhone;
                     //总人数
                     int countSum = (projectCountResult.projectWorkerNum + projectCountResult.jiaziNum + projectCountResult.projectManageNum);
                     this.labProjectManageNum.Text = countSum.ToString();
@@ -179,10 +180,13 @@ namespace KtpAcs.WinForm.Jijian
                     //已认证人数
                     int okNum = projectCountResult.workerVerificationNum + projectCountResult.manageVerificationNum + projectCountResult.jiaziVerificationNum;
                     this.labVerificationNum.Text = okNum.ToString();
-                    this.labPhone.Text = ConfigHelper.KtpLoginPhone;
+
                     //未认证人数
-                    int noNum = countSum - okNum;
+                    int noNum = (projectCountResult.workerVerificationNum + projectCountResult.jiaziVerificationNum) - okNum;
                     this.labwei.Text = noNum.ToString();
+
+                    //项目已入场人员
+                  //  this.labwei.Text = projectCountResult.projectManageNum.ToString() ;
 
                 }
             }

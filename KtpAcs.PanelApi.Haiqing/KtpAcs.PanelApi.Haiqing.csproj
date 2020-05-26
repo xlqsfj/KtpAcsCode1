@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AABB35B6-2A05-4178-9B95-FC6608A0F9E9}</ProjectGuid>
+    <ProjectGuid>{6EE4429D-230B-4297-BE8E-79D1893E98A1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KtpAcs.KtpApiService</RootNamespace>
-    <AssemblyName>KtpAcs.KtpApiService</AssemblyName>
+    <RootNamespace>KtpAcs.PanelApi.Haiqing</RootNamespace>
+    <AssemblyName>KtpAcs.PanelApi.Haiqing</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -53,57 +53,33 @@
   <ItemGroup>
     <Compile Include="ApiBase.cs" />
     <Compile Include="ApiType.cs" />
-    <Compile Include="Base\BankCardType.cs" />
-    <Compile Include="Base\EnumBankCardType.cs" />
-    <Compile Include="Base\EnumDiploma.cs" />
-    <Compile Include="Base\EnumWorkerType.cs" />
-    <Compile Include="Base\IdentityNation.cs" />
-    <Compile Include="Device\DelDeviceApi.cs" />
-    <Compile Include="Device\GetDeviceApi.cs" />
-    <Compile Include="Device\GetDeviceStateApi.cs" />
-    <Compile Include="Device\SetDeviceApi.cs" />
-    <Compile Include="IMulePusher.cs" />
-    <Compile Include="LoginApi.cs" />
-    <Compile Include="LoginVerificationApi.cs" />
-    <Compile Include="Model\WorkSysFail.cs" />
-    <Compile Include="Project\GetProjectCountApi.cs" />
-    <Compile Include="Project\GetProjectListApi.cs" />
+    <Compile Include="Api\PanelAddPersonApi.cs" />
+    <Compile Include="Api\PanelBaseHq.cs" />
+    <Compile Include="Api\PanelGetServiceParamApi.cs" />
+    <Compile Include="Api\PanelGetSysParamApi.cs" />
+    <Compile Include="Api\PanelHqDeleteAllPersonApi.cs" />
+    <Compile Include="Api\PanelHqDeletePersonApi.cs" />
+    <Compile Include="Api\PanelSearchPersonApi.cs" />
+    <Compile Include="Api\PanelSearchPersonListApi.cs" />
+    <Compile Include="Api\PanelSearchPersonNumApi.cs" />
+    <Compile Include="IMulePusherHq.cs" />
+    <Compile Include="Model\DeleteSend.cs" />
+    <Compile Include="Model\HqResult.cs" />
+    <Compile Include="Model\PanelHqUserInfo.cs" />
+    <Compile Include="Model\PanelPersonSend.cs" />
+    <Compile Include="Model\PanelSearchSend.cs" />
+    <Compile Include="Model\SearchInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PushSummary.cs" />
-    <Compile Include="Result\BankCardCheckResult.cs" />
-    <Compile Include="Result\BaseStringResult.cs" />
-    <Compile Include="Result\DeviceListResult.cs" />
-    <Compile Include="Result\DeviceStateResult.cs" />
-    <Compile Include="Result\LoginResult.cs" />
-    <Compile Include="Result\OrganizationListResult.cs" />
-    <Compile Include="Result\ProjectCountResult.cs" />
-    <Compile Include="Result\ProjectListResult.cs" />
-    <Compile Include="Result\BaseResult.cs" />
-    <Compile Include="Result\TeamListResult.cs" />
-    <Compile Include="Result\WorkerListResult.cs" />
-    <Compile Include="Result\WorkerProjectListResult.cs" />
-    <Compile Include="Result\WorkerResult.cs" />
-    <Compile Include="Result\WorkerTypeListResult.cs" />
-    <Compile Include="Send\AddJiaZiWorkerSend.cs" />
-    <Compile Include="Send\AddWorerkSend.cs" />
-    <Compile Include="Send\BaseSend.cs" />
-    <Compile Include="Send\DeviceSend.cs" />
-    <Compile Include="Send\WorkersSend.cs" />
-    <Compile Include="Worker\GeBankCardCheckApi.cs" />
-    <Compile Include="Worker\GeTeamsApi.cs" />
-    <Compile Include="Worker\GetOrganizationApi.cs" />
-    <Compile Include="Worker\GetWorkerApi.cs" />
-    <Compile Include="Worker\GetWorkerIsExistApi.cs" />
-    <Compile Include="Worker\GetWorkersProjectApi.cs" />
-    <Compile Include="Worker\GetWorkersApi.cs" />
-    <Compile Include="Worker\GetWorkerTypesApi.cs" />
-    <Compile Include="Worker\SetWorkerApi.cs" />
-    <Compile Include="Worker\SetWorkerProjectApi.cs" />
+    <Compile Include="PushSummaryHq.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KtpAcs.Infrastructure\KtpAcs.Infrastructure.csproj">
-      <Project>{53A463E8-D6FF-413D-A95B-6089EF60003E}</Project>
+      <Project>{53a463e8-d6ff-413d-a95b-6089ef60003e}</Project>
       <Name>KtpAcs.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KtpAcs.KtpApiService\KtpAcs.KtpApiService.csproj">
+      <Project>{AABB35B6-2A05-4178-9B95-FC6608A0F9E9}</Project>
+      <Name>KtpAcs.KtpApiService</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

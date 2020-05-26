@@ -65,14 +65,28 @@ namespace KtpAcs.WinForm.Jijian.Device
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory + @"同步失败人员_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
-            if (dt2csv(WorkSysFail.list, path))
-            {
-                System.Diagnostics.Process.Start(path);//打开指定路径下的文件
-                                                       // MessageBox.Show("导出成功,文件位置:" + path);
-            }
-            else { MessageBox.Show("导出失败"); }
 
+            try
+            {
+                string path = AppDomain.CurrentDomain.BaseDirectory + @"Excel\";
+                if (Directory.Exists(path) == false)
+                {
+                    Directory.CreateDirectory(path);
+                }
+                path += "同步失败人员_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xls";
+                if (dt2csv(WorkSysFail.list, path))
+                {
+                    System.Diagnostics.Process.Start(path);//打开指定路径下的文件
+                                                           // MessageBox.Show("导出成功,文件位置:" + path);
+                }
+                else { MessageBox.Show("导出失败"); }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageHelper.Show("导出失败:" + ex.Message, ex);
+            }
 
         }
 
@@ -82,7 +96,7 @@ namespace KtpAcs.WinForm.Jijian.Device
 
             keys.Add("workerType", "工人类型");
             keys.Add("name", "姓名");
-            keys.Add("phone", "手机号");
+            keys.Add("phone", "手机号 ");
             keys.Add("sex", "性别");
             keys.Add("idCard", "身份证");
             keys.Add("reason", "同步失败原因");
@@ -98,39 +112,52 @@ namespace KtpAcs.WinForm.Jijian.Device
         /// /// <param name="columname">字段标题,逗号分隔</param>       
         public bool dt2csv(List<WorkerList> list, string strFilePath)
         {
-            try
+
+
+
+            StreamWriter strmWriterObj = new StreamWriter(strFilePath, false, System.Text.Encoding.UTF8);
+
+            var showCol = GetShowData();
+            StringBuilder stringBuilder = new StringBuilder();
+            //获取标题
+            foreach (var item in showCol)
             {
-
-
-
-                StreamWriter strmWriterObj = new StreamWriter(strFilePath, false, System.Text.Encoding.UTF8);
-
-                var showCol = GetShowData();
-                StringBuilder stringBuilder = new StringBuilder();
-                //获取标题
-                foreach (var item in showCol)
-                {
-                    stringBuilder.Append(item.Value + ",");
-                }
-
-                strmWriterObj.WriteLine(stringBuilder.ToString());
-
-                stringBuilder.Clear();
-                foreach (WorkerList item in list)
-                {
-                    stringBuilder.Append(item.workerType + ",");
-                    stringBuilder.Append(item.name + ",");
-                    stringBuilder.Append(item.phone + ",");
-                    stringBuilder.Append(item.sex + ",");
-                    stringBuilder.Append(item.idCard + "       ,");
-                    stringBuilder.Append(item.reason);
-                }
-
-                strmWriterObj.WriteLine(stringBuilder.ToString());
-
-                strmWriterObj.Close(); return true;
+                // stringBuilder.Append("<th>"+item.Value + "</th>");
+                stringBuilder.Append(item.Value + ",\t");
             }
-            catch { return false; }
+            //strmWriterObj.WriteLine("<table>");
+            //strmWriterObj.WriteLine("<tr>");
+            strmWriterObj.WriteLine(stringBuilder.ToString());
+            // strmWriterObj.WriteLine("</tr>");
+
+            foreach (WorkerList item in list)
+            {
+                stringBuilder.Clear();
+                //strmWriterObj.WriteLine("<tr>");
+                //stringBuilder.Append("<td>"+item.workerType + "</td>");
+                //stringBuilder.Append("<td>" + item.name + "</td>");
+                //stringBuilder.Append("<td>" + item.phone + "</td>");
+                //stringBuilder.Append("<td>" + item.sex + "</td>");
+                //stringBuilder.Append("<td>" + item.idCard + "</td>");
+                //stringBuilder.Append("<td>" + item.reason + "</td>");
+                stringBuilder.Append(item.workerType + ",\t");
+                stringBuilder.Append(item.name + ",\t");
+                stringBuilder.Append(item.phone + ",\t");
+                stringBuilder.Append(item.sex + ",\t");
+                stringBuilder.Append(item.idCard + ",\t");
+                stringBuilder.Append(item.reason + ",\t");
+                // strmWriterObj.WriteLine("</tr>");
+                // strmWriterObj.WriteLine(Environment.NewLine);
+                strmWriterObj.WriteLine(stringBuilder.ToString());
+            }
+
+
+
+
+            //  strmWriterObj.WriteLine("</table>");
+            strmWriterObj.Close(); return true;
+
+
         }
 
 

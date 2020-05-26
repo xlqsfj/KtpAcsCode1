@@ -81,7 +81,7 @@ namespace KtpAcs.WinForm.Jijian
 
         public void GetDevice()
         {
-            
+
 
             try
             {
@@ -111,7 +111,9 @@ namespace KtpAcs.WinForm.Jijian
                         {
                             try
                             {
-                                this.BeginInvoke((EventHandler)delegate
+                                if (this.IsHandleCreated)
+                                {
+                                    this.BeginInvoke((EventHandler)delegate
                                 {
 
                                     this.gridControl.DataSource = data.list;
@@ -119,6 +121,7 @@ namespace KtpAcs.WinForm.Jijian
                                     taskList.Clear();
                                     LoadingHelper.CloseForm();//关闭
                                 });
+                                }
                             }
                             catch (Exception)
                             {

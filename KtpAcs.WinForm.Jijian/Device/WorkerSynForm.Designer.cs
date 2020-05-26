@@ -36,18 +36,18 @@
             // pictureEdit1
             // 
             this.pictureEdit1.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.Loading4;
-            this.pictureEdit1.Location = new System.Drawing.Point(110, 38);
+            this.pictureEdit1.Location = new System.Drawing.Point(110, 41);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Size = new System.Drawing.Size(114, 96);
+            this.pictureEdit1.Size = new System.Drawing.Size(114, 103);
             this.pictureEdit1.TabIndex = 0;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(242, 77);
+            this.labelControl1.Location = new System.Drawing.Point(242, 82);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(72, 14);
+            this.labelControl1.Size = new System.Drawing.Size(72, 15);
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "同步中。。。";
             // 
@@ -55,9 +55,9 @@
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(429, 174);
+            this.ClientSize = new System.Drawing.Size(429, 186);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.pictureEdit1);
             this.Name = "WorkerSynForm";

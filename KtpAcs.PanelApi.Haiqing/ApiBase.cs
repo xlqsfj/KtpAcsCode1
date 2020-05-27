@@ -68,7 +68,7 @@ namespace KtpAcs.PanelApi.Haiqing
             set;
         }
 
-        private string panelUrl = "/LAPI/V1.0";
+        //private string panelUrl = "/LAPI/V1.0";
         private string _panelIp;
         /// <summary>
         /// 面板的ip号
@@ -83,7 +83,7 @@ namespace KtpAcs.PanelApi.Haiqing
                     _panelIp = value;
 
                 }
-                s_rootUrl = $"http://{_panelIp}{panelUrl}"; 
+                s_rootUrl = $"http://{_panelIp}"; 
             }
         }
 
@@ -197,11 +197,8 @@ namespace KtpAcs.PanelApi.Haiqing
             request.JsonSerializer = new RestJsonSerializer();
             request.BizName = this.BizEvent;
 
-            if (!string.IsNullOrEmpty(this.Token))
-            {//平台加 登录token验证
-                request.AddHeader("token", this.Token);
+            request.AddHeader("Authorization", $"Basic {FormatHelper.GetUserPwdToBase("admin", "admin")}");
 
-            }
             request.UserState = postdata;
             request.AddJsonBody(postdata);
             return request;

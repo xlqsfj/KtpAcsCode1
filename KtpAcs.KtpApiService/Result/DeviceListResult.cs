@@ -85,6 +85,8 @@ namespace KtpAcs.KtpApiService.Result
 
             public bool isSeleced { get; set; }
             public string deviceToServiceState { get; set; }
+
+            public string isNetwork { get; set; }
         }
 
     }

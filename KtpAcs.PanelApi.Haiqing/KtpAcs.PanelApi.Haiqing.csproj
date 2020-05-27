@@ -63,6 +63,7 @@
     <Compile Include="Api\PanelSearchPersonListApi.cs" />
     <Compile Include="Api\PanelSearchPersonNumApi.cs" />
     <Compile Include="IMulePusherHq.cs" />
+    <Compile Include="AddWorkerToHqPanel.cs" />
     <Compile Include="Model\DeleteSend.cs" />
     <Compile Include="Model\HqResult.cs" />
     <Compile Include="Model\PanelHqUserInfo.cs" />

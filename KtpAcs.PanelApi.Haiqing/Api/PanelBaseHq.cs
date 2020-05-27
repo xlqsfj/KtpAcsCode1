@@ -7,12 +7,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KtpAcs.PanelApi.Haiqing.Model;
+
 using KtpAcs.KtpApiService.Model;
 
 namespace KtpAcs.PanelApi.Haiqing.Api
 {
-  
+
     public class PanelBaseHq
     {
 
@@ -38,12 +38,7 @@ namespace KtpAcs.PanelApi.Haiqing.Api
         public static List<PanelHqUserInfo> GetPersonInfoList(string ip, int id = -1)
         {
 
-            //if (id > 0)
-            //{
-            //    var currentId = ipList[ip].Where(a => a.id == id.ToString()).ToList();
-            //    return currentId;
-
-            //}
+      
 
             PanelSearchSend panelSearchSend = new PanelSearchSend()
             {
@@ -157,7 +152,7 @@ namespace KtpAcs.PanelApi.Haiqing.Api
             PushSummaryHq pushSummary = PanelLibraryGet.Push();
             if (!pushSummary.Success)
             {
-                return 0;
+                return -1;
             }
             HqResult hqResult = pushSummary.ResponseData;
             return hqResult.info.PersonNum;
@@ -206,70 +201,7 @@ namespace KtpAcs.PanelApi.Haiqing.Api
 
         }
 
-        /// <summary>
-        /// 添加到面板
-        /// </summary>
-        /// <param name="info"></param>
-        public static void AddHqPanel(dynamic receiveData)
-        {
-
-
-            string beginDate = "";
-            string endDate = "";
-            int tempvalid = 0;
-            //进场截止时间
-            if (!string.IsNullOrEmpty(receiveData.planExitTime))
-            {
-                tempvalid = 1;
-                beginDate = FormatHelper.GetIsoDateTimeTString(DateTime.Now);
-                endDate = FormatHelper.GetIsoDateTimeTString(Convert.ToDateTime(receiveData.planExitTime));
-                //beginDate = "2019-12-23T14:25:03";
-                // endDate = "2019-12-23T15:00:00";
-
-            }
-
-            PanelPersonSend panelSearchSend = new PanelPersonSend()
-            {
-
-                _operator = "AddPerson",
-                info = new PanelHqUserInfo()
-                {
-                    DeviceID = GetDeviceId(receiveData.ip),
-                    IdCard = receiveData.usfz,
-                    CustomizeID = receiveData.userId,
-                    Name = receiveData.urealname,
-                    Telnum = receiveData.uname,
-                    Gender = receiveData.usex == 1 ? 0 : 1,
-                    ValidBegin = beginDate,
-                    ValidEnd = endDate,
-                    Tempvalid = tempvalid,
-                    RFIDCard = "",
-                    PersonUUID = ""
-                },
-                picinfo = receiveData.imgBase64
-
-            };
-            //返回设备的数量
-            IMulePusherHq PanelLibraryGet = new PanelAddPersonApi() { PanelIp = receiveData.ip, RequestParam = panelSearchSend };
-
-            PushSummaryHq pushSummary = PanelLibraryGet.Push();
-            if (!pushSummary.Success)
-            {
-                string panelMag = pushSummary.Message;
-                WorkSysFail.dicAddMag.Add(receiveData.ip, panelMag);
-            }
-            else
-            {
-
-
-
-                WorkSysFail.dicAddMag.Add(receiveData.ip, "添加成功");
-
-            }
-            HqResult hqResult = pushSummary.ResponseData;
-
-        }
-
+     
 
         /// <summary>
         /// 删除面板用户信息

@@ -44,6 +44,9 @@ namespace KtpAcs.KtpApiService.Result
             public string panelIp { get; set; }
             public int age { get; set; }
             public string birthday { get; set; }
+            /// <summary>
+            /// 身份证
+            /// </summary>
             public string idCard { get; set; }
             public string name { get; set; }
             public string phone { get; set; }

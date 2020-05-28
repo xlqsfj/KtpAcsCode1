@@ -177,14 +177,15 @@ namespace KtpAcs.WinForm.Jijian
 
                     //返回设备的数量
 
-                  
+
                     int count = new PanelBaseHq().GetPanelUserCount(list.deviceIp);
-                    if (count>=0)
+                    if (count >= 0)
                     {
 
                         //设备数量
 
                         list.deviceCount = count;
+                        list.deviceStatus = "是";
                     }
                     else
                     {
@@ -193,7 +194,10 @@ namespace KtpAcs.WinForm.Jijian
                     }
 
                 }
-                list.deviceStatus = isConn ? "是" : "否";
+                else
+                {
+                   list.deviceStatus = isConn ? "是" : "否";
+                }
                 list.isNetwork = new PanelBaseHq().GetIsNetworkServiceTest(list.deviceIp);
 
             }
@@ -347,7 +351,7 @@ namespace KtpAcs.WinForm.Jijian
 
             try
             {
-                if (e.Column.FieldName == "deviceStatus") //指定列
+                if (e.Column.FieldName == "deviceStatus") //是否连接
                 {
                     if ((string)e.CellValue == "否")  //条件  e.CellValue 为object类型
                         e.Appearance.BackColor = Color.FromArgb(0, 118, 248);
@@ -356,6 +360,11 @@ namespace KtpAcs.WinForm.Jijian
                 {
                     if ((string)e.CellValue == "否")  //条件  e.CellValue 为object类型
                         e.Appearance.BackColor = Color.FromArgb(0, 158, 178);
+                }
+                if (e.Column.FieldName == "isNetwork") //设备是否有网络
+                {
+                    if ((string)e.CellValue != "正常")  //条件  e.CellValue 为object类型
+                        e.Appearance.BackColor = Color.FromArgb(0, 158, 248);
                 }
 
             }

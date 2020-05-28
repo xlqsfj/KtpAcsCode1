@@ -365,20 +365,19 @@ namespace KtpAcs.WinForm.Jijian.Device
                 string img64 = "";
                 //保存图片
 
-                // items.userCertPic = "https://zj.ktpis.com/2345_201903190854504199064.jpg";
 
-                if (string.IsNullOrEmpty(items.userCertPic))
+                if (string.IsNullOrEmpty(items.facePic))
                 {
                     LogHelper.ExceptionLog("找不到人脸识别的图片详细错误");
                     AddSysFail(items, "找不到人脸识别的图片详细错误");
 
                     return;
                 }
-                string fileName = items.userCertPic.Substring(items.userCertPic.LastIndexOf("/", StringComparison.Ordinal) + 1);
+                string fileName = items.facePic.Substring(items.facePic.LastIndexOf("/", StringComparison.Ordinal) + 1);
                 try
                 {
 
-                    var picPhysicalFileName = FileIoHelper.GetImageFromUrl(items.userCertPic, fileName);
+                    var picPhysicalFileName = FileIoHelper.GetImageFromUrl(items.facePic, fileName);
                     // 图片转64位
                     var file = $"{ConfigHelper.CustomFilesDir}{picPhysicalFileName}";
                     img64 = FileIoHelper.GetFileBase64String(file);
@@ -390,7 +389,7 @@ namespace KtpAcs.WinForm.Jijian.Device
                     LogHelper.ExceptionLog(ex);
                     return;
                 }
-
+          
                 AddHqPanel(items);
 
 
@@ -416,14 +415,14 @@ namespace KtpAcs.WinForm.Jijian.Device
             string beginDate = "";
             string endDate = "";
             int tempvalid = 0;
-            //进场截止时间
-            if (!string.IsNullOrEmpty(receiveData.planExitTime))
-            {
-                tempvalid = 1;
-                beginDate = DateTime.Now.ToString();
-                endDate = receiveData.planExitTime;
+            ////进场截止时间
+            //if (!string.IsNullOrEmpty(receiveData.planExitTime))
+            //{
+            //    tempvalid = 1;
+            //    beginDate = DateTime.Now.ToString();
+            //    endDate = receiveData.planExitTime;
 
-            }
+            //}
 
             PanelPersonSend panelSearchSend = new PanelPersonSend()
             {
@@ -432,14 +431,14 @@ namespace KtpAcs.WinForm.Jijian.Device
                 info = new PanelHqUserInfo()
                 {
                     DeviceID = PanelBaseHq.GetDeviceId(receiveData.panelIp),
-                    IdCard = receiveData.usfz,
+                    IdCard = receiveData.idCard,
                     CustomizeID = receiveData.userId,
-                    Name = receiveData.urealname,
-                    Telnum = receiveData.uname,
-                    Gender = receiveData.usex == 1 ? 0 : 1,
-                    ValidBegin = beginDate,
-                    ValidEnd = endDate,
-                    Tempvalid = tempvalid,
+                    Name = receiveData.name,
+                    Telnum = receiveData.phone,
+                    Gender = receiveData.sex == "男" ? 0 : 1,
+                    //ValidBegin = beginDate,
+                    //ValidEnd = endDate,
+                    Tempvalid = 0,
                     RFIDCard = "",
                     PersonUUID = ""
                 },
@@ -471,7 +470,7 @@ namespace KtpAcs.WinForm.Jijian.Device
             try
             {
                 object isExit = null;
-                if (string.IsNullOrEmpty(items.idCard) || string.IsNullOrEmpty(items.name))
+                if ( string.IsNullOrEmpty(items.name))
                 {
 
                 }

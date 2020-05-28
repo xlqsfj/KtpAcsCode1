@@ -528,7 +528,7 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(51, 687);
+            this.txtPhone.Location = new System.Drawing.Point(51, 686);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(164, 22);
             this.txtPhone.TabIndex = 2;
@@ -598,7 +598,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(88, 669);
+            this.label15.Location = new System.Drawing.Point(88, 668);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(12, 15);
             this.label15.TabIndex = 352;
@@ -1017,15 +1017,15 @@
             // 
             // txtEmergencyContactName
             // 
-            this.txtEmergencyContactName.Location = new System.Drawing.Point(282, 691);
+            this.txtEmergencyContactName.Location = new System.Drawing.Point(283, 686);
             this.txtEmergencyContactName.Name = "txtEmergencyContactName";
             this.txtEmergencyContactName.Properties.AutoHeight = false;
-            this.txtEmergencyContactName.Size = new System.Drawing.Size(164, 21);
+            this.txtEmergencyContactName.Size = new System.Drawing.Size(164, 22);
             this.txtEmergencyContactName.TabIndex = 3;
             // 
             // txtEmergencyContactPhone
             // 
-            this.txtEmergencyContactPhone.Location = new System.Drawing.Point(528, 689);
+            this.txtEmergencyContactPhone.Location = new System.Drawing.Point(529, 686);
             this.txtEmergencyContactPhone.Name = "txtEmergencyContactPhone";
             this.txtEmergencyContactPhone.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtEmergencyContactPhone.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
@@ -1134,7 +1134,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(0, 100);
-            this.ClientSize = new System.Drawing.Size(1299, 962);
+            this.ClientSize = new System.Drawing.Size(1367, 962);
             this.Controls.Add(this.panelBankInfo);
             this.Controls.Add(this.panelProjectInfo);
             this.Controls.Add(this.ComEducationLevel);

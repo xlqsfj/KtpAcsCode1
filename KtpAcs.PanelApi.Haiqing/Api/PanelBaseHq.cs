@@ -180,6 +180,8 @@ namespace KtpAcs.PanelApi.Haiqing.Api
             //    return "连接异常";
             //}
             HqResult hqResult = pushSummary.ResponseData;
+            if (hqResult == null)
+                return "未连接";
             switch (hqResult.code)
             {
                 case 463:

@@ -185,6 +185,7 @@ namespace KtpAcs.WinForm.Jijian
                         //设备数量
 
                         list.deviceCount = liblist.MemberNum;
+                        list.deviceStatus = "是";
                     }
                     else
                     {
@@ -193,7 +194,10 @@ namespace KtpAcs.WinForm.Jijian
                     }
 
                 }
-                list.deviceStatus = isConn ? "是" : "否";
+                else
+                {
+                    list.deviceStatus = isConn ? "是" : "否";
+                }
 
 
             }

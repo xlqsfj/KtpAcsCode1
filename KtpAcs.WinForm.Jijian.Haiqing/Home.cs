@@ -51,7 +51,7 @@ namespace KtpAcs.WinForm.Jijian
             {
                 if (ip.AddressFamily.ToString() == "InterNetwork")
                 {
-                    this.Text = "开太平云建筑      本地IP:" + ip.ToString();
+                    this.Text = "开太平云建筑-Hq      本地IP:" + ip.ToString();
                 }
 
             }

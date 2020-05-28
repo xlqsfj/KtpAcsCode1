@@ -62,7 +62,6 @@
             this.btnPictureReverse = new DevExpress.XtraEditors.SimpleButton();
             this.btnSubmit = new DevExpress.XtraEditors.SimpleButton();
             this.txtIdCard = new DevExpress.XtraEditors.TextEdit();
-            this.txtPhone = new DevExpress.XtraEditors.TextEdit();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.txtNativePlace = new DevExpress.XtraEditors.TextEdit();
             this.txtAvg = new DevExpress.XtraEditors.TextEdit();
@@ -102,8 +101,6 @@
             this.f2 = new DevExpress.XtraEditors.PictureEdit();
             this.txtBirthday = new DevExpress.XtraEditors.DateEdit();
             this.txtGender = new DevExpress.XtraEditors.RadioGroup();
-            this.txtEmergencyContactName = new DevExpress.XtraEditors.TextEdit();
-            this.txtEmergencyContactPhone = new DevExpress.XtraEditors.TextEdit();
             this.txtBankName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
@@ -113,6 +110,14 @@
             this.label19 = new System.Windows.Forms.Label();
             this.txtCardAgency = new DevExpress.XtraEditors.TextEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.txtPhone = new DevExpress.XtraEditors.TextEdit();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtEmergencyContactName = new DevExpress.XtraEditors.TextEdit();
+            this.txtEmergencyContactPhone = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.label21 = new System.Windows.Forms.Label();
+            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelProjectInfo)).BeginInit();
             this.panelProjectInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ComOrganizationUuid.Properties)).BeginInit();
@@ -126,7 +131,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtStartTime.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdCard.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNativePlace.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAvg.Properties)).BeginInit();
@@ -140,14 +144,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGender.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmergencyContactName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmergencyContactPhone.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBankName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBankInfo)).BeginInit();
             this.panelBankInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FormErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCardAgency.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmergencyContactName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmergencyContactPhone.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelProjectInfo
@@ -525,13 +533,6 @@
             this.txtIdCard.Name = "txtIdCard";
             this.txtIdCard.Size = new System.Drawing.Size(164, 22);
             this.txtIdCard.TabIndex = 363;
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Location = new System.Drawing.Point(51, 687);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(164, 22);
-            this.txtPhone.TabIndex = 2;
             // 
             // txtName
             // 
@@ -1015,23 +1016,6 @@
             this.txtGender.Size = new System.Drawing.Size(164, 21);
             this.txtGender.TabIndex = 356;
             // 
-            // txtEmergencyContactName
-            // 
-            this.txtEmergencyContactName.Location = new System.Drawing.Point(282, 691);
-            this.txtEmergencyContactName.Name = "txtEmergencyContactName";
-            this.txtEmergencyContactName.Properties.AutoHeight = false;
-            this.txtEmergencyContactName.Size = new System.Drawing.Size(164, 21);
-            this.txtEmergencyContactName.TabIndex = 3;
-            // 
-            // txtEmergencyContactPhone
-            // 
-            this.txtEmergencyContactPhone.Location = new System.Drawing.Point(528, 689);
-            this.txtEmergencyContactPhone.Name = "txtEmergencyContactPhone";
-            this.txtEmergencyContactPhone.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.txtEmergencyContactPhone.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.txtEmergencyContactPhone.Size = new System.Drawing.Size(164, 22);
-            this.txtEmergencyContactPhone.TabIndex = 4;
-            // 
             // txtBankName
             // 
             this.txtBankName.EditValue = "根据输入的银行卡自动识别";
@@ -1065,6 +1049,10 @@
             // panelBankInfo
             // 
             this.panelBankInfo.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelBankInfo.Controls.Add(this.txtPhone);
+            this.panelBankInfo.Controls.Add(this.label20);
+            this.panelBankInfo.Controls.Add(this.txtEmergencyContactName);
+            this.panelBankInfo.Controls.Add(this.txtEmergencyContactPhone);
             this.panelBankInfo.Controls.Add(this.labelControl23);
             this.panelBankInfo.Controls.Add(this.pictureEdit1);
             this.panelBankInfo.Controls.Add(this.labelControl15);
@@ -1126,6 +1114,74 @@
             this.simpleButton1.Text = "取消";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(131, 46);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(164, 22);
+            this.txtPhone.TabIndex = 377;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.ForeColor = System.Drawing.Color.Red;
+            this.label20.Location = new System.Drawing.Point(168, 28);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(12, 15);
+            this.label20.TabIndex = 380;
+            this.label20.Text = "*";
+            // 
+            // txtEmergencyContactName
+            // 
+            this.txtEmergencyContactName.Location = new System.Drawing.Point(363, 46);
+            this.txtEmergencyContactName.Name = "txtEmergencyContactName";
+            this.txtEmergencyContactName.Properties.AutoHeight = false;
+            this.txtEmergencyContactName.Size = new System.Drawing.Size(164, 22);
+            this.txtEmergencyContactName.TabIndex = 378;
+            // 
+            // txtEmergencyContactPhone
+            // 
+            this.txtEmergencyContactPhone.Location = new System.Drawing.Point(609, 46);
+            this.txtEmergencyContactPhone.Name = "txtEmergencyContactPhone";
+            this.txtEmergencyContactPhone.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtEmergencyContactPhone.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtEmergencyContactPhone.Size = new System.Drawing.Size(164, 22);
+            this.txtEmergencyContactPhone.TabIndex = 379;
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Location = new System.Drawing.Point(51, 685);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(164, 22);
+            this.textEdit1.TabIndex = 386;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.ForeColor = System.Drawing.Color.Red;
+            this.label21.Location = new System.Drawing.Point(88, 667);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(12, 15);
+            this.label21.TabIndex = 389;
+            this.label21.Text = "*";
+            // 
+            // textEdit2
+            // 
+            this.textEdit2.Location = new System.Drawing.Point(283, 685);
+            this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Properties.AutoHeight = false;
+            this.textEdit2.Size = new System.Drawing.Size(164, 22);
+            this.textEdit2.TabIndex = 387;
+            // 
+            // textEdit3
+            // 
+            this.textEdit3.Location = new System.Drawing.Point(529, 685);
+            this.textEdit3.Name = "textEdit3";
+            this.textEdit3.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.textEdit3.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.textEdit3.Size = new System.Drawing.Size(164, 22);
+            this.textEdit3.TabIndex = 388;
+            // 
             // AddWorker
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -1134,7 +1190,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(0, 100);
-            this.ClientSize = new System.Drawing.Size(1299, 962);
+            this.ClientSize = new System.Drawing.Size(1333, 962);
+            this.Controls.Add(this.textEdit1);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.textEdit2);
+            this.Controls.Add(this.textEdit3);
             this.Controls.Add(this.panelBankInfo);
             this.Controls.Add(this.panelProjectInfo);
             this.Controls.Add(this.ComEducationLevel);
@@ -1153,7 +1213,6 @@
             this.Controls.Add(this.btnPictureReverse);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtIdCard);
-            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtCardAgency);
             this.Controls.Add(this.txtNativePlace);
@@ -1196,8 +1255,6 @@
             this.Controls.Add(this.f2);
             this.Controls.Add(this.txtBirthday);
             this.Controls.Add(this.txtGender);
-            this.Controls.Add(this.txtEmergencyContactName);
-            this.Controls.Add(this.txtEmergencyContactPhone);
             this.Name = "AddWorker";
             this.Text = "AddWorker";
             this.Load += new System.EventHandler(this.AddWorker_Load);
@@ -1215,7 +1272,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtStartTime.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdCard.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNativePlace.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAvg.Properties)).EndInit();
@@ -1229,8 +1285,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGender.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmergencyContactName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmergencyContactPhone.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBankName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBankInfo)).EndInit();
@@ -1238,6 +1292,12 @@
             this.panelBankInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FormErrorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCardAgency.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmergencyContactName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmergencyContactPhone.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1277,7 +1337,6 @@
         private DevExpress.XtraEditors.SimpleButton btnPictureReverse;
         private DevExpress.XtraEditors.SimpleButton btnSubmit;
         private DevExpress.XtraEditors.TextEdit txtIdCard;
-        private DevExpress.XtraEditors.TextEdit txtPhone;
         private DevExpress.XtraEditors.TextEdit txtName;
         private DevExpress.XtraEditors.TextEdit txtNativePlace;
         private DevExpress.XtraEditors.TextEdit txtAvg;
@@ -1317,8 +1376,6 @@
         private DevExpress.XtraEditors.PictureEdit f2;
         private DevExpress.XtraEditors.DateEdit txtBirthday;
         private DevExpress.XtraEditors.RadioGroup txtGender;
-        private DevExpress.XtraEditors.TextEdit txtEmergencyContactName;
-        private DevExpress.XtraEditors.TextEdit txtEmergencyContactPhone;
         private DevExpress.XtraEditors.TextEdit txtBankName;
         private DevExpress.XtraEditors.LabelControl labelControl23;
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
@@ -1328,5 +1385,13 @@
         private System.Windows.Forms.Label label19;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.TextEdit txtPhone;
+        private System.Windows.Forms.Label label20;
+        private DevExpress.XtraEditors.TextEdit txtEmergencyContactName;
+        private DevExpress.XtraEditors.TextEdit txtEmergencyContactPhone;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private System.Windows.Forms.Label label21;
+        private DevExpress.XtraEditors.TextEdit textEdit2;
+        private DevExpress.XtraEditors.TextEdit textEdit3;
     }
 }

@@ -220,7 +220,7 @@ namespace KtpAcs.PanelApi.Haiqing.Api
                 info = new UserDelete()
                 {
                     CustomizeID = attrId,
-                    TotalNum = 0,
+                    TotalNum = 1,
                     IdType = 0,
                     DeviceID = PanelBaseHq.GetDeviceId(deviceIp),
 

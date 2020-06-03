@@ -236,5 +236,10 @@ namespace KtpAcs.WinForm.Jijian.Workers
             }
 
         }
+
+        private void WorkersGridPager_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -117,7 +117,11 @@ namespace KtpAcsAotoUpdate
                 DownloadConfirm dc = new DownloadConfirm(downloadList);
 
                 if (this.OnShow != null)
+                {
+                    dc.StartPosition = FormStartPosition.CenterParent;
                     this.OnShow();
+                  
+                }
 
                 if (DialogResult.OK == dc.ShowDialog())
                 {

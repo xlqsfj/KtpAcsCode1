@@ -103,44 +103,41 @@ namespace KtpAcs.WinForm.Jijian
                         GetDeviceHeart(data);
                         Parallel.ForEach(data.list, (list, DeviceList) =>
                         {
+                            GetDeviceConnect(list);
                             taskList.Add(taskFactory.StartNew(() => GetDeviceConnect(list)));
-                        });
 
-                        taskFactory.ContinueWhenAll(taskList.ToArray(), a =>
-                        {
-                            try
+
+                            taskFactory.ContinueWhenAll(taskList.ToArray(), a =>
                             {
-                                if (this.IsHandleCreated)
-                                {
-                                    this.BeginInvoke((EventHandler)delegate
-                                {
+                                //if (this.IsHandleCreated)
+                                //{
+                                //    this.BeginInvoke((EventHandler)delegate
+                                //{
 
-                                    this.gridControl.DataSource = data.list;
+                                this.gridControl.DataSource = data.list;
 
-                                    taskList.Clear();
-                                    LoadingHelper.CloseForm();//关闭
-                                });
-                                }
-                            }
-                            catch (Exception)
-                            {
+                                taskList.Clear();
+                                LoadingHelper.CloseForm();//关闭
+                                                          //});
+                                                          //    }
+                            });
 
-                                throw;
-                            }
+
+
+
+                            panelContent.Visible = false;
+                            gridControl.Visible = true;
                         });
-
-                        panelContent.Visible = false;
-                        gridControl.Visible = true;
                     }
                     else
                     {
                         panelContent.Visible = true;
                         gridControl.Visible = false;
                         //LoadingHelper.CloseForm();//关闭
+
                     }
 
                 }
-
             }
             catch (Exception ex)
             {
@@ -196,7 +193,7 @@ namespace KtpAcs.WinForm.Jijian
                 }
                 else
                 {
-                   list.deviceStatus = isConn ? "是" : "否";
+                    list.deviceStatus = isConn ? "是" : "否";
                 }
                 list.isNetwork = new PanelBaseHq().GetIsNetworkServiceTest(list.deviceIp);
 

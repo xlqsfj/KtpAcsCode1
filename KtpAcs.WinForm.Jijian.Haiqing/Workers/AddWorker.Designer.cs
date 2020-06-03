@@ -1133,8 +1133,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.AutoScrollMargin = new System.Drawing.Size(0, 100);
-            this.ClientSize = new System.Drawing.Size(1367, 962);
+            this.AutoScrollMargin = new System.Drawing.Size(0, 800);
+            this.ClientSize = new System.Drawing.Size(1267, 962);
             this.Controls.Add(this.panelBankInfo);
             this.Controls.Add(this.panelProjectInfo);
             this.Controls.Add(this.ComEducationLevel);

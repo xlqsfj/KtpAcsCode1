@@ -1,5 +1,5 @@
 ﻿
-using CCWin;
+
 
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace KtpAcsAotoUpdate
 {
-    public partial class DownloadProgress : Skin_Mac
+    public partial class DownloadProgress : Form
     {
         private bool isFinished = false;
         private List<DownloadFileInfo> downloadFileList = null;

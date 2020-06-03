@@ -22,6 +22,7 @@ using System.Configuration;
 using System.Reflection;
 using System.Net;
 
+
 namespace KtpAcs.WinForm.Jijian
 {
     public partial class Home : DevExpress.XtraEditors.XtraForm
@@ -33,13 +34,16 @@ namespace KtpAcs.WinForm.Jijian
         public Home()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.MaximumSize = new Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
             this.WindowState = FormWindowState.Maximized;
-            //this.FormBorderStyle = FormBorderStyle.None;
+
             GetIp();
             GetProjectList();
             GetProjectCount();
             flowDevice_Click(null, null);
         }
+
 
         public void GetIp()
         {
@@ -51,15 +55,20 @@ namespace KtpAcs.WinForm.Jijian
             {
                 if (ip.AddressFamily.ToString() == "InterNetwork")
                 {
-                    this.Text = "开太平云建筑-Hq      本地IP:" + ip.ToString();
+
+                    this.labIP.Text = ip.ToString();
                 }
 
             }
 
         }
 
+
+
         [DllImport("user32.dll")]
         private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
+
+
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == 0x112)
@@ -186,7 +195,7 @@ namespace KtpAcs.WinForm.Jijian
                     this.labwei.Text = noNum.ToString();
 
                     //项目已入场人员
-                  //  this.labwei.Text = projectCountResult.projectManageNum.ToString() ;
+                    //  this.labwei.Text = projectCountResult.projectManageNum.ToString() ;
 
                 }
             }
@@ -386,7 +395,7 @@ namespace KtpAcs.WinForm.Jijian
             catch (Exception ex)
             {
                 MessageHelper.Show(ex.Message, ex);
-         
+
             }
 
         }
@@ -598,6 +607,110 @@ namespace KtpAcs.WinForm.Jijian
             {
                 h.Handled = true;
             }
+        }
+
+        private void picMin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void picMax_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+
+            }
+            else
+                this.WindowState = FormWindowState.Normal;
+        }
+
+        private void pictureEdit11_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        bool beginMove = false;//初始化鼠标位置
+        int currentXPosition;
+        int currentYPosition;
+        private void spl_Panel2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (beginMove)
+            {
+                this.WindowState = FormWindowState.Normal;
+                this.Left += MousePosition.X - currentXPosition;//根据鼠标x坐标确定窗体的左边坐标x
+                this.Top += MousePosition.Y - currentYPosition;//根据鼠标的y坐标窗体的顶部，即Y坐标
+                currentXPosition = MousePosition.X;
+                currentYPosition = MousePosition.Y;
+            }
+        }
+
+        private void spl_Panel2_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+            
+                beginMove = true;
+                currentXPosition = MousePosition.X;//鼠标的x坐标为当前窗体左上角x坐标
+                currentYPosition = MousePosition.Y;//鼠标的y坐标为当前窗体左上角y坐标
+            }
+        }
+
+        private void spl_Panel2_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                currentXPosition = 0; //设置初始状态
+                currentYPosition = 0;
+                beginMove = false;
+            }
+        }
+
+        private void spl_Panel1_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void spl_Panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+               
+                beginMove = true;
+                currentXPosition = MousePosition.X;//鼠标的x坐标为当前窗体左上角x坐标
+                currentYPosition = MousePosition.Y;//鼠标的y坐标为当前窗体左上角y坐标
+            }
+        }
+
+        private void spl_Panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (beginMove)
+            {
+                this.WindowState = FormWindowState.Normal;
+                this.Left += MousePosition.X - currentXPosition;//根据鼠标x坐标确定窗体的左边坐标x
+                this.Top += MousePosition.Y - currentYPosition;//根据鼠标的y坐标窗体的顶部，即Y坐标
+                currentXPosition = MousePosition.X;
+                currentYPosition = MousePosition.Y;
+            }
+        }
+
+        private void spl_Panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                currentXPosition = 0; //设置初始状态
+                currentYPosition = 0;
+                beginMove = false;
+            }
+        }
+
+        private void panelHead_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, panelHead.ClientRectangle,
+                Color.White, 0, ButtonBorderStyle.Solid,//左边　　　　　
+         Color.Gainsboro, 1, ButtonBorderStyle.Solid, //上边　　　
+                Color.White, 0, ButtonBorderStyle.Solid, //右边　　　　　
+                Color.White, 0, ButtonBorderStyle.Solid); ;//底边
+
         }
     }
 }

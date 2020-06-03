@@ -65,15 +65,15 @@
             // 
             this.progressBarTotal.Location = new System.Drawing.Point(10, 77);
             this.progressBarTotal.Name = "progressBarTotal";
-            this.progressBarTotal.Size = new System.Drawing.Size(301, 24);
+            this.progressBarTotal.Size = new System.Drawing.Size(331, 24);
             this.progressBarTotal.Step = 1;
             this.progressBarTotal.TabIndex = 12;
             // 
             // progressBarCurrent
             // 
-            this.progressBarCurrent.Location = new System.Drawing.Point(9, 38);
+            this.progressBarCurrent.Location = new System.Drawing.Point(10, 38);
             this.progressBarCurrent.Name = "progressBarCurrent";
-            this.progressBarCurrent.Size = new System.Drawing.Size(302, 21);
+            this.progressBarCurrent.Size = new System.Drawing.Size(332, 21);
             this.progressBarCurrent.Step = 1;
             this.progressBarCurrent.TabIndex = 13;
             // 
@@ -99,7 +99,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(332, 140);
+            this.ClientSize = new System.Drawing.Size(349, 140);
             this.Controls.Add(this.skinLabel1);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.progressBarTotal);
@@ -107,7 +107,7 @@
             this.Controls.Add(this.labelCurrentItem);
             this.Controls.Add(this.label1);
             this.Name = "DownloadProgress";
-            this.Text = "";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.OnFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -33,8 +33,10 @@ namespace KtpAcs.WinForm.Jijian
         public Home()
         {
             InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
+           this.WindowState = FormWindowState.Maximized;
             //this.FormBorderStyle = FormBorderStyle.None;
+
+           
             GetIp();
             GetProjectList();
             GetProjectCount();
@@ -186,7 +188,7 @@ namespace KtpAcs.WinForm.Jijian
                     this.labwei.Text = noNum.ToString();
 
                     //项目已入场人员
-                  //  this.labwei.Text = projectCountResult.projectManageNum.ToString() ;
+                    //  this.labwei.Text = projectCountResult.projectManageNum.ToString() ;
 
                 }
             }
@@ -386,7 +388,7 @@ namespace KtpAcs.WinForm.Jijian
             catch (Exception ex)
             {
                 MessageHelper.Show(ex.Message, ex);
-         
+
             }
 
         }

@@ -36,6 +36,11 @@
             DevExpress.Utils.ContextButton contextButton5 = new DevExpress.Utils.ContextButton();
             DevExpress.Utils.ContextButton contextButton6 = new DevExpress.Utils.ContextButton();
             DevExpress.Utils.ContextButton contextButton7 = new DevExpress.Utils.ContextButton();
+            DevExpress.Utils.ContextButton contextButton8 = new DevExpress.Utils.ContextButton();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
+            DevExpress.Utils.ContextButton contextButton9 = new DevExpress.Utils.ContextButton();
+            DevExpress.Utils.ContextButton contextButton10 = new DevExpress.Utils.ContextButton();
+            DevExpress.Utils.ContextButton contextButton11 = new DevExpress.Utils.ContextButton();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.spl = new DevExpress.XtraEditors.SplitContainerControl();
@@ -60,6 +65,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit5 = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEdit12 = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEdit11 = new DevExpress.XtraEditors.PictureEdit();
+            this.picMax = new DevExpress.XtraEditors.PictureEdit();
+            this.picMin = new DevExpress.XtraEditors.PictureEdit();
+            this.labIP = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.panelHead = new DevExpress.XtraEditors.PanelControl();
             this.pictureEdit7 = new DevExpress.XtraEditors.PictureEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -106,6 +118,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelContent)).BeginInit();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit5.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit12.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit11.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMax.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMin.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelHead)).BeginInit();
             this.panelHead.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit7.Properties)).BeginInit();
@@ -139,13 +155,26 @@
             this.spl.Panel1.Controls.Add(this.flowAuth);
             this.spl.Panel1.Controls.Add(this.flowAdmin);
             this.spl.Panel1.Text = "Panel1";
+            this.spl.Panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.spl_Panel1_MouseDown);
+            this.spl.Panel1.MouseEnter += new System.EventHandler(this.spl_Panel1_MouseEnter);
+            this.spl.Panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.spl_Panel1_MouseMove);
+            this.spl.Panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.spl_Panel1_MouseUp);
             this.spl.Panel2.Appearance.BackColor = System.Drawing.Color.White;
             this.spl.Panel2.Appearance.Options.UseBackColor = true;
-            this.spl.Panel2.AutoScroll = true;
             this.spl.Panel2.Controls.Add(this.panelContent);
+            this.spl.Panel2.Controls.Add(this.pictureEdit12);
+            this.spl.Panel2.Controls.Add(this.pictureEdit11);
+            this.spl.Panel2.Controls.Add(this.picMax);
+            this.spl.Panel2.Controls.Add(this.picMin);
+            this.spl.Panel2.Controls.Add(this.labIP);
+            this.spl.Panel2.Controls.Add(this.label11);
+            this.spl.Panel2.Controls.Add(this.label9);
             this.spl.Panel2.Controls.Add(this.panelHead);
             this.spl.Panel2.Text = "Panel2";
-            this.spl.Size = new System.Drawing.Size(1412, 599);
+            this.spl.Panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.spl_Panel2_MouseDown);
+            this.spl.Panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.spl_Panel2_MouseMove);
+            this.spl.Panel2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.spl_Panel2_MouseUp);
+            this.spl.Size = new System.Drawing.Size(1415, 730);
             this.spl.SplitterPosition = 89;
             this.spl.TabIndex = 0;
             // 
@@ -155,7 +184,7 @@
             this.pictureEdit8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureEdit8.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.cd;
             this.pictureEdit8.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.pictureEdit8.Location = new System.Drawing.Point(36, 514);
+            this.pictureEdit8.Location = new System.Drawing.Point(36, 573);
             this.pictureEdit8.Name = "pictureEdit8";
             this.pictureEdit8.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEdit8.Properties.Appearance.Options.UseBackColor = true;
@@ -210,7 +239,7 @@
             this.picExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picExit.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.img_exit;
             this.picExit.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.picExit.Location = new System.Drawing.Point(24, 546);
+            this.picExit.Location = new System.Drawing.Point(24, 605);
             this.picExit.Name = "picExit";
             this.picExit.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.picExit.Properties.Appearance.Options.UseBackColor = true;
@@ -427,10 +456,10 @@
             this.panelContent.Controls.Add(this.pictureEdit5);
             this.panelContent.FireScrollEventOnMouseWheel = true;
             this.panelContent.InvertTouchScroll = true;
-            this.panelContent.Location = new System.Drawing.Point(1, 117);
+            this.panelContent.Location = new System.Drawing.Point(1, 151);
             this.panelContent.Margin = new System.Windows.Forms.Padding(0);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1309, 477);
+            this.panelContent.Size = new System.Drawing.Size(1299, 570);
             this.panelContent.TabIndex = 5;
             // 
             // label7
@@ -484,6 +513,129 @@
             this.pictureEdit5.Size = new System.Drawing.Size(553, 261);
             this.pictureEdit5.TabIndex = 0;
             // 
+            // pictureEdit12
+            // 
+            this.pictureEdit12.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.logo;
+            this.pictureEdit12.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.pictureEdit12.Location = new System.Drawing.Point(1, 4);
+            this.pictureEdit12.Name = "pictureEdit12";
+            this.pictureEdit12.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEdit12.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit12.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            contextButton8.Caption = "1111";
+            contextButton8.Id = new System.Guid("3304b299-e507-426a-ba8e-f38864acf415");
+            contextButton8.ImageOptionsCollection.ItemHovered.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.off;
+            contextButton8.ImageOptionsCollection.ItemNormal.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.shuaxin;
+            contextButton8.ImageOptionsCollection.ItemPressed.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading3;
+            contextButton8.Name = "contextButton1";
+            this.pictureEdit12.Properties.ContextButtons.Add(contextButton8);
+            this.pictureEdit12.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit12.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.pictureEdit12.Size = new System.Drawing.Size(48, 30);
+            this.pictureEdit12.TabIndex = 3;
+            // 
+            // pictureEdit11
+            // 
+            this.pictureEdit11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEdit11.EditValue = ((object)(resources.GetObject("pictureEdit11.EditValue")));
+            this.pictureEdit11.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.pictureEdit11.Location = new System.Drawing.Point(1265, 3);
+            this.pictureEdit11.Name = "pictureEdit11";
+            this.pictureEdit11.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEdit11.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit11.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            contextButton9.Caption = "1111";
+            contextButton9.Id = new System.Guid("3304b299-e507-426a-ba8e-f38864acf415");
+            contextButton9.ImageOptionsCollection.ItemHovered.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.off;
+            contextButton9.ImageOptionsCollection.ItemNormal.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.shuaxin;
+            contextButton9.ImageOptionsCollection.ItemPressed.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading3;
+            contextButton9.Name = "contextButton1";
+            this.pictureEdit11.Properties.ContextButtons.Add(contextButton9);
+            this.pictureEdit11.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit11.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.pictureEdit11.Size = new System.Drawing.Size(23, 29);
+            this.pictureEdit11.TabIndex = 3;
+            this.pictureEdit11.Click += new System.EventHandler(this.pictureEdit11_Click);
+            // 
+            // picMax
+            // 
+            this.picMax.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picMax.EditValue = ((object)(resources.GetObject("picMax.EditValue")));
+            this.picMax.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.picMax.Location = new System.Drawing.Point(1220, 3);
+            this.picMax.Name = "picMax";
+            this.picMax.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.picMax.Properties.Appearance.Options.UseBackColor = true;
+            this.picMax.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            contextButton10.Caption = "1111";
+            contextButton10.Id = new System.Guid("3304b299-e507-426a-ba8e-f38864acf415");
+            contextButton10.ImageOptionsCollection.ItemHovered.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.off;
+            contextButton10.ImageOptionsCollection.ItemNormal.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.shuaxin;
+            contextButton10.ImageOptionsCollection.ItemPressed.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading3;
+            contextButton10.Name = "contextButton1";
+            this.picMax.Properties.ContextButtons.Add(contextButton10);
+            this.picMax.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.picMax.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.picMax.Size = new System.Drawing.Size(23, 29);
+            this.picMax.TabIndex = 3;
+            this.picMax.Click += new System.EventHandler(this.picMax_Click);
+            // 
+            // picMin
+            // 
+            this.picMin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picMin.EditValue = ((object)(resources.GetObject("picMin.EditValue")));
+            this.picMin.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.picMin.Location = new System.Drawing.Point(1180, 3);
+            this.picMin.Name = "picMin";
+            this.picMin.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.picMin.Properties.Appearance.Options.UseBackColor = true;
+            this.picMin.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            contextButton11.Caption = "1111";
+            contextButton11.Id = new System.Guid("3304b299-e507-426a-ba8e-f38864acf415");
+            contextButton11.ImageOptionsCollection.ItemHovered.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.off;
+            contextButton11.ImageOptionsCollection.ItemNormal.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.shuaxin;
+            contextButton11.ImageOptionsCollection.ItemPressed.Image = global::KtpAcs.WinForm.Jijian.Properties.Resources.loading3;
+            contextButton11.Name = "contextButton1";
+            this.picMin.Properties.ContextButtons.Add(contextButton11);
+            this.picMin.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.picMin.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.picMin.Size = new System.Drawing.Size(23, 29);
+            this.picMin.TabIndex = 3;
+            this.picMin.Click += new System.EventHandler(this.picMin_Click);
+            // 
+            // labIP
+            // 
+            this.labIP.AutoSize = true;
+            this.labIP.Font = new System.Drawing.Font("仿宋", 14F, System.Drawing.FontStyle.Bold);
+            this.labIP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.labIP.Location = new System.Drawing.Point(314, 9);
+            this.labIP.Name = "labIP";
+            this.labIP.Size = new System.Drawing.Size(152, 19);
+            this.labIP.TabIndex = 4;
+            this.labIP.Text = "192.168.9.112";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("仿宋", 14F);
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.label11.Location = new System.Drawing.Point(237, 8);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(89, 19);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "本地IP：";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.label9.Location = new System.Drawing.Point(45, 5);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(155, 23);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "开太平云建筑-Hq";
+            // 
             // panelHead
             // 
             this.panelHead.Appearance.BackColor = System.Drawing.Color.White;
@@ -494,10 +646,11 @@
             this.panelHead.Controls.Add(this.panelWorker);
             this.panelHead.Controls.Add(this.panelDevice);
             this.panelHead.Controls.Add(this.comProjectList);
-            this.panelHead.Location = new System.Drawing.Point(1, 3);
+            this.panelHead.Location = new System.Drawing.Point(4, 38);
             this.panelHead.Name = "panelHead";
-            this.panelHead.Size = new System.Drawing.Size(1306, 111);
+            this.panelHead.Size = new System.Drawing.Size(1392, 108);
             this.panelHead.TabIndex = 0;
+            this.panelHead.Paint += new System.Windows.Forms.PaintEventHandler(this.panelHead_Paint);
             // 
             // pictureEdit7
             // 
@@ -775,15 +928,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1412, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1415, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 599);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 730);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1412, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1415, 0);
             // 
             // barDockControlLeft
             // 
@@ -791,15 +944,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 599);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 730);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1412, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1415, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 599);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 730);
             // 
             // btnLog
             // 
@@ -827,7 +980,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1412, 599);
+            this.ClientSize = new System.Drawing.Size(1415, 730);
             this.Controls.Add(this.spl);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -859,6 +1012,10 @@
             this.panelContent.ResumeLayout(false);
             this.panelContent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit12.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit11.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMax.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMin.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelHead)).EndInit();
             this.panelHead.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit7.Properties)).EndInit();
@@ -932,5 +1089,12 @@
         private DevExpress.XtraBars.BarCheckItem btnIsEdit;
         private DevExpress.XtraEditors.PictureEdit pictureEdit8;
         private DevExpress.XtraEditors.PictureEdit pictureEdit2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label11;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit11;
+        private DevExpress.XtraEditors.PictureEdit picMax;
+        private DevExpress.XtraEditors.PictureEdit picMin;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit12;
+        private System.Windows.Forms.Label labIP;
     }
 }

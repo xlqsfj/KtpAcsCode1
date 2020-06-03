@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace KtpAcsAotoUpdate
 {
-    public partial class DownloadConfirm : Skin_Mac
+    public partial class DownloadConfirm  : Form
     {
         List<DownloadFileInfo> downloadFileList = null;
 
@@ -29,7 +29,6 @@ namespace KtpAcsAotoUpdate
 
         private void OnLoad(object sender, EventArgs e)
         {
-            this.FormBorderStyle = FormBorderStyle.None;
             skinLabel2.Text = this.downloadFileList[0].LastVer;
             string updateText = "";
             foreach (DownloadFileInfo file in this.downloadFileList)

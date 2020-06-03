@@ -133,7 +133,7 @@
             this.repositoryItemCheckedComboBoxEdit1,
             this.repositoryItemComboBox1,
             this.repositoryItemCheckEdit2});
-            this.gridControl1.Size = new System.Drawing.Size(1211, 573);
+            this.gridControl1.Size = new System.Drawing.Size(1211, 482);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -358,7 +358,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1272, 808);
+            this.ClientSize = new System.Drawing.Size(1272, 586);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "WorkerProjectForm";
             this.Text = "WorkerProjectForm";

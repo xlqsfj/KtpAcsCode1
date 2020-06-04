@@ -65,7 +65,7 @@ namespace KtpAcs.WinForm.Jijian
 
             };
 
-            IMulePusher addworkers = new SetWorkerProjectApi() { RequestParam = baseSend };
+            IMulePusher addworkers = new SetWorkerProjectApi() { RequestParam = add };
             PushSummary pushAddworkers = addworkers.Push();
             string i = "0";
             string k = "";

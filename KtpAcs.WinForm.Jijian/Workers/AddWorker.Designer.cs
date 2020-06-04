@@ -1146,7 +1146,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(0, 100);
-            this.ClientSize = new System.Drawing.Size(1296, 962);
+            this.ClientSize = new System.Drawing.Size(1330, 1013);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtEmergencyContactName);
             this.Controls.Add(this.txtEmergencyContactPhone);

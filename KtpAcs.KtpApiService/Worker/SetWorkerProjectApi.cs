@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace KtpAcs.KtpApiService.Worker
 {
-    public class SetWorkerProjectApi : ApiBase<BaseSend, BaseResult>
+    public class SetWorkerProjectApi : ApiBase<AddWorerkSend, BaseResult>
     {
 
         public SetWorkerProjectApi()
@@ -29,19 +29,19 @@ namespace KtpAcs.KtpApiService.Worker
         /// 请求的方法
         /// </summary>
         /// <returns>传输的参数</returns>
-        protected override BaseSend FetchDataToPush()
+        protected override AddWorerkSend FetchDataToPush()
         {
 
-            BaseSend workers = base.RequestParam;
+            AddWorerkSend workers = base.RequestParam;
 
             if (!string.IsNullOrEmpty(workers.localImgFileName))
                 workers.facePic = GetImgUrl(workers.localImgFileName);
-            //if (!string.IsNullOrEmpty(workers.localImgFileName1))
-            //    workers.picturePositive = GetImgUrl(workers.localImgFileName1);
-            //if (!string.IsNullOrEmpty(workers.localImgFileName2))
-            //    workers.pictureReverse = GetImgUrl(workers.localImgFileName2);
-            //if (!string.IsNullOrEmpty(workers.localImgUpic))
-            //    workers.icon = GetImgUrl(workers.localImgUpic);
+            if (!string.IsNullOrEmpty(workers.localImgFileName1))
+                workers.picturePositive = GetImgUrl(workers.localImgFileName1);
+            if (!string.IsNullOrEmpty(workers.localImgFileName2))
+                workers.pictureReverse = GetImgUrl(workers.localImgFileName2);
+            if (!string.IsNullOrEmpty(workers.localImgUpic))
+                workers.icon = GetImgUrl(workers.localImgUpic);
 
             return base.RequestParam;
         }

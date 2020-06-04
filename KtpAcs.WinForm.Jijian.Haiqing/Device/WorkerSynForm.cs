@@ -389,7 +389,7 @@ namespace KtpAcs.WinForm.Jijian.Device
                     LogHelper.ExceptionLog(ex);
                     return;
                 }
-          
+
                 AddHqPanel(items);
 
 
@@ -470,7 +470,7 @@ namespace KtpAcs.WinForm.Jijian.Device
             try
             {
                 object isExit = null;
-                if ( string.IsNullOrEmpty(items.name))
+                if (string.IsNullOrEmpty(items.name))
                 {
 
                 }

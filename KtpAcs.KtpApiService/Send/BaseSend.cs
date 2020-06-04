@@ -15,7 +15,7 @@ namespace KtpAcs.KtpApiService.Send
         /// </summary>
         public string organizationUserUuid { get; set; }
         /// <summary>
-        ///  公司用户
+        ///  项目uuid
         /// </summary>
         public string projectUuid { get; set; }
         /// <summary>
@@ -26,6 +26,20 @@ namespace KtpAcs.KtpApiService.Send
         public string facePic { get; set; }
 
         public string localImgFileName { get; set; }
+        /// <summary>
+        /// 劳务公司uuid
+        /// </summary>
+        public string organizationUuid { get; set; }
+        /// <summary>
+        /// 班组uuid
+        /// </summary>
+        public string workTeamUuid { get; set; }
+        /// <summary>
+        /// 工种
+        /// </summary>
+        public string workType { get; set; }
+
+
 
 
 

@@ -76,6 +76,24 @@ namespace KtpAcs.KtpApiService.Send
         public string localImgUpic { get; set; }
 
         public string userUuid { get; set; }
+
+        /// <summary>
+        /// 结算单价
+        /// </summary>
+        public double clearingPrice { get; set; }
+        /// <summary>
+        /// 结算方式
+        /// </summary>
+        public string clearingType { get; set; }
+        /// <summary>
+        /// 结算单位
+        /// </summary>
+        public string clearingUnit { get; set; }
+        /// <summary>
+        /// 预发日薪
+        /// </summary>
+        public double pretestSalary { get; set; }
+
     }
 
 }

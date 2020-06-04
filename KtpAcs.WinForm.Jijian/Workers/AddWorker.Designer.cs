@@ -38,9 +38,9 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
             this.ComEducationLevel = new DevExpress.XtraEditors.LookUpEdit();
             this.ComNation = new DevExpress.XtraEditors.LookUpEdit();
@@ -104,16 +104,30 @@
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.panelBankInfo = new DevExpress.XtraEditors.PanelControl();
-            this.label20 = new System.Windows.Forms.Label();
             this.FormErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.label19 = new System.Windows.Forms.Label();
             this.txtCardAgency = new DevExpress.XtraEditors.TextEdit();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.label21 = new System.Windows.Forms.Label();
             this.txtPhone = new DevExpress.XtraEditors.TextEdit();
             this.txtEmergencyContactName = new DevExpress.XtraEditors.TextEdit();
             this.txtEmergencyContactPhone = new DevExpress.XtraEditors.TextEdit();
+            this.panelSalary = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
+            this.comClearingType = new DevExpress.XtraEditors.LookUpEdit();
+            this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
+            this.comClearingUnit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
+            this.label15 = new System.Windows.Forms.Label();
+            this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtClearingPrice = new DevExpress.XtraEditors.TextEdit();
+            this.txtPretestSalary = new DevExpress.XtraEditors.TextEdit();
+            this.label23 = new System.Windows.Forms.Label();
+            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
+            this.btnCancel2 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSubmit2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelProjectInfo)).BeginInit();
             this.panelProjectInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ComOrganizationUuid.Properties)).BeginInit();
@@ -149,6 +163,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmergencyContactName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmergencyContactPhone.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelSalary)).BeginInit();
+            this.panelSalary.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comClearingType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comClearingUnit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClearingPrice.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPretestSalary.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelProjectInfo
@@ -161,11 +182,11 @@
             this.panelProjectInfo.Controls.Add(this.label18);
             this.panelProjectInfo.Controls.Add(this.label17);
             this.panelProjectInfo.Controls.Add(this.label16);
-            this.panelProjectInfo.Controls.Add(this.labelControl22);
             this.panelProjectInfo.Controls.Add(this.labelControl21);
             this.panelProjectInfo.Controls.Add(this.labelControl20);
+            this.panelProjectInfo.Controls.Add(this.labelControl22);
             this.panelProjectInfo.Controls.Add(this.labelControl19);
-            this.panelProjectInfo.Location = new System.Drawing.Point(17, 720);
+            this.panelProjectInfo.Location = new System.Drawing.Point(17, 715);
             this.panelProjectInfo.Name = "panelProjectInfo";
             this.panelProjectInfo.Size = new System.Drawing.Size(904, 114);
             this.panelProjectInfo.TabIndex = 384;
@@ -192,6 +213,7 @@
             this.comWorkerTeamUuid.Properties.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.comWorkerTeamUuid_Properties_MouseWheel);
             this.comWorkerTeamUuid.Size = new System.Drawing.Size(164, 22);
             this.comWorkerTeamUuid.TabIndex = 6;
+            this.comWorkerTeamUuid.EditValueChanged += new System.EventHandler(this.comWorkerTeamUuid_EditValueChanged);
             // 
             // comWorkType
             // 
@@ -204,6 +226,7 @@
             this.comWorkType.Properties.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.comWorkType_Properties_MouseWheel);
             this.comWorkType.Size = new System.Drawing.Size(164, 22);
             this.comWorkType.TabIndex = 7;
+            this.comWorkType.EditValueChanged += new System.EventHandler(this.comWorkType_EditValueChanged);
             // 
             // pictureEdit7
             // 
@@ -245,22 +268,6 @@
             this.label16.TabIndex = 260;
             this.label16.Text = "*";
             // 
-            // labelControl22
-            // 
-            this.labelControl22.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.labelControl22.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.labelControl22.Appearance.Options.UseFont = true;
-            this.labelControl22.Appearance.Options.UseForeColor = true;
-            this.labelControl22.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
-            this.labelControl22.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
-            this.labelControl22.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
-            this.labelControl22.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl22.Location = new System.Drawing.Point(503, 43);
-            this.labelControl22.Name = "labelControl22";
-            this.labelControl22.Size = new System.Drawing.Size(24, 17);
-            this.labelControl22.TabIndex = 255;
-            this.labelControl22.Text = "工种";
-            // 
             // labelControl21
             // 
             this.labelControl21.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F);
@@ -292,6 +299,22 @@
             this.labelControl20.Size = new System.Drawing.Size(48, 17);
             this.labelControl20.TabIndex = 257;
             this.labelControl20.Text = "劳务公司";
+            // 
+            // labelControl22
+            // 
+            this.labelControl22.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.labelControl22.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.labelControl22.Appearance.Options.UseFont = true;
+            this.labelControl22.Appearance.Options.UseForeColor = true;
+            this.labelControl22.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
+            this.labelControl22.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
+            this.labelControl22.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
+            this.labelControl22.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.labelControl22.Location = new System.Drawing.Point(503, 43);
+            this.labelControl22.Name = "labelControl22";
+            this.labelControl22.Size = new System.Drawing.Size(24, 17);
+            this.labelControl22.TabIndex = 255;
+            this.labelControl22.Text = "工种";
             // 
             // labelControl19
             // 
@@ -572,7 +595,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(618, 662);
+            this.label13.Location = new System.Drawing.Point(618, 657);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(12, 15);
             this.label13.TabIndex = 350;
@@ -582,7 +605,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(345, 662);
+            this.label14.Location = new System.Drawing.Point(345, 657);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(12, 15);
             this.label14.TabIndex = 351;
@@ -598,7 +621,7 @@
             this.labelControl16.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl16.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl16.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl16.Location = new System.Drawing.Point(528, 656);
+            this.labelControl16.Location = new System.Drawing.Point(528, 651);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(84, 17);
             this.labelControl16.TabIndex = 347;
@@ -614,7 +637,7 @@
             this.labelControl17.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl17.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl17.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl17.Location = new System.Drawing.Point(282, 656);
+            this.labelControl17.Location = new System.Drawing.Point(282, 651);
             this.labelControl17.Name = "labelControl17";
             this.labelControl17.Size = new System.Drawing.Size(60, 17);
             this.labelControl17.TabIndex = 348;
@@ -630,7 +653,7 @@
             this.labelControl18.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
             this.labelControl18.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.labelControl18.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.labelControl18.Location = new System.Drawing.Point(47, 662);
+            this.labelControl18.Location = new System.Drawing.Point(47, 657);
             this.labelControl18.Name = "labelControl18";
             this.labelControl18.Size = new System.Drawing.Size(36, 17);
             this.labelControl18.TabIndex = 349;
@@ -1032,7 +1055,6 @@
             // panelBankInfo
             // 
             this.panelBankInfo.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelBankInfo.Controls.Add(this.label20);
             this.panelBankInfo.Controls.Add(this.labelControl23);
             this.panelBankInfo.Controls.Add(this.pictureEdit1);
             this.panelBankInfo.Controls.Add(this.labelControl15);
@@ -1041,20 +1063,10 @@
             this.panelBankInfo.Controls.Add(this.label12);
             this.panelBankInfo.Controls.Add(this.txtBankNo);
             this.panelBankInfo.Controls.Add(this.label11);
-            this.panelBankInfo.Location = new System.Drawing.Point(17, 840);
+            this.panelBankInfo.Location = new System.Drawing.Point(17, 961);
             this.panelBankInfo.Name = "panelBankInfo";
             this.panelBankInfo.Size = new System.Drawing.Size(904, 96);
             this.panelBankInfo.TabIndex = 385;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.ForeColor = System.Drawing.Color.Red;
-            this.label20.Location = new System.Drawing.Point(168, 28);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(12, 15);
-            this.label20.TabIndex = 380;
-            this.label20.Text = "*";
             // 
             // FormErrorProvider
             // 
@@ -1093,22 +1105,22 @@
             this.txtCardAgency.Size = new System.Drawing.Size(164, 22);
             this.txtCardAgency.TabIndex = 359;
             // 
-            // simpleButton1
+            // btnCancel
             // 
-            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.Location = new System.Drawing.Point(1100, 5);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(81, 37);
-            this.simpleButton1.TabIndex = 365;
-            this.simpleButton1.Text = "取消";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.btnCancel.Appearance.Options.UseBackColor = true;
+            this.btnCancel.Location = new System.Drawing.Point(1100, 5);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(81, 37);
+            this.btnCancel.TabIndex = 365;
+            this.btnCancel.Text = "取消";
+            this.btnCancel.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.ForeColor = System.Drawing.Color.Red;
-            this.label21.Location = new System.Drawing.Point(88, 667);
+            this.label21.Location = new System.Drawing.Point(88, 662);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(12, 15);
             this.label21.TabIndex = 389;
@@ -1116,14 +1128,14 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(42, 680);
+            this.txtPhone.Location = new System.Drawing.Point(42, 675);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(164, 22);
             this.txtPhone.TabIndex = 390;
             // 
             // txtEmergencyContactName
             // 
-            this.txtEmergencyContactName.Location = new System.Drawing.Point(274, 680);
+            this.txtEmergencyContactName.Location = new System.Drawing.Point(274, 675);
             this.txtEmergencyContactName.Name = "txtEmergencyContactName";
             this.txtEmergencyContactName.Properties.AutoHeight = false;
             this.txtEmergencyContactName.Size = new System.Drawing.Size(164, 22);
@@ -1131,12 +1143,197 @@
             // 
             // txtEmergencyContactPhone
             // 
-            this.txtEmergencyContactPhone.Location = new System.Drawing.Point(520, 680);
+            this.txtEmergencyContactPhone.Location = new System.Drawing.Point(520, 675);
             this.txtEmergencyContactPhone.Name = "txtEmergencyContactPhone";
             this.txtEmergencyContactPhone.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtEmergencyContactPhone.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtEmergencyContactPhone.Size = new System.Drawing.Size(164, 22);
             this.txtEmergencyContactPhone.TabIndex = 392;
+            // 
+            // panelSalary
+            // 
+            this.panelSalary.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelSalary.Controls.Add(this.labelControl24);
+            this.panelSalary.Controls.Add(this.comClearingType);
+            this.panelSalary.Controls.Add(this.pictureEdit2);
+            this.panelSalary.Controls.Add(this.comClearingUnit);
+            this.panelSalary.Controls.Add(this.labelControl25);
+            this.panelSalary.Controls.Add(this.label15);
+            this.panelSalary.Controls.Add(this.labelControl26);
+            this.panelSalary.Controls.Add(this.label22);
+            this.panelSalary.Controls.Add(this.txtClearingPrice);
+            this.panelSalary.Controls.Add(this.txtPretestSalary);
+            this.panelSalary.Controls.Add(this.label23);
+            this.panelSalary.Controls.Add(this.labelControl27);
+            this.panelSalary.Location = new System.Drawing.Point(17, 848);
+            this.panelSalary.Name = "panelSalary";
+            this.panelSalary.Size = new System.Drawing.Size(904, 96);
+            this.panelSalary.TabIndex = 385;
+            // 
+            // labelControl24
+            // 
+            this.labelControl24.Appearance.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.labelControl24.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl24.Appearance.Options.UseFont = true;
+            this.labelControl24.Appearance.Options.UseForeColor = true;
+            this.labelControl24.Location = new System.Drawing.Point(25, 9);
+            this.labelControl24.Name = "labelControl24";
+            this.labelControl24.Size = new System.Drawing.Size(64, 21);
+            this.labelControl24.TabIndex = 334;
+            this.labelControl24.Text = "工资信息";
+            // 
+            // comClearingType
+            // 
+            this.comClearingType.Location = new System.Drawing.Point(261, 71);
+            this.comClearingType.Name = "comClearingType";
+            this.comClearingType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comClearingType.Properties.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.comWorkerTeamUuid_Properties_MouseWheel);
+            this.comClearingType.Size = new System.Drawing.Size(164, 22);
+            this.comClearingType.TabIndex = 6;
+            this.comClearingType.EditValueChanged += new System.EventHandler(this.comClearingType_EditValueChanged);
+            // 
+            // pictureEdit2
+            // 
+            this.pictureEdit2.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.jx5;
+            this.pictureEdit2.Location = new System.Drawing.Point(8, 3);
+            this.pictureEdit2.Name = "pictureEdit2";
+            this.pictureEdit2.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit2.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit2.Size = new System.Drawing.Size(16, 37);
+            this.pictureEdit2.TabIndex = 354;
+            // 
+            // comClearingUnit
+            // 
+            this.comClearingUnit.EditValue = "";
+            this.comClearingUnit.Location = new System.Drawing.Point(596, 71);
+            this.comClearingUnit.Name = "comClearingUnit";
+            this.comClearingUnit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comClearingUnit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.OnlyInPopup;
+            this.comClearingUnit.Properties.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.comWorkType_Properties_MouseWheel);
+            this.comClearingUnit.Size = new System.Drawing.Size(71, 22);
+            this.comClearingUnit.TabIndex = 7;
+            // 
+            // labelControl25
+            // 
+            this.labelControl25.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.labelControl25.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.labelControl25.Appearance.Options.UseFont = true;
+            this.labelControl25.Appearance.Options.UseForeColor = true;
+            this.labelControl25.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
+            this.labelControl25.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
+            this.labelControl25.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
+            this.labelControl25.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.labelControl25.Location = new System.Drawing.Point(261, 41);
+            this.labelControl25.Name = "labelControl25";
+            this.labelControl25.Size = new System.Drawing.Size(48, 17);
+            this.labelControl25.TabIndex = 374;
+            this.labelControl25.Text = "结算方式";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.Red;
+            this.label15.Location = new System.Drawing.Point(556, 39);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(12, 15);
+            this.label15.TabIndex = 258;
+            this.label15.Text = "*";
+            // 
+            // labelControl26
+            // 
+            this.labelControl26.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.labelControl26.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.labelControl26.Appearance.Options.UseFont = true;
+            this.labelControl26.Appearance.Options.UseForeColor = true;
+            this.labelControl26.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
+            this.labelControl26.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
+            this.labelControl26.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
+            this.labelControl26.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.labelControl26.Location = new System.Drawing.Point(28, 40);
+            this.labelControl26.Name = "labelControl26";
+            this.labelControl26.Size = new System.Drawing.Size(48, 17);
+            this.labelControl26.TabIndex = 373;
+            this.labelControl26.Text = "预发日薪";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.ForeColor = System.Drawing.Color.Red;
+            this.label22.Location = new System.Drawing.Point(315, 43);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(12, 15);
+            this.label22.TabIndex = 376;
+            this.label22.Text = "*";
+            // 
+            // txtClearingPrice
+            // 
+            this.txtClearingPrice.Location = new System.Drawing.Point(503, 71);
+            this.txtClearingPrice.Name = "txtClearingPrice";
+            this.txtClearingPrice.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtClearingPrice.Size = new System.Drawing.Size(93, 22);
+            this.txtClearingPrice.TabIndex = 8;
+            this.txtClearingPrice.Leave += new System.EventHandler(this.txtBankNo_Leave);
+            // 
+            // txtPretestSalary
+            // 
+            this.txtPretestSalary.Enabled = false;
+            this.txtPretestSalary.Location = new System.Drawing.Point(26, 71);
+            this.txtPretestSalary.Name = "txtPretestSalary";
+            this.txtPretestSalary.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtPretestSalary.Size = new System.Drawing.Size(164, 22);
+            this.txtPretestSalary.TabIndex = 8;
+            this.txtPretestSalary.Leave += new System.EventHandler(this.txtBankNo_Leave);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.ForeColor = System.Drawing.Color.Red;
+            this.label23.Location = new System.Drawing.Point(82, 41);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(12, 15);
+            this.label23.TabIndex = 375;
+            this.label23.Text = "*";
+            // 
+            // labelControl27
+            // 
+            this.labelControl27.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.labelControl27.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.labelControl27.Appearance.Options.UseFont = true;
+            this.labelControl27.Appearance.Options.UseForeColor = true;
+            this.labelControl27.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
+            this.labelControl27.LineLocation = DevExpress.XtraEditors.LineLocation.Left;
+            this.labelControl27.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
+            this.labelControl27.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.labelControl27.Location = new System.Drawing.Point(503, 36);
+            this.labelControl27.Name = "labelControl27";
+            this.labelControl27.Size = new System.Drawing.Size(48, 17);
+            this.labelControl27.TabIndex = 255;
+            this.labelControl27.Text = "结算单价";
+            // 
+            // btnCancel2
+            // 
+            this.btnCancel2.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.btnCancel2.Appearance.Options.UseBackColor = true;
+            this.btnCancel2.Location = new System.Drawing.Point(1061, 993);
+            this.btnCancel2.Name = "btnCancel2";
+            this.btnCancel2.Size = new System.Drawing.Size(81, 37);
+            this.btnCancel2.TabIndex = 394;
+            this.btnCancel2.Text = "取消";
+            this.btnCancel2.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // btnSubmit2
+            // 
+            this.btnSubmit2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(248)))));
+            this.btnSubmit2.Appearance.Options.UseBackColor = true;
+            this.btnSubmit2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSubmit2.ImageOptions.Image")));
+            this.btnSubmit2.Location = new System.Drawing.Point(961, 993);
+            this.btnSubmit2.Name = "btnSubmit2";
+            this.btnSubmit2.Size = new System.Drawing.Size(94, 37);
+            this.btnSubmit2.TabIndex = 393;
+            this.btnSubmit2.Text = "提交";
+            this.btnSubmit2.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // AddWorker
             // 
@@ -1145,12 +1342,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.AutoScrollMargin = new System.Drawing.Size(0, 100);
-            this.ClientSize = new System.Drawing.Size(1330, 1013);
+            this.AutoScrollMargin = new System.Drawing.Size(0, 800);
+            this.ClientSize = new System.Drawing.Size(1403, 1078);
+            this.Controls.Add(this.btnCancel2);
+            this.Controls.Add(this.btnSubmit2);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtEmergencyContactName);
             this.Controls.Add(this.txtEmergencyContactPhone);
             this.Controls.Add(this.label21);
+            this.Controls.Add(this.panelSalary);
             this.Controls.Add(this.panelBankInfo);
             this.Controls.Add(this.panelProjectInfo);
             this.Controls.Add(this.ComEducationLevel);
@@ -1165,7 +1365,7 @@
             this.Controls.Add(this.btnFacePic);
             this.Controls.Add(this.btnPicturePositive);
             this.Controls.Add(this.btnReadIC);
-            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnPictureReverse);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtIdCard);
@@ -1250,6 +1450,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmergencyContactName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmergencyContactPhone.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelSalary)).EndInit();
+            this.panelSalary.ResumeLayout(false);
+            this.panelSalary.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comClearingType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comClearingUnit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClearingPrice.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPretestSalary.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1335,11 +1543,25 @@
         private DevExpress.XtraEditors.TextEdit txtCardAgency;
         private System.Windows.Forms.Label label19;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private System.Windows.Forms.Label label20;
+        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private System.Windows.Forms.Label label21;
         private DevExpress.XtraEditors.TextEdit txtPhone;
         private DevExpress.XtraEditors.TextEdit txtEmergencyContactName;
         private DevExpress.XtraEditors.TextEdit txtEmergencyContactPhone;
+        private DevExpress.XtraEditors.SimpleButton btnCancel2;
+        private DevExpress.XtraEditors.SimpleButton btnSubmit2;
+        private DevExpress.XtraEditors.PanelControl panelSalary;
+        private DevExpress.XtraEditors.LabelControl labelControl24;
+        private DevExpress.XtraEditors.LookUpEdit comClearingType;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit2;
+        private DevExpress.XtraEditors.LookUpEdit comClearingUnit;
+        private DevExpress.XtraEditors.LabelControl labelControl25;
+        private System.Windows.Forms.Label label15;
+        private DevExpress.XtraEditors.LabelControl labelControl26;
+        private System.Windows.Forms.Label label22;
+        private DevExpress.XtraEditors.TextEdit txtClearingPrice;
+        private DevExpress.XtraEditors.TextEdit txtPretestSalary;
+        private System.Windows.Forms.Label label23;
+        private DevExpress.XtraEditors.LabelControl labelControl27;
     }
 }

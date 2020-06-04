@@ -19,7 +19,7 @@ namespace KtpAcs.KtpApiService.BaseApi
 
             base.API = "/projectInfoPanel/getSettlementUnit";
             base.ServiceName = ApiType.KTP;
-            base.MethodType = Method.GET;
+            base.MethodType = Method.POST;
             base.Token = ConfigHelper.KtpLoginToken;
         }
         protected override dynamic FetchDataToPush()

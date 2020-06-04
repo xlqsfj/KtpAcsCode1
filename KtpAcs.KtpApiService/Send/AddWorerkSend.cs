@@ -80,7 +80,7 @@ namespace KtpAcs.KtpApiService.Send
         /// <summary>
         /// 结算单价
         /// </summary>
-        public double clearingPrice { get; set; }
+        public decimal? clearingPrice { get; set; }
         /// <summary>
         /// 结算方式
         /// </summary>
@@ -92,7 +92,7 @@ namespace KtpAcs.KtpApiService.Send
         /// <summary>
         /// 预发日薪
         /// </summary>
-        public double pretestSalary { get; set; }
+        public decimal? pretestSalary { get; set; }
 
     }
 

@@ -43,6 +43,23 @@ namespace KtpAcs.KtpApiService.Result
             public string cardAgency { get; set; }
             public string startTime { get; set; }
             public string expireTime { get; set; }
+
+            /// <summary>
+            /// 结算单价
+            /// </summary>
+            public decimal? clearingPrice { get; set; }
+            /// <summary>
+            /// 结算方式
+            /// </summary>
+            public string clearingType { get; set; }
+            /// <summary>
+            /// 结算单位
+            /// </summary>
+            public string clearingUnit { get; set; }
+            /// <summary>
+            /// 预发日薪
+            /// </summary>
+            public decimal? pretestSalary { get; set; }
         }
 
     }

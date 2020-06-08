@@ -94,6 +94,9 @@ namespace KtpAcs.KtpApiService.Send
         /// </summary>
         public decimal? pretestSalary { get; set; }
 
+        public string organizationUserUuid { get; set; }
+        public int status { get; set; }
+
     }
 
 }

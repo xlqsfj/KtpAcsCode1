@@ -635,6 +635,12 @@ namespace KtpAcs.WinForm.Jijian
                 MessageHelper.Show(ex.Message);
             }
 
+            SetWorkerInfo(state, w);
+
+        }
+
+        private void SetWorkerInfo(int state, WorkerResult.Data w)
+        {
             this.txtAddress.Text = w.address;
             this.txtAvg.Text = w.age.ToString();
             this.txtBankName.Text = w.bankName;
@@ -642,6 +648,7 @@ namespace KtpAcs.WinForm.Jijian
             this.txtBirthday.Text = w.birthday;
             this.txtEmergencyContactName.Text = w.emergencyContactName;
             this.txtEmergencyContactPhone.Text = w.emergencyContactPhone;
+            if (w.gender!=null)
             this.txtGender.SelectedIndex = w.gender == 1 ? 0 : 1;
             this.txtIdCard.Text = w.idCard;
             this.txtName.Text = w.name;
@@ -661,7 +668,7 @@ namespace KtpAcs.WinForm.Jijian
             this.comClearingUnit.EditValue = w.clearingUnit;
             this.txtPretestSalary.Text = w.pretestSalary.ToString();
             this.txtClearingPrice.Text = w.clearingPrice.ToString();
-
+            this.txtPhone.Text = w.phone;
             BindNationsCb(w.nation);
             //人脸采集照片
             if (!string.IsNullOrEmpty(w.facePic))
@@ -725,13 +732,11 @@ namespace KtpAcs.WinForm.Jijian
                 }
             }
 
-            if (state == 1 || state == 0)
-            {
+          
 
-                this.txtPhone.Text = w.phone;
+              
 
-            }
-
+          
         }
 
         #endregion

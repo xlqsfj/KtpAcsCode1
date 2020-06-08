@@ -51,7 +51,6 @@ namespace KtpAcs.WinForm.Jijian
         {
             _state = hmc;
             InitializeComponent();
-            //
             CameraConn();
             BindNationsCb();
             BindEducationLeveCb();
@@ -93,7 +92,7 @@ namespace KtpAcs.WinForm.Jijian
             GetInfo(hmc, uuId);
             //结算方式
             GetClearingTypeList();
-    
+
             SetIsEdit(isEdit);
         }
 
@@ -329,7 +328,7 @@ namespace KtpAcs.WinForm.Jijian
                 add.expireTime = this.txtExpireTime.Text;
                 add.phone = this.txtPhone.Text;
                 add.projectUuid = ConfigHelper.KtpLoginProjectId;
-               
+
                 if (!string.IsNullOrEmpty(_facePicId))
                 {
                     add.localImgFileName = _facePicId;
@@ -478,7 +477,12 @@ namespace KtpAcs.WinForm.Jijian
                         _isManualEdit = false;
                     }
                     if (ShowProjectList != null)
-                        ShowProjectList("ok");
+                    {
+                        if (_state == 5)
+                            ShowProjectList("项目人员详情");
+                        else
+                            ShowProjectList("ok");
+                    }
                     if (CloseDdetailedWinform != null)
                         CloseDdetailedWinform(null, false, "");
                     return;
@@ -558,7 +562,10 @@ namespace KtpAcs.WinForm.Jijian
                 else if (CloseDdetailedWinform != null)
                     CloseDdetailedWinform(null, false, "");
                 if (ShowProjectList != null)
-                    ShowProjectList("ok");
+                    if (_state == 5)
+                        ShowProjectList("项目人员详情");
+                    else
+                        ShowProjectList("项目人员办理入场");
                 else
                     this.Close();
             }

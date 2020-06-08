@@ -54,7 +54,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                     projectUuid = ConfigHelper.KtpLoginProjectId,
                     pageNum = 1,
                     status = (int)this.ComUsable.EditValue,
-                    keyWord = Query
+                    keyWord = txtQuery.Text
                 };
 
                 IMulePusher pusherDevice = new GetWorkersProjectApi() { RequestParam = workerSend };
@@ -102,7 +102,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                     }
 
                     XtraTabPage page = new XtraTabPage();
-                    addWorker = new AddWorker(phone, name, id);
+                    addWorker = new AddWorker(id,true);
                     addWorker.ShowProjectList += new AgainSubmit(a => GetIsClose(a));
                     addWorker.FormBorderStyle = FormBorderStyle.None;
                     addWorker.TopLevel = false;
@@ -124,9 +124,9 @@ namespace KtpAcs.WinForm.Jijian.Workers
                     DialogResult result = XtraMessageBox.Show("确定要离场吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.OK)
                     {
-                        BaseSend baseSend = new BaseSend
+                        AddWorerkSend baseSend = new AddWorerkSend
                         {
-                            status = "3",
+                            status = 3,
                             projectUuid = ConfigHelper.KtpLoginProjectId,
                             organizationUserUuid = id
 
@@ -166,7 +166,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
             //判断是否已创建过
             foreach (XtraTabPage page1 in xtraTabControl1.TabPages)
             {
-                if (page1.Text == "项目人员办理入场")
+                if (page1.Text == state)
                 {
 
                     GetIsOpen();
@@ -261,5 +261,41 @@ namespace KtpAcs.WinForm.Jijian.Workers
         {
             GetWorkerList();
         }
+
+        /// <summary>
+        /// 添加查看详细
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void repositoryItemButtonEdit4_Click(object sender, EventArgs e)
+        {
+            dynamic row = this.grid_WorkerProject.GetFocusedRow();
+            string id = row.organizationUserUuid;
+            string phone = row.phone;
+            string state = row.status;
+            string name = row.name;
+
+        
+                //if (xtraTabControl1.TabPages.Count > 1)
+                //{
+                //    if (xtraTabControl1.TabPages[1].Text == "项目人员办理入场")
+                //    {
+
+                //        xtraTabControl1.TabPages.Remove(xtraTabControl1.TabPages[1]);
+                //    }
+                //}
+
+                XtraTabPage page = new XtraTabPage();
+                addWorker = new AddWorker(id,false);
+                addWorker.ShowProjectList += new AgainSubmit(a => GetIsClose(a));
+                addWorker.FormBorderStyle = FormBorderStyle.None;
+                addWorker.TopLevel = false;
+                page.Controls.Add(addWorker);
+                addWorker.Show();
+                page.Text = "项目人员详情";
+                xtraTabControl1.SelectedTabPage = page;
+                isOpen = true;
+                xtraTabControl1.TabPages.Add(page);
+            }
     }
 }

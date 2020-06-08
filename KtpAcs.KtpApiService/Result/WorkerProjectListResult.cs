@@ -48,6 +48,8 @@ namespace KtpAcs.KtpApiService.Result
             /// 用户主键id
             /// </summary>
             public int  organizationUserId { get; set; }
+
+            public int newOrganizationUserId{ get; set; }
             public string phone { get; set; }
             public string projectUuid { get; set; }
             public string roleNames { get; set; }

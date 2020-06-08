@@ -122,9 +122,9 @@ namespace KtpAcs.WinForm.Jijian.Workers
                     DialogResult result = XtraMessageBox.Show("确定要离场吗?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.OK)
                     {
-                        BaseSend baseSend = new BaseSend
+                        AddWorerkSend baseSend = new AddWorerkSend
                         {
-                            status = "3",
+                            status =3,
                             projectUuid = ConfigHelper.KtpLoginProjectId,
                             organizationUserUuid = id
 

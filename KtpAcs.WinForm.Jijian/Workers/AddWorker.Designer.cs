@@ -1343,7 +1343,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(0, 800);
-            this.ClientSize = new System.Drawing.Size(1403, 1078);
+            this.ClientSize = new System.Drawing.Size(1315, 1078);
             this.Controls.Add(this.btnCancel2);
             this.Controls.Add(this.btnSubmit2);
             this.Controls.Add(this.txtPhone);

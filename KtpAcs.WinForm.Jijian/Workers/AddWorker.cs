@@ -557,11 +557,11 @@ namespace KtpAcs.WinForm.Jijian
             try
             {
 
-                if (string.IsNullOrEmpty(_uuId))
+                if (string.IsNullOrEmpty(_uuId) && ShowProjectList == null)
                     reslt(_state);
                 else if (CloseDdetailedWinform != null)
                     CloseDdetailedWinform(null, false, "");
-                if (ShowProjectList != null)
+                else if (ShowProjectList != null)
                     if (_state == 5)
                         ShowProjectList("项目人员详情");
                     else
@@ -631,8 +631,11 @@ namespace KtpAcs.WinForm.Jijian
 
         private void comClearingType_EditValueChanged(object sender, EventArgs e)
         {
-            //结算单位
-            GetClearingUnitList(comClearingType.EditValue.ToString());
+            if (comClearingType.EditValue != null)
+            {
+                //结算单位
+                GetClearingUnitList(comClearingType.EditValue.ToString());
+            }
         }
 
         private void comWorkerTeamUuid_EditValueChanged(object sender, EventArgs e)

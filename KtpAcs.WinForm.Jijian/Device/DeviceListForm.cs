@@ -111,17 +111,13 @@ namespace KtpAcs.WinForm.Jijian
                         {
                             try
                             {
-                                if (this.IsHandleCreated)
-                                {
-                                    this.BeginInvoke((EventHandler)delegate
-                                {
 
-                                    this.gridControl.DataSource = data.list;
 
-                                    taskList.Clear();
-                                    LoadingHelper.CloseForm();//关闭
-                                });
-                                }
+                                this.gridControl.DataSource = data.list;
+
+                                taskList.Clear();
+                                LoadingHelper.CloseForm();//关闭
+
                             }
                             catch (Exception)
                             {

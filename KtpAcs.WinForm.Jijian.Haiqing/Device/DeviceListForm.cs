@@ -103,7 +103,7 @@ namespace KtpAcs.WinForm.Jijian
                         GetDeviceHeart(data);
                         Parallel.ForEach(data.list, (list, DeviceList) =>
                         {
-                            GetDeviceConnect(list);
+
                             taskList.Add(taskFactory.StartNew(() => GetDeviceConnect(list)));
 
 

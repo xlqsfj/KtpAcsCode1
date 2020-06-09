@@ -112,9 +112,10 @@ namespace KtpAcs.WinForm.Jijian
                 this.comWorkType.Properties.DisplayMember = "name";
                 this.comWorkType.Properties.ValueMember = "code";
                 this.comWorkType.Properties.DataSource = pList;
-                this.ComOrganizationUuid.Properties.NullText = "===请选择===";
                 this.comWorkType.Properties.Columns.Add(
                  new DevExpress.XtraEditors.Controls.LookUpColumnInfo("name"));
+                this.comWorkType.Properties.NullText = "===请选择===";
+                this.comWorkType.EditValue = null;
 
             }
         }
@@ -204,7 +205,8 @@ namespace KtpAcs.WinForm.Jijian
             this.comClearingType.Properties.ValueMember = "uuid";
             this.comClearingType.Properties.DataSource = pList;
             this.comClearingType.Properties.NullText = "===请选择===";
-            this.comClearingUnit.Properties.NullText = "";
+            this.comClearingUnit.Properties.NullText = "请先选择结算方式";
+            this.comClearingUnit.EditValue = null;
 
             this.comClearingType.Properties.Columns.Add(
            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("clearingForm"));
@@ -236,12 +238,15 @@ namespace KtpAcs.WinForm.Jijian
             this.comClearingUnit.Properties.DataSource = pList;
      
             this.comClearingUnit.Properties.Columns.Clear();
-        
-       
+            this.comClearingUnit.Properties.NullText = "";
+            this.comClearingUnit.EditValue = null;
+
             this.comClearingUnit.Properties.Columns.Add(
            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("unitName"));
             //是否显示列名
-            comClearingUnit.Properties.ShowHeader = false;
+            this.comClearingUnit.Properties.ShowHeader = false;
+     
+
         }
 
         /// <summary>
@@ -648,8 +653,10 @@ namespace KtpAcs.WinForm.Jijian
             this.txtBirthday.Text = w.birthday;
             this.txtEmergencyContactName.Text = w.emergencyContactName;
             this.txtEmergencyContactPhone.Text = w.emergencyContactPhone;
-            if (w.gender!=null)
-            this.txtGender.SelectedIndex = w.gender == 1 ? 0 : 1;
+            if (w.gender != null)
+                this.txtGender.SelectedIndex = w.gender == 1 ? 0 : 1;
+            else
+                this.txtGender.SelectedIndex = -1;
             this.txtIdCard.Text = w.idCard;
             this.txtName.Text = w.name;
             this.txtNativePlace.Text = w.nativePlace;

@@ -31,6 +31,12 @@ namespace KtpAcs.PanelApi.Yushi.Api
 
                 PushSummarYs pushSummary = PanelLibraryGet.Push();
                 PanelResult pr = pushSummary.ResponseData;
+                if (pr == null)
+                {
+
+                    throw new Exception($"{ip}:面板出错,请联系管理员，或重启{ip}面板");
+
+                }
                 if (pr.Response.Data == null) {
 
                     throw new Exception($"{ip}:面板出错,请联系管理员，或重启{ip}面板");

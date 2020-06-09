@@ -25,22 +25,34 @@ namespace KtpAcs.WinForm.Jijian
 
         //声明事件判断是否关闭项目人员信息录入
         public event AgainSubmit ShowProjectList;
-        private string _status;
+
         private string _organizationUserUuid;
-        public AddWorker(string phone, string name, string organizationUserUuid, int status = 2)
+        public AddWorker(string organizationUserUuid, bool isEdit = true)
         {
+            WorkerResult.Data w = new WorkerResult.Data();
 
-            _state = 2;
             _organizationUserUuid = organizationUserUuid;
-            _status = status.ToString();
+            _state = 2;
             InitializeComponent();
-            this.txtPhone.Text = phone;
-            this.txtName.Text = name;
 
-            if (_state == 2)
-                panelProjectInfo.Visible = false;
+            IMulePusher pusherInfo = new GetWorkerProjectApi() { RequestParam = new { organizationUserUuid = organizationUserUuid, projectUuid = ConfigHelper.KtpLoginProjectId } };
+            PushSummary pushInfo = pusherInfo.Push();
+            if (!pushInfo.Success)
+                MessageHelper.Show(pushInfo.Message);
             else
-                panelProjectInfo.Visible = true;
+
+                w = pushInfo.ResponseData;
+
+            SetWorkerInfo(_state, w);
+            //查询详情
+            if (!isEdit)
+            {
+                _state = 5;
+                SetIsEdit(isEdit);
+            }
+
+            panelProjectInfo.Visible = false;
+
             CameraConn();
             BindNationsCb();
             BindEducationLeveCb();
@@ -55,15 +67,8 @@ namespace KtpAcs.WinForm.Jijian
         private int addProject(AddWorerkSend add)
         {
             int userId = 0;
-            BaseSend baseSend = new BaseSend
-            {
-                status = _status,
-                projectUuid = ConfigHelper.KtpLoginProjectId,
-                organizationUserUuid = _organizationUserUuid,
-                facePic = add.facePic,
-                localImgFileName = add.localImgFileName
-
-            };
+            add.organizationUserUuid = _organizationUserUuid;
+            add.status = 2;
 
             IMulePusher addworkers = new SetWorkerProjectApi() { RequestParam = add };
             PushSummary pushAddworkers = addworkers.Push();

@@ -306,6 +306,7 @@
             this.btnClear.Size = new System.Drawing.Size(106, 36);
             this.btnClear.TabIndex = 388;
             this.btnClear.Text = "清空";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // labelControl7
             // 

@@ -102,7 +102,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                     }
 
                     XtraTabPage page = new XtraTabPage();
-                    addWorker = new AddWorker(id,true);
+                    addWorker = new AddWorker(id, true);
                     addWorker.ShowProjectList += new AgainSubmit(a => GetIsClose(a));
                     addWorker.FormBorderStyle = FormBorderStyle.None;
                     addWorker.TopLevel = false;
@@ -269,24 +269,19 @@ namespace KtpAcs.WinForm.Jijian.Workers
         /// <param name="e"></param>
         private void repositoryItemButtonEdit4_Click(object sender, EventArgs e)
         {
-            dynamic row = this.grid_WorkerProject.GetFocusedRow();
-            string id = row.organizationUserUuid;
-            string phone = row.phone;
-            string state = row.status;
-            string name = row.name;
+            try
+            {
+                dynamic row = this.grid_WorkerProject.GetFocusedRow();
+                string id = row.organizationUserUuid;
+                string phone = row.phone;
+                string state = row.status;
+                string name = row.name;
 
-        
-                //if (xtraTabControl1.TabPages.Count > 1)
-                //{
-                //    if (xtraTabControl1.TabPages[1].Text == "项目人员办理入场")
-                //    {
 
-                //        xtraTabControl1.TabPages.Remove(xtraTabControl1.TabPages[1]);
-                //    }
-                //}
+
 
                 XtraTabPage page = new XtraTabPage();
-                addWorker = new AddWorker(id,false);
+                addWorker = new AddWorker(id, false);
                 addWorker.ShowProjectList += new AgainSubmit(a => GetIsClose(a));
                 addWorker.FormBorderStyle = FormBorderStyle.None;
                 addWorker.TopLevel = false;
@@ -297,5 +292,18 @@ namespace KtpAcs.WinForm.Jijian.Workers
                 isOpen = true;
                 xtraTabControl1.TabPages.Add(page);
             }
+            catch (Exception ex)
+            {
+                MessageHelper.Show(ex.Message, ex);
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            this.txtQuery.Text = "";
+            this.ComUsable.ItemIndex = 0;
+            GetWorkerList();
+
+        }
     }
 }

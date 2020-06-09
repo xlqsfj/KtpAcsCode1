@@ -335,7 +335,7 @@ namespace KtpAcs.WinForm.Jijian.Device
                     worker.facePic = plist.facePic;
                     worker.name = plist.name;
                     worker.enumWorkerType = EnumWorkerType.Hmry;
-                    worker.userId = plist.organizationUserId;
+                    worker.userId = plist.newOrganizationUserId;
                     workers.Add(worker);
                 }
             }

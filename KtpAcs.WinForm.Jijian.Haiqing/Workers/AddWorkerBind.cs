@@ -3,14 +3,15 @@ using KtpAcs.Infrastructure.Serialization;
 using KtpAcs.Infrastructure.Utilities;
 using KtpAcs.KtpApiService;
 using KtpAcs.KtpApiService.Base;
+using KtpAcs.KtpApiService.BaseApi;
 using KtpAcs.KtpApiService.Model;
 using KtpAcs.KtpApiService.Result;
 using KtpAcs.KtpApiService.Send;
 using KtpAcs.KtpApiService.Worker;
-
 using KtpAcs.WinForm.Jijian.Base;
 using KtpAcs.WinForm.Jijian.Workers;
 using KtpAcsMiddleware.KtpApiService.Base;
+using RestSharp.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -46,11 +47,11 @@ namespace KtpAcs.WinForm.Jijian
             {
                 if (selectedValue == "汉")
                     selectedValue = "汉族";
-                DicKeyValueDto dicKeyValueDto= nations.Where(a => a.Value == selectedValue).FirstOrDefault();
+                DicKeyValueDto dicKeyValueDto = nations.Where(a => a.Value == selectedValue).FirstOrDefault();
                 int key = 0;
                 if (dicKeyValueDto != null)
                     key = dicKeyValueDto.Key;
-               
+
                 this.ComNation.EditValue = key;
                 this.ComNation.Text = selectedValue;
 
@@ -70,7 +71,7 @@ namespace KtpAcs.WinForm.Jijian
             IList<DicKeyValueDto> nations = EnumDiploma.wu.GetDescriptions().Where(i => i.Key != 0).ToList();
             this.ComEducationLevel.Properties.DisplayMember = "Value";
             this.ComEducationLevel.Properties.ValueMember = "Key";
-            this.ComEducationLevel.EditValue = "Value";
+            //this.ComEducationLevel.EditValue = "Value";
 
             this.ComEducationLevel.Properties.DataSource = nations;
             this.ComEducationLevel.Properties.NullText = "==请选择==";
@@ -110,9 +111,10 @@ namespace KtpAcs.WinForm.Jijian
                 this.comWorkType.Properties.DisplayMember = "name";
                 this.comWorkType.Properties.ValueMember = "code";
                 this.comWorkType.Properties.DataSource = pList;
-                this.ComOrganizationUuid.Properties.NullText = "===请选择===";
                 this.comWorkType.Properties.Columns.Add(
                  new DevExpress.XtraEditors.Controls.LookUpColumnInfo("name"));
+                this.comWorkType.Properties.NullText = "===请选择===";
+                this.comWorkType.EditValue = null;
 
             }
         }
@@ -150,6 +152,10 @@ namespace KtpAcs.WinForm.Jijian
             this.ComOrganizationUuid.Properties.Columns.Add(
            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("name"));
         }
+        /// <summary>
+        /// 查询班组
+        /// </summary>
+        /// <param name="uuid"></param>
         private void GetTeamInfo(object uuid)
         {
             IMulePusher pusherLogin = new GeTeamsApi()
@@ -173,6 +179,114 @@ namespace KtpAcs.WinForm.Jijian
                 this.comWorkerTeamUuid.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("teamName", "选择班组"));
 
             }
+        }
+
+        /// <summary>
+        ///查询结算方式
+        /// </summary>
+        private void GetClearingTypeList()
+        {
+            List<SettlementMethodResult.Data> pList = null;
+            //Task.Run(() =>
+            //{
+            IMulePusher pusherLogin = new GeSettlementApi()
+            {
+
+            };
+            PushSummary pushLogin = pusherLogin.Push();
+            if (pushLogin.Success)
+            {
+                pList = pushLogin.ResponseData;
+
+            }
+            // });
+            this.comClearingType.Properties.DisplayMember = "clearingForm";
+            this.comClearingType.Properties.ValueMember = "uuid";
+            this.comClearingType.Properties.DataSource = pList;
+            this.comClearingType.Properties.NullText = "===请选择===";
+            this.comClearingUnit.Properties.NullText = "请先选择结算方式";
+            this.comClearingUnit.EditValue = null;
+
+            this.comClearingType.Properties.Columns.Add(
+           new DevExpress.XtraEditors.Controls.LookUpColumnInfo("clearingForm"));
+            //是否显示列名
+            this.comClearingType.Properties.ShowHeader = false;
+        }
+
+
+        /// <summary>
+        ///查询单位
+        /// </summary>
+        private void GetClearingUnitList(string typeUuid)
+        {
+            List<TlementUnitResult.Data> pList = null;
+
+            IMulePusher pusherLogin = new GetSettlementUnitApi()
+            {
+                RequestParam = new { typeUuid = typeUuid }
+            };
+            PushSummary pushLogin = pusherLogin.Push();
+            if (pushLogin.Success)
+            {
+                pList = pushLogin.ResponseData;
+
+            }
+
+            this.comClearingUnit.Properties.DisplayMember = "unitName";
+            this.comClearingUnit.Properties.ValueMember = "uuid";
+            this.comClearingUnit.Properties.DataSource = pList;
+
+            this.comClearingUnit.Properties.Columns.Clear();
+            this.comClearingUnit.Properties.NullText = "";
+            this.comClearingUnit.EditValue = null;
+
+            this.comClearingUnit.Properties.Columns.Add(
+           new DevExpress.XtraEditors.Controls.LookUpColumnInfo("unitName"));
+            //是否显示列名
+            this.comClearingUnit.Properties.ShowHeader = false;
+
+
+        }
+
+        /// <summary>
+        /// 获取日薪
+        /// </summary>
+        private void GetDailySalaryList()
+        {
+            try
+            {
+
+                string WorkerTeamUuid = FormatHelper.GetToString(this.comWorkerTeamUuid.EditValue);
+                string comWorkType = FormatHelper.GetToString(this.comWorkType.EditValue);
+                if (string.IsNullOrEmpty(WorkerTeamUuid) || string.IsNullOrEmpty(comWorkType))
+                    return;
+
+                BaseSend baseSend = new BaseSend
+                {
+                    organizationUuid = this.ComOrganizationUuid.EditValue.ToString(),
+                    workTeamUuid = WorkerTeamUuid,
+                    workType = comWorkType,
+                    projectUuid = ConfigHelper.KtpLoginProjectId
+
+                };
+
+                IMulePusher pusherLogin = new GetDailySalaryApi()
+                {
+                    RequestParam = baseSend
+                };
+                PushSummary pushLogin = pusherLogin.Push();
+                if (pushLogin.Success)
+                {
+                    this.txtPretestSalary.Text = pushLogin.ResponseData;
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageHelper.Show(ex.Message, ex);
+            }
+
         }
 
 
@@ -211,7 +325,11 @@ namespace KtpAcs.WinForm.Jijian
             add.organizationUuid = this.ComOrganizationUuid.EditValue.ToString();
             add.workType = this.comWorkType.EditValue.ToString();
             add.workerTeamUuid = this.comWorkerTeamUuid.EditValue.ToString();
-
+            //622需求
+            add.clearingPrice = FormatHelper.GetDecimal(this.txtClearingPrice.Text);
+            add.pretestSalary = FormatHelper.GetDecimal(this.txtPretestSalary.Text);
+            add.clearingType = this.comClearingType.EditValue.ToString();
+            add.clearingUnit = this.comClearingUnit.EditValue.ToString();
             IMulePusher imIsexits = new GetWorkerIsExistApi() { RequestParam = new { phone = add.phone } };
             PushSummary PuIsexits = imIsexits.Push();
             if (PuIsexits.Success)
@@ -317,6 +435,14 @@ namespace KtpAcs.WinForm.Jijian
                 PreValidationHelper.MustNotBeNull(FormErrorProvider, txtBankNo, "银行卡不能为空", ref isPrePass);
                 PreValidationHelper.MustNotBeNull(FormErrorProvider, txtBankName, "银行卡开户行不能为空", ref isPrePass);
 
+                PreValidationHelper.MustNotBeNull(FormErrorProvider, comClearingUnit, "结算单位不能为空", ref isPrePass);
+
+                PreValidationHelper.MustNotBeNull(FormErrorProvider, comClearingType, "结算方式不能为空", ref isPrePass);
+
+                PreValidationHelper.MustNotBeNull(FormErrorProvider, txtPretestSalary, "预发日薪不能为空", ref isPrePass);
+                PreValidationHelper.MustNotBeNull(FormErrorProvider, txtClearingPrice, "结算单价不能为空", ref isPrePass);
+
+
             }
             return isPrePass;
         }
@@ -346,17 +472,20 @@ namespace KtpAcs.WinForm.Jijian
             {
                 panelProjectInfo.Visible = false;
                 panelBankInfo.Visible = false;
+                panelSalary.Visible = false;
             }
             else if (state == 2)
             {
                 panelProjectInfo.Visible = false;
                 panelBankInfo.Visible = false;
+                panelSalary.Visible = false;
                 this.txtPhone.ReadOnly = true;
             }
             else if (state == 0)
             {
                 panelProjectInfo.Visible = true;
                 panelBankInfo.Visible = true;
+                panelSalary.Visible = true;
 
             }
 
@@ -367,7 +496,8 @@ namespace KtpAcs.WinForm.Jijian
             if (isEdit)
             {
                 //修改
-                this.simpleButton1.Text = "关闭";
+                this.btnCancel.Text = "关闭";
+                this.btnCancel2.Text = "关闭";
                 this.txtPhone.ReadOnly = true;
                 this.comWorkerTeamUuid.ReadOnly = true;
                 this.comWorkType.ReadOnly = true;
@@ -383,8 +513,10 @@ namespace KtpAcs.WinForm.Jijian
 
                 //详情
                 this.btnSubmit.Visible = false;
+                this.btnSubmit2.Visible = false;
                 this.AVidePlayer.Visible = false;
-                this.simpleButton1.Text = "关闭";
+                this.btnCancel.Text = "关闭";
+                this.btnCancel2.Text = "关闭";
                 this.txtEmergencyContactName.ReadOnly = true;
                 this.txtEmergencyContactPhone.ReadOnly = true;
                 this.txtPhone.ReadOnly = true;
@@ -398,6 +530,10 @@ namespace KtpAcs.WinForm.Jijian
                 this.btnPictureReverse.Visible = false;
                 this.btnReadIC.Visible = false;
             }
+            this.comClearingUnit.ReadOnly = true;
+            this.comClearingType.ReadOnly = true;
+            this.txtPretestSalary.ReadOnly = true;
+            this.txtClearingPrice.ReadOnly = true;
 
         }
 
@@ -451,6 +587,13 @@ namespace KtpAcs.WinForm.Jijian
             this.comWorkerTeamUuid.Properties.NullText = "===请选择===";
             this.comWorkType.Properties.NullText = "===请选择===";
             this.ComNation.Properties.NullText = "===请选择===";
+
+            this.comClearingUnit.Properties.NullText = "===请选择===";
+            this.comClearingType.Properties.NullText = "===请选择===";
+            this.txtPretestSalary.Text = "";
+            this.txtClearingPrice.Text = "";
+            this.comClearingUnit.EditValue = null;
+            this.comClearingType.EditValue = null;
             this.ComNation.EditValue = null;
             this.ComEducationLevel.EditValue = null;
             this.ComOrganizationUuid.EditValue = null;
@@ -496,6 +639,12 @@ namespace KtpAcs.WinForm.Jijian
                 MessageHelper.Show(ex.Message);
             }
 
+            SetWorkerInfo(state, w);
+
+        }
+
+        private void SetWorkerInfo(int state, WorkerResult.Data w)
+        {
             this.txtAddress.Text = w.address;
             this.txtAvg.Text = w.age.ToString();
             this.txtBankName.Text = w.bankName;
@@ -503,7 +652,10 @@ namespace KtpAcs.WinForm.Jijian
             this.txtBirthday.Text = w.birthday;
             this.txtEmergencyContactName.Text = w.emergencyContactName;
             this.txtEmergencyContactPhone.Text = w.emergencyContactPhone;
-            this.txtGender.SelectedIndex = w.gender == 1 ? 0 : 1;
+            if (w.gender != null)
+                this.txtGender.SelectedIndex = w.gender == 1 ? 0 : 1;
+            else
+                this.txtGender.SelectedIndex = -1;
             this.txtIdCard.Text = w.idCard;
             this.txtName.Text = w.name;
             this.txtNativePlace.Text = w.nativePlace;
@@ -517,6 +669,12 @@ namespace KtpAcs.WinForm.Jijian
             this.ComOrganizationUuid.EditValue = w.organizationUuid;
             this.comWorkerTeamUuid.EditValue = w.workerTeamUuid;
             this.comWorkType.EditValue = w.workType;
+            //622需求
+            this.comClearingType.EditValue = w.clearingType;
+            this.comClearingUnit.EditValue = w.clearingUnit;
+            this.txtPretestSalary.Text = w.pretestSalary.ToString();
+            this.txtClearingPrice.Text = w.clearingPrice.ToString();
+            this.txtPhone.Text = w.phone;
             BindNationsCb(w.nation);
             //人脸采集照片
             if (!string.IsNullOrEmpty(w.facePic))
@@ -580,12 +738,10 @@ namespace KtpAcs.WinForm.Jijian
                 }
             }
 
-            if (state == 1 || state == 0)
-            {
 
-                this.txtPhone.Text = w.phone;
 
-            }
+
+
 
         }
 

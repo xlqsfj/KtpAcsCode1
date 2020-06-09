@@ -5,6 +5,7 @@ using KtpAcs.KtpApiService.Model;
 using KtpAcs.KtpApiService.Send;
 using KtpAcs.KtpApiService.Worker;
 using KtpAcs.PanelApi.Haiqing;
+
 using KtpAcs.WinForm.Jijian.Base;
 using KtpAcs.WinForm.Jijian.Device;
 using KtpAcs.WinForm.Jijian.Workers;
@@ -51,7 +52,6 @@ namespace KtpAcs.WinForm.Jijian
         {
             _state = hmc;
             InitializeComponent();
-            //
             CameraConn();
             BindNationsCb();
             BindEducationLeveCb();
@@ -62,6 +62,8 @@ namespace KtpAcs.WinForm.Jijian
             GetProjectList();
             // 劳务公司
             GetOrganizationUuidList();
+            //结算方式
+            GetClearingTypeList();
 
         }
         protected override Point ScrollToControl(Control activeControl)
@@ -87,6 +89,9 @@ namespace KtpAcs.WinForm.Jijian
             GetOrganizationUuidList();
             //控件状态
             ContentState(_state);
+           
+            //结算方式
+            GetClearingTypeList();
             //加载详细页
             GetInfo(hmc, uuId);
             SetIsEdit(isEdit);
@@ -277,6 +282,8 @@ namespace KtpAcs.WinForm.Jijian
             string submit = btnSubmit.Text;
             btnSubmit.Text = @"正在提交";
             btnSubmit.Enabled = false;
+            btnSubmit2.Text = @"正在提交";
+            btnSubmit2.Enabled = false;
             try
             {
 
@@ -284,6 +291,8 @@ namespace KtpAcs.WinForm.Jijian
                 {
                     btnSubmit.Text = @"提交";
                     btnSubmit.Enabled = true;
+                    btnSubmit2.Text = @"正在提交";
+                    btnSubmit2.Enabled = true;
 
                     throw new PreValidationException(PreValidationHelper.ErroMsg);
                 }
@@ -320,7 +329,6 @@ namespace KtpAcs.WinForm.Jijian
                 add.expireTime = this.txtExpireTime.Text;
                 add.phone = this.txtPhone.Text;
                 add.projectUuid = ConfigHelper.KtpLoginProjectId;
-
 
                 if (!string.IsNullOrEmpty(_facePicId))
                 {
@@ -377,6 +385,8 @@ namespace KtpAcs.WinForm.Jijian
 
                 btnSubmit.Text = submit;
                 btnSubmit.Enabled = true;
+                btnSubmit2.Text = submit;
+                btnSubmit2.Enabled = true;
             }
         }
 
@@ -406,6 +416,7 @@ namespace KtpAcs.WinForm.Jijian
                             addFaceToPanel.AddFaceInfo(add, uid);
                         }
                         btnSubmit.Enabled = true;
+                        btnSubmit2.Enabled = true;
                     }
                     else
                     {
@@ -455,6 +466,8 @@ namespace KtpAcs.WinForm.Jijian
 
                 btnSubmit.Text = @"提交";
                 btnSubmit.Enabled = true;
+                btnSubmit2.Text = @"提交";
+                btnSubmit2.Enabled = true;
                 if (close == "close")
                 {//新增
 
@@ -465,7 +478,12 @@ namespace KtpAcs.WinForm.Jijian
                         _isManualEdit = false;
                     }
                     if (ShowProjectList != null)
-                        ShowProjectList("ok");
+                    {
+                        if (_state == 5)
+                            ShowProjectList("项目人员详情");
+                        else
+                            ShowProjectList("ok");
+                    }
                     if (CloseDdetailedWinform != null)
                         CloseDdetailedWinform(null, false, "");
                     return;
@@ -540,12 +558,15 @@ namespace KtpAcs.WinForm.Jijian
             try
             {
 
-                if (string.IsNullOrEmpty(_uuId))
+                if (string.IsNullOrEmpty(_uuId) && ShowProjectList == null)
                     reslt(_state);
                 else if (CloseDdetailedWinform != null)
                     CloseDdetailedWinform(null, false, "");
-                if (ShowProjectList != null)
-                    ShowProjectList("ok");
+                else if (ShowProjectList != null)
+                    if (_state == 5)
+                        ShowProjectList("项目人员详情");
+                    else
+                        ShowProjectList("项目人员办理入场");
                 else
                     this.Close();
             }
@@ -607,6 +628,25 @@ namespace KtpAcs.WinForm.Jijian
             {
                 this.txtStartTime.Text = "";
             }
+        }
+
+        private void comClearingType_EditValueChanged(object sender, EventArgs e)
+        {
+            if (comClearingType.EditValue != null)
+            {
+                //结算单位
+                GetClearingUnitList(comClearingType.EditValue.ToString());
+            }
+        }
+
+        private void comWorkerTeamUuid_EditValueChanged(object sender, EventArgs e)
+        {
+            GetDailySalaryList();
+        }
+
+        private void comWorkType_EditValueChanged(object sender, EventArgs e)
+        {
+            GetDailySalaryList();
         }
     }
 }

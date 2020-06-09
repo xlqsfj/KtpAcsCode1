@@ -88,10 +88,11 @@ namespace KtpAcs.WinForm.Jijian
             GetOrganizationUuidList();
             //控件状态
             ContentState(_state);
-            //加载详细页
-            GetInfo(hmc, uuId);
             //结算方式
             GetClearingTypeList();
+            //加载详细页
+            GetInfo(hmc, uuId);
+        
 
             SetIsEdit(isEdit);
         }

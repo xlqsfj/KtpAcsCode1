@@ -86,6 +86,10 @@ namespace KtpAcs.WinForm.Jijian.Device
                 IMulePusherHq PanelDevice = new PanelGetSysParamApi() { PanelIp = txtDeviceIp.Text };
                 PushSummaryHq PanelMag = PanelDevice.Push();
                 HqResult result = PanelMag.ResponseData;
+                if (result == null)
+                {
+                    throw new PreValidationException("未找到该设备，请检查或请确定该设备是否是该厂商面板!");
+                }
                 string deviceNo = result.info.DeviceID.ToString();
                 this.txt_deviceId.Text = deviceNo;
                 DeviceSend deviceSend = new DeviceSend

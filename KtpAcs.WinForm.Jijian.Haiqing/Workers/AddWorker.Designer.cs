@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddWorker));
             this.btnCancel2 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
@@ -40,7 +39,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtBankNo = new DevExpress.XtraEditors.TextEdit();
             this.label11 = new System.Windows.Forms.Label();
-            this.FormErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.FormErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
             this.txtPhone = new DevExpress.XtraEditors.TextEdit();
             this.txtEmergencyContactName = new DevExpress.XtraEditors.TextEdit();
             this.txtEmergencyContactPhone = new DevExpress.XtraEditors.TextEdit();
@@ -54,7 +53,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
             this.label22 = new System.Windows.Forms.Label();
-            this.txtClearingPrice = new DevExpress.XtraEditors.TextEdit();
             this.txtPretestSalary = new DevExpress.XtraEditors.TextEdit();
             this.label23 = new System.Windows.Forms.Label();
             this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
@@ -128,6 +126,7 @@
             this.f2 = new DevExpress.XtraEditors.PictureEdit();
             this.txtBirthday = new DevExpress.XtraEditors.DateEdit();
             this.txtGender = new DevExpress.XtraEditors.RadioGroup();
+            this.txtClearingPrice = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBankInfo)).BeginInit();
             this.panelBankInfo.SuspendLayout();
@@ -142,7 +141,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.comClearingType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comClearingUnit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClearingPrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPretestSalary.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelProjectInfo)).BeginInit();
             this.panelProjectInfo.SuspendLayout();
@@ -170,6 +168,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGender.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClearingPrice.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel2
@@ -330,6 +329,7 @@
             // panelSalary
             // 
             this.panelSalary.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelSalary.Controls.Add(this.txtClearingPrice);
             this.panelSalary.Controls.Add(this.labelControl24);
             this.panelSalary.Controls.Add(this.comClearingType);
             this.panelSalary.Controls.Add(this.pictureEdit2);
@@ -338,7 +338,6 @@
             this.panelSalary.Controls.Add(this.label15);
             this.panelSalary.Controls.Add(this.labelControl26);
             this.panelSalary.Controls.Add(this.label22);
-            this.panelSalary.Controls.Add(this.txtClearingPrice);
             this.panelSalary.Controls.Add(this.txtPretestSalary);
             this.panelSalary.Controls.Add(this.label23);
             this.panelSalary.Controls.Add(this.labelControl27);
@@ -443,14 +442,6 @@
             this.label22.Size = new System.Drawing.Size(12, 15);
             this.label22.TabIndex = 376;
             this.label22.Text = "*";
-            // 
-            // txtClearingPrice
-            // 
-            this.txtClearingPrice.Location = new System.Drawing.Point(503, 71);
-            this.txtClearingPrice.Name = "txtClearingPrice";
-            this.txtClearingPrice.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtClearingPrice.Size = new System.Drawing.Size(93, 22);
-            this.txtClearingPrice.TabIndex = 8;
             // 
             // txtPretestSalary
             // 
@@ -1333,6 +1324,19 @@
             this.txtGender.Size = new System.Drawing.Size(164, 21);
             this.txtGender.TabIndex = 432;
             // 
+            // txtClearingPrice
+            // 
+            this.txtClearingPrice.Location = new System.Drawing.Point(502, 70);
+            this.txtClearingPrice.Name = "txtClearingPrice";
+            this.txtClearingPrice.Properties.Mask.BeepOnError = true;
+            this.txtClearingPrice.Properties.Mask.EditMask = "\\d+(\\R.\\d{0,2})?";
+            this.txtClearingPrice.Properties.Mask.IgnoreMaskBlank = false;
+            this.txtClearingPrice.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtClearingPrice.Properties.Mask.SaveLiteral = false;
+            this.txtClearingPrice.Properties.Mask.ShowPlaceHolders = false;
+            this.txtClearingPrice.Size = new System.Drawing.Size(93, 22);
+            this.txtClearingPrice.TabIndex = 377;
+            // 
             // AddWorker
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -1341,7 +1345,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(0, 800);
-            this.ClientSize = new System.Drawing.Size(1268, 1072);
+            this.ClientSize = new System.Drawing.Size(1302, 1072);
             this.Controls.Add(this.btnCancel2);
             this.Controls.Add(this.panelBankInfo);
             this.Controls.Add(this.txtPhone);
@@ -1427,7 +1431,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.comClearingType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comClearingUnit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClearingPrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPretestSalary.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelProjectInfo)).EndInit();
             this.panelProjectInfo.ResumeLayout(false);
@@ -1456,6 +1459,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirthday.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGender.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtClearingPrice.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1487,7 +1491,6 @@
         private System.Windows.Forms.Label label15;
         private DevExpress.XtraEditors.LabelControl labelControl26;
         private System.Windows.Forms.Label label22;
-        private DevExpress.XtraEditors.TextEdit txtClearingPrice;
         private DevExpress.XtraEditors.TextEdit txtPretestSalary;
         private System.Windows.Forms.Label label23;
         private DevExpress.XtraEditors.LabelControl labelControl27;
@@ -1561,5 +1564,6 @@
         private DevExpress.XtraEditors.PictureEdit f2;
         private DevExpress.XtraEditors.DateEdit txtBirthday;
         private DevExpress.XtraEditors.RadioGroup txtGender;
+        private DevExpress.XtraEditors.TextEdit txtClearingPrice;
     }
 }

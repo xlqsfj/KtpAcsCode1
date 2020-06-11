@@ -399,11 +399,11 @@ namespace KtpAcs.WinForm.Jijian
             PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, txtEmergencyContactPhone, "紧急联系人手机号码格式错误", ref isPrePass);
             PreValidationHelper.MustNotBeNullOrEmpty(FormErrorProvider, txtEmergencyContactName, "紧急联系人不允许为空", ref isPrePass);
 
-            if (txtBirthday.DateTime > DateTime.Now.Date.AddYears(-18))
-            {
-                FormErrorProvider.SetError(txtBirthday, "出生日期不得小于成年人年龄");
-                isPrePass = false;
-            }
+            //if (txtBirthday.DateTime > DateTime.Now.Date.AddYears(-18))
+            //{
+            //    FormErrorProvider.SetError(txtBirthday, "出生日期不得小于成年人年龄");
+            //    isPrePass = false;
+            //}
 
             if (txtGender.SelectedIndex == -1)
             {

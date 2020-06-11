@@ -36,46 +36,9 @@ namespace KtpAcs.WinForm.Jijian.Workers
             RepositoryItemHyperLinkEdit linkSalesMoney = CreateRepositoryItemHyperLinkEdit("销售金额");
             linkSalesMoney.OpenLink += new OpenLinkEventHandler(repositoryItemButtonEdit3_Click);  //事件
             this.SalesMoney.ColumnEdit = linkSalesMoney;  //绑定
+            InitGridPagingNavigatorControl();
         }
 
-
-
-
-        public void GetWorkerList(string Query = "")
-        {
-
-            try
-            {
-                WorkerSend workerSend = new WorkerSend()
-                {
-
-                    pageSize = 25,
-                    projectUuid = ConfigHelper.KtpLoginProjectId,
-                    pageNum = 1,
-                    status = (int)this.ComUsable.EditValue,
-                    keyWord = txtQuery.Text
-                };
-
-                IMulePusher pusherDevice = new GetWorkersProjectApi() { RequestParam = workerSend };
-                PushSummary push = pusherDevice.Push();
-                if (push.Success)
-                {
-
-
-                    WorkerProjectListResult.Data data1 = push.ResponseData;
-                    this.gridControl1.DataSource = data1.list;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show($"错误信息:{0}", ex.Message);
-
-            }
-
-
-
-        }
 
         private void repositoryItemButtonEdit3_Click(object sender, EventArgs e)
         {
@@ -247,7 +210,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
 
         private void btnQuery_Click(object sender, EventArgs e)
         {
-            GetWorkerList();
+            WorkersGridPager.PageIndex = 1;
         }
 
         /// <summary>
@@ -290,7 +253,19 @@ namespace KtpAcs.WinForm.Jijian.Workers
         {
             this.txtQuery.Text = "";
             this.ComUsable.ItemIndex = 0;
-            GetWorkerList();
+            WorkersGridPager.PageIndex = 1;
+        }
+        private void txtQuery_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                WorkersGridPager.PageIndex = 1;
+            }
+        }
+
+        private void ComUsable_EditValueChanged(object sender, EventArgs e)
+        {
+            WorkersGridPager.PageIndex = 1;
         }
     }
 }

@@ -1271,7 +1271,12 @@
             // 
             this.txtClearingPrice.Location = new System.Drawing.Point(503, 71);
             this.txtClearingPrice.Name = "txtClearingPrice";
-            this.txtClearingPrice.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtClearingPrice.Properties.Mask.BeepOnError = true;
+            this.txtClearingPrice.Properties.Mask.EditMask = "\\d+(\\R.\\d{0,2})?";
+            this.txtClearingPrice.Properties.Mask.IgnoreMaskBlank = false;
+            this.txtClearingPrice.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtClearingPrice.Properties.Mask.SaveLiteral = false;
+            this.txtClearingPrice.Properties.Mask.ShowPlaceHolders = false;
             this.txtClearingPrice.Size = new System.Drawing.Size(93, 22);
             this.txtClearingPrice.TabIndex = 8;
             this.txtClearingPrice.Leave += new System.EventHandler(this.txtBankNo_Leave);
@@ -1343,7 +1348,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(0, 800);
-            this.ClientSize = new System.Drawing.Size(1315, 1078);
+            this.ClientSize = new System.Drawing.Size(1383, 1078);
             this.Controls.Add(this.btnCancel2);
             this.Controls.Add(this.btnSubmit2);
             this.Controls.Add(this.txtPhone);

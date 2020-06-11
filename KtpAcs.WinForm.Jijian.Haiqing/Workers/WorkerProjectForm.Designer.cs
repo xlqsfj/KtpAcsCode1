@@ -63,6 +63,7 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.ComUsable = new DevExpress.XtraEditors.LookUpEdit();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.WorkersGridPager = new KtpAcs.WinForm.Jijian.PageCon();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuery.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
@@ -96,6 +97,7 @@
             this.txtQuery.Properties.AutoHeight = false;
             this.txtQuery.Size = new System.Drawing.Size(338, 37);
             this.txtQuery.TabIndex = 387;
+            this.txtQuery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuery_KeyDown);
             // 
             // btnClear
             // 
@@ -299,7 +301,6 @@
             this.repositoryItemButtonEdit4});
             this.gridControl1.Size = new System.Drawing.Size(1254, 573);
             this.gridControl1.TabIndex = 4;
-            this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grid_WorkerProject});
             // 
@@ -314,9 +315,11 @@
             this.ComUsable.Properties.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.ComEducationLevel_Properties_MouseWheel);
             this.ComUsable.Size = new System.Drawing.Size(132, 37);
             this.ComUsable.TabIndex = 390;
+            this.ComUsable.EditValueChanged += new System.EventHandler(this.ComUsable_EditValueChanged);
             // 
             // xtraTabPage2
             // 
+            this.xtraTabPage2.Controls.Add(this.WorkersGridPager);
             this.xtraTabPage2.Controls.Add(this.ComUsable);
             this.xtraTabPage2.Controls.Add(this.gridControl1);
             this.xtraTabPage2.Controls.Add(this.btnQuery);
@@ -325,15 +328,26 @@
             this.xtraTabPage2.Controls.Add(this.labelControl7);
             this.xtraTabPage2.Controls.Add(this.labelControl1);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1290, 754);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1304, 754);
             this.xtraTabPage2.Text = "项目人员";
+            // 
+            // WorkersGridPager
+            // 
+            this.WorkersGridPager.Location = new System.Drawing.Point(33, 639);
+            this.WorkersGridPager.Name = "WorkersGridPager";
+            this.WorkersGridPager.PageCount = 0;
+            this.WorkersGridPager.PageIndex = 1;
+            this.WorkersGridPager.PageSize = 2;
+            this.WorkersGridPager.PagingHandler = null;
+            this.WorkersGridPager.Size = new System.Drawing.Size(1254, 25);
+            this.WorkersGridPager.TabIndex = 392;
             // 
             // xtraTabControl1
             // 
             this.xtraTabControl1.Location = new System.Drawing.Point(12, 12);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1292, 777);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1306, 777);
             this.xtraTabControl1.TabIndex = 5;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage2});
@@ -390,5 +404,6 @@
         private DevExpress.XtraEditors.LookUpEdit ComUsable;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        private PageCon WorkersGridPager;
     }
 }

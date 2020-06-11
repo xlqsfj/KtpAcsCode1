@@ -192,6 +192,9 @@
     <Compile Include="Workers\AddWorkerProjectBind.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Workers\WorkerProjectFormBind.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Workers\WorkerAddStateForm.cs">
       <SubType>Form</SubType>
     </Compile>

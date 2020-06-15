@@ -1024,11 +1024,12 @@
             // 
             // txtBankName
             // 
-            this.txtBankName.EditValue = "根据输入的银行卡自动识别";
+            this.txtBankName.EditValue = "点击根据输入的银行卡自动识别";
             this.txtBankName.Location = new System.Drawing.Point(261, 71);
             this.txtBankName.Name = "txtBankName";
-            this.txtBankName.Size = new System.Drawing.Size(164, 22);
+            this.txtBankName.Size = new System.Drawing.Size(177, 22);
             this.txtBankName.TabIndex = 9;
+            this.txtBankName.Click += new System.EventHandler(this.txtBankName_Click);
             // 
             // labelControl23
             // 
@@ -1214,6 +1215,7 @@
             this.comClearingUnit.Properties.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.comWorkType_Properties_MouseWheel);
             this.comClearingUnit.Size = new System.Drawing.Size(71, 22);
             this.comClearingUnit.TabIndex = 7;
+            this.comClearingUnit.Tag = "";
             // 
             // labelControl25
             // 
@@ -1348,7 +1350,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(0, 800);
-            this.ClientSize = new System.Drawing.Size(1383, 1078);
+            this.ClientSize = new System.Drawing.Size(1451, 1078);
             this.Controls.Add(this.btnCancel2);
             this.Controls.Add(this.btnSubmit2);
             this.Controls.Add(this.txtPhone);

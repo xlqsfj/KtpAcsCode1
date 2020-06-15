@@ -526,28 +526,7 @@ namespace KtpAcs.WinForm.Jijian
         }
         private void txtBankNo_Leave(object sender, EventArgs e)
         {
-            string name = this.txtName.Text;
-            string idCard = this.txtIdCard.Text;
-            string Bankno = this.txtBankNo.Text;
-
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(idCard))
-            {
-
-                MessageHelper.Show("姓名跟身份证不能为空");
-                return;
-            }
-            IMulePusher pusherLogin = new GeBankCardCheckApi() { RequestParam = new { bankNo = Bankno, name = name, idCard = idCard } };
-            PushSummary pushLogin = pusherLogin.Push();
-            if (pushLogin.Success)
-            {
-                BankInfo bankInfo = pushLogin.ResponseData;
-                this.txtBankName.Text = bankInfo.bank;
-
-            }
-            else
-            {
-                MessageHelper.Show(pushLogin.Message);
-            }
+            
 
         }
 
@@ -647,6 +626,34 @@ namespace KtpAcs.WinForm.Jijian
         private void comWorkType_EditValueChanged(object sender, EventArgs e)
         {
             GetDailySalaryList();
+        }
+
+        private void txtBankName_Click(object sender, EventArgs e)
+        {
+            string name = this.txtName.Text;
+            string idCard = this.txtIdCard.Text;
+            string Bankno = this.txtBankNo.Text;
+
+            if (string.IsNullOrEmpty(Bankno))
+                return;
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(idCard))
+            {
+
+                MessageHelper.Show("姓名跟身份证不能为空");
+                return;
+            }
+            IMulePusher pusherLogin = new GeBankCardCheckApi() { RequestParam = new { bankNo = Bankno, name = name, idCard = idCard } };
+            PushSummary pushLogin = pusherLogin.Push();
+            if (pushLogin.Success)
+            {
+                BankInfo bankInfo = pushLogin.ResponseData;
+                this.txtBankName.Text = bankInfo.bank;
+
+            }
+            else
+            {
+                MessageHelper.Show(pushLogin.Message);
+            }
         }
     }
 }

@@ -205,6 +205,7 @@ namespace KtpAcs.WinForm.Jijian
             this.comClearingType.Properties.DataSource = pList;
             this.comClearingType.Properties.NullText = "===请选择===";
             this.comClearingUnit.Properties.NullText = "请先选择结算方式";
+            this.comClearingUnit.ToolTip = "请先选择结算方式";
             this.comClearingUnit.EditValue = null;
 
             this.comClearingType.Properties.Columns.Add(
@@ -239,6 +240,7 @@ namespace KtpAcs.WinForm.Jijian
             this.comClearingUnit.Properties.Columns.Clear();
             this.comClearingUnit.Properties.NullText = "";
             this.comClearingUnit.EditValue = null;
+            this.comClearingUnit.ToolTip = "";
 
             this.comClearingUnit.Properties.Columns.Add(
            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("unitName"));

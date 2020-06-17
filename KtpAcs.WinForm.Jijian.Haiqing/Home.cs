@@ -37,7 +37,6 @@ namespace KtpAcs.WinForm.Jijian
             this.FormBorderStyle = FormBorderStyle.None;
             this.MaximumSize = new Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
             this.WindowState = FormWindowState.Maximized;
-
             GetIp();
             GetProjectList();
             GetProjectCount();

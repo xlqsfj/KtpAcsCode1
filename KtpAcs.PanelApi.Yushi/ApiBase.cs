@@ -82,7 +82,7 @@ namespace KtpAcs.PanelApi.Yushi
                     _panelIp = value;
 
                 }
-                s_rootUrl = $"http://{_panelIp}{panelUrl}"; 
+                s_rootUrl = $"http://{_panelIp}{panelUrl}";
             }
         }
 
@@ -130,15 +130,36 @@ namespace KtpAcs.PanelApi.Yushi
 
             RichRestRequest request = CreateRestRequest(senddata);
             List<Parameter> ts = request.Parameters;
+            PushSummarYs pushSummary = null;
+
+            DateTime beginTime = DateTime.Now;
             var response = Client.Execute(request);
+            DateTime endTime = DateTime.Now;
+            int interval = (endTime - beginTime).Seconds;
+            if (interval <= 0)
+            { }
+            else if (interval > 20)
+            {
+                LogHelper.Info($"{response.ResponseUri}接口请求时间:{beginTime.ToString("yyyy-MM-dd HH:mm:ss")}");
+
+                LogHelper.Info($"{request.Resource}响应状态:{(int)response.StatusCode}接口结束时间:{endTime.ToString("yyyy-MM-dd HH:mm:ss")}相差:{interval}秒,宇视面板慢");
+
+            }
+            else
+            {
+                LogHelper.Info($"{response.ResponseUri}接口请求时间:{beginTime.ToString("yyyy-MM-dd HH:mm:ss")}");
+
+                LogHelper.Info($"{request.Resource}响应状态:{(int)response.StatusCode}接口结束时间:{endTime.ToString("yyyy-MM-dd HH:mm:ss")}相差:{interval}秒");
+            }
 
             dynamic contentPost = response.Content;
 
             bool isDataNull = true;
-            PushSummarYs pushSummary = null;
+
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 //  throw new InvalidOperationException("调用接口失败, 错误信息：" + response.ErrorException.Message);
+                LogHelper.Info(response.Content);
 
                 return InvokeOnPushFailed(request, response);
             }
@@ -163,7 +184,7 @@ namespace KtpAcs.PanelApi.Yushi
             {
 
                 errorSummary = "调用服务失败";
-                return new PushSummarYs(false, errorSummary, this.ServiceName, request, "接口",(int) response.StatusCode);
+                return new PushSummarYs(false, errorSummary, this.ServiceName, request, "接口", (int)response.StatusCode);
 
             }
             if (response.StatusCode == HttpStatusCode.NotFound)

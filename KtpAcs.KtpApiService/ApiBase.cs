@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KtpAcs.KtpApiService
@@ -112,17 +113,35 @@ namespace KtpAcs.KtpApiService
 
             RichRestRequest request = CreateRestRequest(senddata);
             List<Parameter> ts = request.Parameters;
+            PushSummary pushSummary = null;
+            DateTime beginTime = DateTime.Now;
             var response = Client.Execute(request);
+            DateTime endTime = DateTime.Now;
+            int interval = (endTime - beginTime).Seconds;
+            if (interval <= 0)
+            { }
+            else if (interval > 20)
+            {
+                LogHelper.Info($"{response.ResponseUri}接口请求时间:{beginTime.ToString("yyyy-MM-dd HH:mm:ss")}");
+
+                LogHelper.Info($"{request.Resource}响应状态:{(int)response.StatusCode}接口结束时间:{endTime.ToString("yyyy-MM-dd HH:mm:ss")}相差:{interval}秒,平台接口慢");
+
+            }
+            else
+            {
+                LogHelper.Info($"{response.ResponseUri}接口请求时间:{beginTime.ToString("yyyy-MM-dd HH:mm:ss")}");
+
+                LogHelper.Info($"{request.Resource}响应状态:{(int)response.StatusCode}接口结束时间:{endTime.ToString("yyyy-MM-dd HH:mm:ss")}相差:{interval}秒");
+            }
 
             dynamic contentPost = response.Content;
 
             bool isDataNull = true;
-            PushSummary pushSummary = null;
-
 
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 //  throw new InvalidOperationException("调用接口失败, 错误信息：" + response.ErrorException.Message);
+                LogHelper.Info(response.Content);
 
                 return InvokeOnPushFailed(request, response);
             }

@@ -184,7 +184,7 @@
             this.pictureEdit8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureEdit8.EditValue = global::KtpAcs.WinForm.Jijian.Properties.Resources.cd;
             this.pictureEdit8.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.pictureEdit8.Location = new System.Drawing.Point(36, 573);
+            this.pictureEdit8.Location = new System.Drawing.Point(34, 583);
             this.pictureEdit8.Name = "pictureEdit8";
             this.pictureEdit8.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEdit8.Properties.Appearance.Options.UseBackColor = true;
@@ -825,8 +825,7 @@
             this.radHMC.Name = "radHMC";
             this.radHMC.Properties.Columns = 2;
             this.radHMC.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "花名册"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "甲指分包人员")});
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "花名册")});
             this.radHMC.Size = new System.Drawing.Size(232, 47);
             this.radHMC.TabIndex = 229;
             this.radHMC.SelectedIndexChanged += new System.EventHandler(this.radHMC_SelectedIndexChanged);

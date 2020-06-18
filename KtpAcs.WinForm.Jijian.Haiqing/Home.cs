@@ -21,7 +21,8 @@ using System.Runtime.InteropServices;
 using System.Configuration;
 using System.Reflection;
 using System.Net;
-
+using System.Threading;
+using KtpAcs.WinForm.Jijian.Base;
 
 namespace KtpAcs.WinForm.Jijian
 {
@@ -34,16 +35,46 @@ namespace KtpAcs.WinForm.Jijian
         public Home()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
             this.FormBorderStyle = FormBorderStyle.None;
             this.MaximumSize = new Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
             this.WindowState = FormWindowState.Maximized;
+            //InsertCardValue();
+            MethodInvoker threadInsertValue = new MethodInvoker(CreateUI);
+            threadInsertValue.BeginInvoke(null, null);
+
+        }
+        private void CreateUI()
+
+        {
+
+            InsertCardValue();
+
+        }
+        public void InsertCardValue()
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new MethodInvoker(delegate { InsertCardValue(); }));
+                return;
+            }
+            LoadingHelper.ShowLoadingScreen();//显示
             GetIp();
             GetProjectList();
-            GetProjectCount();
-            flowDevice_Click(null, null);
+            // GetProjectCount();
+            //flowDevice_Click(null, null);
+
         }
-
-
+        ////作用 加快界面加载 
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        CreateParams cp = base.CreateParams;
+        //        cp.ExStyle |= 0x02000000;
+        //        return cp;
+        //    }
+        //}
         public void GetIp()
         {
 
@@ -101,12 +132,16 @@ namespace KtpAcs.WinForm.Jijian
                         return;
 
                     }
-                    this.comProjectList.Properties.DisplayMember = "projectName";
-                    this.comProjectList.Properties.ValueMember = "projectUuid";
-                    this.comProjectList.Properties.DataSource = pList;
-                    string currentProject = SetProjectId(pList);
-                    this.comProjectList.EditValue = currentProject;
 
+                    string currentProject = SetProjectId(pList);
+                    // this.comProjectList.EditValue = currentProject;
+                    this.Invoke((EventHandler)delegate
+                    {
+                        this.comProjectList.Properties.DisplayMember = "projectName";
+                        this.comProjectList.Properties.ValueMember = "projectUuid";
+                        this.comProjectList.Properties.DataSource = pList;
+                        this.comProjectList.EditValue = currentProject;
+                    });
 
                     this.comProjectList.Properties.Columns.Add(
                     new DevExpress.XtraEditors.Controls.LookUpColumnInfo("organizationName", "公司名称"));
@@ -647,7 +682,7 @@ namespace KtpAcs.WinForm.Jijian
         {
             if (e.Button == MouseButtons.Left)
             {
-            
+
                 beginMove = true;
                 currentXPosition = MousePosition.X;//鼠标的x坐标为当前窗体左上角x坐标
                 currentYPosition = MousePosition.Y;//鼠标的y坐标为当前窗体左上角y坐标
@@ -673,7 +708,7 @@ namespace KtpAcs.WinForm.Jijian
         {
             if (e.Button == MouseButtons.Left)
             {
-               
+
                 beginMove = true;
                 currentXPosition = MousePosition.X;//鼠标的x坐标为当前窗体左上角x坐标
                 currentYPosition = MousePosition.Y;//鼠标的y坐标为当前窗体左上角y坐标

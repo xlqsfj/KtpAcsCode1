@@ -412,19 +412,19 @@ namespace KtpAcs.WinForm.Jijian
                 FormErrorProvider.SetError(txtGender, "性别必须选择");
                 isPrePass = false;
             }
-            if (pic_facePic.Image == null)
+            if (_facePicId == null && !_isEdit)
             {
 
                 FormErrorProvider.SetError(pic_facePic, "人脸信息采集照片不能为空");
                 isPrePass = false;
             }
-            if (pic_picturePositive.Image == null)
+            if (_identityPicId == null && !_isEdit)
             {
 
                 FormErrorProvider.SetError(pic_picturePositive, "身份证正面照片不能为空");
                 isPrePass = false;
             }
-            if (pic_pictureReverse.Image == null)
+            if (_identityBackPicId == null && !_isEdit)
             {
 
                 FormErrorProvider.SetError(pic_pictureReverse, "身份证反面照片不能为空");

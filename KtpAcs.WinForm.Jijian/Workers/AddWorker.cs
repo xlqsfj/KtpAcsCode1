@@ -31,12 +31,13 @@ namespace KtpAcs.WinForm.Jijian
         private readonly string _msgCaption = "提示:";
         private bool _isColse = false;
         private string _facePicId;
-        private string _identityBackPicId;
+        private string _identityBackPicId;//身份证反面
+        private string _identityPicId; //身份证正面
+        private string _url_facePicId; //人脸id
         //头像
         private string _upic;
         private string _url_upic;
-        private string _identityPicId;
-        private string _url_facePicId;
+
         private string _url_identityBackPicId;
 
         private string _url_identityPicId;
@@ -46,7 +47,7 @@ namespace KtpAcs.WinForm.Jijian
 
         private int _state = 0;
         private bool _isManualEdit = false;
-
+        private bool _isEdit = false;
         public AddWorker(int hmc = 0, int openState = 0)
         {
             _state = hmc;
@@ -77,6 +78,7 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="isEdit"></param>
         public AddWorker(string uuId, int hmc = 0, bool isEdit = false)
         {
+            _isEdit = isEdit;
             _state = hmc;
             _uuId = uuId;
             InitializeComponent();
@@ -92,7 +94,7 @@ namespace KtpAcs.WinForm.Jijian
             GetClearingTypeList();
             //加载详细页
             GetInfo(hmc, uuId);
-        
+
 
             SetIsEdit(isEdit);
         }
@@ -526,7 +528,7 @@ namespace KtpAcs.WinForm.Jijian
         }
         private void txtBankNo_Leave(object sender, EventArgs e)
         {
-            
+
 
         }
 

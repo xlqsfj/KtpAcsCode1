@@ -30,7 +30,6 @@ namespace KtpAcs.WinForm.Jijian
         //端口号
         private int _synIdCardPort;
         private readonly string _msgCaption = "提示:";
-        private bool _isColse = false;
         private string _facePicId;
         private string _identityBackPicId;
         //头像
@@ -47,12 +46,21 @@ namespace KtpAcs.WinForm.Jijian
 
         private int _state = 0;
         private bool _isManualEdit = false;
+        private bool _isEdit = false;
 
         public AddWorker(int hmc = 0, int openState = 0)
         {
             _state = hmc;
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
             CameraConn();
+            MethodInvoker threadInsertValue = new MethodInvoker(InsertCardValue);
+            threadInsertValue.Invoke();
+        }
+
+        public void InsertCardValue() {
+
+          //  
             BindNationsCb();
             BindEducationLeveCb();
             //银行
@@ -64,7 +72,6 @@ namespace KtpAcs.WinForm.Jijian
             GetOrganizationUuidList();
             //结算方式
             GetClearingTypeList();
-
         }
         protected override Point ScrollToControl(Control activeControl)
         {
@@ -78,7 +85,8 @@ namespace KtpAcs.WinForm.Jijian
         /// <param name="isEdit"></param>
         public AddWorker(string uuId, int hmc = 0, bool isEdit = false)
         {
-            _state = hmc;
+            _isEdit = isEdit;
+               _state = hmc;
             _uuId = uuId;
             InitializeComponent();
             // BindNationsCb();

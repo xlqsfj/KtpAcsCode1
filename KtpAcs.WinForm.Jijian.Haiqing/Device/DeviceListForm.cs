@@ -99,7 +99,6 @@ namespace KtpAcs.WinForm.Jijian
                         WorkSysFail.workAdd.Clear();
                         TaskFactory taskFactory = new TaskFactory();
                         List<Task> taskList = new List<Task>();
-                        LoadingHelper.ShowLoadingScreen();//显示
                         GetDeviceHeart(data);
                         Parallel.ForEach(data.list, (list, DeviceList) =>
                         {
@@ -133,7 +132,7 @@ namespace KtpAcs.WinForm.Jijian
                     {
                         panelContent.Visible = true;
                         gridControl.Visible = false;
-                        //LoadingHelper.CloseForm();//关闭
+                        LoadingHelper.CloseForm();//关闭
 
                     }
 

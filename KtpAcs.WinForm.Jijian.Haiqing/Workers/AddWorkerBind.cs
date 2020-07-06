@@ -164,6 +164,7 @@ namespace KtpAcs.WinForm.Jijian
                 {
                     pageSize = 0,
                     pageNum = 0,
+                    projectUuid = ConfigHelper.KtpLoginProjectId,
                     organizationUuid = uuid
                 }
             };

@@ -19,7 +19,7 @@ namespace KtpAcs.KtpApiService.Worker
         : base()
         {
 
-            base.API = "/projectInfoPanel/queryTeamByOrganization";
+            base.API = "/projectInfoPanel/queryTeamByOrganizationAndProject";
             base.ServiceName = ApiType.KTP;
             base.MethodType = Method.POST;
             base.Token = ConfigHelper.KtpLoginToken;

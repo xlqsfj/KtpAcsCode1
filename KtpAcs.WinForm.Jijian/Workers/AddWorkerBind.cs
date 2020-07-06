@@ -135,7 +135,8 @@ namespace KtpAcs.WinForm.Jijian
                 {
                     projectUuid = ConfigHelper.KtpLoginProjectId,
                     pageSize = 0,
-                    pageNum = 0,
+                    pageNum = 0
+                   
                 }
             };
             PushSummary pushLogin = pusherLogin.Push();
@@ -165,6 +166,7 @@ namespace KtpAcs.WinForm.Jijian
                 {
                     pageSize = 0,
                     pageNum = 0,
+                    projectUuid = ConfigHelper.KtpLoginProjectId,
                     organizationUuid = uuid
                 }
             };

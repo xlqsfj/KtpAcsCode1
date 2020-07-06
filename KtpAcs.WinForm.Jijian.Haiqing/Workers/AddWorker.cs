@@ -299,7 +299,7 @@ namespace KtpAcs.WinForm.Jijian
                 {
                     btnSubmit.Text = @"提交";
                     btnSubmit.Enabled = true;
-                    btnSubmit2.Text = @"正在提交";
+                    btnSubmit2.Text = @"提交";
                     btnSubmit2.Enabled = true;
 
                     throw new PreValidationException(PreValidationHelper.ErroMsg);
@@ -662,6 +662,24 @@ namespace KtpAcs.WinForm.Jijian
             else
             {
                 MessageHelper.Show(pushLogin.Message);
+            }
+        }
+
+        private void comClearingType_Properties_MouseWheel(object sender, MouseEventArgs e)
+        {
+            HandledMouseEventArgs h = e as HandledMouseEventArgs;
+            if (h != null)
+            {
+                h.Handled = true;
+            }
+        }
+
+        private void comClearingUnit_Properties_MouseWheel(object sender, MouseEventArgs e)
+        {
+            HandledMouseEventArgs h = e as HandledMouseEventArgs;
+            if (h != null)
+            {
+                h.Handled = true;
             }
         }
     }

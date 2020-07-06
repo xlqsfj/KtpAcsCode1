@@ -1189,7 +1189,7 @@
             this.comClearingType.Name = "comClearingType";
             this.comClearingType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comClearingType.Properties.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.comWorkerTeamUuid_Properties_MouseWheel);
+            this.comClearingType.Properties.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.comClearingType_Properties_MouseWheel);
             this.comClearingType.Size = new System.Drawing.Size(164, 22);
             this.comClearingType.TabIndex = 6;
             this.comClearingType.EditValueChanged += new System.EventHandler(this.comClearingType_EditValueChanged);
@@ -1212,7 +1212,7 @@
             this.comClearingUnit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comClearingUnit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.OnlyInPopup;
-            this.comClearingUnit.Properties.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.comWorkType_Properties_MouseWheel);
+            this.comClearingUnit.Properties.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.comClearingUnit_Properties_MouseWheel);
             this.comClearingUnit.Size = new System.Drawing.Size(71, 22);
             this.comClearingUnit.TabIndex = 7;
             this.comClearingUnit.Tag = "";
@@ -1350,7 +1350,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(0, 800);
-            this.ClientSize = new System.Drawing.Size(1451, 1078);
+            this.ClientSize = new System.Drawing.Size(1310, 1078);
             this.Controls.Add(this.btnCancel2);
             this.Controls.Add(this.btnSubmit2);
             this.Controls.Add(this.txtPhone);

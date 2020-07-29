@@ -61,7 +61,7 @@ namespace KtpAcs.KtpApiService.Worker
             if (!mag.Success)
             {
 
-                WorkSysFail.dicWorkadd.Add(false, mag.Message);
+                WorkSysFail.dicWorkadd.Add(false, "云端返回失败");
             }
 
             return mag;

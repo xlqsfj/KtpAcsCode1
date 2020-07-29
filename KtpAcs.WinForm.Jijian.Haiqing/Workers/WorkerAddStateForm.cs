@@ -102,6 +102,7 @@ namespace KtpAcs.WinForm.Jijian.Workers
                             skin_close.Enabled = true;
                             //isFinish = false;
                             skinlable_addworkImg.Text = mag;
+                            break;
                         }
                         else
                         { //成功

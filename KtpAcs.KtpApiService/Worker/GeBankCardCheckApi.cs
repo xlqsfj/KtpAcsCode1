@@ -11,8 +11,6 @@ using System.Threading.Tasks;
 namespace KtpAcs.KtpApiService.Worker
 {
 
-
-
     public class GeBankCardCheckApi : ApiBase<dynamic, BankCardCheckResult>
     {
 

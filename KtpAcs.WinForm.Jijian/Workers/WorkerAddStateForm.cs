@@ -100,8 +100,8 @@ namespace KtpAcs.WinForm.Jijian.Workers
                             skingrid_sysPanel.Visible = false;
 
                             skin_close.Enabled = true;
-                            //isFinish = false;
                             skinlable_addworkImg.Text = mag;
+                            break;
                         }
                         else
                         { //成功

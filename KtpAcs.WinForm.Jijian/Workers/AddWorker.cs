@@ -288,7 +288,7 @@ namespace KtpAcs.WinForm.Jijian
             btnSubmit2.Enabled = false;
             try
             {
-
+                CheckBankInfo();
                 if (!SubmitBtnPreValidation())
                 {
                     btnSubmit.Text = @"提交";
@@ -648,6 +648,11 @@ namespace KtpAcs.WinForm.Jijian
         }
         private void txtBankName_Click(object sender, EventArgs e)
         {
+            CheckBankInfo();
+        }
+
+        private void CheckBankInfo()
+        {
             string name = this.txtName.Text;
             string idCard = this.txtIdCard.Text;
             string Bankno = this.txtBankNo.Text;
@@ -671,6 +676,7 @@ namespace KtpAcs.WinForm.Jijian
             else
             {
                 MessageHelper.Show(pushLogin.Message);
+                return;
             }
         }
     }

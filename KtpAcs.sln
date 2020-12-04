@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KtpAcs.PanelApi.Haiqing", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KtpAcs.WinForm.Jijian.Haiqing", "KtpAcs.WinForm.Jijian.Haiqing\KtpAcs.WinForm.Jijian.Haiqing.csproj", "{715E551C-B027-4991-A1FB-99A7EB01A090}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KtpAcsMiddleware.WinForm.Api.Chidao", "KtpAcsMiddleware.WinForm.Api.Chidao\KtpAcsMiddleware.WinForm.Api.Chidao.csproj", "{81CCF3ED-E9AE-427B-9B91-0A53D599EB29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{715E551C-B027-4991-A1FB-99A7EB01A090}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{715E551C-B027-4991-A1FB-99A7EB01A090}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{715E551C-B027-4991-A1FB-99A7EB01A090}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81CCF3ED-E9AE-427B-9B91-0A53D599EB29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81CCF3ED-E9AE-427B-9B91-0A53D599EB29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81CCF3ED-E9AE-427B-9B91-0A53D599EB29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81CCF3ED-E9AE-427B-9B91-0A53D599EB29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
